@@ -322,6 +322,10 @@ extension GameScene {
         
         view?.window?.rootViewController?.present(viewController, animated: true)
         
-        viewController.show(message: .init(text: "Mario is a character created by Japanese video game designer Shigeru Miyamoto. He is the title character of the Mario franchise and the mascot of Japanese video game company Nintendo."))
+        viewController.show(messages: [
+            .init(text: "Mario is a character created by Japanese video game designer Shigeru Miyamoto. He is the title character of the Mario franchise and the mascot of Japanese video game company Nintendo."),
+            .init(text: "Mario has appeared in over 200 video games since his creation. Depicted as a short, pudgy, Italian plumber who resides in the Mushroom Kingdom, his adventures generally center on rescuing Princess Peach from the Koopa villain Bowser."),
+            .init(text: "Mario has access to a variety of power-ups that give him different abilities. Mario's fraternal twin brother is Luigi.")
+        ])
     }
 }

@@ -14,8 +14,9 @@ struct Message {
 
 class MessageViewController: UIViewController {
     @IBOutlet weak var messageLabel: UILabel?
+    @IBOutlet weak var nextMessageIcon: UIImageView?
     
-    var charactersPerSecond: Double = 30
+    var charactersPerSecond: Double = 24
     var messagesToShow: [Message] = []
     
     override func viewDidLoad() {
@@ -24,33 +25,45 @@ class MessageViewController: UIViewController {
     
     func show(messages: [Message]) {
         messagesToShow = messages
-        
-        // TODO: loop thru all messages?
-        if let message = messages.first {
+        showNextMessage()
+    }
+    
+    private func showNextMessage() {
+        if let message = messagesToShow.first {
+            messagesToShow.removeFirst()
             show(message: message)
         }
     }
     
-    func show(message: Message) {
+    private func show(message: Message) {
+        view.isUserInteractionEnabled = false
+        nextMessageIcon?.isHidden = true
+        
         DispatchQueue.global(qos: .userInteractive).async {
             var current = message.text.startIndex
             while current < message.text.endIndex {
                 let text = String(message.text[...current])
-                DispatchQueue.main.async { self.set(text: text) }
-                Thread.sleep(forTimeInterval: 1 / self.charactersPerSecond)
                 let next = message.text.index(after: current)
+                DispatchQueue.main.async {
+                    self.messageLabel?.text = text
+                    let isCompleted = next >= message.text.endIndex
+                    if isCompleted {
+                        self.view.isUserInteractionEnabled = true
+                        self.nextMessageIcon?.isHidden = false
+                    }
+                }
+                Thread.sleep(forTimeInterval: 1 / self.charactersPerSecond)
                 current = next
             }
         }
     }
     
-    private func set(text: String) {
-        messageLabel?.text = text
-    }
-    
     @IBAction func didTap() {
-        // TODO: Move to next message if exists
-        close()
+        if messagesToShow.isEmpty {
+            close()
+        } else {
+            showNextMessage()
+        }
     }
     
     private func close() {

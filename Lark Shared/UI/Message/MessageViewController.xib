@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MessageViewController" customModule="Lark" customModuleProvider="target">
             <connections>
                 <outlet property="messageLabel" destination="cyd-4j-QXd" id="aez-34-SNr"/>
+                <outlet property="nextMessageIcon" destination="LaE-Sn-Jj5" id="MsL-IF-WFf"/>
                 <outlet property="view" destination="HBB-iX-cmh" id="bZe-Td-apA"/>
             </connections>
         </placeholder>
@@ -35,17 +36,26 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spr_message_next" translatesAutoresizingMaskIntoConstraints="NO" id="LaE-Sn-Jj5">
+                            <rect key="frame" x="476" y="104" width="16" height="16"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="16" id="TRB-e2-Vfi"/>
+                                <constraint firstAttribute="width" constant="16" id="jW2-ue-33j"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="cyd-4j-QXd" firstAttribute="leading" secondItem="1gN-mQ-n84" secondAttribute="trailing" constant="8" id="5Fv-gR-bGn"/>
                         <constraint firstItem="cyd-4j-QXd" firstAttribute="top" secondItem="fyD-O4-Ogb" secondAttribute="top" constant="8" id="5IP-vn-Xg0"/>
+                        <constraint firstAttribute="bottom" secondItem="LaE-Sn-Jj5" secondAttribute="bottom" constant="8" id="5Op-5b-wj2"/>
                         <constraint firstAttribute="bottom" secondItem="1gN-mQ-n84" secondAttribute="bottom" constant="8" id="Eug-sH-dBR"/>
                         <constraint firstItem="1gN-mQ-n84" firstAttribute="leading" secondItem="fyD-O4-Ogb" secondAttribute="leading" constant="8" id="Ixf-9W-DM1"/>
                         <constraint firstItem="1gN-mQ-n84" firstAttribute="top" secondItem="fyD-O4-Ogb" secondAttribute="top" constant="8" id="ROu-n1-Vtn"/>
                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="cyd-4j-QXd" secondAttribute="bottom" constant="8" id="Rkw-OR-JUT"/>
                         <constraint firstAttribute="width" constant="500" id="TVh-pt-H4o"/>
                         <constraint firstAttribute="trailing" secondItem="cyd-4j-QXd" secondAttribute="trailing" constant="8" id="cuR-ZY-Rxh"/>
+                        <constraint firstAttribute="trailing" secondItem="LaE-Sn-Jj5" secondAttribute="trailing" constant="8" id="gPq-Aa-Fgr"/>
                         <constraint firstAttribute="height" constant="128" id="olJ-qf-HXN"/>
                     </constraints>
                 </view>
@@ -70,6 +80,7 @@
     </objects>
     <resources>
         <image name="spr_duck" width="679" height="708"/>
+        <image name="spr_message_next" width="38" height="44"/>
         <systemColor name="secondarySystemFillColor">
             <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
