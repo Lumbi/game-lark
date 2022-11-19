@@ -265,7 +265,7 @@ extension GameScene {
         let exitPosition = convert(.zero, from: lander)
         let droppedGems = cargo.unloadGems()
         for droppedGem in droppedGems {
-            droppedGem.drop(in: self, at: exitPosition, withMomentum: false)
+            droppedGem.drop(in: self, at: exitPosition)
         }
     }
     

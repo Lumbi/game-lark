@@ -35,7 +35,7 @@ class Gem: SKNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func drop(in scene: SKScene, at position: CGPoint, withMomentum: Bool = true) {
+    func drop(in scene: SKScene, at position: CGPoint) {
         self.position = position
         physicsBody?.isDynamic = true
         physicsBody?.linearDamping = 0.5
@@ -44,14 +44,12 @@ class Gem: SKNode {
         
         scene.addChild(self)
         
-//        if withMomentum {
-            physicsBody?.applyImpulse(
-                .init(
-                    dx: CGFloat.random(in: (-1...1)),
-                    dy: CGFloat.random(in: (-1...1))
-                )
+        physicsBody?.applyImpulse(
+            .init(
+                dx: CGFloat.random(in: (-1...1)),
+                dy: CGFloat.random(in: (-1...1))
             )
-//        }
+        )
         
         run(.sequence([
             .wait(forDuration: 1),
