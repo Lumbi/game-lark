@@ -23,18 +23,16 @@ class GemCounter: SKNode {
         gemsInCargoCounter.fontSize = 24
         gemsInCargoCounter.horizontalAlignmentMode = .left
         gemsInCargoCounter.verticalAlignmentMode = .top
-        gemsInCargoCounter.text = "IN CARGO: 0 gems(s)"
         addChild(gemsInCargoCounter)
         
         gemsInDepotCounter.fontName = "Futura"
         gemsInDepotCounter.fontSize = 24
         gemsInDepotCounter.horizontalAlignmentMode = .left
         gemsInDepotCounter.verticalAlignmentMode = .top
-        gemsInDepotCounter.text = "IN DEPOT: 0 gems(s)"
         gemsInDepotCounter.position.y = gemsInCargoCounter.position.y - 32
         addChild(gemsInDepotCounter)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -51,7 +49,17 @@ extension GemCounter: CargoDelegate {
 
 extension GemCounter: SharedDepotDelegate {
     func sharedDepotDidUpdate(_ sharedDepot: SharedDepot) {
-        gemsInDepotCounter.text = "IN DEPOT: \(sharedDepot.gems.count) gem(s)"
-        gemsInDepotCounter.run(FX.bounce())
+        updateGemsInDepotCounterText(sharedDepot.gems.count)
+        if sharedDepot.gems.count > 0 {
+            gemsInDepotCounter.run(FX.bounce())
+        }
+    }
+    
+    private func updateGemsInDepotCounterText(_ count: Int) {
+        if let scene = scene as? GameScene {
+            gemsInDepotCounter.text = "IN DEPOT: \(count) / \(scene.detectedGemCount) gems"
+        } else {
+            gemsInDepotCounter.text = nil
+        }
     }
 }

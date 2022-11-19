@@ -15,6 +15,7 @@ class GameScene: SKScene {
     let landerControl: LanderControl = .init()
     let cameraControl: CameraControl = .init()
     let sharedDepot: SharedDepot = .init()
+    private(set) var detectedGemCount: Int = 0
     
     private var time: Time = .init()
     
@@ -31,7 +32,7 @@ class GameScene: SKScene {
                             successor: nil
                         )))))
     }()
-
+    
     private lazy var endContactHandlerChain: ContactHandlerChain = {
         ContactHandlerChain(
             first: EndLanderDepotContactHandler(
@@ -52,7 +53,7 @@ class GameScene: SKScene {
         
         return scene
     }
-
+    
     override func didMove(to view: SKView) {
         self.setUpScene()
     }
@@ -76,7 +77,7 @@ class GameScene: SKScene {
         camera.setScale(1)
         addChild(camera)
         cameraControl.camera = camera
-
+        
         camera.addChild(hud)
         cargo.delegate = hud.gemCounter
         hud.layout()
@@ -88,15 +89,23 @@ class GameScene: SKScene {
         lander = levelLoader.spawnLander()
         landerControl.lander = lander
         cameraControl.target = lander
+        
+        detectedGemCount = 0
+        scene?.enumerateChildNodes(withName: "//\(Const.Node.Name.gem)", using: { _, _ in
+            self.detectedGemCount += 1
+        })
+        
+        // Bindings
+        
         lander?.telemetricDataDelegate = hud.speedGauge
         
-        // Bind depot events
         scene?.enumerateChildNodes(withName: "//\(Const.Node.Name.depot)", using: { node, _ in
             if let depot = node as? Depot {
                 depot.delegate = self
                 depot.sharedDepot = self.sharedDepot
             }
         })
+        
         sharedDepot.delegate = hud.gemCounter
     }
     
@@ -121,7 +130,7 @@ class GameScene: SKScene {
                         minDistance = distance
                     }
                 })
-
+                
                 if minDistance < Const.HUD.threshold(for: .immediate) {
                     hud.gemDetector.show(.immediate)
                 } else if minDistance < Const.HUD.threshold(for: .near) {
@@ -191,7 +200,7 @@ extension GameScene: DepotDelegate {
     func depotReadyToAcceptGems(_ depot: Depot) {
         let gems = cargo.unloadGems()
         depot.acceptGems(gems)
-
+        
         let remainingGem = childNode(withName: "//\(Const.Node.Name.gem)")
         if remainingGem == nil {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -204,7 +213,7 @@ extension GameScene: DepotDelegate {
 extension GameScene {
     func destroyLander() {
         guard let lander = lander else { return }
-
+        
         let destroyPosition = convert(.zero, from: lander)
         landerControl.enabled = false
         FX.Explosion.play(in: self, at: destroyPosition)
@@ -214,7 +223,7 @@ extension GameScene {
         for droppedGem in droppedGems {
             droppedGem.drop(in: self, at: destroyPosition)
         }
-
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.presentRestart()
         }
@@ -224,7 +233,7 @@ extension GameScene {
         guard let lander = lander else { return }
         
         let destroyPosition = convert(.zero, from: lander)
-
+        
         landerControl.enabled = false
         lander.physicsBody?.isDynamic = false
         lander.physicsBody?.velocity = .zero
@@ -241,7 +250,7 @@ extension GameScene {
             .run { self.presentRestart() }
         ]))
     }
-
+    
     func redeployLanderToLastCheckpoint() {
         let spawn = childNode(withName: "//\(Const.Node.Name.spawn)")
         
@@ -250,13 +259,13 @@ extension GameScene {
             let spawn = spawn,
             let parent = spawn.parent
         else { return }
-
+        
         lander.position = spawn.position
         lander.physicsBody?.isDynamic = true
         parent.addChild(lander)
-
+        
         cameraControl.jump(to: lander) // without this the camera goes crazy
-
+        
         landerControl.enabled = true
     }
     

@@ -12,7 +12,11 @@ protocol SharedDepotDelegate: AnyObject {
 }
 
 class SharedDepot {
-    weak var delegate: SharedDepotDelegate? = nil
+    weak var delegate: SharedDepotDelegate? = nil {
+        didSet {
+            delegate?.sharedDepotDidUpdate(self)
+        }
+    }
     
     private(set) var gems: [Gem] = []
     

@@ -11,7 +11,11 @@ class Cargo {
     var gemCount: Int { gems.count }
     private var gems: [Gem] = []
     
-    weak var delegate: CargoDelegate? = nil
+    weak var delegate: CargoDelegate? = nil {
+        didSet {
+            delegate?.cargoDidUpdate(self)
+        }
+    }
     
     func pickUp(gem: Gem) {
         gem.removeFromParent()
