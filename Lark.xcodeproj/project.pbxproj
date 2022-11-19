@@ -24,6 +24,8 @@
 		0D7F4EDD2922DC4F005C54C0 /* SpeedGauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7F4EDC2922DC4F005C54C0 /* SpeedGauge.swift */; };
 		0D7F4EDF29232753005C54C0 /* SKCameraNode+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7F4EDE29232753005C54C0 /* SKCameraNode+Ext.swift */; };
 		0D7F4EE129232BB6005C54C0 /* HighSpeedWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7F4EE029232BB6005C54C0 /* HighSpeedWarning.swift */; };
+		0D81CE5F29286A8F00AF4D84 /* MessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D81CE5E29286A8F00AF4D84 /* MessageViewController.xib */; };
+		0D81CE6129286A9A00AF4D84 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D81CE6029286A9A00AF4D84 /* MessageViewController.swift */; };
 		0D90A744291A9E90005F2EA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A743291A9E90005F2EA0 /* AppDelegate.swift */; };
 		0D90A746291A9E90005F2EA0 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A745291A9E90005F2EA0 /* GameViewController.swift */; };
 		0D90A749291A9E90005F2EA0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D90A747291A9E90005F2EA0 /* Main.storyboard */; };
@@ -102,6 +104,8 @@
 		0D7F4EDC2922DC4F005C54C0 /* SpeedGauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedGauge.swift; sourceTree = "<group>"; };
 		0D7F4EDE29232753005C54C0 /* SKCameraNode+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKCameraNode+Ext.swift"; sourceTree = "<group>"; };
 		0D7F4EE029232BB6005C54C0 /* HighSpeedWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighSpeedWarning.swift; sourceTree = "<group>"; };
+		0D81CE5E29286A8F00AF4D84 /* MessageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageViewController.xib; sourceTree = "<group>"; };
+		0D81CE6029286A9A00AF4D84 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		0D90A739291A9E8D005F2EA0 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		0D90A73A291A9E8D005F2EA0 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		0D90A73B291A9E90005F2EA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -174,6 +178,7 @@
 		0D7DE6C22921C9B000A77BD6 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				0D81CE5D29286A7F00AF4D84 /* Message */,
 				0D7DE6CD2921CE3500A77BD6 /* Extensions */,
 				0D7DE6D02921CED500A77BD6 /* Restart */,
 				0DA7986829254CF0001AD90E /* MissionComplete */,
@@ -208,6 +213,15 @@
 				0D7F4EDA29229E76005C54C0 /* LanderTerrainContactHandler.swift */,
 			);
 			path = Collisions;
+			sourceTree = "<group>";
+		};
+		0D81CE5D29286A7F00AF4D84 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				0D81CE5E29286A8F00AF4D84 /* MessageViewController.xib */,
+				0D81CE6029286A9A00AF4D84 /* MessageViewController.swift */,
+			);
+			path = Message;
 			sourceTree = "<group>";
 		};
 		0D90A732291A9E8D005F2EA0 = {
@@ -392,7 +406,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 1340;
+				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					0D90A73F291A9E90005F2EA0 = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -432,6 +446,7 @@
 				0D90A787291AD7CD005F2EA0 /* Todo.rtf in Resources */,
 				0DA7986C29254D1F001AD90E /* MissionCompleteViewController.xib in Resources */,
 				0D90A749291A9E90005F2EA0 /* Main.storyboard in Resources */,
+				0D81CE5F29286A8F00AF4D84 /* MessageViewController.xib in Resources */,
 				0D90A74C291A9E90005F2EA0 /* LaunchScreen.storyboard in Resources */,
 				0DFF9D54291C36300029AD93 /* Design.rtf in Resources */,
 				0D90A750291A9E90005F2EA0 /* Assets.xcassets in Resources */,
@@ -490,6 +505,7 @@
 				0D90A772291AD1F9005F2EA0 /* Gem.swift in Sources */,
 				0D7DE6BF292121A300A77BD6 /* FX.Explosion.swift in Sources */,
 				0D7F4ECC292294A1005C54C0 /* SKPhysicsContact+Ext.swift in Sources */,
+				0D81CE6129286A9A00AF4D84 /* MessageViewController.swift in Sources */,
 				0DFF9D56291C84070029AD93 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -549,6 +565,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -607,6 +624,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;

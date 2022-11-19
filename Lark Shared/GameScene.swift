@@ -156,6 +156,10 @@ extension GameScene {
                 landerControl.rightThruster?.fire()
             }
         }
+        
+        
+        // TODO: REmove, test
+        presentMessage()
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -298,7 +302,6 @@ extension GameScene {
         let restartViewController = RestartViewController.fromNib()
         restartViewController.modalPresentationStyle = .overCurrentContext
         restartViewController.modalTransitionStyle = .crossDissolve
-        restartViewController.preferredContentSize = .init(width: 300, height: 200)
         
         view?.window?.rootViewController?.present(restartViewController, animated: true)
         restartViewController.scene = self
@@ -308,8 +311,17 @@ extension GameScene {
         let viewController = MissionCompleteViewController.fromNib()
         viewController.modalPresentationStyle = .overCurrentContext
         viewController.modalTransitionStyle = .crossDissolve
-        viewController.preferredContentSize = .init(width: 300, height: 200)
         
         view?.window?.rootViewController?.present(viewController, animated: true)
+    }
+    
+    func presentMessage() {
+        let viewController = MessageViewController.fromNib()
+        viewController.modalPresentationStyle = .overCurrentContext
+        viewController.modalTransitionStyle = .crossDissolve
+        
+        view?.window?.rootViewController?.present(viewController, animated: true)
+        
+        viewController.show(message: .init(text: "Mario is a character created by Japanese video game designer Shigeru Miyamoto. He is the title character of the Mario franchise and the mascot of Japanese video game company Nintendo."))
     }
 }
