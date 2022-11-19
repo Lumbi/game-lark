@@ -54,8 +54,14 @@
 		0D90A78E291AE1BD005F2EA0 /* SKTiled.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D90A78D291AE1BD005F2EA0 /* SKTiled.xcframework */; };
 		0D90A78F291AE1BD005F2EA0 /* SKTiled.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0D90A78D291AE1BD005F2EA0 /* SKTiled.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0D983C882923EDA600A34ED7 /* TimeAccumulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D983C872923EDA600A34ED7 /* TimeAccumulator.swift */; };
+		0DA0B64229267516001D0C9F /* LanderBoundsContactHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA0B64129267516001D0C9F /* LanderBoundsContactHandler.swift */; };
+		0DA0B644292675B2001D0C9F /* OutOfBoundsWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA0B643292675B2001D0C9F /* OutOfBoundsWarning.swift */; };
 		0DA180F7291FF86C000D48AA /* LanderThruster.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0DA180F6291FF86C000D48AA /* LanderThruster.sks */; };
 		0DA180F9292090E9000D48AA /* Test.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0DA180F8292090E9000D48AA /* Test.sks */; };
+		0DA7986529254683001AD90E /* SharedDepot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA7986429254683001AD90E /* SharedDepot.swift */; };
+		0DA79867292547BC001AD90E /* FX.Bounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA79866292547BC001AD90E /* FX.Bounce.swift */; };
+		0DA7986A29254D0D001AD90E /* MissionCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA7986929254D0D001AD90E /* MissionCompleteViewController.swift */; };
+		0DA7986C29254D1F001AD90E /* MissionCompleteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DA7986B29254D1F001AD90E /* MissionCompleteViewController.xib */; };
 		0DFF9D52291BF4330029AD93 /* Tilemaps in Resources */ = {isa = PBXBuildFile; fileRef = 0DFF9D51291BF4330029AD93 /* Tilemaps */; };
 		0DFF9D54291C36300029AD93 /* Design.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 0DFF9D53291C36300029AD93 /* Design.rtf */; };
 		0DFF9D56291C84070029AD93 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFF9D55291C84070029AD93 /* Constants.swift */; };
@@ -125,8 +131,14 @@
 		0D90A786291AD7CD005F2EA0 /* Todo.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Todo.rtf; sourceTree = "<group>"; };
 		0D90A78D291AE1BD005F2EA0 /* SKTiled.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SKTiled.xcframework; path = Carthage/Build/SKTiled.xcframework; sourceTree = "<group>"; };
 		0D983C872923EDA600A34ED7 /* TimeAccumulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAccumulator.swift; sourceTree = "<group>"; };
+		0DA0B64129267516001D0C9F /* LanderBoundsContactHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanderBoundsContactHandler.swift; sourceTree = "<group>"; };
+		0DA0B643292675B2001D0C9F /* OutOfBoundsWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutOfBoundsWarning.swift; sourceTree = "<group>"; };
 		0DA180F6291FF86C000D48AA /* LanderThruster.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LanderThruster.sks; sourceTree = "<group>"; };
 		0DA180F8292090E9000D48AA /* Test.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Test.sks; sourceTree = "<group>"; };
+		0DA7986429254683001AD90E /* SharedDepot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDepot.swift; sourceTree = "<group>"; };
+		0DA79866292547BC001AD90E /* FX.Bounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FX.Bounce.swift; sourceTree = "<group>"; };
+		0DA7986929254D0D001AD90E /* MissionCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCompleteViewController.swift; sourceTree = "<group>"; };
+		0DA7986B29254D1F001AD90E /* MissionCompleteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MissionCompleteViewController.xib; sourceTree = "<group>"; };
 		0DFF9D51291BF4330029AD93 /* Tilemaps */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Tilemaps; sourceTree = "<group>"; };
 		0DFF9D53291C36300029AD93 /* Design.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Design.rtf; sourceTree = "<group>"; };
 		0DFF9D55291C84070029AD93 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -151,6 +163,7 @@
 			children = (
 				0D7DE6C0292121AE00A77BD6 /* FX.swift */,
 				0D7DE6BE292121A300A77BD6 /* FX.Explosion.swift */,
+				0DA79866292547BC001AD90E /* FX.Bounce.swift */,
 			);
 			path = FX;
 			sourceTree = "<group>";
@@ -160,6 +173,7 @@
 			children = (
 				0D7DE6CD2921CE3500A77BD6 /* Extensions */,
 				0D7DE6D02921CED500A77BD6 /* Restart */,
+				0DA7986829254CF0001AD90E /* MissionComplete */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -186,6 +200,7 @@
 			children = (
 				0D7F4ECE292295E4005C54C0 /* ContactHandler.swift */,
 				0D7F4ED0292296B2005C54C0 /* LanderGemContactHandler.swift */,
+				0DA0B64129267516001D0C9F /* LanderBoundsContactHandler.swift */,
 				0D7F4ED829229CBE005C54C0 /* LanderDepotContactHandler.swift */,
 				0D7F4EDA29229E76005C54C0 /* LanderTerrainContactHandler.swift */,
 			);
@@ -249,6 +264,7 @@
 				0D90A758291AA105005F2EA0 /* LanderControl.swift */,
 				0D90A775291AD365005F2EA0 /* Explosive.swift */,
 				0DFF9D57291C885C0029AD93 /* Cargo.swift */,
+				0DA7986429254683001AD90E /* SharedDepot.swift */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -309,6 +325,7 @@
 				0D90A778291AD3AE005F2EA0 /* GemCounter.swift */,
 				0D7F4EDC2922DC4F005C54C0 /* SpeedGauge.swift */,
 				0D7F4EE029232BB6005C54C0 /* HighSpeedWarning.swift */,
+				0DA0B643292675B2001D0C9F /* OutOfBoundsWarning.swift */,
 				0D90A77A291AD3EC005F2EA0 /* GemDetector.swift */,
 			);
 			path = HUD;
@@ -320,6 +337,15 @@
 				0D90A78D291AE1BD005F2EA0 /* SKTiled.xcframework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0DA7986829254CF0001AD90E /* MissionComplete */ = {
+			isa = PBXGroup;
+			children = (
+				0DA7986B29254D1F001AD90E /* MissionCompleteViewController.xib */,
+				0DA7986929254D0D001AD90E /* MissionCompleteViewController.swift */,
+			);
+			path = MissionComplete;
 			sourceTree = "<group>";
 		};
 		0DFF9D4E291BF3570029AD93 /* Resources */ = {
@@ -401,6 +427,7 @@
 				0DA180F9292090E9000D48AA /* Test.sks in Resources */,
 				0DFF9D52291BF4330029AD93 /* Tilemaps in Resources */,
 				0D90A787291AD7CD005F2EA0 /* Todo.rtf in Resources */,
+				0DA7986C29254D1F001AD90E /* MissionCompleteViewController.xib in Resources */,
 				0D90A749291A9E90005F2EA0 /* Main.storyboard in Resources */,
 				0D90A74C291A9E90005F2EA0 /* LaunchScreen.storyboard in Resources */,
 				0DFF9D54291C36300029AD93 /* Design.rtf in Resources */,
@@ -427,12 +454,15 @@
 				0D90A75B291AB737005F2EA0 /* CGVector+Ext.swift in Sources */,
 				0D7F4EDB29229E76005C54C0 /* LanderTerrainContactHandler.swift in Sources */,
 				0D90A765291AD150005F2EA0 /* Depot.swift in Sources */,
+				0DA7986A29254D0D001AD90E /* MissionCompleteViewController.swift in Sources */,
 				0D90A776291AD365005F2EA0 /* Explosive.swift in Sources */,
 				0D90A783291AD572005F2EA0 /* LevelLoader.swift in Sources */,
 				0D7F4ED929229CBE005C54C0 /* LanderDepotContactHandler.swift in Sources */,
 				0D90A779291AD3AE005F2EA0 /* GemCounter.swift in Sources */,
+				0DA7986529254683001AD90E /* SharedDepot.swift in Sources */,
 				0D90A75D291ABB1E005F2EA0 /* CameraControl.swift in Sources */,
 				0D90A781291AD52C005F2EA0 /* Level.swift in Sources */,
+				0DA0B64229267516001D0C9F /* LanderBoundsContactHandler.swift in Sources */,
 				0DFF9D58291C885C0029AD93 /* Cargo.swift in Sources */,
 				0D90A774291AD260005F2EA0 /* Prop.swift in Sources */,
 				0D7F4EE129232BB6005C54C0 /* HighSpeedWarning.swift in Sources */,
@@ -441,11 +471,13 @@
 				0D90A763291ACF8C005F2EA0 /* Tile.swift in Sources */,
 				0D90A76C291AD1DA005F2EA0 /* Turret.swift in Sources */,
 				0D7DE6C42921CA1600A77BD6 /* RestartViewController.swift in Sources */,
+				0DA0B644292675B2001D0C9F /* OutOfBoundsWarning.swift in Sources */,
 				0D7F4EDD2922DC4F005C54C0 /* SpeedGauge.swift in Sources */,
 				0D7DE6C1292121AE00A77BD6 /* FX.swift in Sources */,
 				0D90A770291AD1EE005F2EA0 /* Laser.swift in Sources */,
 				0D7F4ED529229ACB005C54C0 /* SKNode+Ext.swift in Sources */,
 				0D90A761291ABD88005F2EA0 /* CGPoint+Ext.swift in Sources */,
+				0DA79867292547BC001AD90E /* FX.Bounce.swift in Sources */,
 				0D983C882923EDA600A34ED7 /* TimeAccumulator.swift in Sources */,
 				0D7F4ED1292296B2005C54C0 /* LanderGemContactHandler.swift in Sources */,
 				0D90A744291A9E90005F2EA0 /* AppDelegate.swift in Sources */,
@@ -596,6 +628,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VQ5V23TK4V;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -630,6 +663,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VQ5V23TK4V;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",

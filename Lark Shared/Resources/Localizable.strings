@@ -8,3 +8,4 @@
 
 "menu/restart" = "Redeploy probe";
 "menu/quit" = "Abandon mission";
+"menu/complete_mission" = "Mission complete!";

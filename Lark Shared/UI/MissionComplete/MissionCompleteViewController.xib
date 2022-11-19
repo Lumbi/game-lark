@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="landscape" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MissionCompleteViewController" customModule="Lark" customModuleProvider="target">
+            <connections>
+                <outlet property="completeButton" destination="DGA-WV-bVn" id="WKz-lx-ig4"/>
+                <outlet property="view" destination="t8t-eo-mSC" id="Uh4-bc-UpG"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="t8t-eo-mSC">
+            <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DGA-WV-bVn">
+                    <rect key="frame" x="337.5" y="166.5" width="221" height="81"/>
+                    <color key="tintColor" systemColor="systemGreenColor"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="menu/complete_mission" cornerStyle="capsule">
+                        <directionalEdgeInsets key="contentInsets" top="32" leading="32" bottom="32" trailing="32"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="tapCompleteButton" destination="-1" eventType="touchUpInside" id="rOl-je-MOG"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="mED-5N-Mpc"/>
+            <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
+            <constraints>
+                <constraint firstItem="DGA-WV-bVn" firstAttribute="centerX" secondItem="t8t-eo-mSC" secondAttribute="centerX" id="xXl-9Z-m2q"/>
+                <constraint firstItem="DGA-WV-bVn" firstAttribute="centerY" secondItem="t8t-eo-mSC" secondAttribute="centerY" id="z9w-Te-XVe"/>
+            </constraints>
+            <point key="canvasLocation" x="-184" y="72"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="secondarySystemFillColor">
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

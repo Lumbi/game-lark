@@ -10,9 +10,9 @@ import SpriteKit
 
 class Lander: SKNode {
     private var thrusterEmitRate: CGFloat = 0
-    
-    let leftTruster = Truster(direction: .init(dx: 2, dy: 3).unit)
-    let rightTruster = Truster(direction: .init(dx: -2, dy: 3).unit)
+
+    let leftTruster = Thruster(direction: .init(dx: 2, dy: 3).unit)
+    let rightTruster = Thruster(direction: .init(dx: -2, dy: 3).unit)
     
     private let leftThrusterEmitter: SKEmitterNode = .init(fileNamed: "LanderThruster")!
     private let rightThrusterEmitter: SKEmitterNode = .init(fileNamed: "LanderThruster")!
@@ -75,10 +75,12 @@ class Lander: SKNode {
     }
 }
 
-class Truster: SKNode {
+class Thruster: SKNode {
+    var enabled: Bool = true
+
     private let direction: CGVector
-    private var enabled: Bool = false
-    private let force: CGFloat = 14
+    private var firing: Bool = false
+    private let force: CGFloat = 8
     
     private let emitter: SKEmitterNode = .init(fileNamed: "LanderThruster")!
     
@@ -97,18 +99,20 @@ class Truster: SKNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func enable() {
-        enabled = true
+    func fire() {
+        guard enabled else { return }
+
+        firing = true
         emitter.particleBirthRate = 80
     }
     
     func release() {
-        enabled = false
+        firing = false
         emitter.particleBirthRate = 0
     }
     
     func apply(on lander: Lander?) {
-        if enabled {
+        if enabled && firing {
             lander?.physicsBody?.applyForce(force * direction)
         }
     }

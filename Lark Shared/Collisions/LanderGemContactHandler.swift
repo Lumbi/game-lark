@@ -9,17 +9,23 @@ import Foundation
 import SpriteKit
 
 struct LanderGemContactHandler: ContactHandler {
-    let cargo: Cargo
+    let scene: GameScene
     let successor: ContactHandler?
     
     func handle(contact: SKPhysicsContact) {
-        guard contact.isBetween(Const.PhysicsBody.Bitmask.lander, Const.PhysicsBody.Bitmask.collectible) else { return }
+        guard
+            contact.isBetween(
+                Const.PhysicsBody.Bitmask.lander,
+                Const.PhysicsBody.Bitmask.collectible
+            )
+        else { return }
         
-        if let gem = contact
+        let gem = contact
             .firstBody(with: Const.PhysicsBody.Bitmask.collectible)?
             .parentNode(ofType: Gem.self)
-        {
-            cargo.pickUp(gem: gem)
+
+        if let gem = gem {
+            scene.cargo.pickUp(gem: gem)
         }
     }
 }

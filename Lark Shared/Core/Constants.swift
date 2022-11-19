@@ -15,6 +15,8 @@ struct Const {
             static let gem = "gem"
             static let depot = "depot"
             static let spawn = "spawn"
+            static let outerBounds = "outer_bounds"
+            static let innerBounds = "inner_bounds"
         }
         
         struct ZPosition {
@@ -25,17 +27,23 @@ struct Const {
         
         struct Lander {
             static let collisionSpeedWarningThreshold: CGFloat = 120
-            static let collisionSpeedDeathThreshold: CGFloat = 130
+            static let collisionSpeedDeathThreshold: CGFloat = 140
+            static let outOfBoundsTimer: TimeInterval = 6
         }
     }
     
     struct PhysicsBody {
+        static let gravity: CGVector = .init(dx: 0, dy: -0.8)
+        
         struct Bitmask {
             static let all: UInt32 = 0xFFFFFFFF
             static let lander: UInt32 = 0x1 << 1
             static let terrain: UInt32 = 0x1 << 2
             static let collectible: UInt32 = 0x1 << 3
             static let trigger: UInt32 = 0x1 << 4
+            static let innerBounds: UInt32 = 0x1 << 5
+            static let outerBounds: UInt32 = 0x1 << 6
+            static let transientCollectible: UInt32 = 0x1 << 7 // TODO: Rename this...
         }
     }
     

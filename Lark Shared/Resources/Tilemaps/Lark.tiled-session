@@ -16,11 +16,11 @@
             "scaleInDock": 1
         },
         "TestLevel.tmx": {
-            "scale": 0.98,
-            "selectedLayer": 2,
+            "scale": 0.4919,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 8271.938775510203,
-                "y": 7810.2040816326535
+                "x": 8565.765399471436,
+                "y": 8379.751982110185
             }
         },
         "TestLevel.tmx#TestTileset": {
@@ -28,7 +28,7 @@
             "scaleInEditor": 1
         },
         "TestLevel.tmx#dungeon-16x16": {
-            "scaleInDock": 4.3819
+            "scaleInDock": 1.9892
         },
         "TestLevel.tmx#roguelike-16x16-anim": {
             "scaleInDock": 3.3533

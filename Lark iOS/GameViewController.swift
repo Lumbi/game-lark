@@ -10,12 +10,12 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let scene = GameScene.newGameScene()
-
+        
         // Present the scene
         let skView = self.view as! SKView
         skView.presentScene(scene)
@@ -23,21 +23,23 @@ class GameViewController: UIViewController {
         skView.ignoresSiblingOrder = true
         skView.showsFPS = true
         skView.showsNodeCount = true
+        
+        modalPresentationStyle = .fullScreen
     }
-
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     override var shouldAutorotate: Bool {
         return true
     }
-
+    
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
-        }
+        return .landscape
     }
-
-    override var prefersStatusBarHidden: Bool {
-        return true
+    
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return .landscapeRight
     }
 }

@@ -14,24 +14,30 @@ class GameScene: SKScene {
     let hud: HUD = .init()
     let landerControl: LanderControl = .init()
     let cameraControl: CameraControl = .init()
+    let sharedDepot: SharedDepot = .init()
+    
     private var time: Time = .init()
     
     private lazy var beginContactHandlerChain: ContactHandlerChain = {
         ContactHandlerChain(
             first: LanderGemContactHandler(
-                cargo: cargo,
+                scene: self,
                 successor: BeginLanderDepotContactHandler(
                     cargo: cargo,
                     successor: LanderTerrainContactHandler(
                         scene: self,
-                        successor: nil
-                    ))))
+                        successor: BeginLanderBoundsContactHandler(
+                            scene: self,
+                            successor: nil
+                        )))))
     }()
 
     private lazy var endContactHandlerChain: ContactHandlerChain = {
-        ContactHandlerChain(first: EndLanderDepotContactHandler(
-            successor: nil
-        ))
+        ContactHandlerChain(
+            first: EndLanderDepotContactHandler(
+                successor: EndLanderBoundsContactHandler(
+                    scene: self, successor: nil
+                )))
     }()
     
     class func newGameScene() -> GameScene {
@@ -58,7 +64,7 @@ class GameScene: SKScene {
     }
     
     private func setupPhysics() {
-        physicsWorld.gravity = .init(dx: 0, dy: -1)
+        physicsWorld.gravity = Const.PhysicsBody.gravity
         physicsWorld.contactDelegate = self
     }
     
@@ -81,30 +87,31 @@ class GameScene: SKScene {
         levelLoader.load(into: self)
         lander = levelLoader.spawnLander()
         landerControl.lander = lander
+        cameraControl.target = lander
         lander?.telemetricDataDelegate = hud.speedGauge
         
         // Bind depot events
         scene?.enumerateChildNodes(withName: "//\(Const.Node.Name.depot)", using: { node, _ in
             if let depot = node as? Depot {
                 depot.delegate = self
+                depot.sharedDepot = self.sharedDepot
             }
         })
+        sharedDepot.delegate = hud.gemCounter
     }
     
     var updateGemDetector: TimeAccumulator = .init(threshold: 1)
     
     override func update(_ currentTime: TimeInterval) {
         time.update(current: currentTime)
-        landerControl.update()
         
-        if let lander = lander {
-            lander.update(time: time)
-            cameraControl.follow(target: lander, duration: 1.0, time: time)
-        }
+        lander?.update(time: time)
+        landerControl.update()
+        cameraControl.update(time: time)
         
         if updateGemDetector.update(time: time) {
             if let lander = lander {
-                // TODO: Optimize
+                // TODO: Optimize and refactor
                 var minDistance: CGFloat = .greatestFiniteMagnitude
                 let landerPosition = convert(.zero, from: lander)
                 enumerateChildNodes(withName: "//\(Const.Node.Name.gem)", using: { node, stop in
@@ -114,8 +121,6 @@ class GameScene: SKScene {
                         minDistance = distance
                     }
                 })
-                
-                print("minDistance", minDistance)
 
                 if minDistance < Const.HUD.threshold(for: .immediate) {
                     hud.gemDetector.show(.immediate)
@@ -137,9 +142,9 @@ extension GameScene {
         for touch in touches {
             let location = touch.location(in: view)
             if location.x < view.bounds.width / 2.0 {
-                landerControl.leftThruster?.enable()
+                landerControl.leftThruster?.fire()
             } else {
-                landerControl.rightThruster?.enable()
+                landerControl.rightThruster?.fire()
             }
         }
     }
@@ -186,26 +191,55 @@ extension GameScene: DepotDelegate {
     func depotReadyToAcceptGems(_ depot: Depot) {
         let gems = cargo.unloadGems()
         depot.acceptGems(gems)
+
+        let remainingGem = childNode(withName: "//\(Const.Node.Name.gem)")
+        if remainingGem == nil {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.presentComplete()
+            }
+        }
     }
 }
 
 extension GameScene {
     func destroyLander() {
+        guard let lander = lander else { return }
+
+        let destroyPosition = convert(.zero, from: lander)
         landerControl.enabled = false
-        if let scene = scene, let lander = lander {
-            FX.Explosion.play(in: scene, at: lander.convert(.zero, to: scene))
-            lander.removeFromParent()
+        FX.Explosion.play(in: self, at: destroyPosition)
+        lander.removeFromParent()
+        
+        let droppedGems = cargo.unloadGems()
+        for droppedGem in droppedGems {
+            droppedGem.drop(in: self, at: destroyPosition)
         }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            let restartViewController = RestartViewController.fromNib()
-            restartViewController.modalPresentationStyle = .overCurrentContext
-            restartViewController.modalTransitionStyle = .crossDissolve
-            restartViewController.preferredContentSize = .init(width: 300, height: 200)
-            
-            self.view?.window?.rootViewController?.present(restartViewController, animated: true)
-            restartViewController.scene = self
+            self.presentRestart()
         }
+    }
+    
+    func destroyLanderOutOfBounds() {
+        guard let lander = lander else { return }
+        
+        let destroyPosition = convert(.zero, from: lander)
+
+        landerControl.enabled = false
+        lander.physicsBody?.isDynamic = false
+        lander.physicsBody?.velocity = .zero
+        
+        // Change warning text to "Connection lost"
+        // TODO: What to do with gems
+        
+        print("initiating self-destruct...")
+        
+        lander.run(.sequence([
+            .wait(forDuration: 2),
+            .removeFromParent(),
+            .run { FX.Explosion.play(in: self, at: destroyPosition) },
+            .run { self.presentRestart() }
+        ]))
     }
 
     func redeployLanderToLastCheckpoint() {
@@ -218,10 +252,55 @@ extension GameScene {
         else { return }
 
         lander.position = spawn.position
+        lander.physicsBody?.isDynamic = true
         parent.addChild(lander)
 
         cameraControl.jump(to: lander) // without this the camera goes crazy
-        
+
         landerControl.enabled = true
+    }
+    
+    func dropGemsFromCargo() {
+        guard let lander = lander else { return }
+        let exitPosition = convert(.zero, from: lander)
+        let droppedGems = cargo.unloadGems()
+        for droppedGem in droppedGems {
+            droppedGem.drop(in: self, at: exitPosition, withMomentum: false)
+        }
+    }
+    
+    func startOutOfBoundsCountDown() {
+        run(
+            .sequence([
+                .wait(forDuration: Const.Node.Lander.outOfBoundsTimer),
+                .run { self.destroyLanderOutOfBounds() }
+            ]),
+            withKey: "out_of_bounds_countdown"
+        )
+    }
+    
+    func cancelOutOfBoundsCountDown() {
+        removeAction(forKey: "out_of_bounds_countdown")
+    }
+}
+
+extension GameScene {
+    func presentRestart() {
+        let restartViewController = RestartViewController.fromNib()
+        restartViewController.modalPresentationStyle = .overCurrentContext
+        restartViewController.modalTransitionStyle = .crossDissolve
+        restartViewController.preferredContentSize = .init(width: 300, height: 200)
+        
+        view?.window?.rootViewController?.present(restartViewController, animated: true)
+        restartViewController.scene = self
+    }
+    
+    func presentComplete() {
+        let viewController = MissionCompleteViewController.fromNib()
+        viewController.modalPresentationStyle = .overCurrentContext
+        viewController.modalTransitionStyle = .crossDissolve
+        viewController.preferredContentSize = .init(width: 300, height: 200)
+        
+        view?.window?.rootViewController?.present(viewController, animated: true)
     }
 }

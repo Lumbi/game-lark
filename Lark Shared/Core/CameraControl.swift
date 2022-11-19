@@ -13,6 +13,15 @@ class CameraControl {
     
     private let maxSpeed: CGFloat = 50000
     
+    var target: SKNode? = nil
+    var follow: Bool = true
+    
+    func update(time: Time) {
+        if follow, let target = target {
+            follow(target: target, duration: 1.0, time: time)
+        }
+    }
+    
     func follow(target: SKNode, duration: CGFloat, time: Time) {
         guard
             let camera = camera,

@@ -18,12 +18,12 @@ import SpriteKit
 
 class Depot: SKNode {
     weak var delegate: DepotDelegate? = nil
+    weak var sharedDepot: SharedDepot? = nil
     
     private let sprite: SKShapeNode = .init(circleOfRadius: 32)
     private let gauge: SKShapeNode  = .init(circleOfRadius: 32)
     
     private let depositGemAction: SKAction = .scale(to: 1, duration: 3)
-    
     
     override init() {        
         super.init()
@@ -63,7 +63,7 @@ class Depot: SKNode {
     }
     
     func acceptGems(_ gems: [Gem]) {
-        // TODO:
+        sharedDepot?.deposit(gems)
     }
     
     func cancelGemDeposit() {

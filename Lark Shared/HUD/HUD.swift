@@ -12,6 +12,7 @@ class HUD: SKNode {
     let gemCounter: GemCounter = .init()
     let speedGauge: SpeedGauge = .init()
     let gemDetector: GemDetector = .init()
+    let outOfBoundsWarning: OutOfBoundsWarning = .init()
     
     override init() {
         super.init()
@@ -19,6 +20,7 @@ class HUD: SKNode {
         addChild(gemCounter)
         addChild(speedGauge)
         addChild(gemDetector)
+        addChild(outOfBoundsWarning)
     }
     
     func layout() {
@@ -27,6 +29,7 @@ class HUD: SKNode {
         gemCounter.position = .init(x: -camera.size.halfWidth, y: camera.size.halfHeight).applying(.init(translationX: 16, y: -16))
         speedGauge.position = .init(x: camera.size.halfWidth, y: camera.size.halfHeight).applying(.init(translationX: -16, y: -16))
         gemDetector.position = .init(x: camera.size.halfWidth - 128, y: 0)
+        outOfBoundsWarning.position = .init(x: 0, y: camera.size.halfHeight - 128)
     }
     
     required init?(coder aDecoder: NSCoder) {

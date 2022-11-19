@@ -35,19 +35,27 @@ class Gem: SKNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func drop(in scene: SKScene, at position: CGPoint) {
+    func drop(in scene: SKScene, at position: CGPoint, withMomentum: Bool = true) {
         self.position = position
         physicsBody?.isDynamic = true
         physicsBody?.linearDamping = 0.5
         physicsBody?.collisionBitMask = Const.PhysicsBody.Bitmask.terrain
+        physicsBody?.categoryBitMask = Const.PhysicsBody.Bitmask.transientCollectible
         
         scene.addChild(self)
         
-        physicsBody?.applyImpulse(
-            .init(
-                dx: CGFloat.random(in: (-1...1)),
-                dy: CGFloat.random(in: (-1...1))
+//        if withMomentum {
+            physicsBody?.applyImpulse(
+                .init(
+                    dx: CGFloat.random(in: (-1...1)),
+                    dy: CGFloat.random(in: (-1...1))
+                )
             )
-        )
+//        }
+        
+        run(.sequence([
+            .wait(forDuration: 1),
+            .run { self.physicsBody?.categoryBitMask = Const.PhysicsBody.Bitmask.collectible }
+        ]))
     }
 }

@@ -12,6 +12,9 @@ class LanderControl {
     var lander: Lander?
     var enabled: Bool = true {
         didSet {
+            leftThruster?.enabled = enabled
+            rightThruster?.enabled = enabled
+
             if !enabled {
                 leftThruster?.release()
                 rightThruster?.release()
@@ -19,8 +22,8 @@ class LanderControl {
         }
     }
     
-    var leftThruster: Truster? { lander?.leftTruster }
-    var rightThruster: Truster? { lander?.rightTruster }
+    var leftThruster: Thruster? { lander?.leftTruster }
+    var rightThruster: Thruster? { lander?.rightTruster }
     
     init() {}
     

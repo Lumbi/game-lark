@@ -24,12 +24,7 @@ struct LanderTerrainContactHandler: ContactHandler {
         // TODO: Dot prod of velocity to contact point to find speed component?
 
         if collisionSpeed > Const.Node.Lander.collisionSpeedDeathThreshold {
-            let dropPosition = scene.convert(.zero, from: lander)
             scene.destroyLander()
-            let droppedGems = scene.cargo.unloadGems()
-            for droppedGem in droppedGems {
-                droppedGem.drop(in: scene, at: dropPosition)
-            }
         }
     }
 }
