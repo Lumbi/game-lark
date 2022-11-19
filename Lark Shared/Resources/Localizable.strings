@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  Lark
+
+  Created by Gabriel Lumbi on 2022-11-13.
+  
+*/
+
+"menu/restart" = "Redeploy probe";
+"menu/quit" = "Abandon mission";

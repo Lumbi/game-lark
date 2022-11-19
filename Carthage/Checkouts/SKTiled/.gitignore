@@ -1,0 +1,22 @@
+# all branches
+Demo/Assets/User/*
+Docs/Exported
+Docs/html
+.swiftlint.yml
+IDETemplateMacros.plist
+SKTiled.xcodeproj/xcshareddata/xcschemes/Demo*
+bootstrap/
+*.psd
+*.html
+
+# develop branch only
+Contrib/*
+Docs/*.txt
+Docs/Fonts
+Docs/Private
+Docs/Sketch
+Demo/shaders/*
+*.graffle
+.build
+.swiftpm
+.DS_Store
