@@ -244,7 +244,7 @@ extension GameScene {
         print("initiating self-destruct...")
         
         lander.run(.sequence([
-            .wait(forDuration: 2),
+            FX.shake(duration: 2),
             .removeFromParent(),
             .run { FX.Explosion.play(in: self, at: destroyPosition) },
             .run { self.presentRestart() }
