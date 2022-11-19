@@ -59,9 +59,19 @@ class GameScene: SKScene {
     }
     
     private func setUpScene() {
+        scene?.view?.isHidden = true
+        landerControl.enabled = false
+        
         setupPhysics()
         setupCamera()
         setupLevel()
+        
+        scene?.view?.isHidden = false
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.presentMessage()
+            self.landerControl.enabled = true
+        }
     }
     
     private func setupPhysics() {
@@ -156,10 +166,6 @@ extension GameScene {
                 landerControl.rightThruster?.fire()
             }
         }
-        
-        
-        // TODO: REmove, test
-        presentMessage()
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -308,11 +314,25 @@ extension GameScene {
     }
     
     func presentComplete() {
-        let viewController = MissionCompleteViewController.fromNib()
+        landerControl.enabled = false
+        
+        let viewController = MessageViewController.fromNib()
         viewController.modalPresentationStyle = .overCurrentContext
         viewController.modalTransitionStyle = .crossDissolve
+        viewController.show(messages: [
+            .init(text: "Nice work. There's no more gamma signal detected in the area. Looks like you picked all the crystals around here."),
+            .init(text: "Hang tight while we initiate the orbit sequence. Let's get the probe back home.")
+        ])
         
         view?.window?.rootViewController?.present(viewController, animated: true)
+        
+        viewController.onDismiss = { [weak self] in
+            let viewController = MissionCompleteViewController.fromNib()
+            viewController.modalPresentationStyle = .overCurrentContext
+            viewController.modalTransitionStyle = .crossDissolve
+            
+            self?.view?.window?.rootViewController?.present(viewController, animated: true)
+        }
     }
     
     func presentMessage() {
@@ -323,9 +343,9 @@ extension GameScene {
         view?.window?.rootViewController?.present(viewController, animated: true)
         
         viewController.show(messages: [
-            .init(text: "Mario is a character created by Japanese video game designer Shigeru Miyamoto. He is the title character of the Mario franchise and the mascot of Japanese video game company Nintendo."),
-            .init(text: "Mario has appeared in over 200 video games since his creation. Depicted as a short, pudgy, Italian plumber who resides in the Mushroom Kingdom, his adventures generally center on rescuing Princess Peach from the Koopa villain Bowser."),
-            .init(text: "Mario has access to a variety of power-ups that give him different abilities. Mario's fraternal twin brother is Luigi.")
+            .init(text: "Mission control to command module, do you copy?"),
+            .init(text: "Excellent, telemetry data is looking nominal. Let's initiate the control check sequence."),
+            .init(text: "Can you operate the your control screen and test the lateral thrusters?")
         ])
     }
 }

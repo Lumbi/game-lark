@@ -30,9 +30,9 @@
                                 <constraint firstAttribute="width" secondItem="1gN-mQ-n84" secondAttribute="height" multiplier="1:1" id="ocW-yJ-h4T"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyd-4j-QXd">
-                            <rect key="frame" x="128" y="8" width="364" height="0.0"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyd-4j-QXd">
+                            <rect key="frame" x="128" y="8" width="364" height="20"/>
+                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>

@@ -7,5 +7,5 @@
 */
 
 "menu/restart" = "Redeploy probe";
-"menu/quit" = "Abandon mission";
+"menu/quit" = "Abort mission";
 "menu/complete_mission" = "Mission complete!";

@@ -19,6 +19,8 @@ class MessageViewController: UIViewController {
     var charactersPerSecond: Double = 24
     var messagesToShow: [Message] = []
     
+    var onDismiss: (() -> Void)? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -67,6 +69,8 @@ class MessageViewController: UIViewController {
     }
     
     private func close() {
-        dismiss(animated: true)
+        dismiss(animated: true) {
+            self.onDismiss?()
+        }
     }
 }
