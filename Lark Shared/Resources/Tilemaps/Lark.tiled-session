@@ -16,11 +16,11 @@
             "scaleInDock": 1
         },
         "TestLevel.tmx": {
-            "scale": 1.2205,
-            "selectedLayer": 2,
+            "scale": 0.2543,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 7026.21876280213,
-                "y": 7965.587873822204
+                "x": 8185.214313802595,
+                "y": 7750.688163586316
             }
         },
         "TestLevel.tmx#TestTileset": {
