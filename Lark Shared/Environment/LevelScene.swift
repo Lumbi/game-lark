@@ -8,8 +8,8 @@
 import SpriteKit
 import SKTiled
 
-class GameScene: SKScene {
-    var lander: Lander? = nil
+class LevelScene: SKScene {
+    let lander: Lander = .init()
     let cargo: Cargo = .init()
     let hud: HUD = .init()
     let landerControl: LanderControl = .init()
@@ -18,6 +18,7 @@ class GameScene: SKScene {
     private(set) var detectedGemCount: Int = 0
     
     private var time: Time = .init()
+    private var levelName: String = ""
     
     private lazy var beginContactHandlerChain: ContactHandlerChain = {
         ContactHandlerChain(
@@ -41,21 +42,24 @@ class GameScene: SKScene {
                 )))
     }()
     
-    class func newGameScene() -> GameScene {
+    class func load(levelNamed levelName: String) -> Self {
         // Load 'GameScene.sks' as an SKScene.
-        guard let scene = SKScene(fileNamed: "GameScene") as? GameScene else {
-            print("Failed to load GameScene.sks")
+        guard let scene = SKScene(fileNamed: "LevelScene") as? Self else {
+            print("Failed to load LevelScene.sks")
             abort()
         }
         
         // Set the scale mode to scale to fit the window
         scene.scaleMode = .aspectFill
         
+        scene.levelName = levelName
+        scene.setUpScene()
+        
         return scene
     }
     
     override func didMove(to view: SKView) {
-        self.setUpScene()
+        hud.layout()
     }
     
     private func setUpScene() {
@@ -90,26 +94,26 @@ class GameScene: SKScene {
         
         camera.addChild(hud)
         cargo.delegate = hud.gemCounter
-        hud.layout()
+        
     }
     
     private func setupLevel() {
-        let levelLoader = LevelLoader(name: "TestLevel")
+        let levelLoader = LevelLoader(name: levelName)
         levelLoader.load(into: self)
-        lander = levelLoader.spawnLander()
+        levelLoader.spawn(lander)
         landerControl.lander = lander
         cameraControl.target = lander
         
         detectedGemCount = 0
-        scene?.enumerateChildNodes(withName: "//\(Const.Node.Name.gem)", using: { _, _ in
+        enumerateChildNodes(withName: "//\(Const.Node.Name.gem)", using: { _, _ in
             self.detectedGemCount += 1
         })
         
         // Bindings
         
-        lander?.telemetricDataDelegate = hud.speedGauge
+        lander.telemetricDataDelegate = hud.speedGauge
         
-        scene?.enumerateChildNodes(withName: "//\(Const.Node.Name.depot)", using: { node, _ in
+        enumerateChildNodes(withName: "//\(Const.Node.Name.depot)", using: { node, _ in
             if let depot = node as? Depot {
                 depot.delegate = self
                 depot.sharedDepot = self.sharedDepot
@@ -124,38 +128,38 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         time.update(current: currentTime)
         
-        lander?.update(time: time)
+        lander.update(time: time)
         landerControl.update()
         cameraControl.update(time: time)
         
         if updateGemDetector.update(time: time) {
-            if let lander = lander {
-                // TODO: Optimize and refactor
-                var minDistance: CGFloat = .greatestFiniteMagnitude
-                let landerPosition = convert(.zero, from: lander)
-                enumerateChildNodes(withName: "//\(Const.Node.Name.gem)", using: { node, stop in
-                    let gemPosition = self.convert(.zero, from: node)
-                    let distance = CGFloat(gemPosition.distance(landerPosition))
-                    if distance < minDistance {
-                        minDistance = distance
-                    }
-                })
-                
-                if minDistance < Const.HUD.threshold(for: .immediate) {
-                    hud.gemDetector.show(.immediate)
-                } else if minDistance < Const.HUD.threshold(for: .near) {
-                    hud.gemDetector.show(.near)
-                } else if minDistance < Const.HUD.threshold(for: .far) {
-                    hud.gemDetector.show(.far)
-                } else {
-                    hud.gemDetector.hide()
+            // TODO: Optimize and refactor
+            var minDistance: CGFloat = .greatestFiniteMagnitude
+            let landerPosition = convert(.zero, from: lander)
+            enumerateChildNodes(withName: "//\(Const.Node.Name.gem)", using: { node, stop in
+                let gemPosition = self.convert(.zero, from: node)
+                let distance = CGFloat(gemPosition.distance(landerPosition))
+                if distance < minDistance {
+                    minDistance = distance
                 }
+            })
+            
+            if minDistance < Const.HUD.threshold(for: .immediate) {
+                hud.gemDetector.show(.immediate)
+            } else if minDistance < Const.HUD.threshold(for: .near) {
+                hud.gemDetector.show(.near)
+            } else if minDistance < Const.HUD.threshold(for: .far) {
+                hud.gemDetector.show(.far)
+            } else {
+                hud.gemDetector.hide()
             }
         }
     }
 }
 
-extension GameScene {
+// MARK: - Touch
+
+extension LevelScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let view = view else { return }
         for touch in touches {
@@ -196,7 +200,9 @@ extension GameScene {
     }
 }
 
-extension GameScene: SKPhysicsContactDelegate {
+// MARK: Physics Contact
+
+extension LevelScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         beginContactHandlerChain.handle(contact: contact)
     }
@@ -206,7 +212,9 @@ extension GameScene: SKPhysicsContactDelegate {
     }
 }
 
-extension GameScene: DepotDelegate {
+// MARK: - Gameplay
+
+extension LevelScene: DepotDelegate {
     func depotReadyToAcceptGems(_ depot: Depot) {
         let gems = cargo.unloadGems()
         depot.acceptGems(gems)
@@ -218,12 +226,8 @@ extension GameScene: DepotDelegate {
             }
         }
     }
-}
-
-extension GameScene {
+    
     func destroyLander() {
-        guard let lander = lander else { return }
-        
         let destroyPosition = convert(.zero, from: lander)
         landerControl.enabled = false
         FX.Explosion.play(in: self, at: destroyPosition)
@@ -240,8 +244,6 @@ extension GameScene {
     }
     
     func destroyLanderOutOfBounds() {
-        guard let lander = lander else { return }
-        
         let destroyPosition = convert(.zero, from: lander)
         
         landerControl.enabled = false
@@ -249,7 +251,7 @@ extension GameScene {
         lander.physicsBody?.velocity = .zero
         
         // Change warning text to "Connection lost"
-        // TODO: What to do with gems
+        // TODO: What to do with gems?
         
         print("initiating self-destruct...")
         
@@ -265,7 +267,6 @@ extension GameScene {
         let spawn = childNode(withName: "//\(Const.Node.Name.spawn)")
         
         guard
-            let lander = lander,
             let spawn = spawn,
             let parent = spawn.parent
         else { return }
@@ -280,7 +281,6 @@ extension GameScene {
     }
     
     func dropGemsFromCargo() {
-        guard let lander = lander else { return }
         let exitPosition = convert(.zero, from: lander)
         let droppedGems = cargo.unloadGems()
         for droppedGem in droppedGems {
@@ -303,7 +303,11 @@ extension GameScene {
     }
 }
 
-extension GameScene {
+// MARK: - Presentation
+
+// TODO: Refactor presentation
+
+extension LevelScene {
     func presentRestart() {
         let restartViewController = RestartViewController.fromNib()
         restartViewController.modalPresentationStyle = .overCurrentContext
@@ -320,7 +324,7 @@ extension GameScene {
         viewController.modalPresentationStyle = .overCurrentContext
         viewController.modalTransitionStyle = .crossDissolve
         viewController.show(messages: [
-            .init(text: "Nice work. There's no more gamma signal detected in the area. Looks like you picked all the crystals around here."),
+            .init(text: "Nice work. I can't pick up any abnormal reading on the spectrometer anymore. Looks like you picked all the crystals around here."),
             .init(text: "Hang tight while we initiate the orbit sequence. Let's get the probe back home.")
         ])
         

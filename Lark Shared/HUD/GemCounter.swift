@@ -56,7 +56,7 @@ extension GemCounter: SharedDepotDelegate {
     }
     
     private func updateGemsInDepotCounterText(_ count: Int) {
-        if let scene = scene as? GameScene {
+        if let scene = scene as? LevelScene {
             gemsInDepotCounter.text = "IN DEPOT: \(count) / \(scene.detectedGemCount) gems"
         } else {
             gemsInDepotCounter.text = nil

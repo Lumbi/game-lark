@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 struct LanderTerrainContactHandler: ContactHandler {
-    let scene: GameScene
+    let scene: LevelScene
     let successor: ContactHandler?
     
     func handle(contact: SKPhysicsContact) {
@@ -18,8 +18,7 @@ struct LanderTerrainContactHandler: ContactHandler {
             Const.PhysicsBody.Bitmask.terrain
         ) else { return }
 
-        guard let lander = scene.lander else { return }
-        let collisionSpeed = lander.lastSpeed  // this doesn't seem to measure velocity properly
+        let collisionSpeed = scene.lander.lastSpeed
         
         // TODO: Dot prod of velocity to contact point to find speed component?
 

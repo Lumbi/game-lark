@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 struct LanderGemContactHandler: ContactHandler {
-    let scene: GameScene
+    let scene: LevelScene
     let successor: ContactHandler?
     
     func handle(contact: SKPhysicsContact) {

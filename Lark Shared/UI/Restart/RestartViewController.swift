@@ -13,7 +13,8 @@ class RestartViewController: UIViewController {
     @IBOutlet private var restartButton: UIButton?
     @IBOutlet private var quitButton: UIButton?
     
-    weak var scene: GameScene?
+    // TODO: Instead of accessing scene directly, should just forward the callbacks and let scene handle the logic
+    weak var scene: LevelScene?
     
     override func viewDidLoad() {
         super.viewDidLoad()

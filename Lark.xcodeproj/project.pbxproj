@@ -30,8 +30,8 @@
 		0D90A746291A9E90005F2EA0 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A745291A9E90005F2EA0 /* GameViewController.swift */; };
 		0D90A749291A9E90005F2EA0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D90A747291A9E90005F2EA0 /* Main.storyboard */; };
 		0D90A74C291A9E90005F2EA0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D90A74A291A9E90005F2EA0 /* LaunchScreen.storyboard */; };
-		0D90A74E291A9E90005F2EA0 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0D90A739291A9E8D005F2EA0 /* GameScene.sks */; };
-		0D90A74F291A9E90005F2EA0 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A73A291A9E8D005F2EA0 /* GameScene.swift */; };
+		0D90A74E291A9E90005F2EA0 /* LevelScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0D90A739291A9E8D005F2EA0 /* LevelScene.sks */; };
+		0D90A74F291A9E90005F2EA0 /* LevelScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A73A291A9E8D005F2EA0 /* LevelScene.swift */; };
 		0D90A750291A9E90005F2EA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D90A73B291A9E90005F2EA0 /* Assets.xcassets */; };
 		0D90A757291A9EF0005F2EA0 /* Lander.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A756291A9EF0005F2EA0 /* Lander.swift */; };
 		0D90A759291AA105005F2EA0 /* LanderControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A758291AA105005F2EA0 /* LanderControl.swift */; };
@@ -49,7 +49,6 @@
 		0D90A776291AD365005F2EA0 /* Explosive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A775291AD365005F2EA0 /* Explosive.swift */; };
 		0D90A779291AD3AE005F2EA0 /* GemCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A778291AD3AE005F2EA0 /* GemCounter.swift */; };
 		0D90A77B291AD3EC005F2EA0 /* GemDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A77A291AD3EC005F2EA0 /* GemDetector.swift */; };
-		0D90A781291AD52C005F2EA0 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A780291AD52C005F2EA0 /* Level.swift */; };
 		0D90A783291AD572005F2EA0 /* LevelLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A782291AD572005F2EA0 /* LevelLoader.swift */; };
 		0D90A785291AD5C9005F2EA0 /* Ideas.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 0D90A784291AD5C9005F2EA0 /* Ideas.rtf */; };
 		0D90A787291AD7CD005F2EA0 /* Todo.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 0D90A786291AD7CD005F2EA0 /* Todo.rtf */; };
@@ -106,8 +105,8 @@
 		0D7F4EE029232BB6005C54C0 /* HighSpeedWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighSpeedWarning.swift; sourceTree = "<group>"; };
 		0D81CE5E29286A8F00AF4D84 /* MessageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageViewController.xib; sourceTree = "<group>"; };
 		0D81CE6029286A9A00AF4D84 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
-		0D90A739291A9E8D005F2EA0 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		0D90A73A291A9E8D005F2EA0 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		0D90A739291A9E8D005F2EA0 /* LevelScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelScene.sks; sourceTree = "<group>"; };
+		0D90A73A291A9E8D005F2EA0 /* LevelScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelScene.swift; sourceTree = "<group>"; };
 		0D90A73B291A9E90005F2EA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D90A740291A9E90005F2EA0 /* Lark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D90A743291A9E90005F2EA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -130,7 +129,6 @@
 		0D90A775291AD365005F2EA0 /* Explosive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Explosive.swift; sourceTree = "<group>"; };
 		0D90A778291AD3AE005F2EA0 /* GemCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemCounter.swift; sourceTree = "<group>"; };
 		0D90A77A291AD3EC005F2EA0 /* GemDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemDetector.swift; sourceTree = "<group>"; };
-		0D90A780291AD52C005F2EA0 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		0D90A782291AD572005F2EA0 /* LevelLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelLoader.swift; sourceTree = "<group>"; };
 		0D90A784291AD5C9005F2EA0 /* Ideas.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Ideas.rtf; sourceTree = "<group>"; };
 		0D90A786291AD7CD005F2EA0 /* Todo.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Todo.rtf; sourceTree = "<group>"; };
@@ -249,8 +247,6 @@
 				0D90A767291AD169005F2EA0 /* Environment */,
 				0D90A76A291AD1BC005F2EA0 /* Enemies */,
 				0D7F4ECD292295D5005C54C0 /* Collisions */,
-				0D90A739291A9E8D005F2EA0 /* GameScene.sks */,
-				0D90A73A291A9E8D005F2EA0 /* GameScene.swift */,
 			);
 			path = "Lark Shared";
 			sourceTree = "<group>";
@@ -289,12 +285,13 @@
 		0D90A767291AD169005F2EA0 /* Environment */ = {
 			isa = PBXGroup;
 			children = (
+				0D90A73A291A9E8D005F2EA0 /* LevelScene.swift */,
+				0D90A739291A9E8D005F2EA0 /* LevelScene.sks */,
+				0D90A782291AD572005F2EA0 /* LevelLoader.swift */,
 				0D90A764291AD150005F2EA0 /* Depot.swift */,
 				0D90A771291AD1F9005F2EA0 /* Gem.swift */,
 				0D90A762291ACF8C005F2EA0 /* Tile.swift */,
 				0D90A773291AD260005F2EA0 /* Prop.swift */,
-				0D90A780291AD52C005F2EA0 /* Level.swift */,
-				0D90A782291AD572005F2EA0 /* LevelLoader.swift */,
 			);
 			path = Environment;
 			sourceTree = "<group>";
@@ -440,7 +437,7 @@
 				0D90A785291AD5C9005F2EA0 /* Ideas.rtf in Resources */,
 				0DA180F7291FF86C000D48AA /* LanderThruster.sks in Resources */,
 				0D7DE6C82921CAEB00A77BD6 /* Localizable.strings in Resources */,
-				0D90A74E291A9E90005F2EA0 /* GameScene.sks in Resources */,
+				0D90A74E291A9E90005F2EA0 /* LevelScene.sks in Resources */,
 				0DA180F9292090E9000D48AA /* Test.sks in Resources */,
 				0DFF9D52291BF4330029AD93 /* Tilemaps in Resources */,
 				0D90A787291AD7CD005F2EA0 /* Todo.rtf in Resources */,
@@ -460,7 +457,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D90A74F291A9E90005F2EA0 /* GameScene.swift in Sources */,
+				0D90A74F291A9E90005F2EA0 /* LevelScene.swift in Sources */,
 				0D90A759291AA105005F2EA0 /* LanderControl.swift in Sources */,
 				0D90A757291A9EF0005F2EA0 /* Lander.swift in Sources */,
 				0DA0B64629282504001D0C9F /* FX.Shake.swift in Sources */,
@@ -480,7 +477,6 @@
 				0D90A779291AD3AE005F2EA0 /* GemCounter.swift in Sources */,
 				0DA7986529254683001AD90E /* SharedDepot.swift in Sources */,
 				0D90A75D291ABB1E005F2EA0 /* CameraControl.swift in Sources */,
-				0D90A781291AD52C005F2EA0 /* Level.swift in Sources */,
 				0DA0B64229267516001D0C9F /* LanderBoundsContactHandler.swift in Sources */,
 				0DFF9D58291C885C0029AD93 /* Cargo.swift in Sources */,
 				0D90A774291AD260005F2EA0 /* Prop.swift in Sources */,

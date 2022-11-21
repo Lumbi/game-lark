@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 struct BeginLanderBoundsContactHandler: ContactHandler {
-    let scene: GameScene
+    let scene: LevelScene
     let successor: ContactHandler?
     
     func handle(contact: SKPhysicsContact) {
@@ -25,7 +25,7 @@ struct BeginLanderBoundsContactHandler: ContactHandler {
 }
 
 struct EndLanderBoundsContactHandler: ContactHandler {
-    let scene: GameScene
+    let scene: LevelScene
     let successor: ContactHandler?
     
     func handle(contact: SKPhysicsContact) {
