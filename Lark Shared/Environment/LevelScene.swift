@@ -15,10 +15,10 @@ class LevelScene: SKScene {
     let landerControl: LanderControl = .init()
     let cameraControl: CameraControl = .init()
     let sharedDepot: SharedDepot = .init()
-    private(set) var detectedGemCount: Int = 0
-    
-    private var time: Time = .init()
+
     private var levelName: String = ""
+    private var time: Time = .init()
+    private(set) var detectedGemCount: Int = 0
     
     private lazy var beginContactHandlerChain: ContactHandlerChain = {
         ContactHandlerChain(
@@ -37,6 +37,7 @@ class LevelScene: SKScene {
     private lazy var endContactHandlerChain: ContactHandlerChain = {
         ContactHandlerChain(
             first: EndLanderDepotContactHandler(
+                scene: self,
                 successor: EndLanderBoundsContactHandler(
                     scene: self, successor: nil
                 )))
@@ -250,16 +251,18 @@ extension LevelScene: DepotDelegate {
         lander.physicsBody?.isDynamic = false
         lander.physicsBody?.velocity = .zero
         
-        // Change warning text to "Connection lost"
-        // TODO: What to do with gems?
-        
-        print("initiating self-destruct...")
-        
+        // TODO: Change warning text to "Connection lost"
+
         lander.run(.sequence([
             FX.shake(duration: 2),
             .removeFromParent(),
             .run { FX.Explosion.play(in: self, at: destroyPosition) },
-            .run { self.presentRestart() }
+            .run { self.presentRestart() },
+            .run {
+                if let dropPosition = self.lander.levelBoundsExitPosition {
+                    self.dropGemsFromCargo(at: dropPosition)
+                }
+            }
         ]))
     }
     
@@ -280,11 +283,10 @@ extension LevelScene: DepotDelegate {
         landerControl.enabled = true
     }
     
-    func dropGemsFromCargo() {
-        let exitPosition = convert(.zero, from: lander)
+    func dropGemsFromCargo(at position: CGPoint) {
         let droppedGems = cargo.unloadGems()
         for droppedGem in droppedGems {
-            droppedGem.drop(in: self, at: exitPosition)
+            droppedGem.drop(in: self, at: position)
         }
     }
     

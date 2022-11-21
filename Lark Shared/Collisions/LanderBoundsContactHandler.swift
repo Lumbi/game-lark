@@ -41,7 +41,9 @@ struct EndLanderBoundsContactHandler: ContactHandler {
             Const.PhysicsBody.Bitmask.lander,
             Const.PhysicsBody.Bitmask.innerBounds
         ) {
-            scene.dropGemsFromCargo()
+            let landerPosition = scene.convert(.zero, from: scene.lander)
+            scene.lander.levelBoundsExitPosition = landerPosition
+            scene.dropGemsFromCargo(at: landerPosition)
         }
     }
 }

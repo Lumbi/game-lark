@@ -21,6 +21,9 @@ class Lander: SKNode {
     weak var telemetricDataDelegate: LanderTelemetricDataDelegate? = nil
     
     private(set) var lastSpeed: CGFloat = 0
+
+    // TODO: Refactor to move to LanderBoundsContactHandler or something
+    var levelBoundsExitPosition: CGPoint? = nil
     
     override init() {
         super.init()

@@ -30,6 +30,7 @@ struct BeginLanderDepotContactHandler: ContactHandler {
 }
 
 struct EndLanderDepotContactHandler: ContactHandler {
+    let scene: LevelScene
     let successor: ContactHandler?
     
     func handle(contact: SKPhysicsContact) {
@@ -37,7 +38,7 @@ struct EndLanderDepotContactHandler: ContactHandler {
             Const.PhysicsBody.Bitmask.lander,
             Const.PhysicsBody.Bitmask.trigger
         ) else { return }
-
+        
         if let depot = contact
             .firstBody(with: Const.PhysicsBody.Bitmask.trigger)?
             .parentNode(ofType: Depot.self)
