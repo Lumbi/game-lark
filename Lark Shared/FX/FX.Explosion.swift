@@ -14,7 +14,7 @@ extension FX {
         private let animation: SKAction
         
         override init() {
-            sprite.size = .init(width: 128, height: 128)
+            sprite.size = .init(width: 256, height: 256)
             
             let atlas = SKTextureAtlas(named: "spr_explosion")
             let frames = atlas.textureNames.sorted().map { atlas.textureNamed($0) }
