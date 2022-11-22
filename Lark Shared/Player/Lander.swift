@@ -29,32 +29,30 @@ class Lander: SKNode {
         super.init()
         name = Const.Node.Name.lander
         
-        physicsBody = .init(circleOfRadius: 16, center: .zero)
+        physicsBody = .init(circleOfRadius: 32, center: .zero)
         physicsBody?.affectedByGravity = true
-        physicsBody?.density = 0.5
+        physicsBody?.mass = 0.02
         physicsBody?.allowsRotation = false
         physicsBody?.friction = 0.1
         physicsBody?.categoryBitMask = Const.PhysicsBody.Bitmask.lander
         physicsBody?.collisionBitMask = Const.PhysicsBody.Bitmask.terrain
         physicsBody?.contactTestBitMask = Const.PhysicsBody.Bitmask.collectible | Const.PhysicsBody.Bitmask.trigger | Const.PhysicsBody.Bitmask.terrain
         
-//        addChild(SKShapeNode(circleOfRadius: 16))
+        let sprite = SKSpriteNode(imageNamed: "spr_lander")
+        sprite.size = .init(width: 64, height: 64)
+        addChild(sprite)
         
         thrusterEmitRate = leftThrusterEmitter.particleBirthRate
         
-        leftTruster.position = .init(x: -8, y: 0)
+        leftTruster.position = .init(x: -16, y: -4)
         leftTruster.release()
-//        leftThrusterEmitter.emissionAngle = (270 - 45) * CGFloat.pi / 180
         addChild(leftTruster)
         
-        rightTruster.position = .init(x: 8, y: 0)
+        rightTruster.position = .init(x: 16, y: -4)
         rightTruster.release()
-//        rightThrusterEmitter.emissionAngle = (270 + 45) * CGFloat.pi / 180
         addChild(rightTruster)
-        
-        addChild(SKSpriteNode(imageNamed: "spr_lander"))
 
-        highSpeedWarning.position = .init(x: 48, y: 48)
+        highSpeedWarning.position = .init(x: sprite.size.width, y: sprite.size.height)
         addChild(highSpeedWarning)
         highSpeedWarning.show()
     }

@@ -18,10 +18,10 @@ class Gem: SKNode {
         
         name = Const.Node.Name.gem
         let sprite = SKSpriteNode(imageNamed: "spr_gem")
-        sprite.size = .init(width: 16, height: 16)
+        sprite.size = .init(width: 32, height: 32)
         addChild(sprite)
         
-        physicsBody = SKPhysicsBody(circleOfRadius: 8)
+        physicsBody = SKPhysicsBody(circleOfRadius: sprite.size.halfWidth)
         physicsBody?.affectedByGravity = false
         physicsBody?.isDynamic = false
         physicsBody?.allowsRotation = false

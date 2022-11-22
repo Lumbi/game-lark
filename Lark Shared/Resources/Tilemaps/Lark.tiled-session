@@ -9,18 +9,22 @@
     ],
     "fileStates": {
         "": {
-            "scaleInDock": 3.3533,
+            "scaleInDock": 1,
             "scaleInEditor": 2.99
         },
         ":/automap-tiles.tsx": {
             "scaleInDock": 1
         },
         "TestLevel.tmx": {
-            "scale": 0.2543,
+            "expandedObjectLayers": [
+                7,
+                2
+            ],
+            "scale": 0.907,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 8185.214313802595,
-                "y": 7750.688163586316
+                "x": 8170.8930540242545,
+                "y": 8330.760749724364
             }
         },
         "TestLevel.tmx#TestTileset": {
@@ -32,10 +36,24 @@
         },
         "TestLevel.tmx#roguelike-16x16-anim": {
             "scaleInDock": 3.3533
+        },
+        "level1.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 0.6469,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 1347.9672283196783,
+                "y": 1519.5547998144998
+            }
+        },
+        "level1.tmx#TestTileset": {
+            "scaleInDock": 1
         }
     },
     "last.exportedFilePath": "/Users/gabriellumbi/Documents/Game Dev/Lark",
-    "last.imagePath": "/Users/gabriellumbi/Documents/Game Dev/Lark/Lark Shared/Resources/Tilemaps/Tilesets",
+    "last.imagePath": "/Users/gabriellumbi/Documents/Gamedev/Lark/Lark Shared/Resources/Tilemaps/Tilesets",
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
     "map.lastUsedFormat": "tmx",
     "openFiles": [
@@ -46,11 +64,12 @@
     "recentFiles": [
         "TestLevel.tmx"
     ],
-    "tileset.embedInMap": true,
-    "tileset.margin": 1,
-    "tileset.spacing": 1,
+    "tileset.embedInMap": false,
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.margin": 0,
+    "tileset.spacing": 0,
     "tileset.tileSize": {
         "height": 32,
-        "width": 16
+        "width": 32
     }
 }

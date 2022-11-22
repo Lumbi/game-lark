@@ -28,7 +28,7 @@ class HUD: SKNode {
 
         gemCounter.position = .init(x: -camera.size.halfWidth, y: camera.size.halfHeight).applying(.init(translationX: 16, y: -16))
         speedGauge.position = .init(x: camera.size.halfWidth, y: camera.size.halfHeight).applying(.init(translationX: -16, y: -16))
-        gemDetector.position = .init(x: camera.size.halfWidth - 128, y: 0)
+        gemDetector.position = .init(x: 0, y: -camera.size.halfHeight + 128)
         outOfBoundsWarning.position = .init(x: 0, y: camera.size.halfHeight - 128)
     }
     

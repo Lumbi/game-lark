@@ -74,7 +74,7 @@ class LevelScene: SKScene {
         scene?.view?.isHidden = false
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.presentMessage()
+//            self.presentMessage()
             self.landerControl.enabled = true
         }
     }
@@ -326,7 +326,8 @@ extension LevelScene {
         viewController.modalPresentationStyle = .overCurrentContext
         viewController.modalTransitionStyle = .crossDissolve
         viewController.show(messages: [
-            .init(text: "Nice work. I can't pick up any abnormal reading on the spectrometer anymore. Looks like you picked all the crystals around here."),
+            .init(text: "Nice work. I can't pick up any abnormal reading on the spectrometer anymore."),
+            .init(text: "Looks like you've picked all the crystals around here."),
             .init(text: "Hang tight while we initiate the orbit sequence. Let's get the probe back home.")
         ])
         

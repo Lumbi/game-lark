@@ -14,7 +14,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let scene = LevelScene.load(levelNamed: "TestLevel")
+        let scene = LevelScene.load(levelNamed: "level1")
         
         // Present the scene
         let skView = self.view as! SKView
