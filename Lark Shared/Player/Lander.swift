@@ -40,6 +40,7 @@ class Lander: SKNode {
         
         let sprite = SKSpriteNode(imageNamed: "spr_lander")
         sprite.size = .init(width: 64, height: 64)
+        sprite.zPosition = Const.Node.ZPosition.player
         addChild(sprite)
         
         thrusterEmitRate = leftThrusterEmitter.particleBirthRate

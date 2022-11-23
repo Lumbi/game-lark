@@ -22,6 +22,7 @@ struct Const {
         struct ZPosition {
             static let HUD: CGFloat = 9000
             static let visualEffects: CGFloat = 5000
+            static let player: CGFloat = 4000
             static let interactive: CGFloat = 3000
         }
         

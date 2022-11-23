@@ -8,22 +8,12 @@
 import Foundation
 import SpriteKit
 
-/*
- The player can collect all gems within an area and find the goal to deposit the gems.
- 
- The player must remain at least 1 seconds without moving inside the goal to deposit the gems.
- 
- Also serves as a spawn location / checkpoint.
- */
-
 class Depot: SKNode {
     weak var delegate: DepotDelegate? = nil
     weak var sharedDepot: SharedDepot? = nil
     
-    private let sprite: SKShapeNode = .init(circleOfRadius: 32)
-    private let gauge: SKShapeNode  = .init(circleOfRadius: 32)
-    
-    private let depositGemAction: SKAction = .scale(to: 1, duration: 3)
+    private let sprite: SKSpriteNode = .init(imageNamed: "spr_depot")
+    private let gauge: DepotGauge = .init()
     
     override init() {        
         super.init()
@@ -40,11 +30,11 @@ class Depot: SKNode {
         body.physicsBody?.contactTestBitMask = Const.PhysicsBody.Bitmask.lander
         addChild(body)
         
+        sprite.size = .init(width: 64, height: 64)
+        sprite.zPosition = Const.Node.ZPosition.interactive
         addChild(sprite)
-        sprite.fillColor = .green.withAlphaComponent(0.5)
 
-        gauge.fillColor = .green
-        gauge.setScale(0)
+        gauge.position = .init(x: 32 + 16, y: 0)
         addChild(gauge)
     }
     
@@ -54,8 +44,7 @@ class Depot: SKNode {
     }
     
     func startGemDeposit() {
-        gauge.setScale(0)
-        gauge.run(depositGemAction) { [weak self] in
+        gauge.animateToFill { [weak self] in
             if let self = self {
                 self.delegate?.depotReadyToAcceptGems(self)
             }
@@ -67,11 +56,74 @@ class Depot: SKNode {
     }
     
     func cancelGemDeposit() {
-        gauge.removeAllActions()
-        gauge.setScale(0)
+        gauge.cancelFillAnimation()
     }
 }
 
 protocol DepotDelegate: AnyObject {
     func depotReadyToAcceptGems(_ depot: Depot)
+}
+
+class DepotGauge: SKNode {
+    private static let width: CGFloat = 16
+    private static let height: CGFloat = 64
+    
+    private let gaugeFrame: SKShapeNode = .init(rectOf: .init(width: DepotGauge.width, height: DepotGauge.height))
+    private let gaugeFill: SKNode = .init()
+    
+    override init() {
+        super.init()
+        
+        gaugeFrame.zPosition = Const.Node.ZPosition.interactive + 1
+        gaugeFrame.lineWidth = 2
+        addChild(gaugeFrame)
+        
+        let gaugeFillShape = SKShapeNode(rectOf: .init(width: DepotGauge.width, height: DepotGauge.height))
+        gaugeFillShape.fillColor = .green
+        gaugeFill.addChild(gaugeFillShape)
+        gaugeFill.zPosition = Const.Node.ZPosition.interactive
+        
+        gaugeFillShape.position = .init(x: DepotGauge.width / 2.0, y: DepotGauge.height / 2.0)
+        gaugeFill.position = .init(x: -DepotGauge.width / 2.0, y: -DepotGauge.height / 2.0)
+        addChild(gaugeFill)
+        
+        alpha = 0
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func animateToFill(_ completion: @escaping () -> Void) {
+        gaugeFill.yScale = 0
+        let gaugeFillAnimation = SKAction.sequence([
+            .scaleY(to: 1, duration: 3),
+            .repeat(
+                .sequence([
+                    .fadeOut(withDuration: 0.1),
+                    .fadeIn(withDuration: 0.1),
+                ]),
+                count: 3
+            )
+        ])
+        gaugeFill.run(gaugeFillAnimation)
+        
+        alpha = 0
+        run(
+            .sequence([
+                .fadeIn(withDuration: 0.2),
+                .wait(forDuration: gaugeFillAnimation.duration),
+                .fadeOut(withDuration: 0.2)
+            ])
+        ) {
+            completion()
+        }
+    }
+    
+    func cancelFillAnimation() {
+        removeAllActions()
+        gaugeFill.removeAllActions()
+
+        run(.fadeOut(withDuration: 0.2))
+    }
 }

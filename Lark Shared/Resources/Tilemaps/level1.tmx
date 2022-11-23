@@ -112,8 +112,8 @@
 </data>
  </layer>
  <objectgroup id="2" name="actors">
-  <object id="2" name="spawn" gid="41" x="1408" y="1408" width="32" height="32"/>
-  <object id="7" name="gem" gid="5" x="1632" y="1152" width="32" height="32">
+  <object id="2" name="spawn" gid="41" x="1376" y="1408" width="32" height="32"/>
+  <object id="7" name="gem" gid="5" x="1472" y="1408" width="32" height="32">
    <properties>
     <property name="derp" type="bool" value="false"/>
    </properties>
