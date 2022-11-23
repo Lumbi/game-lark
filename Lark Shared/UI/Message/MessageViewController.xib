@@ -44,7 +44,7 @@
                             </constraints>
                         </imageView>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="cyd-4j-QXd" firstAttribute="leading" secondItem="1gN-mQ-n84" secondAttribute="trailing" constant="8" id="5Fv-gR-bGn"/>
                         <constraint firstItem="cyd-4j-QXd" firstAttribute="top" secondItem="fyD-O4-Ogb" secondAttribute="top" constant="8" id="5IP-vn-Xg0"/>
@@ -83,9 +83,6 @@
         <image name="spr_message_next" width="38" height="44"/>
         <systemColor name="secondarySystemFillColor">
             <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
