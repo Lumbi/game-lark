@@ -18,7 +18,7 @@ class Gem: SKNode {
         
         name = Const.Node.Name.gem
         let sprite = SKSpriteNode(imageNamed: "spr_gem")
-        sprite.size = .init(width: 32, height: 32)
+        sprite.size = .init(width: 32, height: 28)
         addChild(sprite)
         
         physicsBody = SKPhysicsBody(circleOfRadius: sprite.size.halfWidth)
