@@ -28,7 +28,6 @@
 		0D81CE6129286A9A00AF4D84 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D81CE6029286A9A00AF4D84 /* MessageViewController.swift */; };
 		0D90A744291A9E90005F2EA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A743291A9E90005F2EA0 /* AppDelegate.swift */; };
 		0D90A746291A9E90005F2EA0 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A745291A9E90005F2EA0 /* GameViewController.swift */; };
-		0D90A749291A9E90005F2EA0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D90A747291A9E90005F2EA0 /* Main.storyboard */; };
 		0D90A74C291A9E90005F2EA0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D90A74A291A9E90005F2EA0 /* LaunchScreen.storyboard */; };
 		0D90A74E291A9E90005F2EA0 /* LevelScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0D90A739291A9E8D005F2EA0 /* LevelScene.sks */; };
 		0D90A74F291A9E90005F2EA0 /* LevelScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A73A291A9E8D005F2EA0 /* LevelScene.swift */; };
@@ -60,6 +59,10 @@
 		0DA0B64629282504001D0C9F /* FX.Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA0B64529282504001D0C9F /* FX.Shake.swift */; };
 		0DA180F7291FF86C000D48AA /* LanderThruster.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0DA180F6291FF86C000D48AA /* LanderThruster.sks */; };
 		0DA180F9292090E9000D48AA /* Test.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0DA180F8292090E9000D48AA /* Test.sks */; };
+		0DA6455B292FC6CB001410C4 /* LevelSelect.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0DA6455A292FC6CB001410C4 /* LevelSelect.sks */; };
+		0DA6455E292FC866001410C4 /* LevelSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DA6455D292FC866001410C4 /* LevelSelectViewController.xib */; };
+		0DA64560292FC949001410C4 /* LevelSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA6455F292FC949001410C4 /* LevelSelectViewController.swift */; };
+		0DA64562292FCCA7001410C4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA64561292FCCA7001410C4 /* SceneDelegate.swift */; };
 		0DA7986529254683001AD90E /* SharedDepot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA7986429254683001AD90E /* SharedDepot.swift */; };
 		0DA79867292547BC001AD90E /* FX.Bounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA79866292547BC001AD90E /* FX.Bounce.swift */; };
 		0DA7986A29254D0D001AD90E /* MissionCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA7986929254D0D001AD90E /* MissionCompleteViewController.swift */; };
@@ -111,7 +114,6 @@
 		0D90A740291A9E90005F2EA0 /* Lark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D90A743291A9E90005F2EA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0D90A745291A9E90005F2EA0 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		0D90A748291A9E90005F2EA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0D90A74B291A9E90005F2EA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0D90A756291A9EF0005F2EA0 /* Lander.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lander.swift; sourceTree = "<group>"; };
 		0D90A758291AA105005F2EA0 /* LanderControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanderControl.swift; sourceTree = "<group>"; };
@@ -139,6 +141,11 @@
 		0DA0B64529282504001D0C9F /* FX.Shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FX.Shake.swift; sourceTree = "<group>"; };
 		0DA180F6291FF86C000D48AA /* LanderThruster.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LanderThruster.sks; sourceTree = "<group>"; };
 		0DA180F8292090E9000D48AA /* Test.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Test.sks; sourceTree = "<group>"; };
+		0DA6455A292FC6CB001410C4 /* LevelSelect.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelSelect.sks; sourceTree = "<group>"; };
+		0DA6455D292FC866001410C4 /* LevelSelectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelSelectViewController.xib; sourceTree = "<group>"; };
+		0DA6455F292FC949001410C4 /* LevelSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectViewController.swift; sourceTree = "<group>"; };
+		0DA64561292FCCA7001410C4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		0DA64563292FCDE5001410C4 /* Lark-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Lark-iOS-Info.plist"; sourceTree = SOURCE_ROOT; };
 		0DA7986429254683001AD90E /* SharedDepot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDepot.swift; sourceTree = "<group>"; };
 		0DA79866292547BC001AD90E /* FX.Bounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FX.Bounce.swift; sourceTree = "<group>"; };
 		0DA7986929254D0D001AD90E /* MissionCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCompleteViewController.swift; sourceTree = "<group>"; };
@@ -176,8 +183,9 @@
 		0D7DE6C22921C9B000A77BD6 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				0D81CE5D29286A7F00AF4D84 /* Message */,
 				0D7DE6CD2921CE3500A77BD6 /* Extensions */,
+				0DA6455C292FC850001410C4 /* LevelSelect */,
+				0D81CE5D29286A7F00AF4D84 /* Message */,
 				0D7DE6D02921CED500A77BD6 /* Restart */,
 				0DA7986829254CF0001AD90E /* MissionComplete */,
 			);
@@ -239,6 +247,7 @@
 				0DFF9D53291C36300029AD93 /* Design.rtf */,
 				0D90A786291AD7CD005F2EA0 /* Todo.rtf */,
 				0DFF9D4E291BF3570029AD93 /* Resources */,
+				0DA64559292FC6B4001410C4 /* Scenes */,
 				0D7DE6BD2921216B00A77BD6 /* FX */,
 				0D90A768291AD18D005F2EA0 /* Core */,
 				0D90A766291AD153005F2EA0 /* Player */,
@@ -262,9 +271,10 @@
 		0D90A742291A9E90005F2EA0 /* Lark iOS */ = {
 			isa = PBXGroup;
 			children = (
+				0DA64563292FCDE5001410C4 /* Lark-iOS-Info.plist */,
 				0D90A743291A9E90005F2EA0 /* AppDelegate.swift */,
+				0DA64561292FCCA7001410C4 /* SceneDelegate.swift */,
 				0D90A745291A9E90005F2EA0 /* GameViewController.swift */,
-				0D90A747291A9E90005F2EA0 /* Main.storyboard */,
 				0D90A74A291A9E90005F2EA0 /* LaunchScreen.storyboard */,
 			);
 			path = "Lark iOS";
@@ -353,6 +363,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		0DA64559292FC6B4001410C4 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				0DA6455A292FC6CB001410C4 /* LevelSelect.sks */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		0DA6455C292FC850001410C4 /* LevelSelect */ = {
+			isa = PBXGroup;
+			children = (
+				0DA6455D292FC866001410C4 /* LevelSelectViewController.xib */,
+				0DA6455F292FC949001410C4 /* LevelSelectViewController.swift */,
+			);
+			path = LevelSelect;
+			sourceTree = "<group>";
+		};
 		0DA7986829254CF0001AD90E /* MissionComplete */ = {
 			isa = PBXGroup;
 			children = (
@@ -438,11 +465,12 @@
 				0DA180F7291FF86C000D48AA /* LanderThruster.sks in Resources */,
 				0D7DE6C82921CAEB00A77BD6 /* Localizable.strings in Resources */,
 				0D90A74E291A9E90005F2EA0 /* LevelScene.sks in Resources */,
+				0DA6455E292FC866001410C4 /* LevelSelectViewController.xib in Resources */,
 				0DA180F9292090E9000D48AA /* Test.sks in Resources */,
 				0DFF9D52291BF4330029AD93 /* Tilemaps in Resources */,
 				0D90A787291AD7CD005F2EA0 /* Todo.rtf in Resources */,
 				0DA7986C29254D1F001AD90E /* MissionCompleteViewController.xib in Resources */,
-				0D90A749291A9E90005F2EA0 /* Main.storyboard in Resources */,
+				0DA6455B292FC6CB001410C4 /* LevelSelect.sks in Resources */,
 				0D81CE5F29286A8F00AF4D84 /* MessageViewController.xib in Resources */,
 				0D90A74C291A9E90005F2EA0 /* LaunchScreen.storyboard in Resources */,
 				0DFF9D54291C36300029AD93 /* Design.rtf in Resources */,
@@ -480,6 +508,7 @@
 				0DA0B64229267516001D0C9F /* LanderBoundsContactHandler.swift in Sources */,
 				0DFF9D58291C885C0029AD93 /* Cargo.swift in Sources */,
 				0D90A774291AD260005F2EA0 /* Prop.swift in Sources */,
+				0DA64562292FCCA7001410C4 /* SceneDelegate.swift in Sources */,
 				0D7F4EE129232BB6005C54C0 /* HighSpeedWarning.swift in Sources */,
 				0D7F4ECF292295E4005C54C0 /* ContactHandler.swift in Sources */,
 				0D90A76E291AD1E0005F2EA0 /* Mine.swift in Sources */,
@@ -494,6 +523,7 @@
 				0D90A761291ABD88005F2EA0 /* CGPoint+Ext.swift in Sources */,
 				0DA79867292547BC001AD90E /* FX.Bounce.swift in Sources */,
 				0D983C882923EDA600A34ED7 /* TimeAccumulator.swift in Sources */,
+				0DA64560292FC949001410C4 /* LevelSelectViewController.swift in Sources */,
 				0D7F4ED1292296B2005C54C0 /* LanderGemContactHandler.swift in Sources */,
 				0D90A744291A9E90005F2EA0 /* AppDelegate.swift in Sources */,
 				0D7F4EDF29232753005C54C0 /* SKCameraNode+Ext.swift in Sources */,
@@ -509,14 +539,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		0D90A747291A9E90005F2EA0 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0D90A748291A9E90005F2EA0 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0D90A74A291A9E90005F2EA0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -652,9 +674,10 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Lark-iOS-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
@@ -685,9 +708,10 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Lark-iOS-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;

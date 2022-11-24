@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="landscape" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LevelSelectViewController" customModule="Lark" customModuleProvider="target">
+            <connections>
+                <outlet property="selectLevelButton" destination="mgY-jd-hmb" id="jTF-Lk-763"/>
+                <outlet property="view" destination="iN0-l3-epB" id="dZR-G7-m3r"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spr_world1_select_bg" translatesAutoresizingMaskIntoConstraints="NO" id="q7z-nL-boi">
+                    <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mgY-jd-hmb">
+                    <rect key="frame" x="635.66666666666663" y="296.66666666666669" width="184.33333333333337" height="30.333333333333314"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" cornerStyle="capsule">
+                        <attributedString key="attributedTitle">
+                            <fragment content="level_select/select">
+                                <attributes>
+                                    <font key="NSFont" size="14" name="Menlo-Regular"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="tapSelectLevel" destination="-1" eventType="touchUpInside" id="uCO-y4-5i5"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqr-ub-csi">
+                    <rect key="frame" x="651.33333333333337" y="91" width="168.66666666666663" height="114.33333333333331"/>
+                    <string key="text">Object: BL-154
+Surface temp.: 283 K
+Gravity: 0.886 g
+Atmosphere:
+ - 83% hydrogen
+ - 15% helium
+ - 2% methane</string>
+                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="q7z-nL-boi" secondAttribute="bottom" id="2lI-ef-aWf"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="mgY-jd-hmb" secondAttribute="trailing" constant="32" id="70y-4G-sMK"/>
+                <constraint firstItem="q7z-nL-boi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="BaK-hq-Swd"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hqr-ub-csi" secondAttribute="trailing" constant="32" id="DAb-Jy-skX"/>
+                <constraint firstAttribute="trailing" secondItem="q7z-nL-boi" secondAttribute="trailing" id="MgL-xa-jQB"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="mgY-jd-hmb" secondAttribute="bottom" constant="32" id="P96-An-hWV"/>
+                <constraint firstItem="hqr-ub-csi" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="32" id="o0E-La-niz"/>
+                <constraint firstItem="q7z-nL-boi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="uIS-g3-336"/>
+            </constraints>
+            <point key="canvasLocation" x="115" y="20"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="spr_world1_select_bg" width="2048" height="2048"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

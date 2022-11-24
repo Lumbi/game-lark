@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "TestLevel.tmx",
+    "activeFile": "level1.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -17,14 +17,14 @@
         },
         "TestLevel.tmx": {
             "expandedObjectLayers": [
-                7,
-                2
+                2,
+                7
             ],
             "scale": 0.907,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 8170.8930540242545,
-                "y": 8330.760749724364
+                "x": 7999.999999999999,
+                "y": 7993.384785005512
             }
         },
         "TestLevel.tmx#TestTileset": {
@@ -37,15 +37,19 @@
         "TestLevel.tmx#roguelike-16x16-anim": {
             "scaleInDock": 3.3533
         },
+        "Tilesets/tilset_debug-32x32.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "level1.tmx": {
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 0.6469,
+            "scale": 0.995,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 1347.9672283196783,
-                "y": 1519.5547998144998
+                "x": 1631.1557788944722,
+                "y": 1487.437185929648
             }
         },
         "level1.tmx#TestTileset": {
@@ -57,12 +61,16 @@
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
     "map.lastUsedFormat": "tmx",
     "openFiles": [
-        "TestLevel.tmx"
+        "TestLevel.tmx",
+        "level1.tmx",
+        "Tilesets/tilset_debug-32x32.tsx"
     ],
     "project": "Lark.tiled-project",
     "property.type": "bool",
     "recentFiles": [
-        "TestLevel.tmx"
+        "TestLevel.tmx",
+        "Tilesets/tilset_debug-32x32.tsx",
+        "level1.tmx"
     ],
     "tileset.embedInMap": false,
     "tileset.lastUsedFormat": "tsx",
