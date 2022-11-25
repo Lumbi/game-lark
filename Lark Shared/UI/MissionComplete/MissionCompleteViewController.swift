@@ -18,6 +18,16 @@ class MissionCompleteViewController: UIViewController {
     }
     
     @IBAction func tapCompleteButton() {
-        // TODO: go to level selection screen?
+        view.isUserInteractionEnabled = false
+
+        UIView.animate(
+            withDuration: 1,
+            animations: {
+                self.view.alpha = 0
+            },
+            completion: { _ in
+                self.view.window?.rootViewController = LevelSelectViewController.fromNib()
+            }
+        )
     }
 }
