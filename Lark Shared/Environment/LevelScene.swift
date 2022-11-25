@@ -407,7 +407,7 @@ extension LevelScene {
             .init(text: "Tospium emits light at very specific wavelengths so you should be able to detect with the onboard spectrometer."),
             .init(text: "We've detected 10 Topsium shards on this site."),
             .init(text: "Once you've collected the shards, just return them to the depot near the probe and we'll be done here."),
-            .init(text: "Alright, enough chatting now. The probe is all yours now, good luck."),
+            .init(text: "Alright, enough chatting. The probe is all yours now, good luck."),
         ]) {
             self.hud.layout()
             self.landerControl.enabled = true
