@@ -347,30 +347,7 @@ extension LevelScene {
         )
     }
     
-    func presentComplete() {
-        landerControl.enabled = false
-        
-        let viewController = MessageViewController.fromNib()
-        viewController.modalPresentationStyle = .overCurrentContext
-        viewController.modalTransitionStyle = .crossDissolve
-        viewController.show(messages: [
-            .init(text: "Nice work. The spectrometer isn't picking up any readings now."),
-            .init(text: "Looks like you've found all the Topsium shards around here."),
-            .init(text: "Hang tight while we initiate the orbit sequence. Let's get the probe back home.")
-        ])
-        
-        view?.window?.rootViewController?.present(viewController, animated: true)
-        
-        viewController.onDismiss = { [weak self] in
-            let viewController = MissionCompleteViewController.fromNib()
-            viewController.modalPresentationStyle = .overCurrentContext
-            viewController.modalTransitionStyle = .crossDissolve
-            
-            self?.view?.window?.rootViewController?.present(viewController, animated: true)
-        }
-    }
-    
-    func presentMessages(_ messages: [Message]) {
+    func presentMessages(_ messages: [Message], onDismiss: @escaping () -> Void = {}) {
         let viewController = MessageViewController.fromNib()
         viewController.modalPresentationStyle = .overCurrentContext
         viewController.modalTransitionStyle = .crossDissolve
@@ -378,6 +355,24 @@ extension LevelScene {
         view?.window?.rootViewController?.present(viewController, animated: true)
 
         viewController.show(messages: messages)
+        
+        viewController.onDismiss = onDismiss
+    }
+    
+    func presentComplete() {
+        landerControl.enabled = false
+
+        presentMessages([
+            .init(text: "Nice work. The spectrometer isn't picking up any readings now."),
+            .init(text: "Looks like you've found all the Topsium shards around here."),
+            .init(text: "Hang tight while we initiate the orbit sequence. Let's get the probe back home.")
+        ]) { [weak self] in
+            let viewController = MissionCompleteViewController.fromNib()
+            viewController.modalPresentationStyle = .overCurrentContext
+            viewController.modalTransitionStyle = .crossDissolve
+            
+            self?.view?.window?.rootViewController?.present(viewController, animated: true)
+        }
     }
     
     func presentIntro1() {
@@ -405,8 +400,9 @@ extension LevelScene {
             .init(text: "We've detected 10 Topsium shards on this site."),
             .init(text: "Once you've collected the shards, just return them to the depot near the probe and we'll be done here."),
             .init(text: "Alright, enough chatting now. The probe is all yours now, good luck."),
-        ])
-        
-        self.landerControl.enabled = true
+        ]) {
+            self.hud.layout()
+            self.landerControl.enabled = true
+        }
     }
 }
