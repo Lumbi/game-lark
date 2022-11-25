@@ -369,7 +369,7 @@ extension LevelScene {
         landerControl.enabled = false
 
         presentMessages([
-            .init(text: "Nice work. The spectrometer isn't picking up any readings now."),
+            .init(text: "Nice work. The spectrometer isn't picking up any signal now."),
             .init(text: "Looks like you've found all the Topsium shards around here."),
             .init(text: "Hang tight while we initiate the orbit sequence. Let's get the probe back home.")
         ]) { [weak self] in
