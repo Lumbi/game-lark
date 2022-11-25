@@ -29,6 +29,6 @@ class RestartViewController: UIViewController {
     }
     
     @IBAction func tapQuitButton() {
-        abort() // TODO: lol
+        scene?.abortMission()
     }
 }

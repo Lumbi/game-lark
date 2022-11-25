@@ -71,10 +71,9 @@ class LevelScene: SKScene {
         setupCamera()
         setupLevel()
         
-        scene?.view?.isHidden = false
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
 //            self.presentMessage()
+            self.scene?.view?.isHidden = false
             self.landerControl.enabled = true
         }
     }
@@ -317,6 +316,19 @@ extension LevelScene {
         
         view?.window?.rootViewController?.present(restartViewController, animated: true)
         restartViewController.scene = self
+    }
+    
+    func abortMission() {
+        view?.isUserInteractionEnabled = false
+        self.view?.window?.rootViewController?.dismiss(animated: true)
+        
+        UIView.animate(
+            withDuration: 1,
+            animations: { self.view?.alpha = 0 },
+            completion: { _ in
+                self.view?.window?.rootViewController = LevelSelectViewController.fromNib()
+            }
+        )
     }
     
     func presentComplete() {

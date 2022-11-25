@@ -26,14 +26,8 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mgY-jd-hmb">
                     <rect key="frame" x="635.66666666666663" y="296.66666666666669" width="184.33333333333337" height="30.333333333333314"/>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="filled" cornerStyle="capsule">
-                        <attributedString key="attributedTitle">
-                            <fragment content="level_select/select">
-                                <attributes>
-                                    <font key="NSFont" size="14" name="Menlo-Regular"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
+                    <buttonConfiguration key="configuration" style="filled" title="level_select/select" cornerStyle="capsule">
+                        <fontDescription key="titleFontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                     </buttonConfiguration>
                     <connections>
                         <action selector="tapSelectLevel" destination="-1" eventType="touchUpInside" id="uCO-y4-5i5"/>
