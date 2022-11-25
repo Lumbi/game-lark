@@ -20,6 +20,12 @@ class LevelScene: SKScene {
     private var time: Time = .init()
     private(set) var detectedGemCount: Int = 0
     
+    // TODO: Future me, please refactor
+    var didUseLeftThrusterAtLeastOnce: Bool = false
+    var didUseRightThrusterAtLeastOnce: Bool = false
+    var didShowIntro2: Bool = false
+    var intro2Check: TimeAccumulator = .init(threshold: 1)
+    
     private lazy var beginContactHandlerChain: ContactHandlerChain = {
         ContactHandlerChain(
             first: LanderGemContactHandler(
@@ -72,9 +78,8 @@ class LevelScene: SKScene {
         setupLevel()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//            self.presentMessage()
             self.scene?.view?.isHidden = false
-            self.landerControl.enabled = true
+            self.presentIntro1()
         }
     }
     
@@ -154,6 +159,15 @@ class LevelScene: SKScene {
                 hud.gemDetector.hide()
             }
         }
+        
+        if !didShowIntro2 {
+            if didUseLeftThrusterAtLeastOnce && didUseRightThrusterAtLeastOnce {
+                if intro2Check.update(time: time) {
+                    presentIntro2()
+                    didShowIntro2 = true
+                }
+            }
+        }
     }
 }
 
@@ -181,8 +195,10 @@ extension LevelScene {
             let location = touch.location(in: view)
             if location.x < view.bounds.width / 2.0 {
                 landerControl.leftThruster?.release()
+                didUseLeftThrusterAtLeastOnce = true
             } else {
                 landerControl.rightThruster?.release()
+                didUseRightThrusterAtLeastOnce = true
             }
         }
     }
@@ -338,8 +354,8 @@ extension LevelScene {
         viewController.modalPresentationStyle = .overCurrentContext
         viewController.modalTransitionStyle = .crossDissolve
         viewController.show(messages: [
-            .init(text: "Nice work. The spectrometer isn't picking up any abnormal readings now."),
-            .init(text: "Looks like you've found all the crystals around here."),
+            .init(text: "Nice work. The spectrometer isn't picking up any readings now."),
+            .init(text: "Looks like you've found all the Topsium shards around here."),
             .init(text: "Hang tight while we initiate the orbit sequence. Let's get the probe back home.")
         ])
         
@@ -354,17 +370,43 @@ extension LevelScene {
         }
     }
     
-    func presentMessage() {
+    func presentMessages(_ messages: [Message]) {
         let viewController = MessageViewController.fromNib()
         viewController.modalPresentationStyle = .overCurrentContext
         viewController.modalTransitionStyle = .crossDissolve
         
         view?.window?.rootViewController?.present(viewController, animated: true)
-        
-        viewController.show(messages: [
+
+        viewController.show(messages: messages)
+    }
+    
+    func presentIntro1() {
+        presentMessages([
             .init(text: "Mission control to command module, do you copy?"),
             .init(text: "Excellent, telemetry data is looking nominal. Let's initiate the control check sequence."),
-            .init(text: "Can you operate the your control screen and test the lateral thrusters?")
+            .init(text: "Can you operate your control screen and test the lateral thrusters?")
         ])
+    }
+    
+    func presentIntro2() {
+        presentMessages([
+            .init(text: "Lateral thrusters are looking good."),
+            .init(text: "But, since you don't have that many flight hours on record let's go over the probe's controls."),
+            .init(text: "To manoeuvre the probe, you'll need to balance the lateral thrusters carefully."),
+            .init(text: "It's a bit more difficult than in the simulator."),
+            .init(text: "The probe is also very fragile. Engineering had to cut some corners..."),
+            .init(text: "Thankfully, we had enough budget for a velocity sensor, so you'll see when you're going too fast."),
+            .init(text: "Also, you'll have to be careful not to stray too far away from the site."),
+            .init(text: "Otherwise we'll lose connection to the probe. It's programmed to self-destruct in that case."),
+            .init(text: "..."),
+            .init(text: "Please be careful with the probe. These aren't free and I'd really like to keep budget for coffee here..."),
+            .init(text: "Now, for the mission briefing, you'll need to retrieve shards of Tospium scattered on the site."),
+            .init(text: "Tospium emits light at very specific wavelengths so you should be able to detect with the onboard spectrometer."),
+            .init(text: "We've detected 10 Topsium shards on this site."),
+            .init(text: "Once you've collected the shards, just return them to the depot near the probe and we'll be done here."),
+            .init(text: "Alright, enough chatting now. The probe is all yours now, good luck."),
+        ])
+        
+        self.landerControl.enabled = true
     }
 }
