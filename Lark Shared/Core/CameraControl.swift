@@ -42,6 +42,9 @@ class CameraControl {
         
         camera.position.x += direction.dx * speedX * time.delta
         camera.position.y += direction.dy * speedY * time.delta
+        
+        camera.position.x = camera.position.x.rounded()
+        camera.position.y = camera.position.y.rounded()
     }
     
     func jump(to target: SKNode) {
