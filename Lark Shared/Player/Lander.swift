@@ -94,6 +94,7 @@ class Thruster: SKNode {
         } else {
             emitter.emissionAngle = atan(direction.dy / direction.dx) + CGFloat.pi
         }
+        emitter.zPosition = Const.Node.ZPosition.visualEffects
         addChild(emitter)
     }
     
