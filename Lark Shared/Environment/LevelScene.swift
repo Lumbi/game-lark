@@ -245,6 +245,8 @@ extension LevelScene: DepotDelegate {
         
         let remainingGem = childNode(withName: "//\(Const.Node.Name.gem)")
         if remainingGem == nil {
+            landerControl.enabled = false
+            hud.missionTime.stop()
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.presentComplete()
             }
@@ -368,9 +370,6 @@ extension LevelScene {
     }
     
     func presentComplete() {
-        landerControl.enabled = false
-        self.hud.missionTime.stop()
-
         presentMessages([
             .init(text: "Nice work. The spectrometer isn't picking up any signal now."),
             .init(text: "Looks like you've found all the Topsium shards around here."),
