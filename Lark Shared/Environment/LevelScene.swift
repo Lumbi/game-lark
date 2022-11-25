@@ -83,6 +83,7 @@ class LevelScene: SKScene {
             self.didShowIntro2 = true
             self.hud.layout()
             self.landerControl.enabled = true
+            self.hud.missionTime.start()
             #else
             self.presentIntro1()
             #endif
@@ -142,6 +143,7 @@ class LevelScene: SKScene {
         lander.update(time: time)
         landerControl.update()
         cameraControl.update(time: time)
+        hud.missionTime.update(time: time)
         
         if updateGemDetector.update(time: time) {
             // TODO: Optimize and refactor
@@ -367,6 +369,7 @@ extension LevelScene {
     
     func presentComplete() {
         landerControl.enabled = false
+        self.hud.missionTime.stop()
 
         presentMessages([
             .init(text: "Nice work. The spectrometer isn't picking up any signal now."),
@@ -409,6 +412,7 @@ extension LevelScene {
         ]) {
             self.hud.layout()
             self.landerControl.enabled = true
+            self.hud.missionTime.start()
         }
     }
 }

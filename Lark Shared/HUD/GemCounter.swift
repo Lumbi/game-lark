@@ -19,14 +19,14 @@ class GemCounter: SKNode {
     override init() {
         super.init()
 
-        gemsInCargoCounter.fontName = "Futura"
-        gemsInCargoCounter.fontSize = 24
+        gemsInCargoCounter.fontName = "Menlo"
+        gemsInCargoCounter.fontSize = 20
         gemsInCargoCounter.horizontalAlignmentMode = .left
         gemsInCargoCounter.verticalAlignmentMode = .top
         addChild(gemsInCargoCounter)
         
-        gemsInDepotCounter.fontName = "Futura"
-        gemsInDepotCounter.fontSize = 24
+        gemsInDepotCounter.fontName = "Menlo"
+        gemsInDepotCounter.fontSize = 20
         gemsInDepotCounter.horizontalAlignmentMode = .left
         gemsInDepotCounter.verticalAlignmentMode = .top
         gemsInDepotCounter.position.y = gemsInCargoCounter.position.y - 32

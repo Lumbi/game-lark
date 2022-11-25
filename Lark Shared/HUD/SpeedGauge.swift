@@ -16,7 +16,7 @@ class SpeedGauge: SKNode {
         
         label.horizontalAlignmentMode = .right
         label.verticalAlignmentMode = .top
-        label.fontName = "Futura"
+        label.fontName = "Menlo"
         label.fontSize = 18
         addChild(label)
     }
