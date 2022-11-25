@@ -52,7 +52,7 @@ class MissionTime: SKLabelNode {
         if updateCheck.update(time: time) {
             let hours = Int(floor(elapsedTime / 3600))
             let minutes = Int(floor(elapsedTime.truncatingRemainder(dividingBy: 3600) / 60))
-            let seconds = Int(floor(elapsedTime))
+            let seconds = Int(floor(elapsedTime.truncatingRemainder(dividingBy: 60)))
             let millis = Int(elapsedTime.truncatingRemainder(dividingBy: 1) * 1000)
             text = String(format: "MISSION TIME: %02d:%02d:%02d:%03d", hours, minutes, seconds, millis)
         }
