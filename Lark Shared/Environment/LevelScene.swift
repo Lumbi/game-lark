@@ -79,7 +79,13 @@ class LevelScene: SKScene {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.scene?.view?.isHidden = false
+            #if SKIP_INTRO
+            self.didShowIntro2 = true
+            self.hud.layout()
+            self.landerControl.enabled = true
+            #else
             self.presentIntro1()
+            #endif
         }
     }
     
