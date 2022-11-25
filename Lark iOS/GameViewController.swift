@@ -27,8 +27,13 @@ class GameViewController: UIViewController {
         skView.presentScene(scene)
         
         skView.ignoresSiblingOrder = true
+        
+        #if DEBUG
         skView.showsFPS = true
         skView.showsNodeCount = true
+        #endif
+        
+        skView.isMultipleTouchEnabled = true
         
         modalPresentationStyle = .fullScreen
     }
