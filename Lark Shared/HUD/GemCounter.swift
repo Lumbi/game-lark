@@ -40,7 +40,7 @@ class GemCounter: SKNode {
 
 extension GemCounter: CargoDelegate {
     func cargoDidUpdate(_ cargo: Cargo) {
-        gemsInCargoCounter.text = "IN CARGO: \(cargo.gemCount) gem(s)"
+        gemsInCargoCounter.text = "IN CARGO: \(cargo.gemCount) shards"
         if cargo.gemCount > 0 {
             gemsInCargoCounter.run(FX.bounce())
         }
@@ -57,7 +57,7 @@ extension GemCounter: SharedDepotDelegate {
     
     private func updateGemsInDepotCounterText(_ count: Int) {
         if let scene = scene as? LevelScene {
-            gemsInDepotCounter.text = "IN DEPOT: \(count) / \(scene.detectedGemCount) gems"
+            gemsInDepotCounter.text = "IN DEPOT: \(count) / \(scene.detectedGemCount) shards"
         } else {
             gemsInDepotCounter.text = nil
         }
