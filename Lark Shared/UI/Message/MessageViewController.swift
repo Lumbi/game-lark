@@ -64,7 +64,7 @@ class MessageViewController: UIViewController {
         let attributedString = NSMutableAttributedString(string: message.text)
         let visibleRange = NSRange(location: 0, length: endIndex)
         let hiddenRange = NSRange(location: endIndex, length: message.text.count - endIndex)
-        attributedString.addAttribute(.foregroundColor, value: UIColor.black, range: visibleRange)
+        attributedString.addAttribute(.foregroundColor, value: UIColor.white, range: visibleRange)
         attributedString.addAttribute(.foregroundColor, value: UIColor.clear, range: hiddenRange)
         messageLabel?.attributedText = attributedString
     }

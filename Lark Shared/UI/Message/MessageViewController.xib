@@ -24,7 +24,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fyD-O4-Ogb">
                     <rect key="frame" x="176" y="223" width="500" height="128"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spr_duck" translatesAutoresizingMaskIntoConstraints="NO" id="1gN-mQ-n84">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spr_portrait_mission_control" translatesAutoresizingMaskIntoConstraints="NO" id="1gN-mQ-n84">
                             <rect key="frame" x="8" y="8" width="112" height="112"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="1gN-mQ-n84" secondAttribute="height" multiplier="1:1" id="ocW-yJ-h4T"/>
@@ -44,7 +44,7 @@
                             </constraints>
                         </imageView>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" red="0.090008638189916459" green="0.090424157318138063" blue="0.091670714702802858" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstItem="cyd-4j-QXd" firstAttribute="leading" secondItem="1gN-mQ-n84" secondAttribute="trailing" constant="8" id="5Fv-gR-bGn"/>
                         <constraint firstItem="cyd-4j-QXd" firstAttribute="top" secondItem="fyD-O4-Ogb" secondAttribute="top" constant="8" id="5IP-vn-Xg0"/>
@@ -79,8 +79,8 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="spr_duck" width="679" height="708"/>
         <image name="spr_message_next" width="38" height="44"/>
+        <image name="spr_portrait_mission_control" width="256" height="256"/>
         <systemColor name="secondarySystemFillColor">
             <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
