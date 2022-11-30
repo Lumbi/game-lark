@@ -17,8 +17,8 @@
         },
         "TestLevel.tmx": {
             "expandedObjectLayers": [
-                2,
-                7
+                7,
+                2
             ],
             "scale": 0.907,
             "selectedLayer": 3,

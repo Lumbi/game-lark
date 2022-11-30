@@ -47,13 +47,20 @@ struct Const {
             static let innerBounds: UInt32 = 0x1 << 5
             static let outerBounds: UInt32 = 0x1 << 6
             static let transientCollectible: UInt32 = 0x1 << 7 // TODO: Rename this...
-            static let pickUp: UInt32 = 0x1 << 8
+            static let bomb: UInt32 = 0x1 << 8
+            static let shockwave: UInt32 = 0x1 << 9
         }
     }
     
     struct Layer {
         struct Property {
             static let collision = "collision"
+        }
+    }
+    
+    struct Tile {
+        struct Property {
+            static let destructible = "destructible"
         }
     }
     

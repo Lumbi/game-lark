@@ -97,7 +97,7 @@ class LevelLoader {
         guard let tilemap = tilemap else { return }
         for tileLayer in tilemap.tileLayers() {
             guard tileLayer.getValue(forProperty: Const.Layer.Property.collision) != nil else { continue }
-            for tile in tileLayer.getTiles() {              
+            for tile in tileLayer.getTiles() {
                 let collisionBox = SKNode()
                 collisionBox.physicsBody = SKPhysicsBody(rectangleOf: tile.tileSize)
                 collisionBox.physicsBody?.affectedByGravity = false
