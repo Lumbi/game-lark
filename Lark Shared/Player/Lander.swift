@@ -59,6 +59,7 @@ class Lander: SKNode {
         addChild(highSpeedWarning)
         highSpeedWarning.show()
         
+        hook.isHidden = true
         addChild(hook)
     }
     
@@ -80,15 +81,17 @@ class Lander: SKNode {
         }
     }
     
-    func attachHook() {
+    func attachHook(to hookedNode: SKNode) {
+        hook.isHidden = false
         hook.position = .zero
-        hook.attach(to: self, at: .zero)
+        hook.attach(from: self, to: hookedNode)
     }
     
     override func removeFromParent() {
         super.removeFromParent()
 
         hook.teardownPhysics()
+        hook.isHidden = true
     }
 }
 

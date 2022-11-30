@@ -45,11 +45,11 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 0.995,
+            "scale": 0.3408,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 1630.150753768844,
-                "y": 1486.43216080402
+                "x": 1534.62441314554,
+                "y": 1543.4272300469484
             }
         },
         "level1.tmx#TestTileset": {
@@ -68,9 +68,9 @@
     "project": "Lark.tiled-project",
     "property.type": "bool",
     "recentFiles": [
-        "level1.tmx",
         "TestLevel.tmx",
-        "Tilesets/tilset_debug-32x32.tsx"
+        "Tilesets/tilset_debug-32x32.tsx",
+        "level1.tmx"
     ],
     "tileset.embedInMap": false,
     "tileset.lastUsedFormat": "tsx",

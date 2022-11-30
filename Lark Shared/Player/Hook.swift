@@ -31,11 +31,14 @@ class Hook: SKNode {
         }
     }
     
-    func attach(to node: SKNode, at attachmentPoint: CGPoint) {
+    func attach(from node: SKNode, to other: SKNode) {
         guard let scene = scene else { return }
         
         parts.enumerated().forEach { (i, part) in
-            if i == 0 {
+            let isFirst = i == 0
+            let isLast = i == parts.count - 1
+
+            if isFirst {
                 if
                     let bodyA = node.physicsBody,
                     let bodyB = part.physicsBody
@@ -43,9 +46,10 @@ class Hook: SKNode {
                     let joint = SKPhysicsJointLimit.joint(
                         withBodyA: bodyA,
                         bodyB: bodyB,
-                        anchorA: scene.convert(attachmentPoint, from: node),
+                        anchorA: scene.convert(.zero, from: node),
                         anchorB: scene.convert(.zero, from: part)
                     )
+                    joint.maxLength = 10
                     joints.append(joint)
                 }
                 return
@@ -62,7 +66,24 @@ class Hook: SKNode {
                     anchorA: scene.convert(.zero, from: previousPart),
                     anchorB: scene.convert(.zero, from: part)
                 )
+                joint.maxLength = 10
                 joints.append(joint)
+            }
+            
+            if isLast {
+                if
+                    let bodyA = part.physicsBody,
+                    let bodyB = other.physicsBody
+                {
+                    let joint = SKPhysicsJointLimit.joint(
+                        withBodyA: bodyA,
+                        bodyB: bodyB,
+                        anchorA: scene.convert(.zero, from: part),
+                        anchorB: scene.convert(.zero, from: other)
+                    )
+                    joint.maxLength = 10
+                    joints.append(joint)
+                }
             }
         }
         

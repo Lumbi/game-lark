@@ -115,6 +115,11 @@ class LevelScene: SKScene {
 
         spawnLander()
         
+        // TEST
+        if let bomb = childNode(withName: "//\(Const.Node.Name.bomb)") {
+            lander.attachHook(to: bomb)
+        }
+        
         landerControl.lander = lander
         cameraControl.target = lander
         
@@ -240,7 +245,7 @@ extension LevelScene: SKPhysicsContactDelegate {
 
 // MARK: - Gameplay
 
-extension LevelScene: DepotDelegate {    
+extension LevelScene: DepotDelegate {
     func depotReadyToAcceptGems(_ depot: Depot) {
         let gems = cargo.unloadGems()
         depot.acceptGems(gems)
@@ -299,7 +304,6 @@ extension LevelScene: DepotDelegate {
         lander.position = convert(.zero, from: spawn)
         lander.physicsBody?.isDynamic = true
         addChild(lander)
-        lander.attachHook()
         
         cameraControl.jump(to: lander) // without this the camera goes crazy
         

@@ -29,6 +29,7 @@ class LevelLoader {
             addTileCollisionBoxes()
             populateGems()
             populateDepots()
+            populateBombs()
         }
     }
     
@@ -76,6 +77,18 @@ class LevelLoader {
             let depot = Depot()
             depot.position = placeholder.position
             placeholder.parent?.addChild(depot)
+            placeholder.removeFromParent()
+        }
+    }
+    
+    private func populateBombs() {
+        guard let tilemap = tilemap, let scene = tilemap.scene else { return }
+        for placeholder in tilemap.getObjects(named: Const.Node.Name.bomb) {
+            if placeholder.visible {
+                let bomb = Bomb()
+                bomb.position = scene.convert(.zero, from: placeholder)
+                scene.addChild(bomb)
+            }
             placeholder.removeFromParent()
         }
     }

@@ -12,9 +12,10 @@ struct Const {
     struct Node {
         struct Name {
             static let lander = "lander"
+            static let spawn = "spawn"
             static let gem = "gem"
             static let depot = "depot"
-            static let spawn = "spawn"
+            static let bomb = "bomb"
             static let outerBounds = "outer_bounds"
             static let innerBounds = "inner_bounds"
         }
@@ -46,6 +47,7 @@ struct Const {
             static let innerBounds: UInt32 = 0x1 << 5
             static let outerBounds: UInt32 = 0x1 << 6
             static let transientCollectible: UInt32 = 0x1 << 7 // TODO: Rename this...
+            static let pickUp: UInt32 = 0x1 << 8
         }
     }
     
