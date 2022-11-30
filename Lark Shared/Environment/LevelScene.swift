@@ -112,7 +112,9 @@ class LevelScene: SKScene {
     private func setupLevel() {
         let levelLoader = LevelLoader(name: levelName)
         levelLoader.load(into: self)
-        levelLoader.spawn(lander)
+
+        spawnLander()
+        
         landerControl.lander = lander
         cameraControl.target = lander
         
@@ -238,7 +240,7 @@ extension LevelScene: SKPhysicsContactDelegate {
 
 // MARK: - Gameplay
 
-extension LevelScene: DepotDelegate {
+extension LevelScene: DepotDelegate {    
     func depotReadyToAcceptGems(_ depot: Depot) {
         let gems = cargo.unloadGems()
         depot.acceptGems(gems)
@@ -291,17 +293,13 @@ extension LevelScene: DepotDelegate {
         ]))
     }
     
-    func redeployLanderToLastCheckpoint() {
-        let spawn = childNode(withName: "//\(Const.Node.Name.spawn)")
+    func spawnLander() {
+        guard let spawn = childNode(withName: "//\(Const.Node.Name.spawn)") else { return }
         
-        guard
-            let spawn = spawn,
-            let parent = spawn.parent
-        else { return }
-        
-        lander.position = spawn.position
+        lander.position = convert(.zero, from: spawn)
         lander.physicsBody?.isDynamic = true
-        parent.addChild(lander)
+        addChild(lander)
+        lander.attachHook()
         
         cameraControl.jump(to: lander) // without this the camera goes crazy
         

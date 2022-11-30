@@ -21,6 +21,8 @@ class Lander: SKNode {
     weak var telemetricDataDelegate: LanderTelemetricDataDelegate? = nil
     
     private(set) var lastSpeed: CGFloat = 0
+    
+    private let hook = Hook()
 
     // TODO: Refactor to move to LanderBoundsContactHandler or something
     var levelBoundsExitPosition: CGPoint? = nil
@@ -56,6 +58,8 @@ class Lander: SKNode {
         highSpeedWarning.position = .init(x: sprite.size.width, y: sprite.size.height)
         addChild(highSpeedWarning)
         highSpeedWarning.show()
+        
+        addChild(hook)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -74,6 +78,17 @@ class Lander: SKNode {
                 highSpeedWarning.hide()
             }
         }
+    }
+    
+    func attachHook() {
+        hook.position = .zero
+        hook.attach(to: self, at: .zero)
+    }
+    
+    override func removeFromParent() {
+        super.removeFromParent()
+
+        hook.teardownPhysics()
     }
 }
 

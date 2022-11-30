@@ -58,17 +58,6 @@ class LevelLoader {
         }
     }
     
-    func spawn(_ lander: Lander) {
-        lander.removeFromParent()
-        if let spawn = tilemap?.getObjects(named: Const.Node.Name.spawn).first {
-            spawn.name = Const.Node.Name.spawn
-            lander.position = spawn.position
-            spawn.layer.addChild(lander)
-        } else {
-            tilemap?.scene?.addChild(lander)
-        }
-    }
-    
     private func populateGems() {
         guard let tilemap = tilemap, let scene = tilemap.scene else { return }
         for placeholder in tilemap.getObjects(named: Const.Node.Name.gem) {

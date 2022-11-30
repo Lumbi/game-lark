@@ -59,6 +59,8 @@
 		0DA0B64629282504001D0C9F /* FX.Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA0B64529282504001D0C9F /* FX.Shake.swift */; };
 		0DA180F7291FF86C000D48AA /* LanderThruster.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0DA180F6291FF86C000D48AA /* LanderThruster.sks */; };
 		0DA180F9292090E9000D48AA /* Test.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0DA180F8292090E9000D48AA /* Test.sks */; };
+		0DA6164529359C3E000350BC /* TestLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA6164429359C3E000350BC /* TestLevel.swift */; };
+		0DA6164729359EB6000350BC /* Hook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA6164629359EB6000350BC /* Hook.swift */; };
 		0DA6455B292FC6CB001410C4 /* LevelSelect.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0DA6455A292FC6CB001410C4 /* LevelSelect.sks */; };
 		0DA6455E292FC866001410C4 /* LevelSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DA6455D292FC866001410C4 /* LevelSelectViewController.xib */; };
 		0DA64560292FC949001410C4 /* LevelSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA6455F292FC949001410C4 /* LevelSelectViewController.swift */; };
@@ -142,6 +144,8 @@
 		0DA0B64529282504001D0C9F /* FX.Shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FX.Shake.swift; sourceTree = "<group>"; };
 		0DA180F6291FF86C000D48AA /* LanderThruster.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LanderThruster.sks; sourceTree = "<group>"; };
 		0DA180F8292090E9000D48AA /* Test.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Test.sks; sourceTree = "<group>"; };
+		0DA6164429359C3E000350BC /* TestLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLevel.swift; sourceTree = "<group>"; };
+		0DA6164629359EB6000350BC /* Hook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hook.swift; sourceTree = "<group>"; };
 		0DA6455A292FC6CB001410C4 /* LevelSelect.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelSelect.sks; sourceTree = "<group>"; };
 		0DA6455D292FC866001410C4 /* LevelSelectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelSelectViewController.xib; sourceTree = "<group>"; };
 		0DA6455F292FC949001410C4 /* LevelSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectViewController.swift; sourceTree = "<group>"; };
@@ -250,6 +254,7 @@
 				0D90A786291AD7CD005F2EA0 /* Todo.rtf */,
 				0DFF9D4E291BF3570029AD93 /* Resources */,
 				0DA64559292FC6B4001410C4 /* Scenes */,
+				0DA6164329359C10000350BC /* Levels */,
 				0D7DE6BD2921216B00A77BD6 /* FX */,
 				0D90A768291AD18D005F2EA0 /* Core */,
 				0D90A766291AD153005F2EA0 /* Player */,
@@ -287,6 +292,7 @@
 			children = (
 				0D90A756291A9EF0005F2EA0 /* Lander.swift */,
 				0D90A758291AA105005F2EA0 /* LanderControl.swift */,
+				0DA6164629359EB6000350BC /* Hook.swift */,
 				0D90A775291AD365005F2EA0 /* Explosive.swift */,
 				0DFF9D57291C885C0029AD93 /* Cargo.swift */,
 				0DA7986429254683001AD90E /* SharedDepot.swift */,
@@ -364,6 +370,14 @@
 				0D90A78D291AE1BD005F2EA0 /* SKTiled.xcframework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0DA6164329359C10000350BC /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				0DA6164429359C3E000350BC /* TestLevel.swift */,
+			);
+			path = Levels;
 			sourceTree = "<group>";
 		};
 		0DA64559292FC6B4001410C4 /* Scenes */ = {
@@ -506,6 +520,7 @@
 				0D90A783291AD572005F2EA0 /* LevelLoader.swift in Sources */,
 				0D7F4ED929229CBE005C54C0 /* LanderDepotContactHandler.swift in Sources */,
 				0D90A779291AD3AE005F2EA0 /* GemCounter.swift in Sources */,
+				0DA6164529359C3E000350BC /* TestLevel.swift in Sources */,
 				0DA7986529254683001AD90E /* SharedDepot.swift in Sources */,
 				0D90A75D291ABB1E005F2EA0 /* CameraControl.swift in Sources */,
 				0DA0B64229267516001D0C9F /* LanderBoundsContactHandler.swift in Sources */,
@@ -518,6 +533,7 @@
 				0D90A76E291AD1E0005F2EA0 /* Mine.swift in Sources */,
 				0D90A763291ACF8C005F2EA0 /* Tile.swift in Sources */,
 				0D90A76C291AD1DA005F2EA0 /* Turret.swift in Sources */,
+				0DA6164729359EB6000350BC /* Hook.swift in Sources */,
 				0D7DE6C42921CA1600A77BD6 /* RestartViewController.swift in Sources */,
 				0DA0B644292675B2001D0C9F /* OutOfBoundsWarning.swift in Sources */,
 				0D7F4EDD2922DC4F005C54C0 /* SpeedGauge.swift in Sources */,

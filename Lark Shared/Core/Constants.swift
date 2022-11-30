@@ -38,6 +38,7 @@ struct Const {
         
         struct Bitmask {
             static let all: UInt32 = 0xFFFFFFFF
+            static let none: UInt32 = 0
             static let lander: UInt32 = 0x1 << 1
             static let terrain: UInt32 = 0x1 << 2
             static let collectible: UInt32 = 0x1 << 3

@@ -25,7 +25,7 @@ class RestartViewController: UIViewController {
     
     @IBAction func tapRestartButton() {
         dismiss(animated: true)
-        scene?.redeployLanderToLastCheckpoint()
+        scene?.spawnLander()
     }
     
     @IBAction func tapQuitButton() {
