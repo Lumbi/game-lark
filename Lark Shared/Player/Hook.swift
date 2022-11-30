@@ -9,26 +9,15 @@ import Foundation
 import SpriteKit
 
 class Hook: SKNode {
-    private let parts: [SKNode]
+    private var parts: [SKNode] = []
     private var joints: [SKPhysicsJoint] = []
     
     override init() {
-        parts = (0...10).map { _ in SKShapeNode(circleOfRadius: 1) }
-        
         super.init()
-    
-        parts.enumerated().forEach { (i, part) in
-            part.position = .init(x: 0, y: -i * 10)
-            part.physicsBody = .init(circleOfRadius: 1)
-            part.physicsBody?.density = 0.01
-            part.physicsBody?.allowsRotation = true
-            part.physicsBody?.categoryBitMask = Const.PhysicsBody.Bitmask.none
-            part.physicsBody?.collisionBitMask = Const.PhysicsBody.Bitmask.none
-        }
-        
-        for part in parts {
-            addChild(part)
-        }
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func update() {
@@ -47,6 +36,20 @@ class Hook: SKNode {
         guard let scene = scene else { return }
 
         teardownPhysics()
+
+        parts = (0...10).map { i in
+            let part = SKShapeNode(circleOfRadius: 1)
+//            part.position = .init(x: 0, y: -i * 10)
+            part.position = .zero
+            part.physicsBody = .init(circleOfRadius: 1)
+            part.physicsBody?.density = 0.01
+            part.physicsBody?.allowsRotation = true
+            part.physicsBody?.categoryBitMask = Const.PhysicsBody.Bitmask.none
+            part.physicsBody?.collisionBitMask = Const.PhysicsBody.Bitmask.none
+            return part
+        }
+
+        for part in parts { addChild(part) }
 
         parts.enumerated().forEach { (i, part) in
             let isFirst = i == 0
@@ -107,13 +110,10 @@ class Hook: SKNode {
     }
     
     func teardownPhysics() {
-        joints.forEach { joint in
-            scene?.physicsWorld.remove(joint)
-        }
+        for joint in joints { scene?.physicsWorld.remove(joint) }
         joints.removeAll()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+
+        for part in parts { part.removeFromParent() }
+        parts.removeAll()
     }
 }
