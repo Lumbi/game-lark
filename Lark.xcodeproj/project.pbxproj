@@ -38,13 +38,11 @@
 		0D90A75D291ABB1E005F2EA0 /* CameraControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A75C291ABB1E005F2EA0 /* CameraControl.swift */; };
 		0D90A75F291ABB50005F2EA0 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A75E291ABB50005F2EA0 /* Time.swift */; };
 		0D90A761291ABD88005F2EA0 /* CGPoint+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A760291ABD88005F2EA0 /* CGPoint+Ext.swift */; };
-		0D90A763291ACF8C005F2EA0 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A762291ACF8C005F2EA0 /* Tile.swift */; };
 		0D90A765291AD150005F2EA0 /* Depot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A764291AD150005F2EA0 /* Depot.swift */; };
 		0D90A76C291AD1DA005F2EA0 /* Turret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A76B291AD1DA005F2EA0 /* Turret.swift */; };
 		0D90A76E291AD1E0005F2EA0 /* Mine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A76D291AD1E0005F2EA0 /* Mine.swift */; };
 		0D90A770291AD1EE005F2EA0 /* Laser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A76F291AD1EE005F2EA0 /* Laser.swift */; };
 		0D90A772291AD1F9005F2EA0 /* Gem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A771291AD1F9005F2EA0 /* Gem.swift */; };
-		0D90A774291AD260005F2EA0 /* Prop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A773291AD260005F2EA0 /* Prop.swift */; };
 		0D90A776291AD365005F2EA0 /* Explosive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A775291AD365005F2EA0 /* Explosive.swift */; };
 		0D90A779291AD3AE005F2EA0 /* GemCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A778291AD3AE005F2EA0 /* GemCounter.swift */; };
 		0D90A77B291AD3EC005F2EA0 /* GemDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A77A291AD3EC005F2EA0 /* GemDetector.swift */; };
@@ -124,13 +122,11 @@
 		0D90A75C291ABB1E005F2EA0 /* CameraControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraControl.swift; sourceTree = "<group>"; };
 		0D90A75E291ABB50005F2EA0 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		0D90A760291ABD88005F2EA0 /* CGPoint+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Ext.swift"; sourceTree = "<group>"; };
-		0D90A762291ACF8C005F2EA0 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		0D90A764291AD150005F2EA0 /* Depot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Depot.swift; sourceTree = "<group>"; };
 		0D90A76B291AD1DA005F2EA0 /* Turret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Turret.swift; sourceTree = "<group>"; };
 		0D90A76D291AD1E0005F2EA0 /* Mine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mine.swift; sourceTree = "<group>"; };
 		0D90A76F291AD1EE005F2EA0 /* Laser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Laser.swift; sourceTree = "<group>"; };
 		0D90A771291AD1F9005F2EA0 /* Gem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gem.swift; sourceTree = "<group>"; };
-		0D90A773291AD260005F2EA0 /* Prop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prop.swift; sourceTree = "<group>"; };
 		0D90A775291AD365005F2EA0 /* Explosive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Explosive.swift; sourceTree = "<group>"; };
 		0D90A778291AD3AE005F2EA0 /* GemCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemCounter.swift; sourceTree = "<group>"; };
 		0D90A77A291AD3EC005F2EA0 /* GemDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemDetector.swift; sourceTree = "<group>"; };
@@ -308,8 +304,6 @@
 				0D90A782291AD572005F2EA0 /* LevelLoader.swift */,
 				0D90A764291AD150005F2EA0 /* Depot.swift */,
 				0D90A771291AD1F9005F2EA0 /* Gem.swift */,
-				0D90A762291ACF8C005F2EA0 /* Tile.swift */,
-				0D90A773291AD260005F2EA0 /* Prop.swift */,
 			);
 			path = Environment;
 			sourceTree = "<group>";
@@ -525,13 +519,11 @@
 				0D90A75D291ABB1E005F2EA0 /* CameraControl.swift in Sources */,
 				0DA0B64229267516001D0C9F /* LanderBoundsContactHandler.swift in Sources */,
 				0DFF9D58291C885C0029AD93 /* Cargo.swift in Sources */,
-				0D90A774291AD260005F2EA0 /* Prop.swift in Sources */,
 				0DA6456529314724001410C4 /* MissionTime.swift in Sources */,
 				0DA64562292FCCA7001410C4 /* SceneDelegate.swift in Sources */,
 				0D7F4EE129232BB6005C54C0 /* HighSpeedWarning.swift in Sources */,
 				0D7F4ECF292295E4005C54C0 /* ContactHandler.swift in Sources */,
 				0D90A76E291AD1E0005F2EA0 /* Mine.swift in Sources */,
-				0D90A763291ACF8C005F2EA0 /* Tile.swift in Sources */,
 				0D90A76C291AD1DA005F2EA0 /* Turret.swift in Sources */,
 				0DA6164729359EB6000350BC /* Hook.swift in Sources */,
 				0D7DE6C42921CA1600A77BD6 /* RestartViewController.swift in Sources */,
