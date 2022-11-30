@@ -118,8 +118,9 @@ class LevelScene: SKScene {
         spawnLander()
         
         // TEST
-        if let bomb = childNode(withName: "//\(Const.Node.Name.bomb)") {
+        if let bomb = childNode(withName: "//\(Const.Node.Name.bomb)") as? Bomb {
             lander.attachHook(to: bomb)
+            bomb.engage()
         }
         
         landerControl.lander = lander

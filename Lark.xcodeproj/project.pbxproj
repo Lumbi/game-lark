@@ -29,6 +29,7 @@
 		0D84377C2937A5E900733178 /* BombTerrainContactHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D84377B2937A5E900733178 /* BombTerrainContactHandler.swift */; };
 		0D8437802937A7FA00733178 /* Destructible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D84377F2937A7FA00733178 /* Destructible.swift */; };
 		0D8437822937B03900733178 /* ShockwaveTerrainContactHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8437812937B03900733178 /* ShockwaveTerrainContactHandler.swift */; };
+		0D8437842937CABF00733178 /* FX.Blink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8437832937CABF00733178 /* FX.Blink.swift */; };
 		0D90A744291A9E90005F2EA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A743291A9E90005F2EA0 /* AppDelegate.swift */; };
 		0D90A746291A9E90005F2EA0 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A745291A9E90005F2EA0 /* GameViewController.swift */; };
 		0D90A74C291A9E90005F2EA0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D90A74A291A9E90005F2EA0 /* LaunchScreen.storyboard */; };
@@ -116,6 +117,7 @@
 		0D84377B2937A5E900733178 /* BombTerrainContactHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BombTerrainContactHandler.swift; sourceTree = "<group>"; };
 		0D84377F2937A7FA00733178 /* Destructible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destructible.swift; sourceTree = "<group>"; };
 		0D8437812937B03900733178 /* ShockwaveTerrainContactHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShockwaveTerrainContactHandler.swift; sourceTree = "<group>"; };
+		0D8437832937CABF00733178 /* FX.Blink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FX.Blink.swift; sourceTree = "<group>"; };
 		0D90A739291A9E8D005F2EA0 /* LevelScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelScene.sks; sourceTree = "<group>"; };
 		0D90A73A291A9E8D005F2EA0 /* LevelScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelScene.swift; sourceTree = "<group>"; };
 		0D90A73B291A9E90005F2EA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				0D7DE6BE292121A300A77BD6 /* FX.Explosion.swift */,
 				0DA79866292547BC001AD90E /* FX.Bounce.swift */,
 				0DA0B64529282504001D0C9F /* FX.Shake.swift */,
+				0D8437832937CABF00733178 /* FX.Blink.swift */,
 			);
 			path = FX;
 			sourceTree = "<group>";
@@ -529,6 +532,7 @@
 				0DA6164529359C3E000350BC /* TestLevel.swift in Sources */,
 				0DA7986529254683001AD90E /* SharedDepot.swift in Sources */,
 				0D90A75D291ABB1E005F2EA0 /* CameraControl.swift in Sources */,
+				0D8437842937CABF00733178 /* FX.Blink.swift in Sources */,
 				0DA0B64229267516001D0C9F /* LanderBoundsContactHandler.swift in Sources */,
 				0DFF9D58291C885C0029AD93 /* Cargo.swift in Sources */,
 				0DA6456529314724001410C4 /* MissionTime.swift in Sources */,
