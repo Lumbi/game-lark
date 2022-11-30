@@ -14,7 +14,7 @@ extension FX {
             (0..<times).map { _ in
                 SKAction.sequence([
                     .colorize(with: color, colorBlendFactor: 1.0, duration: speed / 2.0),
-                    .colorize(with: .clear, colorBlendFactor: 0.0, duration: speed / 2.0),
+                    .colorize(with: .white, colorBlendFactor: 0.0, duration: speed / 2.0),
                 ])
             }
         )
