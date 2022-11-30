@@ -31,7 +31,7 @@ class Lander: SKNode {
         super.init()
         name = Const.Node.Name.lander
 
-        physicsBody = .init(circleOfRadius: 32, center: .zero)
+        physicsBody = .init(circleOfRadius: 30, center: .zero)
         physicsBody?.affectedByGravity = true
         physicsBody?.mass = 0.02
         physicsBody?.allowsRotation = false
