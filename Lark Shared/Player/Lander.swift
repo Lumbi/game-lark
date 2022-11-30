@@ -30,7 +30,7 @@ class Lander: SKNode {
     override init() {
         super.init()
         name = Const.Node.Name.lander
-        
+
         physicsBody = .init(circleOfRadius: 32, center: .zero)
         physicsBody?.affectedByGravity = true
         physicsBody?.mass = 0.02
@@ -39,18 +39,18 @@ class Lander: SKNode {
         physicsBody?.categoryBitMask = Const.PhysicsBody.Bitmask.lander
         physicsBody?.collisionBitMask = Const.PhysicsBody.Bitmask.terrain
         physicsBody?.contactTestBitMask = Const.PhysicsBody.Bitmask.collectible | Const.PhysicsBody.Bitmask.trigger | Const.PhysicsBody.Bitmask.terrain
-        
+
         let sprite = SKSpriteNode(imageNamed: "spr_lander")
         sprite.size = .init(width: 64, height: 64)
         sprite.zPosition = Const.Node.ZPosition.player
         addChild(sprite)
         
         thrusterEmitRate = leftThrusterEmitter.particleBirthRate
-        
+
         leftTruster.position = .init(x: -16, y: -4)
         leftTruster.release()
         addChild(leftTruster)
-        
+
         rightTruster.position = .init(x: 16, y: -4)
         rightTruster.release()
         addChild(rightTruster)
@@ -58,7 +58,7 @@ class Lander: SKNode {
         highSpeedWarning.position = .init(x: sprite.size.width, y: sprite.size.height)
         addChild(highSpeedWarning)
         highSpeedWarning.show()
-        
+
         hook.isHidden = true
         addChild(hook)
     }
@@ -79,6 +79,8 @@ class Lander: SKNode {
                 highSpeedWarning.hide()
             }
         }
+        
+        hook.update()
     }
     
     func attachHook(to hookedNode: SKNode) {
@@ -89,7 +91,7 @@ class Lander: SKNode {
     
     override func removeFromParent() {
         super.removeFromParent()
-
+        
         hook.teardownPhysics()
         hook.isHidden = true
     }
@@ -101,9 +103,9 @@ class Thruster: SKNode {
     private let direction: CGVector
     private var firing: Bool = false
     private let force: CGFloat = 8
-    
+
     private let emitter: SKEmitterNode = .init(fileNamed: "LanderThruster")!
-    
+
     init(direction: CGVector) {
         self.direction = direction
         super.init()
@@ -122,7 +124,7 @@ class Thruster: SKNode {
     
     func fire() {
         guard enabled else { return }
-
+        
         firing = true
         emitter.particleBirthRate = 80
     }

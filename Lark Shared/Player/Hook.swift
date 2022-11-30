@@ -31,6 +31,12 @@ class Hook: SKNode {
         }
     }
     
+    func update() {
+        if joints.last?.bodyB.node?.parent == nil {
+            isHidden = true
+        }
+    }
+    
     func attach(from node: SKNode, to other: SKNode) {
         guard let scene = scene else { return }
         
