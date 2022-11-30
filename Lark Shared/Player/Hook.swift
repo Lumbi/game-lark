@@ -36,10 +36,18 @@ class Hook: SKNode {
             isHidden = true
         }
     }
+
+    var isAttached: Bool {
+        joints.last?.bodyB != nil &&
+        joints.last?.bodyB.node != nil &&
+        joints.last?.bodyB.node?.parent != nil
+    }
     
     func attach(from node: SKNode, to other: SKNode) {
         guard let scene = scene else { return }
-        
+
+        teardownPhysics()
+
         parts.enumerated().forEach { (i, part) in
             let isFirst = i == 0
             let isLast = i == parts.count - 1

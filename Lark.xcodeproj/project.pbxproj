@@ -30,6 +30,7 @@
 		0D8437802937A7FA00733178 /* Destructible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D84377F2937A7FA00733178 /* Destructible.swift */; };
 		0D8437822937B03900733178 /* ShockwaveTerrainContactHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8437812937B03900733178 /* ShockwaveTerrainContactHandler.swift */; };
 		0D8437842937CABF00733178 /* FX.Blink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8437832937CABF00733178 /* FX.Blink.swift */; };
+		0D8437862937D68D00733178 /* LanderBombContactHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8437852937D68D00733178 /* LanderBombContactHandler.swift */; };
 		0D90A744291A9E90005F2EA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A743291A9E90005F2EA0 /* AppDelegate.swift */; };
 		0D90A746291A9E90005F2EA0 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D90A745291A9E90005F2EA0 /* GameViewController.swift */; };
 		0D90A74C291A9E90005F2EA0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D90A74A291A9E90005F2EA0 /* LaunchScreen.storyboard */; };
@@ -118,6 +119,7 @@
 		0D84377F2937A7FA00733178 /* Destructible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destructible.swift; sourceTree = "<group>"; };
 		0D8437812937B03900733178 /* ShockwaveTerrainContactHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShockwaveTerrainContactHandler.swift; sourceTree = "<group>"; };
 		0D8437832937CABF00733178 /* FX.Blink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FX.Blink.swift; sourceTree = "<group>"; };
+		0D8437852937D68D00733178 /* LanderBombContactHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanderBombContactHandler.swift; sourceTree = "<group>"; };
 		0D90A739291A9E8D005F2EA0 /* LevelScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelScene.sks; sourceTree = "<group>"; };
 		0D90A73A291A9E8D005F2EA0 /* LevelScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelScene.swift; sourceTree = "<group>"; };
 		0D90A73B291A9E90005F2EA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 				0D7F4EDA29229E76005C54C0 /* LanderTerrainContactHandler.swift */,
 				0D84377B2937A5E900733178 /* BombTerrainContactHandler.swift */,
 				0D8437812937B03900733178 /* ShockwaveTerrainContactHandler.swift */,
+				0D8437852937D68D00733178 /* LanderBombContactHandler.swift */,
 			);
 			path = Collisions;
 			sourceTree = "<group>";
@@ -535,6 +538,7 @@
 				0D8437842937CABF00733178 /* FX.Blink.swift in Sources */,
 				0DA0B64229267516001D0C9F /* LanderBoundsContactHandler.swift in Sources */,
 				0DFF9D58291C885C0029AD93 /* Cargo.swift in Sources */,
+				0D8437862937D68D00733178 /* LanderBombContactHandler.swift in Sources */,
 				0DA6456529314724001410C4 /* MissionTime.swift in Sources */,
 				0DA64562292FCCA7001410C4 /* SceneDelegate.swift in Sources */,
 				0D7F4EE129232BB6005C54C0 /* HighSpeedWarning.swift in Sources */,

@@ -38,7 +38,11 @@ class Lander: SKNode {
         physicsBody?.friction = 0.1
         physicsBody?.categoryBitMask = Const.PhysicsBody.Bitmask.lander
         physicsBody?.collisionBitMask = Const.PhysicsBody.Bitmask.terrain
-        physicsBody?.contactTestBitMask = Const.PhysicsBody.Bitmask.collectible | Const.PhysicsBody.Bitmask.trigger | Const.PhysicsBody.Bitmask.terrain
+        physicsBody?.contactTestBitMask =
+        Const.PhysicsBody.Bitmask.collectible
+        | Const.PhysicsBody.Bitmask.trigger
+        | Const.PhysicsBody.Bitmask.terrain
+        | Const.PhysicsBody.Bitmask.bomb
 
         let sprite = SKSpriteNode(imageNamed: "spr_lander")
         sprite.size = .init(width: 64, height: 64)
@@ -82,19 +86,28 @@ class Lander: SKNode {
         
         hook.update()
     }
-    
-    func attachHook(to hookedNode: SKNode) {
-        hook.isHidden = false
-        hook.position = .zero
-        hook.attach(from: self, to: hookedNode)
-    }
-    
+
     override func removeFromParent() {
         super.removeFromParent()
         
         hook.teardownPhysics()
         hook.isHidden = true
     }
+}
+
+// Hook
+
+extension Lander {
+    var isHooked: Bool {
+        hook.isAttached
+    }
+
+    func attachHook(to hookedNode: SKNode) {
+        hook.position = .zero
+        hook.isHidden = false
+        hook.attach(from: self, to: hookedNode)
+    }
+
 }
 
 class Thruster: SKNode {

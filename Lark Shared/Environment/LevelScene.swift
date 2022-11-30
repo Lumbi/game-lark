@@ -38,8 +38,9 @@ class LevelScene: SKScene {
                             scene: self,
                             successor: BombTerrainContactHandler(
                                 successor: ShockwaveTerrainContactHandler(
-                                    successor: nil
-                        )))))))
+                                    successor: LanderBombContactHandler(
+                                        successor: nil
+                        ))))))))
     }()
     
     private lazy var endContactHandlerChain: ContactHandlerChain = {
@@ -116,12 +117,6 @@ class LevelScene: SKScene {
         levelLoader.load(into: self)
 
         spawnLander()
-        
-        // TEST
-        if let bomb = childNode(withName: "//\(Const.Node.Name.bomb)") as? Bomb {
-            lander.attachHook(to: bomb)
-            bomb.engage()
-        }
         
         landerControl.lander = lander
         cameraControl.target = lander
