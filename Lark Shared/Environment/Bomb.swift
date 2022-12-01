@@ -36,6 +36,8 @@ class Bomb: SKNode {
     }
     
     func engage() {
+        sprite.removeAllActions()
+
         sprite.run(
             .sequence([
                 FX.blink(color: .red, times: 5, speed: 2),
