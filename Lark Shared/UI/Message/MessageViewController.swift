@@ -18,11 +18,19 @@ class MessageViewController: UIViewController {
     
     var charactersPerSecond: Double = 24
     var messagesToShow: [Message] = []
+    var messageCurrentlyShown: Message?
+    var isTypingMessage: Bool = false
     
     var onDismiss: (() -> Void)? = nil
+
+    private var textUpdateWorkItems: [DispatchWorkItem] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+
+    deinit {
+        cancelScheduledTextUpdates()
     }
     
     func show(messages: [Message]) {
@@ -33,30 +41,26 @@ class MessageViewController: UIViewController {
     private func showNextMessage() {
         if let message = messagesToShow.first {
             messagesToShow.removeFirst()
+            messageCurrentlyShown = message
             show(message: message)
         }
     }
     
     private func show(message: Message) {
-        view.isUserInteractionEnabled = false
+        cancelScheduledTextUpdates()
+
         nextMessageIcon?.isHidden = true
-        
-        DispatchQueue.global(qos: .userInteractive).async {
-            let count = message.text.count
-            var current = 0
-            while current <= count {
-                let next = current + 1
-                DispatchQueue.main.async {
-                    self.updateText(with: message, showUntil: current)
-                    let isCompleted = next >= count
-                    if isCompleted {
-                        self.view.isUserInteractionEnabled = true
-                        self.nextMessageIcon?.isHidden = false
-                    }
-                }
-                Thread.sleep(forTimeInterval: 1 / self.charactersPerSecond)
-                current = next
-            }
+        isTypingMessage = true
+
+        for current in 0...message.text.count {
+            let work = DispatchWorkItem { self.updateText(with: message, showUntil: current) }
+
+            DispatchQueue.main.asyncAfter(
+                deadline: .now() + Double(current) * (1 / charactersPerSecond),
+                execute: work
+            )
+
+            textUpdateWorkItems.append(work)
         }
     }
     
@@ -67,10 +71,31 @@ class MessageViewController: UIViewController {
         attributedString.addAttribute(.foregroundColor, value: UIColor.white, range: visibleRange)
         attributedString.addAttribute(.foregroundColor, value: UIColor.clear, range: hiddenRange)
         messageLabel?.attributedText = attributedString
+
+        let isCompleted = endIndex >= message.text.count
+        isTypingMessage = !isCompleted
+        nextMessageIcon?.isHidden = !isCompleted
+    }
+
+    private func skipTyping() {
+        cancelScheduledTextUpdates()
+
+        if let messageCurrentlyShown = messageCurrentlyShown {
+            self.updateText(with: messageCurrentlyShown, showUntil: messageCurrentlyShown.text.count)
+        }
+    }
+
+    private func cancelScheduledTextUpdates() {
+        for workItem in textUpdateWorkItems {
+            workItem.cancel()
+        }
+        textUpdateWorkItems.removeAll()
     }
     
     @IBAction func didTap() {
-        if messagesToShow.isEmpty {
+        if isTypingMessage {
+            skipTyping()
+        } else if messagesToShow.isEmpty {
             close()
         } else {
             showNextMessage()
