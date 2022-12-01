@@ -10,7 +10,7 @@ import CoreGraphics
 
 class LanderControl {
     var lander: Lander?
-    var enabled: Bool = true {
+    var enabled: Bool = false {
         didSet {
             leftThruster?.enabled = enabled
             rightThruster?.enabled = enabled

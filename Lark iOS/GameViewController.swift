@@ -36,6 +36,8 @@ class GameViewController: UIViewController {
         skView.isMultipleTouchEnabled = true
         
         modalPresentationStyle = .fullScreen
+
+        scene.start()
     }
     
     override var prefersStatusBarHidden: Bool {

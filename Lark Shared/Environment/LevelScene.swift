@@ -73,24 +73,9 @@ class LevelScene: SKScene {
     }
     
     private func setUpScene() {
-        scene?.view?.isHidden = true
-        landerControl.enabled = false
-        
         setupPhysics()
         setupCamera()
         setupLevel()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.scene?.view?.isHidden = false
-            #if SKIP_INTRO
-            self.didShowIntro2 = true
-            self.hud.layout()
-            self.landerControl.enabled = true
-            self.hud.missionTime.start()
-            #else
-            self.presentIntro1()
-            #endif
-        }
     }
     
     private func setupPhysics() {
@@ -138,6 +123,16 @@ class LevelScene: SKScene {
         })
         
         sharedDepot.delegate = hud.gemCounter
+    }
+
+    func start() {
+        view?.isUserInteractionEnabled = false
+        lander.physicsBody?.isDynamic = false
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.view?.isUserInteractionEnabled = true
+            self.presentIntro1()
+        }
     }
     
     var updateGemDetector: TimeAccumulator = .init(threshold: 1)
@@ -410,8 +405,8 @@ extension LevelScene {
             .init(text: "Alright, enough chatting. The probe is all yours now, good luck."),
         ]) {
             self.hud.layout()
-            self.landerControl.enabled = true
             self.hud.missionTime.start()
+            self.lander.physicsBody?.isDynamic = true
         }
     }
 }
