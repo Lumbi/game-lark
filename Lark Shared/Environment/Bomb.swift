@@ -80,7 +80,7 @@ class Shockwave: SKNode {
     func expand() {
         run(
             .sequence([
-                .scale(to: 50, duration: 0.3),
+                .scale(to: 64, duration: 0.2),
                 .removeFromParent()
             ])
         )
