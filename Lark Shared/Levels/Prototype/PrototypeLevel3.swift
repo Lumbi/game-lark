@@ -8,3 +8,6 @@
 import Foundation
 import SpriteKit
 
+class PrototypeLevel3: LevelScene {
+    override var levelName: String { "level3" }
+}

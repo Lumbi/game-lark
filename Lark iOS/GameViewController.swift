@@ -10,6 +10,8 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
+    var level: LevelScene?
+
     override func loadView() {
         super.loadView()
         
@@ -19,11 +21,14 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let scene = PrototypeLevel1()
-        
         // Present the scene
         let skView = self.view as! SKView
-        skView.presentScene(scene)
+
+        if let level = level {
+            skView.presentScene(level)
+        } else {
+            print("Error: 'level' was not set on GameViewController before it was loaded")
+        }
         
         skView.ignoresSiblingOrder = true
         
@@ -36,7 +41,7 @@ class GameViewController: UIViewController {
         
         modalPresentationStyle = .fullScreen
 
-        scene.start()
+        level?.start()
     }
     
     override var prefersStatusBarHidden: Bool {

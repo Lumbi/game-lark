@@ -7,18 +7,26 @@
 
 import Foundation
 import UIKit
+import SpriteKit
 
 class LevelSelectViewController: UIViewController {
-    
-    @IBOutlet weak var selectLevelButton: UIButton?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        selectLevelButton?.setTitle(localized("level_select/select"), for: .normal)
     }
-    
-    @IBAction func tapSelectLevel() {
+
+    @IBAction func tapSelectLevel1() {
+        transiton(to: PrototypeLevel1())
+    }
+
+    @IBAction func tapSelectLevel2() {
+        transiton(to: PrototypeLevel2())
+    }
+
+    @IBAction func tapSelectLevel3() {
+        transiton(to: PrototypeLevel3())
+    }
+
+    private func transiton(to level: LevelScene) {
         view.isUserInteractionEnabled = false
 
         UIView.animate(
@@ -27,7 +35,9 @@ class LevelSelectViewController: UIViewController {
                 self.view.alpha = 0
             },
             completion: { _ in
-                self.view.window?.rootViewController = GameViewController()
+                let viewController = GameViewController()
+                viewController.level = level
+                self.view.window?.rootViewController = viewController
             }
         )
     }
