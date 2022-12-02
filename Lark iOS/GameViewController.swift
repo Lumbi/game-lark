@@ -10,7 +10,6 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
-    
     override func loadView() {
         super.loadView()
         
@@ -20,7 +19,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let scene = LevelScene.load(levelNamed: "level1")
+        let scene = PrototypeLevel1()
         
         // Present the scene
         let skView = self.view as! SKView

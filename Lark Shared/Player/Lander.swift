@@ -52,11 +52,9 @@ class Lander: SKNode {
         thrusterEmitRate = leftThrusterEmitter.particleBirthRate
 
         leftTruster.position = .init(x: -16, y: -4)
-        leftTruster.release()
         addChild(leftTruster)
 
         rightTruster.position = .init(x: 16, y: -4)
-        rightTruster.release()
         addChild(rightTruster)
 
         highSpeedWarning.position = .init(x: sprite.size.width, y: sprite.size.height)
@@ -112,6 +110,8 @@ extension Lander {
 
 class Thruster: SKNode {
     var enabled: Bool = true
+    private(set) var firedCount: Int = 0
+    private(set) var releasedCount: Int = 0
 
     private let direction: CGVector
     private var firing: Bool = false
@@ -128,6 +128,7 @@ class Thruster: SKNode {
             emitter.emissionAngle = atan(direction.dy / direction.dx) + CGFloat.pi
         }
         emitter.zPosition = Const.Node.ZPosition.visualEffects
+        emitter.particleBirthRate = 0
         addChild(emitter)
     }
     
@@ -140,11 +141,15 @@ class Thruster: SKNode {
         
         firing = true
         emitter.particleBirthRate = 80
+
+        firedCount += 1
     }
     
     func release() {
         firing = false
         emitter.particleBirthRate = 0
+
+        releasedCount += 1
     }
     
     func apply(on lander: Lander?) {

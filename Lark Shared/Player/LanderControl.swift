@@ -15,7 +15,7 @@ class LanderControl {
             leftThruster?.enabled = enabled
             rightThruster?.enabled = enabled
 
-            if !enabled {
+            if oldValue == true && enabled == false {
                 leftThruster?.release()
                 rightThruster?.release()
             }

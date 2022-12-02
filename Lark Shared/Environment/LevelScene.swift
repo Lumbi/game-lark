@@ -9,6 +9,9 @@ import SpriteKit
 import SKTiled
 
 class LevelScene: SKScene {
+    var levelName: String { fatalError("Must override") }
+    private(set) var time: Time = .init()
+
     let lander: Lander = .init()
     let cargo: Cargo = .init()
     let hud: HUD = .init()
@@ -16,15 +19,7 @@ class LevelScene: SKScene {
     let cameraControl: CameraControl = .init()
     let sharedDepot: SharedDepot = .init()
 
-    private var levelName: String = ""
-    private var time: Time = .init()
     private(set) var detectedGemCount: Int = 0
-    
-    // TODO: Future me, please refactor
-    var didUseLeftThrusterAtLeastOnce: Bool = false
-    var didUseRightThrusterAtLeastOnce: Bool = false
-    var didShowIntro2: Bool = false
-    var intro2Check: TimeAccumulator = .init(threshold: 1)
     
     private lazy var beginContactHandlerChain: ContactHandlerChain = {
         ContactHandlerChain(
@@ -51,23 +46,17 @@ class LevelScene: SKScene {
                     scene: self, successor: nil
                 )))
     }()
-    
-    class func load(levelNamed levelName: String) -> Self {
-        // Load 'GameScene.sks' as an SKScene.
-        guard let scene = SKScene(fileNamed: "LevelScene") as? Self else {
-            print("Failed to load LevelScene.sks")
-            abort()
-        }
-        
-        // Set the scale mode to scale to fit the window
-        scene.scaleMode = .aspectFill
-        
-        scene.levelName = levelName
-        scene.setUpScene()
-        
-        return scene
+
+    override init() {
+        super.init(size: .init(width: 1000, height: 1000))
+        scaleMode = .aspectFill
+        setUpScene()
     }
-    
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func didMove(to view: SKView) {
         hud.layout()
     }
@@ -94,7 +83,6 @@ class LevelScene: SKScene {
         
         camera.addChild(hud)
         cargo.delegate = hud.gemCounter
-        
     }
     
     private func setupLevel() {
@@ -126,13 +114,7 @@ class LevelScene: SKScene {
     }
 
     func start() {
-        view?.isUserInteractionEnabled = false
-        lander.physicsBody?.isDynamic = false
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.view?.isUserInteractionEnabled = true
-            self.presentIntro1()
-        }
+        didStart()
     }
     
     var updateGemDetector: TimeAccumulator = .init(threshold: 1)
@@ -167,16 +149,13 @@ class LevelScene: SKScene {
                 hud.gemDetector.hide()
             }
         }
-        
-        if !didShowIntro2 {
-            if didUseLeftThrusterAtLeastOnce && didUseRightThrusterAtLeastOnce {
-                if intro2Check.update(time: time) {
-                    presentIntro2()
-                    didShowIntro2 = true
-                }
-            }
-        }
     }
+
+    // MARK: - Gameplay callbacks
+
+    func didStart() {}
+
+    func didComplete() {}
 }
 
 // MARK: - Touch
@@ -203,10 +182,8 @@ extension LevelScene {
             let location = touch.location(in: view)
             if location.x < view.bounds.width / 2.0 {
                 landerControl.leftThruster?.release()
-                didUseLeftThrusterAtLeastOnce = true
             } else {
                 landerControl.rightThruster?.release()
-                didUseRightThrusterAtLeastOnce = true
             }
         }
     }
@@ -248,7 +225,7 @@ extension LevelScene: DepotDelegate {
             landerControl.enabled = false
             hud.missionTime.stop()
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.presentComplete()
+                self.didComplete()
             }
         }
     }
@@ -362,51 +339,5 @@ extension LevelScene {
         viewController.show(messages: messages)
         
         viewController.onDismiss = onDismiss
-    }
-    
-    func presentComplete() {
-        presentMessages([
-            .init(text: "Nice work. The spectrometer isn't picking up any signal now."),
-            .init(text: "Looks like you've found all the Topsium shards around here."),
-            .init(text: "Hang tight while we initiate the orbit sequence. Let's get the probe back home.")
-        ]) { [weak self] in
-            let viewController = MissionCompleteViewController.fromNib()
-            viewController.modalPresentationStyle = .overCurrentContext
-            viewController.modalTransitionStyle = .crossDissolve
-            
-            self?.view?.window?.rootViewController?.present(viewController, animated: true)
-        }
-    }
-    
-    func presentIntro1() {
-        presentMessages([
-            .init(text: "Mission control to command module, do you copy?"),
-            .init(text: "Excellent, telemetry data is looking nominal. Let's initiate the control check sequence."),
-            .init(text: "Can you operate your control screen and test the lateral thrusters?")
-        ])
-    }
-    
-    func presentIntro2() {
-        presentMessages([
-            .init(text: "Lateral thrusters are looking good."),
-            .init(text: "But, since you don't have that many flight hours on record let's go over the probe's controls."),
-            .init(text: "To manoeuvre the probe, you'll need to balance the lateral thrusters carefully."),
-            .init(text: "It's a bit more difficult than in the simulator."),
-            .init(text: "The probe is also very fragile. Engineering had to cut some corners..."),
-            .init(text: "Thankfully, we had enough budget for a velocity sensor, so you'll see when you're going too fast."),
-            .init(text: "Also, you'll have to be careful not to stray too far away from the site."),
-            .init(text: "Otherwise we'll lose connection to the probe. It's programmed to self-destruct in that case."),
-            .init(text: "..."),
-            .init(text: "Please be careful with the probe. These aren't free and I'd really like to keep budget for coffee here..."),
-            .init(text: "Now, for the mission briefing, you'll need to retrieve shards of Tospium scattered on the site."),
-            .init(text: "Tospium emits light at very specific wavelengths so you should be able to detect with the onboard spectrometer."),
-            .init(text: "We've detected 10 Topsium shards on this site."),
-            .init(text: "Once you've collected the shards, just return them to the depot near the probe and we'll be done here."),
-            .init(text: "Alright, enough chatting. The probe is all yours now, good luck."),
-        ]) {
-            self.hud.layout()
-            self.hud.missionTime.start()
-            self.lander.physicsBody?.isDynamic = true
-        }
     }
 }
