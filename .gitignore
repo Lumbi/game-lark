@@ -25,3 +25,7 @@ Carthage.pkg
 CarthageApp.pkg
 Carthage.xcodeproj/
 Carthage/Build/
+
+#Tiled
+*.tiled-session
+
