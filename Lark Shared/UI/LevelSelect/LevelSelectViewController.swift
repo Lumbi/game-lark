@@ -24,6 +24,16 @@ class LevelSelectViewController: UIViewController {
         super.viewWillAppear(animated)
 
         updateLevelButtonsAvailability()
+
+        if animated {
+            view.alpha = 0
+            UIView.animate(
+                withDuration: 1,
+                animations: {
+                    self.view.alpha = 1
+                }
+            )
+        }
     }
 
     @IBAction func tapSelectLevel1() {
@@ -49,7 +59,7 @@ class LevelSelectViewController: UIViewController {
         view.isUserInteractionEnabled = false
 
         UIView.animate(
-            withDuration: 2,
+            withDuration: 1,
             animations: {
                 self.view.alpha = 0
             },

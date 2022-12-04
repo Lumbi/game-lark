@@ -112,6 +112,9 @@ class LevelScene: SKScene, SKPhysicsContactDelegate, DepotDelegate {
     }
 
     func start() {
+        alpha = 0
+        run(.fadeIn(withDuration: 1))
+
         didStart()
     }
     
