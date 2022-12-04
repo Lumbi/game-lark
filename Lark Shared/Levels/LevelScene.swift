@@ -8,7 +8,7 @@
 import SpriteKit
 import SKTiled
 
-class LevelScene: SKScene {
+class LevelScene: SKScene, SKPhysicsContactDelegate, DepotDelegate {
     var levelName: LevelName { fatalError("Must override") }
 
     private(set) var time: Time = .init()
@@ -155,12 +155,11 @@ class LevelScene: SKScene {
 
     func didComplete() {
         progressService.complete(levelName: levelName)
+        presentComplete()
     }
-}
 
-// MARK: - Touch
+    // MARK: - Touch
 
-extension LevelScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let view = view else { return }
         for touch in touches {
@@ -199,11 +198,9 @@ extension LevelScene {
             }
         }
     }
-}
 
-// MARK: Physics Contact
+    // MARK: Physics Contact
 
-extension LevelScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         beginContactHandlerChain.handle(contact: contact)
     }
@@ -211,11 +208,9 @@ extension LevelScene: SKPhysicsContactDelegate {
     func didEnd(_ contact: SKPhysicsContact) {
         endContactHandlerChain.handle(contact: contact)
     }
-}
 
-// MARK: - Gameplay
+    // MARK: - Gameplay
 
-extension LevelScene: DepotDelegate {
     func depotReadyToAcceptGems(_ depot: Depot) {
         let gems = cargo.unloadGems()
         depot.acceptGems(gems)
@@ -300,13 +295,11 @@ extension LevelScene: DepotDelegate {
     func cancelOutOfBoundsCountDown() {
         removeAction(forKey: "out_of_bounds_countdown")
     }
-}
 
-// MARK: - Presentation
+    // MARK: - Presentation
 
-// TODO: Refactor presentation
+    // TODO: Refactor presentation
 
-extension LevelScene {
     func presentRestart() {
         let restartViewController = RestartViewController.fromNib()
         restartViewController.modalPresentationStyle = .overCurrentContext
@@ -339,5 +332,13 @@ extension LevelScene {
         viewController.show(messages: messages)
         
         viewController.onDismiss = onDismiss
+    }
+
+    func presentComplete() {
+        let viewController = MissionCompleteViewController.fromNib()
+        viewController.modalPresentationStyle = .overCurrentContext
+        viewController.modalTransitionStyle = .crossDissolve
+
+        view?.window?.rootViewController?.present(viewController, animated: true)
     }
 }
