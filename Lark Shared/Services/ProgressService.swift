@@ -52,11 +52,8 @@ class ProgressService {
     }
 
     private func unlock(levelName: LevelName) {
-        if let rawValue = userDefaults.string(forKey: qualifiedKey(for: levelName.rawValue)) {
-            let progress = LevelProgress(rawValue: rawValue) ?? .locked
-            if case .locked = progress {
-                userDefaults.set(LevelProgress.unlocked.rawValue, forKey: qualifiedKey(for: levelName.rawValue))
-            }
+        if case .locked = progress(for: levelName) {
+            userDefaults.set(LevelProgress.unlocked.rawValue, forKey: qualifiedKey(for: levelName.rawValue))
         }
     }
 
