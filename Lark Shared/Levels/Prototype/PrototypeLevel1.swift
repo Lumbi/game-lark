@@ -46,16 +46,7 @@ class PrototypeLevel1: LevelScene {
         }
     }
 
-    override func didComplete() {
-        super.didComplete()
-        presentComplete()
-    }
-}
-
-// MARK: - Dialogs
-
-extension PrototypeLevel1 {
-    func presentComplete() {
+    override func presentComplete() {
         presentMessages([
             .init(text: "Nice work. The spectrometer isn't picking up any signal now."),
             .init(text: "Looks like you've found all the Topsium shards around here."),
