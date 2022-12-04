@@ -19,15 +19,23 @@
             <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NRb-PL-3as">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="NRb-PL-3as">
                     <rect key="frame" x="16" y="75" width="820" height="268"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIz-cz-ce9">
-                            <rect key="frame" x="0.0" y="0.0" width="820" height="268"/>
+                            <rect key="frame" x="340.66666666666669" y="0.0" width="139" height="130"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="Reset progress"/>
                             <connections>
                                 <action selector="tapResetProgressButton" destination="-1" eventType="touchUpInside" id="RhM-MW-pj0"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xxN-jJ-ckv">
+                            <rect key="frame" x="315" y="138" width="190.33333333333337" height="130"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Complete all progress"/>
+                            <connections>
+                                <action selector="tapCompleteAllProgressButton" destination="-1" eventType="touchUpInside" id="YrK-q0-PaZ"/>
                             </connections>
                         </button>
                     </subviews>
