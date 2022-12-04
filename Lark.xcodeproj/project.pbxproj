@@ -74,6 +74,7 @@
 		0DA7986A29254D0D001AD90E /* MissionCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA7986929254D0D001AD90E /* MissionCompleteViewController.swift */; };
 		0DA7986C29254D1F001AD90E /* MissionCompleteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DA7986B29254D1F001AD90E /* MissionCompleteViewController.xib */; };
 		0DD482512936F6B400009806 /* Bomb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD482502936F6B400009806 /* Bomb.swift */; };
+		0DD8B926293C39F3002ACCF1 /* ProgressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD8B925293C39F3002ACCF1 /* ProgressService.swift */; };
 		0DFF9D52291BF4330029AD93 /* Tilemaps in Resources */ = {isa = PBXBuildFile; fileRef = 0DFF9D51291BF4330029AD93 /* Tilemaps */; };
 		0DFF9D54291C36300029AD93 /* Design.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 0DFF9D53291C36300029AD93 /* Design.rtf */; };
 		0DFF9D56291C84070029AD93 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFF9D55291C84070029AD93 /* Constants.swift */; };
@@ -164,6 +165,7 @@
 		0DA7986929254D0D001AD90E /* MissionCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCompleteViewController.swift; sourceTree = "<group>"; };
 		0DA7986B29254D1F001AD90E /* MissionCompleteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MissionCompleteViewController.xib; sourceTree = "<group>"; };
 		0DD482502936F6B400009806 /* Bomb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bomb.swift; sourceTree = "<group>"; };
+		0DD8B925293C39F3002ACCF1 /* ProgressService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressService.swift; sourceTree = "<group>"; };
 		0DFF9D51291BF4330029AD93 /* Tilemaps */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Tilemaps; sourceTree = "<group>"; };
 		0DFF9D53291C36300029AD93 /* Design.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Design.rtf; sourceTree = "<group>"; };
 		0DFF9D55291C84070029AD93 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 				0DA6164329359C10000350BC /* Levels */,
 				0D7DE6BD2921216B00A77BD6 /* FX */,
 				0D90A768291AD18D005F2EA0 /* Core */,
+				0DD8B924293C39B2002ACCF1 /* Services */,
 				0D90A766291AD153005F2EA0 /* Player */,
 				0D90A777291AD3A4005F2EA0 /* HUD */,
 				0D7DE6C22921C9B000A77BD6 /* UI */,
@@ -419,6 +422,14 @@
 			path = MissionComplete;
 			sourceTree = "<group>";
 		};
+		0DD8B924293C39B2002ACCF1 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0DD8B925293C39F3002ACCF1 /* ProgressService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		0DFF9D4E291BF3570029AD93 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -520,6 +531,7 @@
 				0D7F4ED329229A77005C54C0 /* SKPhysicsBody+Ext.swift in Sources */,
 				0D90A746291A9E90005F2EA0 /* GameViewController.swift in Sources */,
 				0D90A77B291AD3EC005F2EA0 /* GemDetector.swift in Sources */,
+				0DD8B926293C39F3002ACCF1 /* ProgressService.swift in Sources */,
 				0D90A75F291ABB50005F2EA0 /* Time.swift in Sources */,
 				0DFF9D5A291C899D0029AD93 /* HUD.swift in Sources */,
 				0D90A75B291AB737005F2EA0 /* CGVector+Ext.swift in Sources */,

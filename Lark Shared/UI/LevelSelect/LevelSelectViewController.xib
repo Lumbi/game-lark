@@ -11,6 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LevelSelectViewController" customModule="Lark" customModuleProvider="target">
             <connections>
+                <outlet property="selectLevel1Button" destination="PBy-Vx-gtv" id="1m3-w2-NcO"/>
+                <outlet property="selectLevel2Button" destination="aqv-OJ-2RN" id="CaC-pi-xfB"/>
+                <outlet property="selectLevel3Button" destination="GDG-ZY-0Ep" id="s9a-zh-I1J"/>
                 <outlet property="view" destination="iN0-l3-epB" id="dZR-G7-m3r"/>
             </connections>
         </placeholder>
