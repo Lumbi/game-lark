@@ -31,6 +31,10 @@ class Hook: SKNode {
         joints.last?.bodyB.node != nil &&
         joints.last?.bodyB.node?.parent != nil
     }
+
+    var attachedNode: SKNode? {
+        joints.last?.bodyB.node
+    }
     
     func attach(from node: SKNode, to other: SKNode) {
         guard let scene = scene else { return }
@@ -107,6 +111,8 @@ class Hook: SKNode {
         joints.forEach { joint in
             scene.physicsWorld.add(joint)
         }
+
+        other.zPosition += 1 // Bump Z position so that it's visible againts same type of nodes
     }
     
     func teardownPhysics() {

@@ -29,6 +29,11 @@ struct LanderBombContactHandler: ContactHandler {
         if !lander.isHooked {
             lander.attachHook(to: bomb)
             bomb.engage()
+
+            // Automatically replace the bomb when picked up
+            let newBomb = Bomb()
+            newBomb.position = bomb.position
+            bomb.parent?.addChild(newBomb)
         }
     }
 }

@@ -229,7 +229,7 @@ class LevelScene: SKScene, SKPhysicsContactDelegate, DepotDelegate {
         let destroyPosition = convert(.zero, from: lander)
         landerControl.enabled = false
         FX.Explosion.play(in: self, at: destroyPosition)
-        lander.removeFromParent()
+        lander.destroy()
         
         let droppedGems = cargo.unloadGems()
         for droppedGem in droppedGems {
@@ -252,7 +252,7 @@ class LevelScene: SKScene, SKPhysicsContactDelegate, DepotDelegate {
 
         lander.run(.sequence([
             FX.shake(duration: 2),
-            .removeFromParent(),
+            .run { self.lander.destroy() },
             .run { FX.Explosion.play(in: self, at: destroyPosition) },
             .run { self.presentRestart() },
             .run {

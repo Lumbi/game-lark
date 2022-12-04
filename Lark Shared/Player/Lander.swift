@@ -85,9 +85,13 @@ class Lander: SKNode {
         hook.update()
     }
 
-    override func removeFromParent() {
-        super.removeFromParent()
-        
+    func destroy() {
+        if let attachedBomb = hook.attachedNode as? Bomb {
+            attachedBomb.explode()
+        }
+
+        removeFromParent()
+
         hook.teardownPhysics()
         hook.isHidden = true
     }
