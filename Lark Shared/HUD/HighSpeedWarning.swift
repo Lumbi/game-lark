@@ -19,7 +19,7 @@ class HighSpeedWarning: SKNode {
         addChild(sprite)
         
         let label = SKLabelNode(text: "HIGH SPEED")
-        label.fontName = "Futura"
+        label.fontName = "Menlo"
         label.fontSize = 12
         label.fontColor = .yellow
         label.verticalAlignmentMode = .top
