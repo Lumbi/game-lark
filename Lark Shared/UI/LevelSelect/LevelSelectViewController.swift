@@ -38,6 +38,13 @@ class LevelSelectViewController: UIViewController {
         transiton(to: PrototypeLevel3())
     }
 
+    @IBAction func showDebug() {
+        #if DEBUG
+        let viewController = DebugViewController.fromNib()
+        present(viewController, animated: true)
+        #endif
+    }
+
     private func transiton(to level: LevelScene) {
         view.isUserInteractionEnabled = false
 

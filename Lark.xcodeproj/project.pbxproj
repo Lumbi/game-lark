@@ -75,6 +75,8 @@
 		0DA7986C29254D1F001AD90E /* MissionCompleteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DA7986B29254D1F001AD90E /* MissionCompleteViewController.xib */; };
 		0DD482512936F6B400009806 /* Bomb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD482502936F6B400009806 /* Bomb.swift */; };
 		0DD8B926293C39F3002ACCF1 /* ProgressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD8B925293C39F3002ACCF1 /* ProgressService.swift */; };
+		0DD8B929293D2BBC002ACCF1 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD8B928293D2BBC002ACCF1 /* DebugViewController.swift */; };
+		0DD8B92B293D2C17002ACCF1 /* DebugViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DD8B92A293D2C17002ACCF1 /* DebugViewController.xib */; };
 		0DFF9D52291BF4330029AD93 /* Tilemaps in Resources */ = {isa = PBXBuildFile; fileRef = 0DFF9D51291BF4330029AD93 /* Tilemaps */; };
 		0DFF9D54291C36300029AD93 /* Design.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 0DFF9D53291C36300029AD93 /* Design.rtf */; };
 		0DFF9D56291C84070029AD93 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFF9D55291C84070029AD93 /* Constants.swift */; };
@@ -166,6 +168,8 @@
 		0DA7986B29254D1F001AD90E /* MissionCompleteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MissionCompleteViewController.xib; sourceTree = "<group>"; };
 		0DD482502936F6B400009806 /* Bomb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bomb.swift; sourceTree = "<group>"; };
 		0DD8B925293C39F3002ACCF1 /* ProgressService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressService.swift; sourceTree = "<group>"; };
+		0DD8B928293D2BBC002ACCF1 /* DebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
+		0DD8B92A293D2C17002ACCF1 /* DebugViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DebugViewController.xib; sourceTree = "<group>"; };
 		0DFF9D51291BF4330029AD93 /* Tilemaps */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Tilemaps; sourceTree = "<group>"; };
 		0DFF9D53291C36300029AD93 /* Design.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Design.rtf; sourceTree = "<group>"; };
 		0DFF9D55291C84070029AD93 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -211,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				0D7DE6CD2921CE3500A77BD6 /* Extensions */,
+				0DD8B927293D2BAE002ACCF1 /* Debug */,
 				0DA6455C292FC850001410C4 /* LevelSelect */,
 				0D81CE5D29286A7F00AF4D84 /* Message */,
 				0D7DE6D02921CED500A77BD6 /* Restart */,
@@ -430,6 +435,15 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		0DD8B927293D2BAE002ACCF1 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				0DD8B92A293D2C17002ACCF1 /* DebugViewController.xib */,
+				0DD8B928293D2BBC002ACCF1 /* DebugViewController.swift */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
 		0DFF9D4E291BF3570029AD93 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -505,6 +519,7 @@
 				0DA180F7291FF86C000D48AA /* LanderThruster.sks in Resources */,
 				0D7DE6C82921CAEB00A77BD6 /* Localizable.strings in Resources */,
 				0DA6455E292FC866001410C4 /* LevelSelectViewController.xib in Resources */,
+				0DD8B92B293D2C17002ACCF1 /* DebugViewController.xib in Resources */,
 				0DFF9D52291BF4330029AD93 /* Tilemaps in Resources */,
 				0D90A787291AD7CD005F2EA0 /* Todo.rtf in Resources */,
 				0DA7986C29254D1F001AD90E /* MissionCompleteViewController.xib in Resources */,
@@ -576,6 +591,7 @@
 				0D7DE6C62921CAC400A77BD6 /* Localization.swift in Sources */,
 				0D90A772291AD1F9005F2EA0 /* Gem.swift in Sources */,
 				0D7DE6BF292121A300A77BD6 /* FX.Explosion.swift in Sources */,
+				0DD8B929293D2BBC002ACCF1 /* DebugViewController.swift in Sources */,
 				0D7F4ECC292294A1005C54C0 /* SKPhysicsContact+Ext.swift in Sources */,
 				0D84377C2937A5E900733178 /* BombTerrainContactHandler.swift in Sources */,
 				0DD482512936F6B400009806 /* Bomb.swift in Sources */,

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum LevelName: String {
+enum LevelName: String, CaseIterable {
     case w1_l1 = "level-1-1"
     case w1_l2 = "level-1-2"
     case w1_l3 = "level-1-3"
@@ -48,6 +48,12 @@ class ProgressService {
         case .w1_l3:
             // all clear
             break
+        }
+    }
+
+    func reset() {
+        for levelName in LevelName.allCases {
+            userDefaults.set(nil, forKey: qualifiedKey(for: levelName.rawValue))
         }
     }
 

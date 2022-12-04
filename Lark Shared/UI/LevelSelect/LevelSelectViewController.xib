@@ -101,8 +101,17 @@ Atmosphere:
                 <constraint firstItem="jjk-uj-wL5" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="tI3-Cv-A5f"/>
                 <constraint firstItem="jjk-uj-wL5" firstAttribute="top" secondItem="PBy-Vx-gtv" secondAttribute="bottom" constant="-17.333333333333314" id="v8k-Sf-2Dy"/>
             </constraints>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="MO2-E6-kIF" appends="YES" id="Ou0-6s-b2b"/>
+            </connections>
             <point key="canvasLocation" x="114.78873239436621" y="19.083969465648853"/>
         </view>
+        <tapGestureRecognizer numberOfTapsRequired="3" id="MO2-E6-kIF">
+            <connections>
+                <action selector="showDebug" destination="-1" id="OBE-up-BAS"/>
+                <outlet property="delegate" destination="-1" id="UMn-IA-JfB"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="spr_planet" width="565" height="565"/>
