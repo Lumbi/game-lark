@@ -20,7 +20,7 @@ enum LevelProgress: String {
 }
 
 class ProgressService {
-    private let userDefaults: UserDefaults = .init()
+    private let userDefaults: UserDefaults = .standard
 
     func progress(for levelName: LevelName) -> LevelProgress {
         if let rawValue = userDefaults.string(forKey: qualifiedKey(for: levelName.rawValue)),
