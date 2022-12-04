@@ -9,7 +9,8 @@ import SpriteKit
 import SKTiled
 
 class LevelScene: SKScene {
-    var levelName: String { fatalError("Must override") }
+    var levelName: LevelName { fatalError("Must override") }
+
     private(set) var time: Time = .init()
 
     let lander: Lander = .init()
@@ -20,6 +21,7 @@ class LevelScene: SKScene {
     let sharedDepot: SharedDepot = .init()
 
     private(set) var detectedGemCount: Int = 0
+    private let progressService: ProgressService = .init()
     
     private lazy var beginContactHandlerChain: ContactHandlerChain = {
         ContactHandlerChain(
@@ -35,9 +37,9 @@ class LevelScene: SKScene {
                                 successor: ShockwaveTerrainContactHandler(
                                     successor: LanderBombContactHandler(
                                         successor: nil
-                        ))))))))
+                                    ))))))))
     }()
-    
+
     private lazy var endContactHandlerChain: ContactHandlerChain = {
         ContactHandlerChain(
             first: EndLanderDepotContactHandler(
@@ -55,10 +57,6 @@ class LevelScene: SKScene {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    override func didMove(to view: SKView) {
-        hud.layout()
     }
     
     private func setUpScene() {
@@ -86,7 +84,7 @@ class LevelScene: SKScene {
     }
     
     private func setupLevel() {
-        let levelLoader = LevelLoader(name: levelName)
+        let levelLoader = LevelLoader(name: levelName.rawValue)
         levelLoader.load(into: self)
 
         spawnLander()
@@ -155,7 +153,9 @@ class LevelScene: SKScene {
 
     func didStart() {}
 
-    func didComplete() {}
+    func didComplete() {
+        progressService.complete(levelName: .w1_l1)
+    }
 }
 
 // MARK: - Touch

@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 class PrototypeLevel1: LevelScene {
-    override var levelName: String { "level1" }
+    override var levelName: LevelName { .w1_l1 }
 
     private var didShowIntro2: Bool = false
     private var intro2Check: TimeAccumulator = .init(threshold: 1)
@@ -95,7 +95,6 @@ extension PrototypeLevel1 {
             .init(text: "Once you've collected the shards, just return them to the depot near the probe and we'll be done here."),
             .init(text: "Alright, enough chatting. The probe is all yours now, good luck."),
         ]) {
-            self.hud.layout()
             self.hud.missionTime.start()
             self.lander.physicsBody?.isDynamic = true
         }

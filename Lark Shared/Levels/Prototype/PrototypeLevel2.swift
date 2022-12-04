@@ -9,5 +9,5 @@ import Foundation
 import SpriteKit
 
 class PrototypeLevel2: LevelScene {
-    override var levelName: String { "level2" }
+    override var levelName: LevelName { .w1_l2 }
 }

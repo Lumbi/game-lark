@@ -8,9 +8,9 @@
 import Foundation
 
 enum LevelName: String {
-    case w1_l1 = "1-1"
-    case w1_l2 = "1-2"
-    case w1_l3 = "1-3"
+    case w1_l1 = "level-1-1"
+    case w1_l2 = "level-1-2"
+    case w1_l3 = "level-1-3"
 }
 
 enum LevelProgress: String {
@@ -38,6 +38,27 @@ class ProgressService {
 
     func complete(levelName: LevelName) {
         userDefaults.set(LevelProgress.completed.rawValue, forKey: qualifiedKey(for: levelName.rawValue))
+
+        // TODO: Refactor to use level graph
+        switch levelName {
+        case .w1_l1:
+            unlock(levelName: .w1_l2)
+        case .w1_l2:
+            unlock(levelName: .w1_l3)
+        case .w1_l3:
+            // all clear
+            break
+        }
+    }
+
+    private func unlock(levelName: LevelName) {
+        if let rawValue = userDefaults.string(forKey: qualifiedKey(for: levelName.rawValue)),
+           let progress = LevelProgress(rawValue: rawValue)
+        {
+            if case .locked = progress {
+                userDefaults.set(LevelProgress.unlocked.rawValue, forKey: qualifiedKey(for: levelName.rawValue))
+            }
+        }
     }
 
     private func qualifiedKey(for key: String) -> String {
