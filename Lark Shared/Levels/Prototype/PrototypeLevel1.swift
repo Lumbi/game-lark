@@ -18,6 +18,7 @@ class PrototypeLevel1: LevelScene {
         super.didStart()
 
         view?.isUserInteractionEnabled = false
+        hud.gemDetector.isHidden = true
         lander.physicsBody?.isDynamic = false
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -90,7 +91,7 @@ extension PrototypeLevel1 {
             .init(text: "Once you've collected the shards, just return them to the depot near the probe and we'll be done here."),
             .init(text: "Alright, enough chatting. The probe is all yours now, good luck."),
         ]) {
-            self.hud.missionTime.start()
+            self.hud.gemDetector.isHidden = false
             self.lander.physicsBody?.isDynamic = true
         }
     }
