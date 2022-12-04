@@ -59,7 +59,11 @@ class PrototypeLevel1: LevelScene {
             self?.view?.window?.rootViewController?.present(viewController, animated: true)
         }
     }
+}
 
+// MARK: - Dialogs
+
+extension PrototypeLevel1 {
     func presentIntro1() {
         presentMessages([
             .init(text: "Mission control to command module, do you copy?"),
@@ -82,7 +86,7 @@ class PrototypeLevel1: LevelScene {
             .init(text: "Please be careful with the probe. These aren't free and I'd really like to keep budget for coffee here..."),
             .init(text: "Now, for the mission briefing, you'll need to retrieve shards of Tospium scattered on the site."),
             .init(text: "Tospium emits light at very specific wavelengths so you should be able to detect with the onboard spectrometer."),
-            .init(text: "We've detected 10 Topsium shards on this site."),
+            .init(text: "We've detected \(detectedGemCount) Topsium shards on this site."),
             .init(text: "Once you've collected the shards, just return them to the depot near the probe and we'll be done here."),
             .init(text: "Alright, enough chatting. The probe is all yours now, good luck."),
         ]) {
