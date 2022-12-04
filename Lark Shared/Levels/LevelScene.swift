@@ -154,7 +154,7 @@ class LevelScene: SKScene {
     func didStart() {}
 
     func didComplete() {
-        progressService.complete(levelName: .w1_l1)
+        progressService.complete(levelName: levelName)
     }
 }
 
