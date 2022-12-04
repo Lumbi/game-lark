@@ -26,7 +26,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqr-ub-csi">
-                    <rect key="frame" x="651.33333333333337" y="91" width="168.66666666666663" height="114.33333333333331"/>
+                    <rect key="frame" x="675.33333333333337" y="75" width="144.66666666666663" height="98"/>
                     <string key="text">Object: BL-154
 Surface temp.: 283 K
 Gravity: 0.886 g
@@ -34,7 +34,7 @@ Atmosphere:
  - 83% hydrogen
  - 15% helium
  - 2% methane</string>
-                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -96,7 +96,7 @@ Atmosphere:
                 <constraint firstAttribute="bottom" secondItem="TSy-gR-2UH" secondAttribute="bottom" id="eCx-Kf-4f8"/>
                 <constraint firstItem="aqv-OJ-2RN" firstAttribute="leading" secondItem="jjk-uj-wL5" secondAttribute="trailing" constant="15" id="ebp-4U-d4L"/>
                 <constraint firstItem="TSy-gR-2UH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="gDa-kd-MMC"/>
-                <constraint firstItem="hqr-ub-csi" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="32" id="o0E-La-niz"/>
+                <constraint firstItem="hqr-ub-csi" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="o0E-La-niz"/>
                 <constraint firstItem="rzc-HC-jRY" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ofA-DK-Mm2"/>
                 <constraint firstItem="jjk-uj-wL5" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="tI3-Cv-A5f"/>
                 <constraint firstItem="jjk-uj-wL5" firstAttribute="top" secondItem="PBy-Vx-gtv" secondAttribute="bottom" constant="-17.333333333333314" id="v8k-Sf-2Dy"/>
