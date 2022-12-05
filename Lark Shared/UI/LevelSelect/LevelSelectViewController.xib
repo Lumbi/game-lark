@@ -55,9 +55,8 @@ Atmosphere:
                         <action selector="tapSelectLevel1" destination="-1" eventType="touchUpInside" id="gMC-9O-Jla"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GDG-ZY-0Ep">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GDG-ZY-0Ep">
                     <rect key="frame" x="263" y="295" width="75" height="31"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="filled" title="Site 3" cornerStyle="capsule">
                         <fontDescription key="titleFontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
@@ -89,7 +88,9 @@ Atmosphere:
                 <constraint firstItem="TSy-gR-2UH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5w1-OQ-uVq"/>
                 <constraint firstItem="rzc-HC-jRY" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="AFb-D9-q1J"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hqr-ub-csi" secondAttribute="trailing" constant="32" id="DAb-Jy-skX"/>
+                <constraint firstItem="GDG-ZY-0Ep" firstAttribute="top" secondItem="jjk-uj-wL5" secondAttribute="bottom" constant="-1.6666666666666856" id="GRl-kI-Y84"/>
                 <constraint firstItem="TSy-gR-2UH" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="M8I-Rl-mbT"/>
+                <constraint firstItem="jjk-uj-wL5" firstAttribute="leading" secondItem="GDG-ZY-0Ep" secondAttribute="trailing" constant="-12" id="O7d-eo-zh6"/>
                 <constraint firstItem="aqv-OJ-2RN" firstAttribute="top" secondItem="jjk-uj-wL5" secondAttribute="bottom" constant="-75.666666666666686" id="PpF-iu-DgV"/>
                 <constraint firstItem="jjk-uj-wL5" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="X7J-xT-u4H"/>
                 <constraint firstItem="jjk-uj-wL5" firstAttribute="leading" secondItem="PBy-Vx-gtv" secondAttribute="trailing" constant="8" id="aKc-3M-OWM"/>
