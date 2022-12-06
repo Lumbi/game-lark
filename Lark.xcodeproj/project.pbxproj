@@ -73,6 +73,8 @@
 		0DA79867292547BC001AD90E /* FX.Bounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA79866292547BC001AD90E /* FX.Bounce.swift */; };
 		0DA7986A29254D0D001AD90E /* MissionCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA7986929254D0D001AD90E /* MissionCompleteViewController.swift */; };
 		0DA7986C29254D1F001AD90E /* MissionCompleteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DA7986B29254D1F001AD90E /* MissionCompleteViewController.xib */; };
+		0DA7EB57293FC844005A645F /* Spike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA7EB56293FC844005A645F /* Spike.swift */; };
+		0DA7EB59293FC912005A645F /* LanderEnemyContactHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA7EB58293FC912005A645F /* LanderEnemyContactHandler.swift */; };
 		0DD482512936F6B400009806 /* Bomb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD482502936F6B400009806 /* Bomb.swift */; };
 		0DD8B926293C39F3002ACCF1 /* ProgressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD8B925293C39F3002ACCF1 /* ProgressService.swift */; };
 		0DD8B929293D2BBC002ACCF1 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD8B928293D2BBC002ACCF1 /* DebugViewController.swift */; };
@@ -166,6 +168,8 @@
 		0DA79866292547BC001AD90E /* FX.Bounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FX.Bounce.swift; sourceTree = "<group>"; };
 		0DA7986929254D0D001AD90E /* MissionCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCompleteViewController.swift; sourceTree = "<group>"; };
 		0DA7986B29254D1F001AD90E /* MissionCompleteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MissionCompleteViewController.xib; sourceTree = "<group>"; };
+		0DA7EB56293FC844005A645F /* Spike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spike.swift; sourceTree = "<group>"; };
+		0DA7EB58293FC912005A645F /* LanderEnemyContactHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanderEnemyContactHandler.swift; sourceTree = "<group>"; };
 		0DD482502936F6B400009806 /* Bomb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bomb.swift; sourceTree = "<group>"; };
 		0DD8B925293C39F3002ACCF1 /* ProgressService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressService.swift; sourceTree = "<group>"; };
 		0DD8B928293D2BBC002ACCF1 /* DebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
@@ -249,9 +253,10 @@
 				0DA0B64129267516001D0C9F /* LanderBoundsContactHandler.swift */,
 				0D7F4ED829229CBE005C54C0 /* LanderDepotContactHandler.swift */,
 				0D7F4EDA29229E76005C54C0 /* LanderTerrainContactHandler.swift */,
+				0DA7EB58293FC912005A645F /* LanderEnemyContactHandler.swift */,
+				0D8437852937D68D00733178 /* LanderBombContactHandler.swift */,
 				0D84377B2937A5E900733178 /* BombTerrainContactHandler.swift */,
 				0D8437812937B03900733178 /* ShockwaveTerrainContactHandler.swift */,
-				0D8437852937D68D00733178 /* LanderBombContactHandler.swift */,
 			);
 			path = Collisions;
 			sourceTree = "<group>";
@@ -374,6 +379,7 @@
 				0D90A76B291AD1DA005F2EA0 /* Turret.swift */,
 				0D90A76D291AD1E0005F2EA0 /* Mine.swift */,
 				0D90A76F291AD1EE005F2EA0 /* Laser.swift */,
+				0DA7EB56293FC844005A645F /* Spike.swift */,
 			);
 			path = Enemies;
 			sourceTree = "<group>";
@@ -580,12 +586,14 @@
 				0D7DE6C1292121AE00A77BD6 /* FX.swift in Sources */,
 				0D90A770291AD1EE005F2EA0 /* Laser.swift in Sources */,
 				0D7F4ED529229ACB005C54C0 /* SKNode+Ext.swift in Sources */,
+				0DA7EB57293FC844005A645F /* Spike.swift in Sources */,
 				0D90A761291ABD88005F2EA0 /* CGPoint+Ext.swift in Sources */,
 				0DA79867292547BC001AD90E /* FX.Bounce.swift in Sources */,
 				0D983C882923EDA600A34ED7 /* TimeAccumulator.swift in Sources */,
 				0DA64560292FC949001410C4 /* LevelSelectViewController.swift in Sources */,
 				0D7F4ED1292296B2005C54C0 /* LanderGemContactHandler.swift in Sources */,
 				0D90A744291A9E90005F2EA0 /* AppDelegate.swift in Sources */,
+				0DA7EB59293FC912005A645F /* LanderEnemyContactHandler.swift in Sources */,
 				0D7B7A8A293A995F00362F00 /* Event.swift in Sources */,
 				0D7F4EDF29232753005C54C0 /* SKCameraNode+Ext.swift in Sources */,
 				0D7DE6C62921CAC400A77BD6 /* Localization.swift in Sources */,

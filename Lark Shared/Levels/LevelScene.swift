@@ -36,8 +36,10 @@ class LevelScene: SKScene, SKPhysicsContactDelegate, DepotDelegate {
                             successor: BombTerrainContactHandler(
                                 successor: ShockwaveTerrainContactHandler(
                                     successor: LanderBombContactHandler(
-                                        successor: nil
-                                    ))))))))
+                                        successor: LanderEnemyContactHandler(
+                                            scene: self,
+                                            successor: nil
+                                        )))))))))
     }()
 
     private lazy var endContactHandlerChain: ContactHandlerChain = {

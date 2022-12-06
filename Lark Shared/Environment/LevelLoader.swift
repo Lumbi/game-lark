@@ -25,14 +25,17 @@ class LevelLoader {
         tilemap = SKTilemap.load(tmxFile: "Tilemaps/\(name)")
         if let tilemap = tilemap {
             scene.addChild(tilemap)
+
             setupBounds()
-            addTileCollisionBoxes()
-            populateGems()
-            populateDepots()
-            populateBombs()
+            setupTileCollisionBoxes()
+
+            populateObjects(named: Const.Node.Name.gem, with: Gem.self)
+            populateObjects(named: Const.Node.Name.depot, with: Depot.self)
+            populateObjects(named: Const.Node.Name.bomb, with: Bomb.self)
+            populateObjects(named: Const.Node.Name.spike, with: Spike.self)
         }
     }
-    
+
     func setupBounds() {
         if let bounds = tilemap?.getObjects(named: Const.Node.Name.innerBounds).first {
             let collisionBox = SKNode()
@@ -58,42 +61,20 @@ class LevelLoader {
             bounds.addChild(collisionBox)
         }
     }
-    
-    private func populateGems() {
+
+    private func populateObjects<Node: SKNode>(named objectName: String, with: Node.Type) {
         guard let tilemap = tilemap, let scene = tilemap.scene else { return }
-        for placeholder in tilemap.getObjects(named: Const.Node.Name.gem) {
+        for placeholder in tilemap.getObjects(named: objectName) {
             if placeholder.visible {
-                let gem = Gem()
-                gem.position = scene.convert(.zero, from: placeholder)
-                scene.addChild(gem)
+                let node = Node.init()
+                node.position = scene.convert(.zero, from: placeholder)
+                scene.addChild(node)
             }
             placeholder.removeFromParent()
         }
     }
     
-    private func populateDepots() {
-        guard let tilemap = tilemap else { return }
-        for placeholder in tilemap.getObjects(named: Const.Node.Name.depot) {
-            let depot = Depot()
-            depot.position = placeholder.position
-            placeholder.parent?.addChild(depot)
-            placeholder.removeFromParent()
-        }
-    }
-    
-    private func populateBombs() {
-        guard let tilemap = tilemap, let scene = tilemap.scene else { return }
-        for placeholder in tilemap.getObjects(named: Const.Node.Name.bomb) {
-            if placeholder.visible {
-                let bomb = Bomb()
-                bomb.position = scene.convert(.zero, from: placeholder)
-                scene.addChild(bomb)
-            }
-            placeholder.removeFromParent()
-        }
-    }
-    
-    private func addTileCollisionBoxes() {
+    private func setupTileCollisionBoxes() {
         guard let tilemap = tilemap else { return }
         for tileLayer in tilemap.tileLayers() {
             guard tileLayer.getValue(forProperty: Const.Layer.Property.collision) != nil else { continue }

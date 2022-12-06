@@ -16,6 +16,7 @@ struct Const {
             static let gem = "gem"
             static let depot = "depot"
             static let bomb = "bomb"
+            static let spike = "spike"
             static let outerBounds = "outer_bounds"
             static let innerBounds = "inner_bounds"
         }
@@ -49,6 +50,7 @@ struct Const {
             static let transientCollectible: UInt32 = 0x1 << 7 // TODO: Rename this...
             static let bomb: UInt32 = 0x1 << 8
             static let shockwave: UInt32 = 0x1 << 9
+            static let enemy: UInt32 = 0x1 << 10
         }
     }
     
