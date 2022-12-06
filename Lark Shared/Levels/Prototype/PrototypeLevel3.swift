@@ -26,7 +26,7 @@ class PrototypeLevel3: LevelScene {
             self.presentMessages([
                 .init(text: "OK, this is the last site."),
                 .init(text: "Hmm, there's explosives lying around."),
-                .init(text: "Tooks like someone's been here before us..."),
+                .init(text: "Looks like someone's been here before us..."),
                 .init(text: "Well, maybe you could make use of it."),
                 .init(text: "You should be able to grab some with your hook and move it around. Give it a try."),
                 .init(text: "Wait, there's some kind of miscalculation."),
