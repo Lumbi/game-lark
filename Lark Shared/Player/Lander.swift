@@ -44,6 +44,7 @@ class Lander: SKNode {
         | Const.PhysicsBody.Bitmask.terrain
         | Const.PhysicsBody.Bitmask.bomb
         | Const.PhysicsBody.Bitmask.enemy
+        | Const.PhysicsBody.Bitmask.bumper
 
         let sprite = SKSpriteNode(imageNamed: "spr_lander")
         sprite.size = .init(width: 64, height: 64)

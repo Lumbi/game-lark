@@ -17,6 +17,7 @@ struct Const {
             static let depot = "depot"
             static let bomb = "bomb"
             static let spike = "spike"
+            static let bumper = "bumper"
             static let outerBounds = "outer_bounds"
             static let innerBounds = "inner_bounds"
         }
@@ -32,6 +33,10 @@ struct Const {
             static let collisionSpeedWarningThreshold: CGFloat = 120
             static let collisionSpeedDeathThreshold: CGFloat = 140
             static let outOfBoundsTimer: TimeInterval = 6
+        }
+
+        struct Bumper {
+            static let force: CGFloat = 5
         }
     }
     
@@ -51,6 +56,7 @@ struct Const {
             static let bomb: UInt32 = 0x1 << 8
             static let shockwave: UInt32 = 0x1 << 9
             static let enemy: UInt32 = 0x1 << 10
+            static let bumper: UInt32 = 0x1 << 11
         }
     }
     

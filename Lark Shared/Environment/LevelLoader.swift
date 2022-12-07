@@ -33,6 +33,7 @@ class LevelLoader {
             populateObjects(named: Const.Node.Name.depot, with: Depot.self)
             populateObjects(named: Const.Node.Name.bomb, with: Bomb.self)
             populateObjects(named: Const.Node.Name.spike, with: Spike.self)
+            populateObjects(named: Const.Node.Name.bumper, with: Bumper.self)
         }
     }
 

@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 extension FX {
-    static func shake(duration: CGFloat, amplitudeX: Int = 5, amplitudeY: Int = 5) -> SKAction {
+    static func shake(duration: CGFloat, amplitudeX: Int = 8, amplitudeY: Int = 8) -> SKAction {
         let numberOfShakes = Int(duration / 0.015 / 2.0)
         let shakes = (1...Int(numberOfShakes))
             .map { _ -> [SKAction] in

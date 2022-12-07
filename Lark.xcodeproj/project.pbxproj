@@ -76,7 +76,9 @@
 		0DA7EB57293FC844005A645F /* Spike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA7EB56293FC844005A645F /* Spike.swift */; };
 		0DA7EB59293FC912005A645F /* LanderEnemyContactHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA7EB58293FC912005A645F /* LanderEnemyContactHandler.swift */; };
 		0DA7EB5B29402EC3005A645F /* SandboxLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA7EB5A29402EC3005A645F /* SandboxLevel.swift */; };
+		0DA7EB5F294031A4005A645F /* Bumper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA7EB5E294031A4005A645F /* Bumper.swift */; };
 		0DA7EB612940328C005A645F /* ContactHandlerChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA7EB602940328C005A645F /* ContactHandlerChain.swift */; };
+		0DA7EB65294034CF005A645F /* LanderBumperContactHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA7EB64294034CF005A645F /* LanderBumperContactHandler.swift */; };
 		0DD482512936F6B400009806 /* Bomb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD482502936F6B400009806 /* Bomb.swift */; };
 		0DD8B926293C39F3002ACCF1 /* ProgressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD8B925293C39F3002ACCF1 /* ProgressService.swift */; };
 		0DD8B929293D2BBC002ACCF1 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD8B928293D2BBC002ACCF1 /* DebugViewController.swift */; };
@@ -173,7 +175,9 @@
 		0DA7EB56293FC844005A645F /* Spike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spike.swift; sourceTree = "<group>"; };
 		0DA7EB58293FC912005A645F /* LanderEnemyContactHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanderEnemyContactHandler.swift; sourceTree = "<group>"; };
 		0DA7EB5A29402EC3005A645F /* SandboxLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandboxLevel.swift; sourceTree = "<group>"; };
+		0DA7EB5E294031A4005A645F /* Bumper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bumper.swift; sourceTree = "<group>"; };
 		0DA7EB602940328C005A645F /* ContactHandlerChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactHandlerChain.swift; sourceTree = "<group>"; };
+		0DA7EB64294034CF005A645F /* LanderBumperContactHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanderBumperContactHandler.swift; sourceTree = "<group>"; };
 		0DD482502936F6B400009806 /* Bomb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bomb.swift; sourceTree = "<group>"; };
 		0DD8B925293C39F3002ACCF1 /* ProgressService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressService.swift; sourceTree = "<group>"; };
 		0DD8B928293D2BBC002ACCF1 /* DebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
@@ -341,6 +345,7 @@
 				0D90A771291AD1F9005F2EA0 /* Gem.swift */,
 				0DD482502936F6B400009806 /* Bomb.swift */,
 				0D84377F2937A7FA00733178 /* Destructible.swift */,
+				0DA7EB5E294031A4005A645F /* Bumper.swift */,
 			);
 			path = Environment;
 			sourceTree = "<group>";
@@ -580,10 +585,12 @@
 				0DFF9D5A291C899D0029AD93 /* HUD.swift in Sources */,
 				0D90A75B291AB737005F2EA0 /* CGVector+Ext.swift in Sources */,
 				0D7F4EDB29229E76005C54C0 /* LanderTerrainContactHandler.swift in Sources */,
+				0DA7EB65294034CF005A645F /* LanderBumperContactHandler.swift in Sources */,
 				0D90A765291AD150005F2EA0 /* Depot.swift in Sources */,
 				0DA7986A29254D0D001AD90E /* MissionCompleteViewController.swift in Sources */,
 				0D90A776291AD365005F2EA0 /* Explosive.swift in Sources */,
 				0D90A783291AD572005F2EA0 /* LevelLoader.swift in Sources */,
+				0DA7EB5F294031A4005A645F /* Bumper.swift in Sources */,
 				0D7F4ED929229CBE005C54C0 /* LanderDepotContactHandler.swift in Sources */,
 				0D90A779291AD3AE005F2EA0 /* GemCounter.swift in Sources */,
 				0DA7986529254683001AD90E /* SharedDepot.swift in Sources */,
