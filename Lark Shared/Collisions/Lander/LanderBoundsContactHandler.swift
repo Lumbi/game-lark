@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 struct BeginLanderBoundsContactHandler: ContactHandler {
-    let scene: LevelScene
+    let level: LevelScene
     let successor: ContactHandler?
     
     func handle(contact: SKPhysicsContact) {
@@ -17,15 +17,15 @@ struct BeginLanderBoundsContactHandler: ContactHandler {
             Const.PhysicsBody.Bitmask.lander,
             Const.PhysicsBody.Bitmask.outerBounds
         ) {
-            scene.hud.outOfBoundsWarning.hide()
-            scene.cameraControl.follow = true
-            scene.cancelOutOfBoundsCountDown()
+            level.hud.outOfBoundsWarning.hide()
+            level.cameraControl.follow = true
+            level.cancelOutOfBoundsCountDown()
         }
     }
 }
 
 struct EndLanderBoundsContactHandler: ContactHandler {
-    let scene: LevelScene
+    let level: LevelScene
     let successor: ContactHandler?
     
     func handle(contact: SKPhysicsContact) {
@@ -33,17 +33,17 @@ struct EndLanderBoundsContactHandler: ContactHandler {
             Const.PhysicsBody.Bitmask.lander,
             Const.PhysicsBody.Bitmask.outerBounds
         ) {
-            scene.hud.outOfBoundsWarning.show()
-            scene.cameraControl.follow = false
-            scene.startOutOfBoundsCountDown()
+            level.hud.outOfBoundsWarning.show()
+            level.cameraControl.follow = false
+            level.startOutOfBoundsCountDown()
 
         } else if contact.isBetween(
             Const.PhysicsBody.Bitmask.lander,
             Const.PhysicsBody.Bitmask.innerBounds
         ) {
-            let landerPosition = scene.convert(.zero, from: scene.lander)
-            scene.lander.levelBoundsExitPosition = landerPosition
-            scene.dropGemsFromCargo(at: landerPosition)
+            let landerPosition = level.convert(.zero, from: level.lander)
+            level.lander.levelBoundsExitPosition = landerPosition
+            level.dropGemsFromCargo(at: landerPosition)
         }
     }
 }

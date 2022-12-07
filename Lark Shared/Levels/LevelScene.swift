@@ -23,33 +23,8 @@ class LevelScene: SKScene, SKPhysicsContactDelegate, DepotDelegate {
     private(set) var detectedGemCount: Int = 0
     private let progressService: ProgressService = .init()
     
-    private lazy var beginContactHandlerChain: ContactHandlerChain = {
-        ContactHandlerChain(
-            first: LanderGemContactHandler(
-                scene: self,
-                successor: BeginLanderDepotContactHandler(
-                    cargo: cargo,
-                    successor: LanderTerrainContactHandler(
-                        scene: self,
-                        successor: BeginLanderBoundsContactHandler(
-                            scene: self,
-                            successor: BombTerrainContactHandler(
-                                successor: ShockwaveTerrainContactHandler(
-                                    successor: LanderBombContactHandler(
-                                        successor: LanderEnemyContactHandler(
-                                            scene: self,
-                                            successor: nil
-                                        )))))))))
-    }()
-
-    private lazy var endContactHandlerChain: ContactHandlerChain = {
-        ContactHandlerChain(
-            first: EndLanderDepotContactHandler(
-                scene: self,
-                successor: EndLanderBoundsContactHandler(
-                    scene: self, successor: nil
-                )))
-    }()
+    private lazy var beginContactHandlerChain: ContactHandlerChain = { .begin(for: self) }()
+    private lazy var endContactHandlerChain: ContactHandlerChain = { .end(for: self) }()
 
     override init() {
         super.init(size: .init(width: 1000, height: 1000))

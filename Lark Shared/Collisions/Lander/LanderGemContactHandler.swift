@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 struct LanderGemContactHandler: ContactHandler {
-    let scene: LevelScene
+    let level: LevelScene
     let successor: ContactHandler?
     
     func handle(contact: SKPhysicsContact) {
@@ -25,7 +25,7 @@ struct LanderGemContactHandler: ContactHandler {
             .parentNode(ofType: Gem.self)
 
         if let gem = gem {
-            scene.cargo.pickUp(gem: gem)
+            level.cargo.pickUp(gem: gem)
         }
     }
 }

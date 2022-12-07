@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 struct LanderTerrainContactHandler: ContactHandler {
-    let scene: LevelScene
+    let level: LevelScene
     let successor: ContactHandler?
     
     func handle(contact: SKPhysicsContact) {
@@ -18,12 +18,12 @@ struct LanderTerrainContactHandler: ContactHandler {
             Const.PhysicsBody.Bitmask.terrain
         ) else { return }
 
-        let collisionSpeed = scene.lander.lastSpeed
+        let collisionSpeed = level.lander.lastSpeed
         
         // TODO: Dot prod of velocity to contact point to find speed component?
 
         if collisionSpeed > Const.Node.Lander.collisionSpeedDeathThreshold {
-            scene.destroyLander()
+            level.destroyLander()
         }
     }
 }

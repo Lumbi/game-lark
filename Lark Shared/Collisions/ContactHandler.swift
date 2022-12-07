@@ -9,20 +9,8 @@ import Foundation
 import SpriteKit
 
 protocol ContactHandler {
+    var level: LevelScene { get }
     var successor: ContactHandler? { get }
 
     func handle(contact: SKPhysicsContact)
-}
-
-struct ContactHandlerChain {
-    var first: ContactHandler
-    
-    func handle(contact: SKPhysicsContact) {
-        var current: ContactHandler? = first
-        
-        while current != nil {
-            current?.handle(contact: contact)
-            current = current?.successor
-        }
-    }
 }

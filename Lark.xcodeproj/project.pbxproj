@@ -76,6 +76,7 @@
 		0DA7EB57293FC844005A645F /* Spike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA7EB56293FC844005A645F /* Spike.swift */; };
 		0DA7EB59293FC912005A645F /* LanderEnemyContactHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA7EB58293FC912005A645F /* LanderEnemyContactHandler.swift */; };
 		0DA7EB5B29402EC3005A645F /* SandboxLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA7EB5A29402EC3005A645F /* SandboxLevel.swift */; };
+		0DA7EB612940328C005A645F /* ContactHandlerChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA7EB602940328C005A645F /* ContactHandlerChain.swift */; };
 		0DD482512936F6B400009806 /* Bomb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD482502936F6B400009806 /* Bomb.swift */; };
 		0DD8B926293C39F3002ACCF1 /* ProgressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD8B925293C39F3002ACCF1 /* ProgressService.swift */; };
 		0DD8B929293D2BBC002ACCF1 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD8B928293D2BBC002ACCF1 /* DebugViewController.swift */; };
@@ -172,6 +173,7 @@
 		0DA7EB56293FC844005A645F /* Spike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spike.swift; sourceTree = "<group>"; };
 		0DA7EB58293FC912005A645F /* LanderEnemyContactHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanderEnemyContactHandler.swift; sourceTree = "<group>"; };
 		0DA7EB5A29402EC3005A645F /* SandboxLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandboxLevel.swift; sourceTree = "<group>"; };
+		0DA7EB602940328C005A645F /* ContactHandlerChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactHandlerChain.swift; sourceTree = "<group>"; };
 		0DD482502936F6B400009806 /* Bomb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bomb.swift; sourceTree = "<group>"; };
 		0DD8B925293C39F3002ACCF1 /* ProgressService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressService.swift; sourceTree = "<group>"; };
 		0DD8B928293D2BBC002ACCF1 /* DebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
@@ -251,14 +253,9 @@
 			isa = PBXGroup;
 			children = (
 				0D7F4ECE292295E4005C54C0 /* ContactHandler.swift */,
-				0D7F4ED0292296B2005C54C0 /* LanderGemContactHandler.swift */,
-				0DA0B64129267516001D0C9F /* LanderBoundsContactHandler.swift */,
-				0D7F4ED829229CBE005C54C0 /* LanderDepotContactHandler.swift */,
-				0D7F4EDA29229E76005C54C0 /* LanderTerrainContactHandler.swift */,
-				0DA7EB58293FC912005A645F /* LanderEnemyContactHandler.swift */,
-				0D8437852937D68D00733178 /* LanderBombContactHandler.swift */,
-				0D84377B2937A5E900733178 /* BombTerrainContactHandler.swift */,
-				0D8437812937B03900733178 /* ShockwaveTerrainContactHandler.swift */,
+				0DA7EB602940328C005A645F /* ContactHandlerChain.swift */,
+				0DA7EB622940349F005A645F /* Lander */,
+				0DA7EB63294034AE005A645F /* Bomb */,
 			);
 			path = Collisions;
 			sourceTree = "<group>";
@@ -436,6 +433,29 @@
 			path = MissionComplete;
 			sourceTree = "<group>";
 		};
+		0DA7EB622940349F005A645F /* Lander */ = {
+			isa = PBXGroup;
+			children = (
+				0D7F4ED0292296B2005C54C0 /* LanderGemContactHandler.swift */,
+				0DA0B64129267516001D0C9F /* LanderBoundsContactHandler.swift */,
+				0D7F4ED829229CBE005C54C0 /* LanderDepotContactHandler.swift */,
+				0D7F4EDA29229E76005C54C0 /* LanderTerrainContactHandler.swift */,
+				0DA7EB58293FC912005A645F /* LanderEnemyContactHandler.swift */,
+				0D8437852937D68D00733178 /* LanderBombContactHandler.swift */,
+				0DA7EB64294034CF005A645F /* LanderBumperContactHandler.swift */,
+			);
+			path = Lander;
+			sourceTree = "<group>";
+		};
+		0DA7EB63294034AE005A645F /* Bomb */ = {
+			isa = PBXGroup;
+			children = (
+				0D84377B2937A5E900733178 /* BombTerrainContactHandler.swift */,
+				0D8437812937B03900733178 /* ShockwaveTerrainContactHandler.swift */,
+			);
+			path = Bomb;
+			sourceTree = "<group>";
+		};
 		0DD8B924293C39B2002ACCF1 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -577,6 +597,7 @@
 				0DA64562292FCCA7001410C4 /* SceneDelegate.swift in Sources */,
 				0D7F4EE129232BB6005C54C0 /* HighSpeedWarning.swift in Sources */,
 				0D7F4ECF292295E4005C54C0 /* ContactHandler.swift in Sources */,
+				0DA7EB612940328C005A645F /* ContactHandlerChain.swift in Sources */,
 				0D8437802937A7FA00733178 /* Destructible.swift in Sources */,
 				0D90A76E291AD1E0005F2EA0 /* Mine.swift in Sources */,
 				0D90A76C291AD1DA005F2EA0 /* Turret.swift in Sources */,

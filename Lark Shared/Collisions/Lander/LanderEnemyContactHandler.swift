@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 struct LanderEnemyContactHandler: ContactHandler {
-    let scene: LevelScene
+    let level: LevelScene
     let successor: ContactHandler?
 
     func handle(contact: SKPhysicsContact) {
@@ -18,6 +18,6 @@ struct LanderEnemyContactHandler: ContactHandler {
             Const.PhysicsBody.Bitmask.enemy
         ) else { return }
 
-        scene.destroyLander()
+        level.destroyLander()
     }
 }

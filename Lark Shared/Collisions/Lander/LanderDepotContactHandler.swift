@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 struct BeginLanderDepotContactHandler: ContactHandler {
-    let cargo: Cargo
+    let level: LevelScene
     let successor: ContactHandler?
     
     func handle(contact: SKPhysicsContact) {
@@ -22,7 +22,7 @@ struct BeginLanderDepotContactHandler: ContactHandler {
             .firstBody(with: Const.PhysicsBody.Bitmask.trigger)?
             .parentNode(ofType: Depot.self)
         {
-            if cargo.gemCount > 0 {
+            if level.cargo.gemCount > 0 {
                 depot.startGemDeposit()
             }
         }
@@ -30,7 +30,7 @@ struct BeginLanderDepotContactHandler: ContactHandler {
 }
 
 struct EndLanderDepotContactHandler: ContactHandler {
-    let scene: LevelScene
+    let level: LevelScene
     let successor: ContactHandler?
     
     func handle(contact: SKPhysicsContact) {
