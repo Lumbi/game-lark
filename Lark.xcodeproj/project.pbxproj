@@ -75,6 +75,7 @@
 		0DA7986C29254D1F001AD90E /* MissionCompleteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DA7986B29254D1F001AD90E /* MissionCompleteViewController.xib */; };
 		0DA7EB57293FC844005A645F /* Spike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA7EB56293FC844005A645F /* Spike.swift */; };
 		0DA7EB59293FC912005A645F /* LanderEnemyContactHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA7EB58293FC912005A645F /* LanderEnemyContactHandler.swift */; };
+		0DA7EB5B29402EC3005A645F /* SandboxLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA7EB5A29402EC3005A645F /* SandboxLevel.swift */; };
 		0DD482512936F6B400009806 /* Bomb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD482502936F6B400009806 /* Bomb.swift */; };
 		0DD8B926293C39F3002ACCF1 /* ProgressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD8B925293C39F3002ACCF1 /* ProgressService.swift */; };
 		0DD8B929293D2BBC002ACCF1 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD8B928293D2BBC002ACCF1 /* DebugViewController.swift */; };
@@ -170,6 +171,7 @@
 		0DA7986B29254D1F001AD90E /* MissionCompleteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MissionCompleteViewController.xib; sourceTree = "<group>"; };
 		0DA7EB56293FC844005A645F /* Spike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spike.swift; sourceTree = "<group>"; };
 		0DA7EB58293FC912005A645F /* LanderEnemyContactHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanderEnemyContactHandler.swift; sourceTree = "<group>"; };
+		0DA7EB5A29402EC3005A645F /* SandboxLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandboxLevel.swift; sourceTree = "<group>"; };
 		0DD482502936F6B400009806 /* Bomb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bomb.swift; sourceTree = "<group>"; };
 		0DD8B925293C39F3002ACCF1 /* ProgressService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressService.swift; sourceTree = "<group>"; };
 		0DD8B928293D2BBC002ACCF1 /* DebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 			isa = PBXGroup;
 			children = (
 				0D90A73A291A9E8D005F2EA0 /* LevelScene.swift */,
+				0DA7EB5A29402EC3005A645F /* SandboxLevel.swift */,
 				0D7B7A82293A927300362F00 /* Prototype */,
 			);
 			path = Levels;
@@ -589,6 +592,7 @@
 				0DA7EB57293FC844005A645F /* Spike.swift in Sources */,
 				0D90A761291ABD88005F2EA0 /* CGPoint+Ext.swift in Sources */,
 				0DA79867292547BC001AD90E /* FX.Bounce.swift in Sources */,
+				0DA7EB5B29402EC3005A645F /* SandboxLevel.swift in Sources */,
 				0D983C882923EDA600A34ED7 /* TimeAccumulator.swift in Sources */,
 				0DA64560292FC949001410C4 /* LevelSelectViewController.swift in Sources */,
 				0D7F4ED1292296B2005C54C0 /* LanderGemContactHandler.swift in Sources */,

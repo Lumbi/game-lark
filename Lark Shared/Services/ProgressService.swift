@@ -8,6 +8,7 @@
 import Foundation
 
 enum LevelName: String, CaseIterable {
+    case sandbox = "sandbox"
     case w1_l1 = "level-1-1"
     case w1_l2 = "level-1-2"
     case w1_l3 = "level-1-3"
@@ -41,6 +42,9 @@ class ProgressService {
 
         // TODO: Refactor to use level graph
         switch levelName {
+        case .sandbox:
+            // Nothing
+            break
         case .w1_l1:
             unlock(levelName: .w1_l2)
         case .w1_l2:
