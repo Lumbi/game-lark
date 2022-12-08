@@ -30,8 +30,8 @@ struct Const {
         }
         
         struct Lander {
-            static let collisionSpeedWarningThreshold: CGFloat = 120
-            static let collisionSpeedDeathThreshold: CGFloat = 140
+            static let collisionSpeedWarningThreshold: CGFloat = 280
+            static let collisionSpeedDeathThreshold: CGFloat = 320
             static let outOfBoundsTimer: TimeInterval = 6
         }
 
