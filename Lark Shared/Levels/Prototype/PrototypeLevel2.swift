@@ -24,7 +24,7 @@ class PrototypeLevel2: LevelScene {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.view?.isUserInteractionEnabled = true
             self.presentMessages([
-                .init(text: "Alright command module, time for another sweep."),
+                .init(text: "Alright, time for another sweep."),
                 .init(text: "There's a few more Topsium shard on this site. Good luck.")
             ])
         }
