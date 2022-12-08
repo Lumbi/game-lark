@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D103DA12941433900E12CB5 /* PrototypeLevel4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D103DA02941433900E12CB5 /* PrototypeLevel4.swift */; };
+		0D103DA32941434000E12CB5 /* PrototypeLevel5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D103DA22941434000E12CB5 /* PrototypeLevel5.swift */; };
 		0D7B7A84293A928000362F00 /* PrototypeLevel1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7B7A83293A928000362F00 /* PrototypeLevel1.swift */; };
 		0D7B7A86293A928800362F00 /* PrototypeLevel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7B7A85293A928800362F00 /* PrototypeLevel2.swift */; };
 		0D7B7A88293A928E00362F00 /* PrototypeLevel3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7B7A87293A928E00362F00 /* PrototypeLevel3.swift */; };
@@ -105,6 +107,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0D103DA02941433900E12CB5 /* PrototypeLevel4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeLevel4.swift; sourceTree = "<group>"; };
+		0D103DA22941434000E12CB5 /* PrototypeLevel5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeLevel5.swift; sourceTree = "<group>"; };
 		0D7B7A83293A928000362F00 /* PrototypeLevel1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeLevel1.swift; sourceTree = "<group>"; };
 		0D7B7A85293A928800362F00 /* PrototypeLevel2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeLevel2.swift; sourceTree = "<group>"; };
 		0D7B7A87293A928E00362F00 /* PrototypeLevel3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeLevel3.swift; sourceTree = "<group>"; };
@@ -207,6 +211,8 @@
 				0D7B7A83293A928000362F00 /* PrototypeLevel1.swift */,
 				0D7B7A85293A928800362F00 /* PrototypeLevel2.swift */,
 				0D7B7A87293A928E00362F00 /* PrototypeLevel3.swift */,
+				0D103DA02941433900E12CB5 /* PrototypeLevel4.swift */,
+				0D103DA22941434000E12CB5 /* PrototypeLevel5.swift */,
 			);
 			path = Prototype;
 			sourceTree = "<group>";
@@ -598,6 +604,7 @@
 				0D8437842937CABF00733178 /* FX.Blink.swift in Sources */,
 				0DA0B64229267516001D0C9F /* LanderBoundsContactHandler.swift in Sources */,
 				0D7B7A84293A928000362F00 /* PrototypeLevel1.swift in Sources */,
+				0D103DA12941433900E12CB5 /* PrototypeLevel4.swift in Sources */,
 				0DFF9D58291C885C0029AD93 /* Cargo.swift in Sources */,
 				0D8437862937D68D00733178 /* LanderBombContactHandler.swift in Sources */,
 				0DA6456529314724001410C4 /* MissionTime.swift in Sources */,
@@ -633,6 +640,7 @@
 				0D7DE6BF292121A300A77BD6 /* FX.Explosion.swift in Sources */,
 				0DD8B929293D2BBC002ACCF1 /* DebugViewController.swift in Sources */,
 				0D7F4ECC292294A1005C54C0 /* SKPhysicsContact+Ext.swift in Sources */,
+				0D103DA32941434000E12CB5 /* PrototypeLevel5.swift in Sources */,
 				0D84377C2937A5E900733178 /* BombTerrainContactHandler.swift in Sources */,
 				0DD482512936F6B400009806 /* Bomb.swift in Sources */,
 				0D81CE6129286A9A00AF4D84 /* MessageViewController.swift in Sources */,

@@ -48,6 +48,14 @@ class LevelSelectViewController: UIViewController {
         transiton(to: PrototypeLevel3())
     }
 
+    @IBAction func tapSelectLevel4() {
+        transiton(to: PrototypeLevel4())
+    }
+
+    @IBAction func tapSelectLevel5() {
+        transiton(to: PrototypeLevel5())
+    }
+
     @IBAction func showDebug() {
         #if DEBUG
         let viewController = DebugViewController.fromNib()

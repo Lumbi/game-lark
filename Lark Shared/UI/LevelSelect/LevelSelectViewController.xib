@@ -65,6 +65,16 @@ Atmosphere:
                         <action selector="tapSelectLevel3" destination="-1" eventType="touchUpInside" id="IQV-bY-bJV"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lAq-o1-d8v">
+                    <rect key="frame" x="426" y="304" width="75" height="31"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="Site 5" cornerStyle="capsule">
+                        <fontDescription key="titleFontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="tapSelectLevel5" destination="-1" eventType="touchUpInside" id="pPf-zx-3sx"/>
+                    </connections>
+                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[select deployment site]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzc-HC-jRY">
                     <rect key="frame" x="303.33333333333331" y="75" width="245.66666666666669" height="20"/>
                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
@@ -72,7 +82,7 @@ Atmosphere:
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aqv-OJ-2RN">
-                    <rect key="frame" x="541" y="221" width="75" height="31"/>
+                    <rect key="frame" x="541" y="116.66666666666669" width="75" height="31"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="filled" title="Site 2" cornerStyle="capsule">
                         <fontDescription key="titleFontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
@@ -81,19 +91,33 @@ Atmosphere:
                         <action selector="tapSelectLevel2" destination="-1" eventType="touchUpInside" id="olG-7x-rOf"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l5V-Am-Cfy">
+                    <rect key="frame" x="541" y="229" width="75" height="31"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="Site 4" cornerStyle="capsule">
+                        <fontDescription key="titleFontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="tapSelectLevel4" destination="-1" eventType="touchUpInside" id="6td-LQ-TNr"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="lAq-o1-d8v" firstAttribute="top" secondItem="jjk-uj-wL5" secondAttribute="bottom" constant="7.3333333333333144" id="39E-7F-Z6o"/>
                 <constraint firstItem="TSy-gR-2UH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5w1-OQ-uVq"/>
                 <constraint firstItem="rzc-HC-jRY" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="AFb-D9-q1J"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hqr-ub-csi" secondAttribute="trailing" constant="32" id="DAb-Jy-skX"/>
                 <constraint firstItem="GDG-ZY-0Ep" firstAttribute="top" secondItem="jjk-uj-wL5" secondAttribute="bottom" constant="-1.6666666666666856" id="GRl-kI-Y84"/>
                 <constraint firstItem="TSy-gR-2UH" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="M8I-Rl-mbT"/>
+                <constraint firstItem="lAq-o1-d8v" firstAttribute="leading" secondItem="jjk-uj-wL5" secondAttribute="trailing" constant="-100" id="Nbh-ja-tfH"/>
                 <constraint firstItem="jjk-uj-wL5" firstAttribute="leading" secondItem="GDG-ZY-0Ep" secondAttribute="trailing" constant="-12" id="O7d-eo-zh6"/>
-                <constraint firstItem="aqv-OJ-2RN" firstAttribute="top" secondItem="jjk-uj-wL5" secondAttribute="bottom" constant="-75.666666666666686" id="PpF-iu-DgV"/>
+                <constraint firstItem="aqv-OJ-2RN" firstAttribute="top" secondItem="jjk-uj-wL5" secondAttribute="bottom" constant="-180" id="PpF-iu-DgV"/>
+                <constraint firstItem="l5V-Am-Cfy" firstAttribute="leading" secondItem="jjk-uj-wL5" secondAttribute="trailing" constant="15" id="WaN-XR-tW0"/>
                 <constraint firstItem="jjk-uj-wL5" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="X7J-xT-u4H"/>
                 <constraint firstItem="jjk-uj-wL5" firstAttribute="leading" secondItem="PBy-Vx-gtv" secondAttribute="trailing" constant="8" id="aKc-3M-OWM"/>
+                <constraint firstItem="l5V-Am-Cfy" firstAttribute="top" secondItem="jjk-uj-wL5" secondAttribute="bottom" constant="-67.666666666666686" id="cmJ-qQ-Jif"/>
                 <constraint firstAttribute="bottom" secondItem="TSy-gR-2UH" secondAttribute="bottom" id="eCx-Kf-4f8"/>
                 <constraint firstItem="aqv-OJ-2RN" firstAttribute="leading" secondItem="jjk-uj-wL5" secondAttribute="trailing" constant="15" id="ebp-4U-d4L"/>
                 <constraint firstItem="TSy-gR-2UH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="gDa-kd-MMC"/>

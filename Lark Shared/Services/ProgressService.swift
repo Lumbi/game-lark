@@ -12,6 +12,8 @@ enum LevelName: String, CaseIterable {
     case w1_l1 = "level-1-1"
     case w1_l2 = "level-1-2"
     case w1_l3 = "level-1-3"
+    case w1_l4 = "level-1-4"
+    case w1_l5 = "level-1-5"
 }
 
 enum LevelProgress: String {
@@ -42,16 +44,12 @@ class ProgressService {
 
         // TODO: Refactor to use level graph
         switch levelName {
-        case .sandbox:
-            // Nothing
-            break
-        case .w1_l1:
-            unlock(levelName: .w1_l2)
-        case .w1_l2:
-            unlock(levelName: .w1_l3)
-        case .w1_l3:
-            // all clear
-            break
+        case .sandbox: break // Nothing
+        case .w1_l1: unlock(levelName: .w1_l2)
+        case .w1_l2: unlock(levelName: .w1_l3)
+        case .w1_l3: unlock(levelName: .w1_l4)
+        case .w1_l4: unlock(levelName: .w1_l5)
+        case .w1_l5: break  // All clear
         }
     }
 
