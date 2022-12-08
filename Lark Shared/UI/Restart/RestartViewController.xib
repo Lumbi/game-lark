@@ -21,42 +21,34 @@
             <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="MHb-qh-wdf">
-                    <rect key="frame" x="320" y="107" width="256" height="200"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUI-ky-DT1">
-                            <rect key="frame" x="0.0" y="0.0" width="256" height="84"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="filled" title="menu/restart" cornerStyle="capsule"/>
-                            <connections>
-                                <action selector="tapRestartButton" destination="-1" eventType="touchUpInside" id="wnV-yM-b5Y"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OHq-QI-wZD">
-                            <rect key="frame" x="0.0" y="116" width="256" height="84"/>
-                            <color key="tintColor" systemColor="systemRedColor"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="filled" title="menu/quit" cornerStyle="capsule"/>
-                            <connections>
-                                <action selector="tapQuitButton" destination="-1" eventType="touchUpInside" id="GS3-xN-JOL"/>
-                            </connections>
-                        </button>
-                    </subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUI-ky-DT1">
+                    <rect key="frame" x="387.5" y="177" width="121.5" height="60"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="256" id="Rzl-TE-eE1"/>
-                        <constraint firstAttribute="height" constant="200" id="UrL-Eb-M6c"/>
+                        <constraint firstAttribute="height" constant="60" id="doS-Kb-dRX"/>
                     </constraints>
-                </stackView>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="menu/restart" cornerStyle="capsule"/>
+                    <connections>
+                        <action selector="tapRestartButton" destination="-1" eventType="touchUpInside" id="wnV-yM-b5Y"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OHq-QI-wZD">
+                    <rect key="frame" x="779.5" y="16" width="100.5" height="34.5"/>
+                    <color key="tintColor" systemColor="systemRedColor"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="menu/quit" cornerStyle="capsule"/>
+                    <connections>
+                        <action selector="tapQuitButton" destination="-1" eventType="touchUpInside" id="GS3-xN-JOL"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="NyS-N9-i1a"/>
             <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
             <constraints>
-                <constraint firstItem="MHb-qh-wdf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="NyS-N9-i1a" secondAttribute="top" id="DQL-xb-zrh"/>
-                <constraint firstItem="NyS-N9-i1a" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MHb-qh-wdf" secondAttribute="trailing" id="bRq-u1-F6t"/>
-                <constraint firstItem="MHb-qh-wdf" firstAttribute="centerY" secondItem="zfE-pT-eFa" secondAttribute="centerY" id="cWu-Kp-dk4"/>
-                <constraint firstItem="MHb-qh-wdf" firstAttribute="centerX" secondItem="zfE-pT-eFa" secondAttribute="centerX" id="dxy-vk-K4J"/>
-                <constraint firstItem="NyS-N9-i1a" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="MHb-qh-wdf" secondAttribute="bottom" id="pAA-Wj-uuR"/>
-                <constraint firstItem="MHb-qh-wdf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NyS-N9-i1a" secondAttribute="leading" id="uE4-Ag-IDG"/>
+                <constraint firstItem="HUI-ky-DT1" firstAttribute="centerY" secondItem="zfE-pT-eFa" secondAttribute="centerY" id="2we-ft-Yjx"/>
+                <constraint firstItem="HUI-ky-DT1" firstAttribute="centerX" secondItem="zfE-pT-eFa" secondAttribute="centerX" id="f0i-qM-3H4"/>
+                <constraint firstItem="OHq-QI-wZD" firstAttribute="top" secondItem="zfE-pT-eFa" secondAttribute="top" constant="16" id="h7c-ns-4Cy"/>
+                <constraint firstItem="NyS-N9-i1a" firstAttribute="trailing" secondItem="OHq-QI-wZD" secondAttribute="trailing" constant="16" id="j1m-YV-FFi"/>
             </constraints>
             <point key="canvasLocation" x="683" y="42"/>
         </view>
