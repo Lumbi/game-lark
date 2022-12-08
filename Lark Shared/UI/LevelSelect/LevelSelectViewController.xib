@@ -14,6 +14,8 @@
                 <outlet property="selectLevel1Button" destination="PBy-Vx-gtv" id="1m3-w2-NcO"/>
                 <outlet property="selectLevel2Button" destination="aqv-OJ-2RN" id="CaC-pi-xfB"/>
                 <outlet property="selectLevel3Button" destination="GDG-ZY-0Ep" id="s9a-zh-I1J"/>
+                <outlet property="selectLevel4Button" destination="l5V-Am-Cfy" id="rFy-34-YID"/>
+                <outlet property="selectLevel5Button" destination="lAq-o1-d8v" id="X9T-g9-i7P"/>
                 <outlet property="view" destination="iN0-l3-epB" id="dZR-G7-m3r"/>
             </connections>
         </placeholder>
@@ -26,7 +28,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqr-ub-csi">
-                    <rect key="frame" x="675.33333333333337" y="75" width="144.66666666666663" height="98"/>
+                    <rect key="frame" x="687.33333333333337" y="75" width="132.66666666666663" height="89.666666666666686"/>
                     <string key="text">Object: BL-154
 Surface temp.: 283 K
 Gravity: 0.886 g
@@ -34,7 +36,7 @@ Atmosphere:
  - 83% hydrogen
  - 15% helium
  - 2% methane</string>
-                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
+                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="11"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -46,7 +48,7 @@ Atmosphere:
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PBy-Vx-gtv">
-                    <rect key="frame" x="243" y="83" width="75" height="31"/>
+                    <rect key="frame" x="301" y="125.66666666666669" width="75" height="31"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="filled" title="Site 1" cornerStyle="capsule">
                         <fontDescription key="titleFontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
@@ -56,7 +58,7 @@ Atmosphere:
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GDG-ZY-0Ep">
-                    <rect key="frame" x="263" y="295" width="75" height="31"/>
+                    <rect key="frame" x="301" y="236.66666666666666" width="75" height="30.999999999999972"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="filled" title="Site 3" cornerStyle="capsule">
                         <fontDescription key="titleFontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
@@ -66,7 +68,7 @@ Atmosphere:
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lAq-o1-d8v">
-                    <rect key="frame" x="426" y="304" width="75" height="31"/>
+                    <rect key="frame" x="426" y="276.66666666666669" width="75" height="31"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="filled" title="Site 5" cornerStyle="capsule">
                         <fontDescription key="titleFontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
@@ -82,7 +84,7 @@ Atmosphere:
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aqv-OJ-2RN">
-                    <rect key="frame" x="541" y="116.66666666666669" width="75" height="31"/>
+                    <rect key="frame" x="506" y="136.66666666666666" width="75" height="31"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="filled" title="Site 2" cornerStyle="capsule">
                         <fontDescription key="titleFontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
@@ -92,7 +94,7 @@ Atmosphere:
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l5V-Am-Cfy">
-                    <rect key="frame" x="541" y="229" width="75" height="31"/>
+                    <rect key="frame" x="496" y="229" width="75" height="31"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="filled" title="Site 4" cornerStyle="capsule">
                         <fontDescription key="titleFontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
@@ -105,26 +107,26 @@ Atmosphere:
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="lAq-o1-d8v" firstAttribute="top" secondItem="jjk-uj-wL5" secondAttribute="bottom" constant="7.3333333333333144" id="39E-7F-Z6o"/>
+                <constraint firstItem="lAq-o1-d8v" firstAttribute="top" secondItem="jjk-uj-wL5" secondAttribute="bottom" constant="-20" id="39E-7F-Z6o"/>
                 <constraint firstItem="TSy-gR-2UH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5w1-OQ-uVq"/>
                 <constraint firstItem="rzc-HC-jRY" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="AFb-D9-q1J"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hqr-ub-csi" secondAttribute="trailing" constant="32" id="DAb-Jy-skX"/>
-                <constraint firstItem="GDG-ZY-0Ep" firstAttribute="top" secondItem="jjk-uj-wL5" secondAttribute="bottom" constant="-1.6666666666666856" id="GRl-kI-Y84"/>
+                <constraint firstItem="GDG-ZY-0Ep" firstAttribute="top" secondItem="jjk-uj-wL5" secondAttribute="bottom" constant="-60" id="GRl-kI-Y84"/>
                 <constraint firstItem="TSy-gR-2UH" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="M8I-Rl-mbT"/>
                 <constraint firstItem="lAq-o1-d8v" firstAttribute="leading" secondItem="jjk-uj-wL5" secondAttribute="trailing" constant="-100" id="Nbh-ja-tfH"/>
-                <constraint firstItem="jjk-uj-wL5" firstAttribute="leading" secondItem="GDG-ZY-0Ep" secondAttribute="trailing" constant="-12" id="O7d-eo-zh6"/>
-                <constraint firstItem="aqv-OJ-2RN" firstAttribute="top" secondItem="jjk-uj-wL5" secondAttribute="bottom" constant="-180" id="PpF-iu-DgV"/>
-                <constraint firstItem="l5V-Am-Cfy" firstAttribute="leading" secondItem="jjk-uj-wL5" secondAttribute="trailing" constant="15" id="WaN-XR-tW0"/>
+                <constraint firstItem="jjk-uj-wL5" firstAttribute="leading" secondItem="GDG-ZY-0Ep" secondAttribute="trailing" constant="-50" id="O7d-eo-zh6"/>
+                <constraint firstItem="aqv-OJ-2RN" firstAttribute="top" secondItem="jjk-uj-wL5" secondAttribute="bottom" constant="-160" id="PpF-iu-DgV"/>
+                <constraint firstItem="l5V-Am-Cfy" firstAttribute="leading" secondItem="jjk-uj-wL5" secondAttribute="trailing" constant="-30" id="WaN-XR-tW0"/>
                 <constraint firstItem="jjk-uj-wL5" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="X7J-xT-u4H"/>
-                <constraint firstItem="jjk-uj-wL5" firstAttribute="leading" secondItem="PBy-Vx-gtv" secondAttribute="trailing" constant="8" id="aKc-3M-OWM"/>
+                <constraint firstItem="jjk-uj-wL5" firstAttribute="leading" secondItem="PBy-Vx-gtv" secondAttribute="trailing" constant="-50" id="aKc-3M-OWM"/>
                 <constraint firstItem="l5V-Am-Cfy" firstAttribute="top" secondItem="jjk-uj-wL5" secondAttribute="bottom" constant="-67.666666666666686" id="cmJ-qQ-Jif"/>
                 <constraint firstAttribute="bottom" secondItem="TSy-gR-2UH" secondAttribute="bottom" id="eCx-Kf-4f8"/>
-                <constraint firstItem="aqv-OJ-2RN" firstAttribute="leading" secondItem="jjk-uj-wL5" secondAttribute="trailing" constant="15" id="ebp-4U-d4L"/>
+                <constraint firstItem="aqv-OJ-2RN" firstAttribute="leading" secondItem="jjk-uj-wL5" secondAttribute="trailing" constant="-20" id="ebp-4U-d4L"/>
                 <constraint firstItem="TSy-gR-2UH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="gDa-kd-MMC"/>
                 <constraint firstItem="hqr-ub-csi" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="o0E-La-niz"/>
                 <constraint firstItem="rzc-HC-jRY" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ofA-DK-Mm2"/>
                 <constraint firstItem="jjk-uj-wL5" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="tI3-Cv-A5f"/>
-                <constraint firstItem="jjk-uj-wL5" firstAttribute="top" secondItem="PBy-Vx-gtv" secondAttribute="bottom" constant="-17.333333333333314" id="v8k-Sf-2Dy"/>
+                <constraint firstItem="jjk-uj-wL5" firstAttribute="top" secondItem="PBy-Vx-gtv" secondAttribute="bottom" constant="-60" id="v8k-Sf-2Dy"/>
             </constraints>
             <connections>
                 <outletCollection property="gestureRecognizers" destination="MO2-E6-kIF" appends="YES" id="Ou0-6s-b2b"/>

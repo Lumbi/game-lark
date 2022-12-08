@@ -25,6 +25,16 @@ enum LevelProgress: String {
 class ProgressService {
     private let userDefaults: UserDefaults = .standard
 
+    // This is just to retrigger the unlock mechanism on initial load
+    // Can be removed once migrated to level graph
+    func load() {
+        for levelName in LevelName.allCases {
+            if case .completed = progress(for: levelName) {
+                complete(levelName: levelName)
+            }
+        }
+    }
+
     func progress(for levelName: LevelName) -> LevelProgress {
         if let rawValue = userDefaults.string(forKey: qualifiedKey(for: levelName.rawValue)),
            let progress = LevelProgress(rawValue: rawValue)
@@ -47,9 +57,11 @@ class ProgressService {
         case .sandbox: break // Nothing
         case .w1_l1: unlock(levelName: .w1_l2)
         case .w1_l2: unlock(levelName: .w1_l3)
-        case .w1_l3: unlock(levelName: .w1_l4)
-        case .w1_l4: unlock(levelName: .w1_l5)
-        case .w1_l5: break  // All clear
+        case .w1_l3:
+            unlock(levelName: .w1_l4)
+            unlock(levelName: .w1_l5)
+        case .w1_l4: break
+        case .w1_l5: break
         }
     }
 

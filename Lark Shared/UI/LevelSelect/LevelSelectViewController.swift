@@ -15,9 +15,13 @@ class LevelSelectViewController: UIViewController {
     @IBOutlet weak var selectLevel1Button: UIButton?
     @IBOutlet weak var selectLevel2Button: UIButton?
     @IBOutlet weak var selectLevel3Button: UIButton?
+    @IBOutlet weak var selectLevel4Button: UIButton?
+    @IBOutlet weak var selectLevel5Button: UIButton?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        progressService.load()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -80,28 +84,15 @@ class LevelSelectViewController: UIViewController {
     }
 
     private func updateLevelButtonsAvailability() {
-        if let selectLevel1Button = selectLevel1Button,
-           let selectLevel2Button = selectLevel2Button,
-           let selectLevel3Button = selectLevel3Button
-        {
-            updateLevelButtonAvailability(
-                for: selectLevel1Button,
-                progress: progressService.progress(for: .w1_l1)
-            )
-
-            updateLevelButtonAvailability(
-                for: selectLevel2Button,
-                progress: progressService.progress(for: .w1_l2)
-            )
-
-            updateLevelButtonAvailability(
-                for: selectLevel3Button,
-                progress: progressService.progress(for: .w1_l3)
-            )
-        }
+        updateLevelButtonAvailability(for: selectLevel1Button, progress: progressService.progress(for: .w1_l1))
+        updateLevelButtonAvailability(for: selectLevel2Button, progress: progressService.progress(for: .w1_l2))
+        updateLevelButtonAvailability(for: selectLevel3Button, progress: progressService.progress(for: .w1_l3))
+        updateLevelButtonAvailability(for: selectLevel4Button, progress: progressService.progress(for: .w1_l4))
+        updateLevelButtonAvailability(for: selectLevel5Button, progress: progressService.progress(for: .w1_l5))
     }
 
-    private func updateLevelButtonAvailability(for button: UIButton, progress: LevelProgress) {
+    private func updateLevelButtonAvailability(for button: UIButton?, progress: LevelProgress) {
+        guard let button = button else { return }
         switch progress {
         case .locked:
             button.isEnabled = false
