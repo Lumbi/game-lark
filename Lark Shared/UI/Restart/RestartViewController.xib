@@ -22,9 +22,10 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUI-ky-DT1">
-                    <rect key="frame" x="387.5" y="177" width="121.5" height="60"/>
+                    <rect key="frame" x="358" y="167" width="180" height="80"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="60" id="doS-Kb-dRX"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="4YL-JJ-Q4h"/>
+                        <constraint firstAttribute="height" constant="80" id="doS-Kb-dRX"/>
                     </constraints>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="filled" title="menu/restart" cornerStyle="capsule"/>
@@ -34,7 +35,7 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OHq-QI-wZD">
                     <rect key="frame" x="779.5" y="16" width="100.5" height="34.5"/>
-                    <color key="tintColor" systemColor="systemRedColor"/>
+                    <color key="tintColor" systemColor="systemMintColor"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="filled" title="menu/quit" cornerStyle="capsule"/>
                     <connections>
@@ -57,8 +58,8 @@
         <systemColor name="secondarySystemFillColor">
             <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemMintColor">
+            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
