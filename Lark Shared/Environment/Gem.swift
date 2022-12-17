@@ -25,7 +25,7 @@ class Gem: SKNode {
         physicsBody?.affectedByGravity = false
         physicsBody?.isDynamic = false
         physicsBody?.allowsRotation = false
-        physicsBody?.collisionBitMask = 0
+        physicsBody?.collisionBitMask = Const.PhysicsBody.Bitmask.terrain | Const.PhysicsBody.Bitmask.bumper | Const.PhysicsBody.Bitmask.enemy
         physicsBody?.categoryBitMask = Const.PhysicsBody.Bitmask.collectible
         
         zPosition = Const.Node.ZPosition.interactive
@@ -39,7 +39,6 @@ class Gem: SKNode {
         self.position = position
         physicsBody?.isDynamic = true
         physicsBody?.linearDamping = 0.5
-        physicsBody?.collisionBitMask = Const.PhysicsBody.Bitmask.terrain
         physicsBody?.categoryBitMask = Const.PhysicsBody.Bitmask.transientCollectible
         
         scene.addChild(self)
