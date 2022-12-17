@@ -46,8 +46,8 @@ class Gem: SKNode {
         
         physicsBody?.applyImpulse(
             .init(
-                dx: CGFloat.random(in: (-1...1)),
-                dy: CGFloat.random(in: (-1...1))
+                dx: CGFloat.random(in: (-1...1)) * 3.0,
+                dy: CGFloat.random(in: (-1...1)) * 3.0
             )
         )
         
