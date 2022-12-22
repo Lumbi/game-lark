@@ -2,7 +2,6 @@
 
 # High
 
-- Basic animation when depositing shards
 - Deposited shard count
 - Total shard count
 - Basic animation when bursting
