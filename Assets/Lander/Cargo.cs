@@ -20,12 +20,16 @@ public class Cargo : MonoBehaviour
         hud.UpdateCargoCount(count);
     }
 
-    public int Unload()
+    public bool UnloadOne()
     {
-        int unloadedCount = count;
-        count = 0;
-        hud.UpdateCargoCount(count);
-        return unloadedCount;
+        if (count > 0)
+        {
+            count -= 1;
+            hud.UpdateCargoCount(count);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public void DropCollectibles()
