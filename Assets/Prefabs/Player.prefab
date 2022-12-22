@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 3381665116316612023}
   - component: {fileID: 3381665116316612008}
   - component: {fileID: 3381665116316612021}
-  - component: {fileID: 3381665116316612020}
   - component: {fileID: 7195790207213754245}
   - component: {fileID: 3381665116316612018}
   - component: {fileID: 3381665116316612019}
   - component: {fileID: 3381665116316612017}
+  - component: {fileID: 939908336017653493}
   - component: {fileID: 3381665116316612016}
   - component: {fileID: 143636377}
   - component: {fileID: 143636379}
@@ -132,19 +132,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &3381665116316612020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3381665116316612009}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc80c65a5e9b2476ebaecf8716b555bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thrusterForce: 10
 --- !u!114 &7195790207213754245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,6 +179,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67b77c8ded125431bb7fe1768053e30f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &939908336017653493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3381665116316612009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80c59a3be739f4768aacf9f66c839b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &3381665116316612016

@@ -18,5 +18,10 @@ public class LanderCollision : MonoBehaviour
             var toCollect = collider.gameObject.GetComponent<CollectOnCollision>();
             GetComponent<CollectGem>().Collect(toCollect);
         }
+        else if (collider.gameObject.GetComponent<DepositOnCollision>())
+        {
+            var count = GetComponent<Cargo>().Unload();
+            GetComponent<DepositGem>().Deposit(count);
+        }
     }
 }
