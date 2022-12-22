@@ -40,5 +40,6 @@ public class Cargo : MonoBehaviour
             var randomDirection = Random.insideUnitCircle.normalized;
             droppedShard.GetComponent<Rigidbody2D>().AddForce(randomDirection, ForceMode2D.Impulse);
         }
+        hud.UpdateCargoCount(count);
     }
 }
