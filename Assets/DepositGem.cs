@@ -13,6 +13,13 @@ public class DepositGem : MonoBehaviour
 
     private float time = 0f;
 
+    private SharedDepot sharedDepot;
+
+    void Start()
+    {
+        sharedDepot = FindObjectOfType<SharedDepot>();
+    }
+
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.GetComponent<DepositOnCollision>())
@@ -58,6 +65,8 @@ public class DepositGem : MonoBehaviour
             // Destroy after animation finishes
             yield return new WaitForSeconds(animateMove.duration);
             Destroy(depositedShard);
+
+            sharedDepot.Accept();
         }
     }
 }

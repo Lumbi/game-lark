@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Cargo : MonoBehaviour
 {
-    public HUD hud;
     public GameObject shardPrefab;
-
+    private HUD hud;
     private int count = 0;
 
     void Start()
