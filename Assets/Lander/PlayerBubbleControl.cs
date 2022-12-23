@@ -11,11 +11,14 @@ public class PlayerBubbleControl : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0)) // TODO: Refactor inputs
         {
             Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             clickPosition.z = transform.position.z;
             pushingDirection = (transform.position - clickPosition).normalized;
+            if (!isPushing) {
+                FindObjectOfType<HUD>().HideControlsHint();
+            }
             isPushing = true;
         } else {
             isPushing = false;
@@ -24,7 +27,7 @@ public class PlayerBubbleControl : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (isPushing)  // TODO: Refactor inputs
+        if (isPushing)
         {
             GetComponent<Rigidbody2D>().AddForce(pushingForce * pushingDirection);
         }
