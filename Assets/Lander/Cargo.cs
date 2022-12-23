@@ -8,6 +8,8 @@ public class Cargo : MonoBehaviour
     private HUD hud;
     private int count = 0;
 
+    public bool isEmpty { get { return count == 0; } }
+
     void Start()
     {
         hud = FindObjectOfType<HUD>();
@@ -19,16 +21,12 @@ public class Cargo : MonoBehaviour
         hud.UpdateCargoCount(count);
     }
 
-    public bool UnloadOne()
+    public void UnloadOne()
     {
-        if (count > 0)
-        {
-            count -= 1;
-            hud.UpdateCargoCount(count);
-            return true;
-        } else {
-            return false;
-        }
+        if (isEmpty) { return; }
+
+        count -= 1;
+        hud.UpdateCargoCount(count);
     }
 
     public void DropCollectibles()

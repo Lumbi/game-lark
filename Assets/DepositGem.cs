@@ -13,13 +13,6 @@ public class DepositGem : MonoBehaviour
 
     private float time = 0f;
 
-    private SharedDepot sharedDepot;
-
-    void Start()
-    {
-        sharedDepot = FindObjectOfType<SharedDepot>();
-    }
-
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.GetComponent<DepositOnCollision>())
@@ -54,19 +47,24 @@ public class DepositGem : MonoBehaviour
 
     IEnumerator DepositInto(GameObject depot)
     {
-        if (GetComponent<Cargo>().UnloadOne())
-        {
-            var depositedShard = Instantiate(depositShardPrefab, transform.position, Quaternion.identity);
+        if (GetComponent<Cargo>().isEmpty) { yield break; }
+        if (depot.GetComponent<DepositOnCollision>().isFull) { yield break; }
 
-            // Animate-move toward depot
-            var animateMove = depositedShard.AddComponent<AnimateMove>();
-            animateMove.target = depot.transform;
+        // Decrement the cargo
+        GetComponent<Cargo>().UnloadOne();
 
-            // Destroy after animation finishes
-            yield return new WaitForSeconds(animateMove.duration);
-            Destroy(depositedShard);
+        // Create a transient shard to animate
+        var depositedShard = Instantiate(depositShardPrefab, transform.position, Quaternion.identity);
 
-            sharedDepot.Accept();
-        }
+        // Animate-move toward depot
+        var animateMove = depositedShard.AddComponent<AnimateMove>();
+        animateMove.target = depot.transform;
+
+        // Destroy after animation finishes
+        yield return new WaitForSeconds(animateMove.duration);
+        Destroy(depositedShard);
+
+        // Transfer the count to the depot
+        depot.GetComponent<DepositOnCollision>().AcceptOne();
     }
 }

@@ -1,18 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class DepositOnCollision : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public int requiredCount;
+
+    public TMP_Text counterText;
+
+    private int count = 0;
+
+    public bool isFull { get { return count >= requiredCount; } }
+
     void Start()
     {
-        
+        UpdateCounterText();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AcceptOne()
     {
-        
+        if (!isFull) {
+            count += 1;
+            UpdateCounterText();
+        }
+    }
+
+    private void UpdateCounterText()
+    {
+        counterText.text = $"{count} / {requiredCount}";
     }
 }
