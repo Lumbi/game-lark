@@ -2,7 +2,6 @@
 
 # High
 
-- Total shard count
 - Basic animation when bursting
 - Simple control instructions
 - Support touch screen
