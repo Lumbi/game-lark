@@ -7,7 +7,7 @@ public class CameraFollow : MonoBehaviour
     public Transform target;
     public float speed = 2.0f;
 
-    void Update()
+    void LateUpdate()
     {
         if (target != null) {
             float interpolation = speed * Time.deltaTime;
