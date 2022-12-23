@@ -184,6 +184,7 @@ GameObject:
   - component: {fileID: 2076131460818692110}
   - component: {fileID: 2076131460818692144}
   - component: {fileID: 2076131460818692145}
+  - component: {fileID: 5415933025255674419}
   m_Layer: 0
   m_Name: Depot
   m_TagString: Untagged
@@ -288,4 +289,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   requiredCount: 1
+  requiredCountReached:
+    m_PersistentCalls:
+      m_Calls: []
   counterText: {fileID: 9217191146146536798}
+--- !u!114 &5415933025255674419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076131460818692109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7520a674696764917966b072c1798f41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using TMPro;
 
 public class DepositOnCollision : MonoBehaviour
 {
     public int requiredCount;
+
+    public UnityEvent requiredCountReached = new UnityEvent();
 
     public TMP_Text counterText;
 
@@ -24,9 +27,13 @@ public class DepositOnCollision : MonoBehaviour
             count += 1;
             UpdateCounterText();
         }
+
+        if (isFull) {
+            requiredCountReached.Invoke();
+        }
     }
 
-    private void UpdateCounterText()
+    public void UpdateCounterText()
     {
         counterText.text = $"{count} / {requiredCount}";
     }
