@@ -6,15 +6,22 @@ public class Restart : MonoBehaviour
 {
     public GameObject landerPrefab;
 
+    void Start()
+    {
+        if (GameObject.FindWithTag("Player") == null) {
+            Spawn();
+        }
+    }
+
     public void Spawn()
     {
-        Debug.Log($"{GetType().Name} - {System.Reflection.MethodBase.GetCurrentMethod().Name}");
         var lander = Instantiate(landerPrefab, transform.position, Quaternion.identity);
         var cameraFollow = FindObjectOfType<CameraFollow>();
         cameraFollow.FocusOn(lander.transform);
     }
 
-    public void SpawnLater(float delay) {
+    public void SpawnLater(float delay)
+    {
         StartCoroutine(_SpawnLater(delay));
     }
 

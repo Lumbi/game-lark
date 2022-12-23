@@ -4,10 +4,10 @@
 
 - Simple control instructions
 - Support touch screen
+- Prototype level
 
 # Medium
 
-- Prototype level
 - Open door to next level when all shards are deposited
 - Limit max speed
 - Hook to bombs
