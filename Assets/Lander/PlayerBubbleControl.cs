@@ -37,6 +37,10 @@ public class PlayerBubbleControl : MonoBehaviour
             return clickPosition;
         } else if (Input.touchCount > 0) {
             Vector3 tapPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+            for (int i = 1; i < Input.touchCount; i++) {
+                tapPosition += Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);
+            }
+            tapPosition /= Input.touchCount;
             tapPosition.z = transform.position.z;
             return tapPosition;
         } else {
