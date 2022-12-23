@@ -2,7 +2,6 @@
 
 # High
 
-- Support touch screen
 - Prototype level
 
 # Medium
