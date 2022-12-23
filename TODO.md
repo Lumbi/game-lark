@@ -2,7 +2,6 @@
 
 # High
 
-- Simple control instructions
 - Support touch screen
 - Prototype level
 
