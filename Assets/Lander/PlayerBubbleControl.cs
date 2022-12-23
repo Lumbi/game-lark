@@ -11,17 +11,36 @@ public class PlayerBubbleControl : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(0)) // TODO: Refactor inputs
+        if (IsInputActive())
         {
-            Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            clickPosition.z = transform.position.z;
-            pushingDirection = (transform.position - clickPosition).normalized;
+            Vector3 inputPosition = GetInputPosition();
+            pushingDirection = (transform.position - inputPosition).normalized;
             if (!isPushing) {
                 FindObjectOfType<HUD>().HideControlsHint();
             }
             isPushing = true;
         } else {
             isPushing = false;
+        }
+    }
+
+    private bool IsInputActive()
+    {
+        return Input.GetMouseButton(0) || Input.touchCount > 0;
+    }
+
+    private Vector3 GetInputPosition()
+    {
+        if (Input.GetMouseButton(0)) {
+            Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            clickPosition.z = transform.position.z;
+            return clickPosition;
+        } else if (Input.touchCount > 0) {
+            Vector3 tapPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+            tapPosition.z = transform.position.z;
+            return tapPosition;
+        } else {
+            return Vector3.zero;
         }
     }
 
