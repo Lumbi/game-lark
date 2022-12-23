@@ -2,7 +2,6 @@
 
 # High
 
-- Basic animation when bursting
 - Simple control instructions
 - Support touch screen
 - Open door when all shards are deposited

@@ -5,10 +5,6 @@ using UnityEngine;
 public class LanderCollision : MonoBehaviour
 {
     void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.GetComponent<DamageOnCollision>()) {
-            GetComponent<LanderDestroy>().Trigger();
-        }
-
         GetComponent<AnimateWobble>().Play();
     }
 
