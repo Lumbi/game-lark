@@ -5,6 +5,7 @@ using UnityEngine;
 public class Restart : MonoBehaviour
 {
     public GameObject landerPrefab;
+    private GameObject lastCheckpoint;
 
     void Start()
     {
@@ -13,9 +14,15 @@ public class Restart : MonoBehaviour
         }
     }
 
+    public void SaveCheckpointAt(GameObject checkpoint)
+    {
+        lastCheckpoint = checkpoint;
+    }
+
     public void Spawn()
     {
-        var lander = Instantiate(landerPrefab, transform.position, Quaternion.identity);
+        Vector3 spawnPosition = lastCheckpoint != null ? lastCheckpoint.transform.position : transform.position;
+        var lander = Instantiate(landerPrefab, spawnPosition, Quaternion.identity);
         var cameraFollow = FindObjectOfType<CameraFollow>();
         cameraFollow.FocusOn(lander.transform);
     }

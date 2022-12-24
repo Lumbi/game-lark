@@ -48,7 +48,10 @@ public class DepositGem : MonoBehaviour
     IEnumerator DepositInto(GameObject depot)
     {
         if (GetComponent<Cargo>().isEmpty) { yield break; }
-        if (depot.GetComponent<DepositOnCollision>().isFull) { yield break; }
+        if (depot.GetComponent<DepositOnCollision>().isFull) { yield break; } // TODO: Fix bug where can deposit even if depot *will* be full
+
+        // Save checkpoint
+        FindObjectOfType<Restart>().SaveCheckpointAt(depot);
 
         // Decrement the cargo
         GetComponent<Cargo>().UnloadOne();
