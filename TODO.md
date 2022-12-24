@@ -2,7 +2,9 @@
 
 # High
 
-- Prototype level
+- Replace cargo text with icon
+- Increase shard size
+- Increase spike size
 
 # Medium
 
@@ -12,5 +14,4 @@
 
 # Low
 
-- Checkpoints
 - Shard radar
