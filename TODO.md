@@ -2,10 +2,6 @@
 
 # High
 
-- Replace cargo text with icon
-- Increase shard size
-- Increase spike size
-
 # Medium
 
 - Limit max speed
