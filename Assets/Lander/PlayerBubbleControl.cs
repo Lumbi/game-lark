@@ -15,9 +15,6 @@ public class PlayerBubbleControl : MonoBehaviour
         {
             Vector3 inputPosition = GetInputPosition();
             pushingDirection = (transform.position - inputPosition).normalized;
-            if (!isPushing) {
-                FindObjectOfType<HUD>().HideControlsHint();
-            }
             isPushing = true;
         } else {
             isPushing = false;
