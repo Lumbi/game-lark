@@ -2149,11 +2149,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5863991122615859038, guid: 9e1a88045a65e49a98d24d55e45cc304, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.36
+      value: 1.99
       objectReference: {fileID: 0}
     - target: {fileID: 5863991122615859038, guid: 9e1a88045a65e49a98d24d55e45cc304, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -103.5
+      value: -103.79
       objectReference: {fileID: 0}
     - target: {fileID: 5863991122615859038, guid: 9e1a88045a65e49a98d24d55e45cc304, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5571,7 +5571,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tap and hold to move around
+  m_text: Tap and hold to push around
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a4e484d95f1984e1eb9b90fad51d72ca, type: 2}
   m_sharedMaterial: {fileID: 7420998648295774117, guid: a4e484d95f1984e1eb9b90fad51d72ca, type: 2}
@@ -5702,7 +5702,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.8, y: -100.91}
+  m_AnchoredPosition: {x: 0.84, y: -100.73}
   m_SizeDelta: {x: 8.3162, y: 2.6326}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1059669097
