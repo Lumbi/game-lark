@@ -12,6 +12,8 @@ Obstacles / Enemies
 - Run away from mercenary until anti-war ship arrives
 
 Gameplay
+- Light and darkness
+- Breadcrumbs
 - Bump into walls to break them
 - Bump into buttons to push them in
 - Flick to push harder
