@@ -2,9 +2,6 @@
 
 # Bug
 
-- Player respawns behind the depot
-- Hint text above player
-
 # High
 
 - Try non-inverted controls

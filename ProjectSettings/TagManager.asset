@@ -41,6 +41,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 3511742133
+    locked: 0
+  - name: Terrain
+    uniqueID: 743995699
+    locked: 0
+  - name: Interactive
+    uniqueID: 611887893
+    locked: 0
+  - name: Player
+    uniqueID: 2892464069
+    locked: 0
+  - name: Foreground
+    uniqueID: 699136287
+    locked: 0
   - name: FX
     uniqueID: 369720453
     locked: 0
