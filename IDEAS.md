@@ -8,9 +8,13 @@ Obstacles / Enemies
 - Snake-like creature?
 - Bouncy jello
 - Open-shut doors/valve
+- Revolving door
 - Run away from mercenary until anti-war ship arrives
 
 Gameplay
+- Bump into walls to break them
+- Bump into buttons to push them in
+- Flick to push harder
 - Hacking enemy equipement on site
 - Hidden shards (behind foreground, or inside crates)
 - Inverted gravity level
