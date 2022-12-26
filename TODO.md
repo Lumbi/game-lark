@@ -5,8 +5,6 @@
 # High
 
 - Try non-inverted controls
-- Improve control responsiveness
-    - Add force to counter velocity by default (?)
 - Visual feedback to show where the player will go
 
 # Medium
