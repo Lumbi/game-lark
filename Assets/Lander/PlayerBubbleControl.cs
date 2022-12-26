@@ -5,9 +5,17 @@ using UnityEngine;
 public class PlayerBubbleControl : MonoBehaviour
 {
     public float pushingForce = 0.0f;
+    public float maxSpeed = 7f;
 
     private bool isPushing = false;
     private Vector3 pushingDirection;
+
+    private Rigidbody2D body;
+
+    void Start()
+    {
+        body = GetComponent<Rigidbody2D>();
+    }
 
     void Update()
     {
@@ -47,9 +55,9 @@ public class PlayerBubbleControl : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (isPushing)
+        if (isPushing && body.velocity.magnitude < maxSpeed)
         {
-            GetComponent<Rigidbody2D>().AddForce(pushingForce * pushingDirection);
+            body.AddForce(pushingForce * pushingDirection);
         }
     }
 }

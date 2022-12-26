@@ -5,7 +5,6 @@
 # High
 
 - Try non-inverted controls
-- Avoid adding force if player velocity is greater than threshold
 - Add linear damping on player
 - Improve control responsiveness
     - Add force to counter velocity by default (?)
