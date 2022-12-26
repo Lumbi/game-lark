@@ -11,6 +11,9 @@ V4
     - Didn't want to control it because of the sensitivity
     - Maybe linear damping would help (force user to control)
 
+- Add easy way to restart from where you "died"
+    - Good for children, save position when bouncing off a wall?
+
 V3
 
 - Too difficult, keeps going out of safe area
