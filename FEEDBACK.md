@@ -1,5 +1,11 @@
 # GAMEPLAY ISSUES
 
+V5
+
+- Lost in the "hard" part, don't know where to go. Would like an arrow that points where to go.
+
+- Would like some feedback when touching the screen
+
 V4
 
 - "Inverted controls" hard to understand
