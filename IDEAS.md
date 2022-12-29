@@ -1,5 +1,11 @@
 # IDEAS
 
+Ailments
+- Confused (controls are inverted)
+- Fuzzy (like Yoshi's island)
+- Small
+- Heavy
+
 Obstacles / Enemies
 - Lava
 - Fire plume
