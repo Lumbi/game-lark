@@ -13,45 +13,23 @@ public class PlayerBubbleControl : MonoBehaviour
     private Vector2 pushingDirection;
 
     private Rigidbody2D body;
+    private PlayerInput input;
 
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        input = GetComponent<PlayerInput>();
     }
 
     void Update()
     {
-        if (IsInputActive())
+        if (input.IsDown())
         {
-            Vector3 inputPosition = GetInputPosition();
+            Vector3 inputPosition = input.Position();
             pushingDirection = (transform.position - inputPosition).normalized;
             isPushing = true;
         } else {
             isPushing = false;
-        }
-    }
-
-    private bool IsInputActive()
-    {
-        return Input.GetMouseButton(0) || Input.touchCount > 0;
-    }
-
-    private Vector3 GetInputPosition()
-    {
-        if (Input.GetMouseButton(0)) {
-            Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            clickPosition.z = transform.position.z;
-            return clickPosition;
-        } else if (Input.touchCount > 0) {
-            Vector3 tapPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-            for (int i = 1; i < Input.touchCount; i++) {
-                tapPosition += Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);
-            }
-            tapPosition /= Input.touchCount;
-            tapPosition.z = transform.position.z;
-            return tapPosition;
-        } else {
-            return Vector3.zero;
         }
     }
 
