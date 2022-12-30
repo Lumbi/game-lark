@@ -50,6 +50,7 @@ public class PlayerDashControl : MonoBehaviour
                 if (input.Distance().magnitude > minDistance && input.Velocity().magnitude > minInputSpeed) {
                     dashDirection = input.Velocity().normalized;
                     triggerDash = true;
+                    GetComponent<AnimateWobble>().Play();
                 } else {
                     inputDuration += Time.deltaTime;
                 }
