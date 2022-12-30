@@ -76,15 +76,16 @@ public class PlayerDashControl : MonoBehaviour
     void FixedUpdate()
     {
         if (triggerDash && !inCooldown) {
-            ApplyForce();
+            Dash();
         }
     }
 
     public bool IsDashing() { return isDashing; }
 
-    private void ApplyForce()
+    private void Dash()
     {
         triggerDash = false;
+        isDashing = true;
         inCooldown = true;
         cooldownTimer = 0f;
         body.AddForce(dashForce * dashDirection, ForceMode2D.Impulse);
