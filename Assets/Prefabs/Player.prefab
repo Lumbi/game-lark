@@ -173,10 +173,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ec993026f4d4f9d9f85d662fc80ecb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashForce: 4
+  dashForce: 10
   minDistance: 1
   minInputSpeed: 1
   maxInputDuration: 0.3
+  cooldownDuration: 1
+  controls: {fileID: 7195790207213754245}
 --- !u!114 &3381665116316612018
 MonoBehaviour:
   m_ObjectHideFlags: 0
