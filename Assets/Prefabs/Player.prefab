@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ec993026f4d4f9d9f85d662fc80ecb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashForce: 10
+  dashForce: 8
   minDistance: 1
   minInputSpeed: 1
   maxInputDuration: 0.3

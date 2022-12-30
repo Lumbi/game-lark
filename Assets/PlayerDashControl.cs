@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerDashControl : MonoBehaviour
 {
-    public float dashForce = 4f;
+    public float dashForce = 8f;
     public float minDistance = 1f;
     public float minInputSpeed = 1f;
     public float maxInputDuration = 0.3f;
@@ -18,7 +18,7 @@ public class PlayerDashControl : MonoBehaviour
     private bool triggerDash = false;
     private Vector2 dashDirection = Vector2.zero;
     private bool isDashing = false;
-    private float dashDuration = 0.3f;
+    public float dashDuration = 0.5f;
     private float dashTimer = 0f;
 
     private Rigidbody2D body;
