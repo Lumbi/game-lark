@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target;
+    public GameObject target;
     public float speed = 2.0f;
 
     void LateUpdate()
@@ -20,9 +20,9 @@ public class CameraFollow : MonoBehaviour
         }
     }
 
-    public void FocusOn(Transform target)
+    public void FocusOn(GameObject target)
     {
         this.target = target;
-        this.transform.position = target.position;
+        this.transform.position = target.transform.position;
     }
 }

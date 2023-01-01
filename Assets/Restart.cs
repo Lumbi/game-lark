@@ -24,7 +24,7 @@ public class Restart : MonoBehaviour
         Vector3 spawnPosition = lastCheckpoint != null ? lastCheckpoint.transform.position : transform.position;
         var lander = Instantiate(landerPrefab, spawnPosition, Quaternion.identity);
         var cameraFollow = FindObjectOfType<CameraFollow>();
-        cameraFollow.FocusOn(lander.transform);
+        cameraFollow.FocusOn(lander);
     }
 
     public void SpawnLater(float delay)
