@@ -4,18 +4,63 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    private bool dash = false;
+    private bool dashBackBuffer = false;
+    private Vector2 dashDirection = Vector2.zero;
 
-    private Vector2 startPosition = Vector2.zero;
-    private Vector2 lastPosition = Vector2.zero;
-    private Vector2 velocity = Vector2.zero;
-    private bool wasDown = false;
+    public bool Move()
+    {
+        return PointerIsDown();
+    }
 
-    public bool IsDown()
+    public Vector2 MoveDirection()
+    {
+        Vector3 pointerPosition = PointerPosition();
+        return (transform.position - pointerPosition).normalized;
+    }
+
+    public bool Dash()
+    {
+        return dash;
+    }
+
+    public Vector2 DashDirection()
+    {
+        return dashDirection;
+    }
+
+    void Update()
+    {
+        UpdatePointerVelocity();
+        UpdateDetectPointerDashGesture();
+    }
+
+    void LateUpdate()
+    {
+        LateUpdatePointerState();
+
+        // Swap dash flag back buffer
+        dash = dashBackBuffer;
+        dashBackBuffer = false;
+    }
+
+    // Pointer-like Input
+
+    private Vector2 pointerStartPosition = Vector2.zero;
+    private Vector2 pointerLastPosition = Vector2.zero;
+    private Vector2 pointerVelocity = Vector2.zero;
+    private bool pointerWasDown = false;
+    private float pointerDownDuration = 0f;
+    private float pointerDashGestureMaxDuration = 0.3f;
+    private float pointerDashGestureMinDistance = 1f;
+    private float pointerDashGestureMinSpeed = 1f;
+
+    private bool PointerIsDown()
     {
         return Input.GetMouseButton(0) || Input.touchCount > 0;
     }
 
-    public Vector2 Position()
+    private Vector2 PointerPosition()
     {
         if (Input.GetMouseButton(0)) {
             Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -32,43 +77,43 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-    public Vector2 StartPosition()
+    private void UpdatePointerVelocity()
     {
-        return startPosition;
-    }
-
-    public Vector2 Velocity()
-    {
-        return velocity;
-    }
-
-    public Vector2 Distance()
-    {
-        if (wasDown) {
-            return Position() - lastPosition;
-        } else {
-            return Vector2.zero;
+        if (PointerIsDown()) {
+            if (pointerWasDown) {
+                pointerVelocity = (PointerPosition() - pointerLastPosition) / Time.deltaTime;
+            }
         }
     }
 
-    void Update()
+    private void UpdateDetectPointerDashGesture()
     {
-        if (IsDown()) {
-            if (wasDown) {
-                velocity = (Position() - lastPosition) / Time.deltaTime;
+        if (PointerIsDown() && pointerWasDown) {
+            if (pointerDownDuration < pointerDashGestureMaxDuration) {
+                Vector2 pointeDownDistance = PointerPosition() - pointerStartPosition;
+                // Trigger dash
+                if (pointeDownDistance.magnitude > pointerDashGestureMinDistance && pointerVelocity.magnitude > pointerDashGestureMinSpeed) {
+                    dashDirection = pointerVelocity.normalized;
+                    dashBackBuffer = true;
+                } else {
+                    pointerDownDuration += Time.deltaTime;
+                }
             }
         } else {
-            velocity = Vector2.zero;
+            pointerDownDuration = 0f;
         }
     }
 
-    void LateUpdate()
+    private void LateUpdatePointerState()
     {
-        if (IsDown()) {
-            lastPosition = Position();
-            wasDown = true;
+        if (PointerIsDown()) {
+            if (!pointerWasDown) {
+                pointerStartPosition = PointerPosition();
+            }
+            pointerLastPosition = PointerPosition();
+            pointerWasDown = true;
         } else {
-            wasDown = false;
+            pointerWasDown = false;
         }
     }
 }

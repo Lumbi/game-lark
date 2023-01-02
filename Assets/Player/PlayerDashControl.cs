@@ -5,18 +5,13 @@ using UnityEngine;
 public class PlayerDashControl : MonoBehaviour
 {
     public float dashForce = 8f;
-    public float minDistance = 1f;
-    public float minInputSpeed = 1f;
-    public float maxInputDuration = 0.3f;
     public float cooldownDuration = 1f;
     public Behaviour controls; // Normal player controls to be disabled while dashing
 
-    private float inputDuration = 0f;
     private bool inCooldown = false;
     private float cooldownTimer = 0f;
 
     private bool triggerDash = false;
-    private Vector2 dashDirection = Vector2.zero;
     private bool isDashing = false;
     public float dashDuration = 0.5f;
     private float dashTimer = 0f;
@@ -44,19 +39,9 @@ public class PlayerDashControl : MonoBehaviour
         }
 
         // Detect dash input
-        if (input.IsDown() && !inCooldown) {
-            if (inputDuration < maxInputDuration) {
-                // Trigger dash
-                if (input.Distance().magnitude > minDistance && input.Velocity().magnitude > minInputSpeed) {
-                    dashDirection = input.Velocity().normalized;
-                    triggerDash = true;
-                    GetComponent<AnimateWobble>().Play();
-                } else {
-                    inputDuration += Time.deltaTime;
-                }
-            }
-        } else {
-            inputDuration = 0f;
+        if (input.Dash() && !inCooldown) {
+            triggerDash = true;
+            GetComponent<AnimateWobble>().Play();
         }
 
         // Accumulate dash state frames
@@ -88,6 +73,6 @@ public class PlayerDashControl : MonoBehaviour
         isDashing = true;
         inCooldown = true;
         cooldownTimer = 0f;
-        body.AddForce(dashForce * dashDirection, ForceMode2D.Impulse);
+        body.AddForce(dashForce * input.DashDirection(), ForceMode2D.Impulse);
     }
 }

@@ -23,10 +23,9 @@ public class PlayerBubbleControl : MonoBehaviour
 
     void Update()
     {
-        if (input.IsDown())
+        if (input.Move())
         {
-            Vector3 inputPosition = input.Position();
-            pushingDirection = (transform.position - inputPosition).normalized;
+            pushingDirection = input.MoveDirection();
             isPushing = true;
         } else {
             isPushing = false;
