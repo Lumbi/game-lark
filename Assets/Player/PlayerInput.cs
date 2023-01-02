@@ -4,44 +4,52 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    private Vector2 moveDirection = Vector2.zero;
     private bool dash = false;
-    private bool dashBackBuffer = false;
+    private bool dashBackBuffer = false; // Back buffer is needed to avoid relying on the component order
     private Vector2 dashDirection = Vector2.zero;
 
-    public bool Move()
-    {
-        return PointerIsDown();
-    }
+    public bool Move() { return ControllerAxisIsActive() || PointerIsDown(); }
 
-    public Vector2 MoveDirection()
-    {
-        Vector3 pointerPosition = PointerPosition();
-        return (transform.position - pointerPosition).normalized;
-    }
+    public Vector2 MoveDirection() { return moveDirection; }
 
-    public bool Dash()
-    {
-        return dash;
-    }
+    public bool Dash() { return dash; }
 
-    public Vector2 DashDirection()
-    {
-        return dashDirection;
-    }
+    public Vector2 DashDirection() { return dashDirection; }
 
     void Update()
     {
-        UpdatePointerVelocity();
-        UpdateDetectPointerDashGesture();
+        UpdateControllerInput();
+        UpdatePointerInput();
     }
 
     void LateUpdate()
     {
-        LateUpdatePointerState();
+        LateUpdatePointerInput();
 
         // Swap dash flag back buffer
         dash = dashBackBuffer;
         dashBackBuffer = false;
+    }
+
+    // Controller-like input
+
+    private bool ControllerAxisIsActive()
+    {
+        return Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0;
+    }
+
+    private void UpdateControllerInput()
+    {
+        moveDirection.x = Input.GetAxis("Horizontal");
+        moveDirection.y = Input.GetAxis("Vertical");
+        moveDirection.Normalize();
+
+        dashDirection = moveDirection;
+
+        if (ControllerAxisIsActive() && Input.GetButtonDown("Dash")) {
+            dashBackBuffer = true;
+        }
     }
 
     // Pointer-like Input
@@ -77,6 +85,21 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
+    private void UpdatePointerInput()
+    {
+        UpdatePointerMoveDirection();
+        UpdatePointerVelocity();
+        UpdateDetectPointerDashGesture();
+    }
+
+    private void UpdatePointerMoveDirection()
+    {
+        if (PointerIsDown()) {
+            Vector3 pointerPosition = PointerPosition();
+            moveDirection = (transform.position - pointerPosition).normalized;
+        }
+    }
+
     private void UpdatePointerVelocity()
     {
         if (PointerIsDown()) {
@@ -104,7 +127,7 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-    private void LateUpdatePointerState()
+    private void LateUpdatePointerInput()
     {
         if (PointerIsDown()) {
             if (!pointerWasDown) {
