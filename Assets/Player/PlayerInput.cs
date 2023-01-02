@@ -8,6 +8,7 @@ public class PlayerInput : MonoBehaviour
     private bool dash = false;
     private bool dashBackBuffer = false; // Back buffer is needed to avoid relying on the component order
     private Vector2 dashDirection = Vector2.zero;
+    private bool usingPointer = false;
 
     public bool Move() { return ControllerAxisIsActive() || PointerIsDown(); }
 
@@ -19,13 +20,24 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-        UpdateControllerInput();
-        UpdatePointerInput();
+         if (PointerIsDown()) {
+            usingPointer = true;
+        } else if (ControllerAxisIsActive()) {
+            usingPointer = false;
+        }
+
+        if (usingPointer) {
+            UpdatePointerInput();
+        } else {
+            UpdateControllerInput();
+        }
     }
 
     void LateUpdate()
     {
-        LateUpdatePointerInput();
+        if (usingPointer) {
+            LateUpdatePointerInput();
+        }
 
         // Swap dash flag back buffer
         dash = dashBackBuffer;
@@ -102,10 +114,8 @@ public class PlayerInput : MonoBehaviour
 
     private void UpdatePointerVelocity()
     {
-        if (PointerIsDown()) {
-            if (pointerWasDown) {
-                pointerVelocity = (PointerPosition() - pointerLastPosition) / Time.deltaTime;
-            }
+        if (PointerIsDown() && pointerWasDown) {
+            pointerVelocity = (PointerPosition() - pointerLastPosition) / Time.deltaTime;
         }
     }
 
