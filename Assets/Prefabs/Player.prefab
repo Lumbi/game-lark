@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4696232d0680c4478a15b0c628103f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 5
   input: {fileID: 1891399000953358290}
+  alignSmoothTime: 0.09
 --- !u!1 &3381665116316612009
 GameObject:
   m_ObjectHideFlags: 0

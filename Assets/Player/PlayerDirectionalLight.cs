@@ -4,21 +4,29 @@ using UnityEngine;
 
 public class PlayerDirectionalLight : MonoBehaviour
 {
-    public float rotationSpeed = 1f;
     public PlayerInput input;
-    private Vector2 direction = Vector2.right;
-    private float targetAngle = 0f;
-    private Quaternion targetRotation = Quaternion.identity;
+    public float alignSmoothTime = 0.09f;
+    private Coroutine rotateAlignToCoroutine;
+    private Vector2 velocity = Vector2.zero;
+    private Vector2 targetDirection = Vector2.zero;
+    private Vector2 currentDirection = Vector2.right;
 
     void LateUpdate()
     {
         if (input.MoveDirection() != Vector2.zero) {
-            direction = input.MoveDirection();
+            targetDirection = input.MoveDirection();
         }
 
-        // TODO: Fix me
-        targetAngle = Mathf.Lerp(targetAngle, Vector2.SignedAngle(Vector2.right, direction), rotationSpeed * Time.deltaTime);
-        targetRotation = Quaternion.AngleAxis(targetAngle, Vector3.forward);
-        transform.rotation = targetRotation;
+        currentDirection = transform.right;
+
+        if (targetDirection != Vector2.zero) {
+            if (currentDirection + targetDirection == Vector2.zero) { // if exactly at opposite
+               // slightly shift to allow the smooth damp to work with normalized vectors
+                currentDirection.x += 0.1f;
+                currentDirection.y += 0.1f;
+            }
+            transform.right = Vector2.SmoothDamp(currentDirection, targetDirection, ref velocity, alignSmoothTime);
+            transform.right.Normalize();
+        }
     }
 }
