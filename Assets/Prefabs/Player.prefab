@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 1891399000953358290}
+  body: {fileID: 3381665116316612021}
   alignSmoothTime: 0.09
 --- !u!1 &3381665116316612009
 GameObject:

@@ -10,6 +10,8 @@ public class PlayerInput : MonoBehaviour
     private Vector2 dashDirection = Vector2.zero;
     private bool usingPointer = false;
 
+    public bool UsingPointer() { return usingPointer; }
+
     public bool Move() { return ControllerAxisIsActive() || PointerIsDown(); }
 
     public Vector2 MoveDirection() { return moveDirection; }
