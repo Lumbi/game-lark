@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class PlayerDirectionalLight : MonoBehaviour
 {
-    public float rotationSpeed = 100f;
-    public Rigidbody2D body;
+    public float rotationSpeed = 1f;
+    public PlayerInput input;
     private Vector2 direction = Vector2.right;
+    private float targetAngle = 0f;
     private Quaternion targetRotation = Quaternion.identity;
 
     void LateUpdate()
     {
-        direction = body.velocity;
-        // targetRotation = Quaternion.LookRotation(direction, Vector3.forward);
-        targetRotation = Quaternion.AngleAxis(Vector2.SignedAngle(Vector2.right, direction), Vector3.forward);
+        if (input.MoveDirection() != Vector2.zero) {
+            direction = input.MoveDirection();
+        }
+
+        // TODO: Fix me
+        targetAngle = Mathf.Lerp(targetAngle, Vector2.SignedAngle(Vector2.right, direction), rotationSpeed * Time.deltaTime);
+        targetRotation = Quaternion.AngleAxis(targetAngle, Vector3.forward);
         transform.rotation = targetRotation;
     }
 }
