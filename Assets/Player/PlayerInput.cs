@@ -20,7 +20,7 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-         if (PointerIsDown()) {
+        if (PointerIsDown()) {
             usingPointer = true;
         } else if (ControllerAxisIsActive()) {
             usingPointer = false;
