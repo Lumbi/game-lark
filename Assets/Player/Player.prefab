@@ -58,7 +58,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3381665116316612022}
   - component: {fileID: 3381665116316612023}
-  - component: {fileID: 3381665116316612008}
+  - component: {fileID: 4785570990346174032}
   - component: {fileID: 3381665116316612021}
   - component: {fileID: 1891399000953358290}
   - component: {fileID: 7195790207213754245}
@@ -69,6 +69,7 @@ GameObject:
   - component: {fileID: 939908336017653493}
   - component: {fileID: 3381665116316612016}
   - component: {fileID: 143636377}
+  - component: {fileID: 7127118724878320633}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -134,7 +135,7 @@ SpriteRenderer:
   m_SortingLayerID: -1402503227
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c8011c6baa1b54e9c9ffcc63cffa35e3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6fcb6c7465c31489b9cbc2abc2b9f47c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -145,8 +146,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &3381665116316612008
-CircleCollider2D:
+--- !u!70 &4785570990346174032
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -159,8 +160,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.6
+  m_Size: {x: 1.2895553, y: 0.57768697}
+  m_Direction: 1
 --- !u!50 &3381665116316612021
 Rigidbody2D:
   serializedVersion: 4
@@ -305,6 +306,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 0.3
   speed: 5
+--- !u!114 &7127118724878320633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3381665116316612009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 869e16068382844758bb364c729e52ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4169964287466038602
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,7 +478,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.8
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.5
+  m_Intensity: 0.6
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000b5ee50d13379582c15ab7824c57f67ac1ff9ab29857c0916
