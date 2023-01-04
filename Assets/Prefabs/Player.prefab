@@ -4903,6 +4903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f34cf20a4614b47ad9321bf07a7067d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invertPointerControls: 0
 --- !u!114 &7195790207213754245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4983,7 +4984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   depositShardPrefab: {fileID: 1485904417631859288, guid: 2735ee48d0eb342c792e9012c36edec0, type: 3}
-  delay: 1
+  delay: 0.3
 --- !u!114 &3381665116316612016
 MonoBehaviour:
   m_ObjectHideFlags: 0
