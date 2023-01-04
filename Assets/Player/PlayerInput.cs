@@ -9,6 +9,7 @@ public class PlayerInput : MonoBehaviour
     private bool dashBackBuffer = false; // Back buffer is needed to avoid relying on the component order
     private Vector2 dashDirection = Vector2.zero;
     private bool usingPointer = false;
+    public bool invertPointerControls = false;
 
     public bool UsingPointer() { return usingPointer; }
 
@@ -110,7 +111,11 @@ public class PlayerInput : MonoBehaviour
     {
         if (PointerIsDown()) {
             Vector3 pointerPosition = PointerPosition();
-            moveDirection = (transform.position - pointerPosition).normalized;
+            if (invertPointerControls) {
+                moveDirection = (transform.position - pointerPosition).normalized;
+            } else {
+                moveDirection = (pointerPosition - transform.position).normalized;
+            }
         }
     }
 
