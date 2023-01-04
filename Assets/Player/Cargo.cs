@@ -6,7 +6,7 @@ public class Cargo : MonoBehaviour
 {
     public GameObject shardPrefab;
     private HUD hud;
-    private int count = 0;
+    public int count = 0;
 
     public bool isEmpty { get { return count == 0; } }
 
