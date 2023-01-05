@@ -56,14 +56,15 @@ public class PlayerInput : MonoBehaviour
 
     private void UpdateControllerInput()
     {
-        moveDirection.x = Input.GetAxis("Horizontal");
-        moveDirection.y = Input.GetAxis("Vertical");
-        moveDirection.Normalize();
+        if (ControllerAxisIsActive()) {
+            moveDirection.x = Input.GetAxis("Horizontal");
+            moveDirection.y = Input.GetAxis("Vertical");
+            moveDirection.Normalize();
 
-        dashDirection = moveDirection;
-
-        if (ControllerAxisIsActive() && Input.GetButtonDown("Dash")) {
-            dashBackBuffer = true;
+            dashDirection = moveDirection;
+            if (Input.GetButtonDown("Dash")) {
+                dashBackBuffer = true;
+            }
         }
     }
 

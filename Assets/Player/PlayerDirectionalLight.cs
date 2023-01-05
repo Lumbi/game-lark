@@ -14,14 +14,8 @@ public class PlayerDirectionalLight : MonoBehaviour
 
     void LateUpdate()
     {
-        if (input.UsingPointer()) {
-            if (body.velocity != Vector2.zero) {
-                targetDirection = body.velocity.normalized;
-            }
-        } else {
-            if (input.MoveDirection() != Vector2.zero) {
-                targetDirection = input.MoveDirection();
-            }
+        if (input.MoveDirection() != Vector2.zero) {
+            targetDirection = input.MoveDirection();
         }
 
         currentDirection = transform.right;
