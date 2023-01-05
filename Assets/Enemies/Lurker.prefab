@@ -10,10 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7667929341949717927}
   - component: {fileID: 7667929341949717928}
-  - component: {fileID: 7667929341949717929}
   m_Layer: 11
   m_Name: PlayerDetector
-  m_TagString: Untagged
+  m_TagString: Player Detector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,48 +48,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 10
---- !u!114 &7667929341949717929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7667929341949717926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cacb713afa81d438f8db24e55b35aca6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerInRange:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7667929343219666417}
-        m_TargetAssemblyTypeName: EnemyLurker, Assembly-CSharp
-        m_MethodName: OnPlayerInRange
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  playerOutRange:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7667929343219666417}
-        m_TargetAssemblyTypeName: EnemyLurker, Assembly-CSharp
-        m_MethodName: OnPlayerOutRange
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &7667929343219666412
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +127,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 3625043607559282579, guid: 045b15ec09bba42448d89db77fa6f20a, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.6226415, g: 0.43761125, b: 0.43761125, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -206,7 +163,7 @@ MonoBehaviour:
   - {x: 0.0018386841, y: -0.25598145, z: 0}
   m_ShapePathHash: 1488756885
   m_Mesh: {fileID: 0}
-  m_InstanceId: 38822
+  m_InstanceId: -1636
 --- !u!58 &7667929343219666415
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -222,7 +179,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.4
 --- !u!50 &7667929343219666416
 Rigidbody2D:
   serializedVersion: 4
@@ -257,4 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  speed: 1
+  speed: 3
+  isPlayerInRange: 0
+  isUnderPlayerLight: 0
+  effectKillPlayer: {fileID: 1897091753248475834, guid: 9b12f857cc57642ad87231cc9766a004, type: 3}

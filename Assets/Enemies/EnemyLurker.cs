@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyLurker : MonoBehaviour
 {
-    public enum State { Idle, Chasing }
+    public enum State { Idle, WaitingToChase, Chasing }
 
     public State state;
     public float speed = 1f;
@@ -13,6 +13,9 @@ public class EnemyLurker : MonoBehaviour
     private GameObject player;
     public bool isPlayerInRange = false;
     public bool isUnderPlayerLight = false;
+    public GameObject effectKillPlayer;
+    private float waitingToChaseTime = 0f;
+    public float waitingToChaseDuration = 1f;
 
     void Start()
     {
@@ -20,29 +23,60 @@ public class EnemyLurker : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
     }
 
+    // Events
+
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Player Light") {
-            isUnderPlayerLight = true;
+        if (collider.gameObject.tag == "Player") {
+            HandlePlayerRangeTrigger(true);
+        } else if (collider.gameObject.tag == "Player Light") {
+            HandlePlayerLightTrigger(true);
         }
     }
 
     void OnTriggerExit2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Player Light") {
-            isUnderPlayerLight = false;
+        if (collider.gameObject.tag == "Player") {
+            HandlePlayerRangeTrigger(false);
+        } else if (collider.gameObject.tag == "Player Light") {
+            HandlePlayerLightTrigger(false);
         }
     }
 
-    public void OnPlayerInRange()
-    {
-        isPlayerInRange = true;
+    void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.tag == "Player") {
+            HandlePlayerCollision(collision);
+        }
     }
 
-    public void OnPlayerOutRange()
+    // Collisions
+
+    private void HandlePlayerRangeTrigger(bool inRange)
     {
-        isPlayerInRange = false;
+        isPlayerInRange = inRange;
     }
+
+    private void HandlePlayerLightTrigger(bool underLight)
+    {
+        isUnderPlayerLight = underLight;
+    }
+
+    private void HandlePlayerCollision(Collision2D collision)
+    {
+        if (!isUnderPlayerLight && state == State.Chasing) {
+            KillPlayer(collision.gameObject);
+        }
+    }
+
+    // Actions
+
+    private void KillPlayer(GameObject player)
+    {
+        player.GetComponent<LanderDestroy>().DestroyAndRespawn();
+        Instantiate(effectKillPlayer, transform.position, Quaternion.identity);
+    }
+
+    // Updates
 
     void Update()
     {
@@ -50,19 +84,40 @@ public class EnemyLurker : MonoBehaviour
             player = GameObject.FindWithTag("Player");
         }
 
-        if (isPlayerInRange && !isUnderPlayerLight) {
-            state = State.Chasing;
-        } else {
-            state = State.Idle;
+        switch (state) {
+            case State.Idle: {
+                if (isPlayerInRange && !isUnderPlayerLight) {
+                    state = State.WaitingToChase;
+                }
+                break;
+            }
+
+            case State.WaitingToChase: {
+                if (waitingToChaseTime < waitingToChaseDuration) {
+                    waitingToChaseTime += Time.deltaTime;
+                } else {
+                    waitingToChaseTime = 0f;
+                    state = State.Chasing;
+                }
+                break;
+            }
+
+            case State.Chasing: {
+                if (!isPlayerInRange || isUnderPlayerLight) {
+                    state = State.Idle;
+                }
+                break;
+            }
         }
     }
 
     void FixedUpdate()
     {
         switch (state) {
-            case State.Idle: {
-                break;
-            }
+            case State.Idle: { break; }
+
+            case State.WaitingToChase: { break; }
+
             case State.Chasing: {
                 FixedUpdateChasing();
                 break;

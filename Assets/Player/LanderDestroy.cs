@@ -11,7 +11,7 @@ public class LanderDestroy : MonoBehaviour
         }
     }
 
-    private void DestroyAndRespawn()
+    public void DestroyAndRespawn()
     {
         FindObjectOfType<Restart>().SpawnLater(1.3f);
         GetComponent<Cargo>().DropCollectibles();

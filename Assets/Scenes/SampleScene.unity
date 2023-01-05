@@ -3984,18 +3984,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lurker
       objectReference: {fileID: 0}
-    - target: {fileID: 7667929343219666413, guid: 184a8a01dd28e42b4a1eaf1ccb1d6e80, type: 3}
-      propertyPath: m_Color.b
-      value: 0.43761125
-      objectReference: {fileID: 0}
-    - target: {fileID: 7667929343219666413, guid: 184a8a01dd28e42b4a1eaf1ccb1d6e80, type: 3}
-      propertyPath: m_Color.g
-      value: 0.43761125
-      objectReference: {fileID: 0}
-    - target: {fileID: 7667929343219666413, guid: 184a8a01dd28e42b4a1eaf1ccb1d6e80, type: 3}
-      propertyPath: m_Color.r
-      value: 0.6226415
-      objectReference: {fileID: 0}
     - target: {fileID: 7667929343219666414, guid: 184a8a01dd28e42b4a1eaf1ccb1d6e80, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -4040,18 +4028,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7667929343219666417, guid: 184a8a01dd28e42b4a1eaf1ccb1d6e80, type: 3}
-      propertyPath: speed
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 8859840001573607461, guid: 184a8a01dd28e42b4a1eaf1ccb1d6e80, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 62140055}
-    - target: {fileID: 8859840001573607461, guid: 184a8a01dd28e42b4a1eaf1ccb1d6e80, type: 3}
-      propertyPath: m_InstanceId
-      value: -1636
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 184a8a01dd28e42b4a1eaf1ccb1d6e80, type: 3}
 --- !u!1001 &8106007679733857064

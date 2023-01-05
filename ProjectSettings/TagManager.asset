@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Player Light
+  - Player Detector
   layers:
   - Default
   - TransparentFX
