@@ -368,7 +368,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.86
+  m_Intensity: 0.61
   m_LightVolumeIntensity: 0
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000b5ee50d13379582c15ab7824c57f67ac1ff9ab29857c0916
@@ -486,7 +486,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 11.593311, y: 12.646796}
+  m_Size: {x: 8.366224, y: 12.646796}
   m_EdgeRadius: 0
 --- !u!1 &6438110691304673912
 GameObject:

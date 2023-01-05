@@ -161,9 +161,15 @@ public class EnemyLurker : MonoBehaviour
     void FixedUpdate()
     {
         switch (state) {
-            case State.Idle: { break; }
+            case State.Idle: {
+                FixedUpdateIdle();
+                break;
+            }
 
-            case State.WaitingToChase: { break; }
+            case State.WaitingToChase: {
+                FixedUpdateWaitingToChase();
+                break;
+            }
 
             case State.Chasing: {
                 FixedUpdateChasing();
@@ -172,13 +178,25 @@ public class EnemyLurker : MonoBehaviour
         }
     }
 
+    private void FixedUpdateIdle()
+    {
+        body.velocity = Vector2.zero;
+    }
+
+    private void FixedUpdateWaitingToChase()
+    {
+        body.velocity = Vector2.zero;
+    }
+
     private void FixedUpdateChasing()
     {
         if (player != null) {
             moveDirection = player.transform.position - transform.position;
-            moveDirection.z = 0;
+            moveDirection.z = 0f;
             moveDirection.Normalize();
-            body.MovePosition(transform.position + (moveDirection * speed * Time.fixedDeltaTime));
+            body.AddForce(moveDirection * speed);
+        } else {
+            body.velocity = Vector2.zero;
         }
     }
 }
