@@ -19,8 +19,10 @@ public class Restart : MonoBehaviour
         lastCheckpoint = checkpoint;
     }
 
-    public void Spawn()
+    private void Spawn()
     {
+        if (GameObject.FindWithTag("Player") != null) { return; }
+
         Vector3 spawnPosition = lastCheckpoint != null ? lastCheckpoint.transform.position : transform.position;
         var lander = Instantiate(landerPrefab, spawnPosition, Quaternion.identity);
         var cameraFollow = FindObjectOfType<CameraFollow>();
