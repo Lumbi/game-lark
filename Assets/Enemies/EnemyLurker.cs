@@ -17,6 +17,8 @@ public class EnemyLurker : MonoBehaviour
     private float waitingToChaseTime = 0f;
     public float waitingToChaseDuration = 1f;
     private Vector3 startPosition;
+    private float forceKillTime = 0f;
+    private float forceKillDelay = 3f;
 
     void Start()
     {
@@ -45,9 +47,24 @@ public class EnemyLurker : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision) {
+    void OnCollisionEnter2D(Collision2D collision)
+    {
         if (collision.gameObject.tag == "Player") {
-            HandlePlayerCollision(collision);
+            HandlePlayerCollisionEnter(collision.gameObject);
+        }
+    }
+
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player") {
+            HandlePlayerCollisionStay(collision.gameObject);
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player") {
+            HandlePlayerCollisionExit(collision.gameObject);
         }
     }
 
@@ -63,11 +80,27 @@ public class EnemyLurker : MonoBehaviour
         isUnderPlayerLight = underLight;
     }
 
-    private void HandlePlayerCollision(Collision2D collision)
+    private void HandlePlayerCollisionEnter(GameObject player)
     {
         if (!isUnderPlayerLight && state == State.Chasing) {
-            KillPlayer(collision.gameObject);
+            KillPlayer(player);
         }
+    }
+
+    private void HandlePlayerCollisionStay(GameObject player)
+    {
+        // Force kill player after a certain duration to avoid dead locks
+        if (forceKillTime < forceKillDelay) {
+            forceKillTime += Time.deltaTime;
+        } else {
+            KillPlayer(player);
+            forceKillTime = 0f;
+        }
+    }
+
+    private void HandlePlayerCollisionExit(GameObject player)
+    {
+        forceKillTime = 0f;
     }
 
     // Actions
