@@ -7,9 +7,10 @@ public class EnemyLurker : MonoBehaviour
     public enum State { Idle, WaitingToChase, Chasing }
 
     public State state;
-    public float speed = 100f;
+    public float speed = 10f;
+    public float maxSpeed = 5f;
     private Rigidbody2D body;
-    private Vector3 moveDirection = Vector2.zero;
+    private Vector2 moveDirection = Vector2.zero;
     private GameObject player;
     public bool isPlayerInRange = false;
     public bool isUnderPlayerLight = false;
@@ -188,15 +189,20 @@ public class EnemyLurker : MonoBehaviour
         body.velocity = Vector2.zero;
     }
 
+    Vector2 adjustedDirection = Vector2.zero;
+
     private void FixedUpdateChasing()
     {
         if (player != null) {
             moveDirection = player.transform.position - transform.position;
-            moveDirection.z = 0f;
             moveDirection.Normalize();
 
-            body.velocity = Vector2.zero;
-            body.AddForce(moveDirection * speed);
+            Vector2 counterVelocity = -1 * (body.velocity - (Vector2.Dot(body.velocity, moveDirection) * moveDirection));
+            adjustedDirection = moveDirection + counterVelocity;
+            adjustedDirection.Normalize();
+
+            body.AddForce(adjustedDirection * speed);
+            body.velocity = Vector2.ClampMagnitude(body.velocity, maxSpeed);
         } else {
             body.velocity = Vector2.zero;
         }
