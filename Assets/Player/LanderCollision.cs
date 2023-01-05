@@ -9,9 +9,11 @@ public class LanderCollision : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.GetComponent<CollectOnCollision>()) {
-            var toCollect = collider.gameObject.GetComponent<CollectOnCollision>();
-            GetComponent<CollectGem>().Collect(toCollect);
+        if (collider.gameObject.GetComponent<CollectOnCollision>() != null) {
+            CollectOnCollision toCollect = collider.gameObject.GetComponent<CollectOnCollision>();
+            if (toCollect != null) {
+                GetComponent<CollectGem>().Collect(toCollect);
+            }
         }
     }
 }
