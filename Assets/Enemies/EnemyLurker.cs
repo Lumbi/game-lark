@@ -16,11 +16,13 @@ public class EnemyLurker : MonoBehaviour
     public GameObject effectKillPlayer;
     private float waitingToChaseTime = 0f;
     public float waitingToChaseDuration = 1f;
+    private Vector3 startPosition;
 
     void Start()
     {
         state = State.Idle;
         body = GetComponent<Rigidbody2D>();
+        startPosition = transform.position;
     }
 
     // Events
@@ -74,6 +76,18 @@ public class EnemyLurker : MonoBehaviour
     {
         player.GetComponent<LanderDestroy>().DestroyAndRespawn();
         Instantiate(effectKillPlayer, transform.position, Quaternion.identity);
+        StartCoroutine(MoveToStartPosition());
+    }
+
+    private IEnumerator MoveToStartPosition()
+    {
+        float delay = 2f;
+        float time = 0f;
+        while (time < delay) {
+            time += Time.deltaTime;
+            yield return null;
+        }
+        transform.position = startPosition;
     }
 
     // Updates
