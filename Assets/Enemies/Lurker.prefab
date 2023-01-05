@@ -163,7 +163,7 @@ MonoBehaviour:
   - {x: 0.0018386841, y: -0.25598145, z: 0}
   m_ShapePathHash: 1488756885
   m_Mesh: {fileID: 0}
-  m_InstanceId: 64258
+  m_InstanceId: 96832
 --- !u!58 &7667929343219666415
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  speed: 5
+  speed: 4
   isPlayerInRange: 0
   isUnderPlayerLight: 0
   effectKillPlayer: {fileID: 1897091753248475834, guid: 9b12f857cc57642ad87231cc9766a004, type: 3}
