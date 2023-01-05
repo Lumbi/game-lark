@@ -1,5 +1,9 @@
 # IDEAS
 
+Horror game mechanics:
+- Hiding
+- Escape
+
 Ailments
 - Confused (controls are inverted)
 - Fuzzy (like Yoshi's island)
