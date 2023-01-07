@@ -369,7 +369,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.61
+  m_Intensity: 0.85
   m_LightVolumeIntensity: 0
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000b5ee50d13379582c15ab7824c57f67ac1ff9ab29857c0916
@@ -477,7 +477,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 5.45}
+  m_Offset: {x: 0, y: 6.97}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -488,7 +488,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.95, y: 6.12}
+  m_Size: {x: 9.53, y: 8.31}
   m_EdgeRadius: 0
 --- !u!70 &1605277082116486657
 CapsuleCollider2D:
@@ -504,7 +504,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 4.5}
-  m_Size: {x: 3.88, y: 8}
+  m_Size: {x: 6.94, y: 8}
   m_Direction: 0
 --- !u!1 &6438110691304673912
 GameObject:
@@ -628,12 +628,12 @@ GameObject:
   - component: {fileID: 6645614085598971245}
   - component: {fileID: 8140912745774699075}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6645614085598971245
 Transform:
   m_ObjectHideFlags: 0
