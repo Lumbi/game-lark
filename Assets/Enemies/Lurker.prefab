@@ -62,6 +62,7 @@ GameObject:
   - component: {fileID: 7667929343219666415}
   - component: {fileID: 7667929343219666416}
   - component: {fileID: 7667929343219666417}
+  - component: {fileID: 1494541895}
   m_Layer: 10
   m_Name: Lurker
   m_TagString: Untagged
@@ -126,8 +127,8 @@ SpriteRenderer:
   m_SortingLayerID: 611887893
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3625043607559282579, guid: 045b15ec09bba42448d89db77fa6f20a, type: 3}
-  m_Color: {r: 0.6226415, g: 0.43761125, b: 0.43761125, a: 1}
+  m_Sprite: {fileID: 21300000, guid: b0a3d025c56c34640a3622358861ab3c, type: 3}
+  m_Color: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -158,12 +159,19 @@ MonoBehaviour:
   m_ApplyToSortingLayers: b5ee50d1
   m_ShapePath:
   - {x: -0.5055771, y: 0.0013046265, z: 0}
-  - {x: 0.0037384033, y: 0.25700378, z: 0}
-  - {x: 0.50587463, y: 0.00021362305, z: 0}
-  - {x: 0.0018386841, y: -0.25598145, z: 0}
-  m_ShapePathHash: 1488756885
+  - {x: -0.38838768, y: 0.2049408, z: 0}
+  - {x: -0.1995449, y: 0.29129028, z: 0}
+  - {x: 0.09194565, y: 0.28782654, z: 0}
+  - {x: 0.31750298, y: 0.20108032, z: 0}
+  - {x: 0.4642334, y: 0.00021362305, z: 0}
+  - {x: 0.36955643, y: -0.364563, z: 0}
+  - {x: 0.11623573, y: -0.57276917, z: 0}
+  - {x: -0.17178535, y: -0.58665466, z: 0}
+  - {x: -0.41122437, y: -0.44784546, z: 0}
+  - {x: -0.5256214, y: -0.21780396, z: 0}
+  m_ShapePathHash: 1600553399
   m_Mesh: {fileID: 0}
-  m_InstanceId: 214880
+  m_InstanceId: 308144
 --- !u!58 &7667929343219666415
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -177,7 +185,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.06, y: -0.15}
   serializedVersion: 2
   m_Radius: 0.4
 --- !u!50 &7667929343219666416
@@ -220,3 +228,17 @@ MonoBehaviour:
   isUnderPlayerLight: 0
   effectKillPlayer: {fileID: 1897091753248475834, guid: 9b12f857cc57642ad87231cc9766a004, type: 3}
   waitingToChaseDuration: 0.8
+--- !u!114 &1494541895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7667929343219666412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5c80f32727094348895d58c35ff4c30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteIdle: {fileID: 21300000, guid: b0a3d025c56c34640a3622358861ab3c, type: 3}
+  spriteChasing: {fileID: 21300000, guid: 540ba3084707846b5b1dc1e2db445388, type: 3}

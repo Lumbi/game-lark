@@ -28,6 +28,10 @@ public class EnemyLurker : MonoBehaviour
         startPosition = transform.position;
     }
 
+    // State
+
+    public State CurrentState() { return state; }
+
     // Events
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -129,6 +133,7 @@ public class EnemyLurker : MonoBehaviour
     void Update()
     {
         if (player == null) {
+            // Might not be performant when player is killed
             player = GameObject.FindWithTag("Player");
         }
 
@@ -151,7 +156,9 @@ public class EnemyLurker : MonoBehaviour
             }
 
             case State.Chasing: {
-                if (!isPlayerInRange || isUnderPlayerLight) {
+                // HACK: Check for player existence, if player is dead, stay in Chasing state
+                //       This is to show the "angry" sprite while player is dead.
+                if (player != null && (!isPlayerInRange || isUnderPlayerLight)) {
                     state = State.Idle;
                 }
                 break;
