@@ -20,7 +20,7 @@ public class PlayerInputTouchJoystickUI : MonoBehaviour
             enableAtNextFrame = false;
         }
 
-        if (input.PointerIsDown()) {
+        if (input.PointerIsDown() && input.MoveDirection() != Vector2.zero) {
             transform.position = input.PointerStartPosition();
             transform.right = input.MoveDirection();
             enableAtNextFrame = true;
