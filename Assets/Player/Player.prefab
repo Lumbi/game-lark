@@ -197,7 +197,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f34cf20a4614b47ad9321bf07a7067d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invertPointerControls: 0
 --- !u!114 &7195790207213754245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,6 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightOnDestroy: {fileID: 7481731311504058426, guid: 505669927e7d049a083f6fcca7525c63, type: 3}
+  respawnDelay: 2
 --- !u!114 &3381665116316612017
 MonoBehaviour:
   m_ObjectHideFlags: 0
