@@ -9,7 +9,6 @@ public class PlayerInput : MonoBehaviour
     private bool dashBackBuffer = false; // Back buffer is needed to avoid relying on the component order
     private Vector2 dashDirection = Vector2.zero;
     private bool usingPointer = false;
-    public bool invertPointerControls = false;
 
     public bool UsingPointer() { return usingPointer; }
 
@@ -79,23 +78,22 @@ public class PlayerInput : MonoBehaviour
     private float pointerDashGestureMinDistance = 1f;
     private float pointerDashGestureMinSpeed = 1f;
 
-    private bool PointerIsDown()
+    public bool PointerIsDown()
     {
-        return Input.GetMouseButton(0) || Input.touchCount > 0;
+        return Input.GetMouseButton(0) || Input.touchCount == 1;
     }
 
-    private Vector2 PointerPosition()
+    public Vector2 PointerStartPosition()
+    {
+        return pointerStartPosition;
+    }
+
+    public Vector2 PointerPosition()
     {
         if (Input.GetMouseButton(0)) {
-            Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            return clickPosition;
+            return Input.mousePosition;
         } else if (Input.touchCount > 0) {
-            Vector3 tapPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-            for (int i = 1; i < Input.touchCount; i++) {
-                tapPosition += Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);
-            }
-            tapPosition /= Input.touchCount;
-            return tapPosition;
+            return Input.GetTouch(0).position;
         } else {
             return Vector2.zero;
         }
@@ -110,13 +108,9 @@ public class PlayerInput : MonoBehaviour
 
     private void UpdatePointerMoveDirection()
     {
-        if (PointerIsDown()) {
-            Vector3 pointerPosition = PointerPosition();
-            if (invertPointerControls) {
-                moveDirection = (transform.position - pointerPosition).normalized;
-            } else {
-                moveDirection = (pointerPosition - transform.position).normalized;
-            }
+        if (PointerIsDown() && pointerWasDown) {
+            moveDirection = PointerPosition() - pointerStartPosition;
+            moveDirection.Normalize();
         }
     }
 
@@ -127,6 +121,7 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
+    // TODO: Re-implement considering new joystick-like controls
     private void UpdateDetectPointerDashGesture()
     {
         if (PointerIsDown() && pointerWasDown) {
