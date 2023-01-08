@@ -46,6 +46,9 @@ public class PlayerBubbleControl : MonoBehaviour
                 // Add extra force when pushing against current velocity
                 if ((body.velocity.normalized + pushingDirection).sqrMagnitude < 1.0f)
                 {
+                    Vector2 counterVelocity = -1 * (body.velocity - (Vector2.Dot(body.velocity, pushingDirection) * pushingDirection));
+                    counterVelocity.Normalize();
+                    body.AddForce(pushingForce * counterVelocity);
                     body.AddForce(pushingForce * pushingDirection);
                 }
             }
