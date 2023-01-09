@@ -7,8 +7,6 @@ public class PlayerBubbleControl : MonoBehaviour
     public float pushingForce = 0.0f;
     public float maxSpeed = 7f;
 
-    public bool increaseResponsiveness = true;
-
     private bool isPushing = false;
     private Vector2 pushingDirection;
 
@@ -36,21 +34,8 @@ public class PlayerBubbleControl : MonoBehaviour
     {
         if (isPushing)
         {
-            if (body.velocity.magnitude < maxSpeed)
-            {
+            if (body.velocity.magnitude < maxSpeed) {
                 body.AddForce(pushingForce * pushingDirection);
-            }
-
-            if (increaseResponsiveness)
-            {
-                // Add extra force when pushing against current velocity
-                if ((body.velocity.normalized + pushingDirection).sqrMagnitude < 1.0f)
-                {
-                    Vector2 counterVelocity = -1 * (body.velocity - (Vector2.Dot(body.velocity, pushingDirection) * pushingDirection));
-                    counterVelocity.Normalize();
-                    body.AddForce(pushingForce * counterVelocity);
-                    body.AddForce(pushingForce * pushingDirection);
-                }
             }
         }
     }
