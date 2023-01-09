@@ -13,7 +13,11 @@ public class EnemyLurker : MonoBehaviour
     private Vector2 moveDirection = Vector2.zero;
     private GameObject player;
     public bool isPlayerInRange = false;
+    public bool isPlayerNear = false;
+    public float isPlayerNearThreshold = 2f;
+    private float distanceToPlayer = float.PositiveInfinity;
     public bool isUnderPlayerLight = false;
+    public GameObject playerProximityLight;
     public GameObject effectKillPlayer;
     private float waitingToChaseTime = 0f;
     public float waitingToChaseDuration = 1f;
@@ -156,10 +160,25 @@ public class EnemyLurker : MonoBehaviour
             }
 
             case State.Chasing: {
+                // Show Lurker when near player
+                if (player) {
+                    distanceToPlayer = (player.transform.position - transform.position).magnitude;
+                    isPlayerNear = (distanceToPlayer <= isPlayerNearThreshold);
+                } else {
+                    isPlayerNear = false;
+                }
+
+                if (isPlayerNear && !playerProximityLight.activeSelf) {
+                    playerProximityLight.SetActive(true);
+                } else if (!isPlayerNear && playerProximityLight.activeSelf) {
+                    playerProximityLight.SetActive(false);
+                }
+
                 // HACK: Check for player existence, if player is dead, stay in Chasing state
                 //       This is to show the "angry" sprite while player is dead.
                 if (player != null && (!isPlayerInRange || isUnderPlayerLight)) {
                     state = State.Idle;
+                    playerProximityLight.SetActive(false);
                 }
                 break;
             }
