@@ -5,18 +5,17 @@ using UnityEngine;
 public class FiniteStateMachine : MonoBehaviour
 {
     public class State: MonoBehaviour {
-        public virtual State Next() { return null; }
-        public virtual void Enter() { enabled = true; }
-        public virtual void Exit() { enabled = false; }
+        public virtual void Enter() { enabled = true; OnEnter(); }
+        public virtual void OnEnter() { }
+        public virtual void Exit() { OnExit(); enabled = false; }
+        public virtual void OnExit() { }
     }
 
     public State currentState;
-    private State nextState;
 
-    void Update()
+    public void GoTo(State nextState)
     {
-        nextState = currentState.Next();
-        if (nextState) {
+        if (nextState != null) {
             currentState.Exit();
             nextState.Enter();
             currentState = nextState;
