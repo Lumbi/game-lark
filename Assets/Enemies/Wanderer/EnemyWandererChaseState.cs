@@ -12,11 +12,19 @@ public class EnemyWandererChaseState : FiniteStateMachine.State
     private float alignSmoothTime = 0.09f;
     private float timeNotDetectingPlayer = 0f;
     public float delayBeforeAlert = 1f;
+    private float timeAddingBacktrack = 1f;
+    private float delayBeforeAddToBacktrack = 1f;
 
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
         detectPlayer = GetComponent<DetectPlayer>();
+    }
+
+    public override void OnEnter()
+    {
+        timeNotDetectingPlayer = 0f;
+        timeAddingBacktrack = delayBeforeAddToBacktrack;
     }
 
     void Update()
@@ -28,11 +36,17 @@ public class EnemyWandererChaseState : FiniteStateMachine.State
 
         if (timeNotDetectingPlayer > delayBeforeAlert) {
             GetComponent<FiniteStateMachine>().GoTo(GetComponent<EnemyWandererAlertState>());
-            timeNotDetectingPlayer = 0f;
+            return;
+        }
+
+        if (timeAddingBacktrack > delayBeforeAddToBacktrack) {
+            timeAddingBacktrack = 0f;
+            GetComponent<EnemyWandererAlertState>().PushBacktrackPosition(transform.position);
         }
 
         if (detectPlayer.IsPlayerVisible()) {
             timeNotDetectingPlayer = 0f;
+            timeAddingBacktrack += Time.deltaTime;
         } else {
             timeNotDetectingPlayer += Time.deltaTime;
         }
