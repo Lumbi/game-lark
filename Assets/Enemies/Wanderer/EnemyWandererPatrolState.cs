@@ -48,11 +48,13 @@ public class EnemyWandererPatrolState : FiniteStateMachine.State
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.tag == "Player") {
-            Vector2 direction = collider.gameObject.transform.position - transform.position;
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 100f, LayerMask.GetMask("Player") | LayerMask.GetMask("Terrain"));
-            bool seesPlayer = hit.collider != null && hit.collider.gameObject == collider.gameObject;
-            if (seesPlayer) {
-                GetComponent<FiniteStateMachine>().GoTo(GetComponent<EnemyWandererAlertState>());
+            if (enabled) {
+                Vector2 direction = collider.gameObject.transform.position - transform.position;
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 100f, LayerMask.GetMask("Player") | LayerMask.GetMask("Terrain"));
+                bool seesPlayer = hit.collider != null && hit.collider.gameObject == collider.gameObject;
+                if (seesPlayer) {
+                    GetComponent<FiniteStateMachine>().GoTo(GetComponent<EnemyWandererAlertState>());
+                }
             }
         }
     }
