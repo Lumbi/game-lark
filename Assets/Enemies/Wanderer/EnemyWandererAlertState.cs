@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class EnemyWandererAlertState : FiniteStateMachine.State
 {
-    private GameObject player;
-    private bool seesPlayer = false;
-    private Vector2 direction;
+    private DetectPlayer detectPlayer;
     private Vector2 angularVelocity;
     private float alignSmoothTime = 0.09f;
     private float timeDetectingPlayer = 0f;
@@ -16,6 +14,11 @@ public class EnemyWandererAlertState : FiniteStateMachine.State
     private float timeLookingAtDirection = 0f;
     public float delayBeforeChangeDirection = 2f;
     private Vector2 randomLookingAtDirection = Vector2.zero;
+
+    void Start()
+    {
+        detectPlayer = GetComponent<DetectPlayer>();
+    }
 
     public override void OnEnter() {
         ResetTimers();
@@ -29,17 +32,10 @@ public class EnemyWandererAlertState : FiniteStateMachine.State
 
     void LateUpdate()
     {
-        // Get direction to player
-        if (player != null) {
-            direction = player.transform.position - transform.position;
-            direction.Normalize();
-        }
-
-        // Test visibility to player
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 100f, LayerMask.GetMask("Player") | LayerMask.GetMask("Terrain"));
-        seesPlayer = player != null && hit.collider != null && hit.collider.gameObject == player;
-        if (seesPlayer) {
-            transform.right = Vector2.SmoothDamp(transform.right, direction, ref angularVelocity, alignSmoothTime);
+        // Align to player if visible or random direction otherwise
+        if (detectPlayer.IsPlayerVisible()) {
+            transform.right = Vector2.SmoothDamp(transform.right, detectPlayer.DirectionToPlayer(), ref angularVelocity, alignSmoothTime);
+            randomLookingAtDirection = detectPlayer.DirectionToPlayer();
         } else if (randomLookingAtDirection != Vector2.zero) {
             transform.right = Vector2.SmoothDamp(transform.right, randomLookingAtDirection, ref angularVelocity, alignSmoothTime);
         }
@@ -57,7 +53,7 @@ public class EnemyWandererAlertState : FiniteStateMachine.State
         }
 
         // Accumulate timers
-        if (seesPlayer) {
+        if (detectPlayer.IsPlayerVisible()) {
             timeDetectingPlayer += Time.deltaTime;
             timeNotDetectingPlayer = 0f;
             timeLookingAtDirection = 0f;
@@ -65,24 +61,6 @@ public class EnemyWandererAlertState : FiniteStateMachine.State
             timeDetectingPlayer = 0f;
             timeNotDetectingPlayer += Time.deltaTime;
             timeLookingAtDirection += Time.deltaTime;
-        }
-    }
-
-    // Collisions
-
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.gameObject.tag == "Player") {
-            player = collider.gameObject;
-            ResetTimers();
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D collider)
-    {
-        if (collider.gameObject.tag == "Player") {
-            player = null;
-            ResetTimers();
         }
     }
 
