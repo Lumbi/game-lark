@@ -22,6 +22,11 @@ public class EnemyWandererAlertState : FiniteStateMachine.State
         randomLookingAtDirection = Vector2.zero;
     }
 
+    public override void OnExit()
+    {
+        ResetTimers();
+    }
+
     void LateUpdate()
     {
         // Get direction to player
@@ -42,7 +47,7 @@ public class EnemyWandererAlertState : FiniteStateMachine.State
 
         // Check timers
         if (timeDetectingPlayer > delayBeforeChase) {
-            // GetComponent<FiniteStateMachine>().GoTo(GetComponent<EnemyWandererChaseState>());
+            GetComponent<FiniteStateMachine>().GoTo(GetComponent<EnemyWandererChaseState>());
         } else if (timeNotDetectingPlayer > delayBeforePatrol) {
             GetComponent<FiniteStateMachine>().GoTo(GetComponent<EnemyWandererPatrolState>());
         } else if (timeLookingAtDirection > delayBeforeChangeDirection) {
