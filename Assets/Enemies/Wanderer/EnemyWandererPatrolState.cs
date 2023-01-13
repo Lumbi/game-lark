@@ -12,10 +12,12 @@ public class EnemyWandererPatrolState : FiniteStateMachine.State
     private Vector2 direction;
     private Vector2 angularVelocity;
     public float alignSmoothTime = 0.09f;
+    private DetectPlayer detectPlayer;
 
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        detectPlayer = GetComponent<DetectPlayer>();
     }
 
     void Update()
@@ -26,6 +28,10 @@ public class EnemyWandererPatrolState : FiniteStateMachine.State
 
         direction = nextWaypoint.transform.position - transform.position;
         direction.Normalize();
+
+        if (detectPlayer.IsPlayerVisible()) {
+            GetComponent<FiniteStateMachine>().GoTo(GetComponent<EnemyWandererAlertState>());
+        }
     }
 
     void LateUpdate()
@@ -39,22 +45,6 @@ public class EnemyWandererPatrolState : FiniteStateMachine.State
         if (nextWaypoint != null) {
             if (body.velocity.magnitude < maxSpeed) {
                 body.AddForce(direction * acceleration);
-            }
-        }
-    }
-
-    // Collisions
-
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.gameObject.tag == "Player") {
-            if (enabled) {
-                Vector2 direction = collider.gameObject.transform.position - transform.position;
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 100f, LayerMask.GetMask("Player") | LayerMask.GetMask("Terrain"));
-                bool seesPlayer = hit.collider != null && hit.collider.gameObject == collider.gameObject;
-                if (seesPlayer) {
-                    GetComponent<FiniteStateMachine>().GoTo(GetComponent<EnemyWandererAlertState>());
-                }
             }
         }
     }
