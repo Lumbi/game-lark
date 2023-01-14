@@ -181,6 +181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6380137484995751298}
   - component: {fileID: 6380137484995751309}
+  - component: {fileID: 6927466108059570804}
   - component: {fileID: 6380137484995751296}
   - component: {fileID: 1929825483410536702}
   - component: {fileID: 6380137484995751299}
@@ -267,6 +268,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &6927466108059570804
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6380137484995751308}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.6
 --- !u!50 &6380137484995751296
 Rigidbody2D:
   serializedVersion: 4
@@ -284,7 +301,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
@@ -314,7 +331,7 @@ MonoBehaviour:
   - {x: 0.56181145, y: -0.5658951, z: 0}
   m_ShapePathHash: 496468261
   m_Mesh: {fileID: 0}
-  m_InstanceId: 45404
+  m_InstanceId: 29812
 --- !u!114 &6380137484995751299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,6 +386,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67d72366966f448c9f8bee7dc19ac06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acceleration: 10
+  maxSpeed: 3
   delayBeforeChase: 1
   delayBeforePatrol: 6
   delayBeforeChangeDirection: 2
