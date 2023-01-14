@@ -343,7 +343,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4169964287466038602}
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7118633, w: 0.7023181}
   m_LocalPosition: {x: 0.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
@@ -366,9 +366,9 @@ MonoBehaviour:
   m_ComponentVersion: 1
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 1
+  m_FalloffIntensity: 0.862
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.85
+  m_Intensity: 1.5
   m_LightVolumeIntensity: 0
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000b5ee50d13379582c15ab7824c57f67ac1ff9ab29857c0916
@@ -381,7 +381,7 @@ MonoBehaviour:
   m_NormalMapQuality: 2
   m_UseNormalMap: 0
   m_ShadowIntensityEnabled: 1
-  m_ShadowIntensity: 0.9
+  m_ShadowIntensity: 1
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_Vertices:
@@ -416,10 +416,10 @@ MonoBehaviour:
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 0
-  m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 7.44
-  m_PointLightOuterRadius: 23.74
+  m_PointLightInnerAngle: 38.33
+  m_PointLightOuterAngle: 69.39459
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 15
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -439,8 +439,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6443092752357388806}
-  - component: {fileID: 6234232051313196504}
-  - component: {fileID: 1605277082116486657}
+  - component: {fileID: 2956771943290348197}
   m_Layer: 13
   m_Name: Trigger
   m_TagString: Player Light
@@ -463,8 +462,8 @@ Transform:
   m_Father: {fileID: 6699291884031026664}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!61 &6234232051313196504
-BoxCollider2D:
+--- !u!60 &2956771943290348197
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -476,7 +475,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 6.97}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -486,25 +485,11 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 9.53, y: 8.31}
-  m_EdgeRadius: 0
---- !u!70 &1605277082116486657
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4928076201363338282}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 4.5}
-  m_Size: {x: 6.94, y: 8}
-  m_Direction: 0
+  m_Points:
+    m_Paths:
+    - - {x: 3.5, y: 10}
+      - {x: -3.5, y: 10}
+      - {x: 0, y: 0.5}
 --- !u!1 &6438110691304673912
 GameObject:
   m_ObjectHideFlags: 0
