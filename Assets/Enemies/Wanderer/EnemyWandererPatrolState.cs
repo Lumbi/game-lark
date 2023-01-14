@@ -4,20 +4,23 @@ using UnityEngine;
 
 public class EnemyWandererPatrolState : FiniteStateMachine.State
 {
+    public EnemyWanderer wanderer;
     public Waypoint nextWaypoint;
     public float nearWaypointThreshold = 1f;
     public float acceleration = 10f;
     public float maxSpeed = 3f;
-    private Rigidbody2D body;
     private Vector2 direction;
     private Vector2 angularVelocity;
     public float alignSmoothTime = 0.09f;
-    private DetectPlayer detectPlayer;
+    public Sprite sprite;
+    public Color color;
 
-    void Start()
+    public override void OnEnter()
     {
-        body = GetComponent<Rigidbody2D>();
-        detectPlayer = GetComponent<DetectPlayer>();
+        wanderer.spriteRenderer.sprite = sprite;
+        wanderer.spriteRenderer.color = color;
+        wanderer.leftEyeLight.color = color;
+        wanderer.rightEyeLight.color = color;
     }
 
     void Update()
@@ -29,7 +32,7 @@ public class EnemyWandererPatrolState : FiniteStateMachine.State
         direction = nextWaypoint.transform.position - transform.position;
         direction.Normalize();
 
-        if (detectPlayer.IsPlayerVisible()) {
+        if (wanderer.detectPlayer.IsPlayerVisible()) {
             GetComponent<FiniteStateMachine>().GoTo(GetComponent<EnemyWandererAlertState>());
         }
     }
@@ -43,8 +46,8 @@ public class EnemyWandererPatrolState : FiniteStateMachine.State
     void FixedUpdate()
     {
         if (nextWaypoint != null) {
-            if (body.velocity.magnitude < maxSpeed) {
-                body.AddForce(direction * acceleration);
+            if (wanderer.body.velocity.magnitude < maxSpeed) {
+                wanderer.body.AddForce(direction * acceleration);
             }
         }
     }

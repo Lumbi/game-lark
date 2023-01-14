@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class EnemyWandererAlertState : FiniteStateMachine.State
 {
-    private DetectPlayer detectPlayer;
-    private Rigidbody2D body;
+    public EnemyWanderer wanderer;
     public float acceleration = 10f;
     public float maxSpeed = 3f;
     private Vector2 alignDirection;
@@ -19,16 +18,16 @@ public class EnemyWandererAlertState : FiniteStateMachine.State
     public float delayBeforeChangeDirection = 2f;
     private Vector2 randomLookingAtDirection = Vector2.zero;
     private Stack<Vector2> backtrackPositions = new Stack<Vector2>();
-
-    void Start()
-    {
-        body = GetComponent<Rigidbody2D>();
-        detectPlayer = GetComponent<DetectPlayer>();
-    }
+    public Sprite sprite;
+    public Color color;
 
     public override void OnEnter() {
         ResetTimers();
         randomLookingAtDirection = Vector2.zero;
+        wanderer.spriteRenderer.sprite = sprite;
+        wanderer.spriteRenderer.color = color;
+        wanderer.leftEyeLight.color = color;
+        wanderer.rightEyeLight.color = color;
     }
 
     public override void OnExit()
@@ -39,11 +38,11 @@ public class EnemyWandererAlertState : FiniteStateMachine.State
     void LateUpdate()
     {
         // Align to player if visible or random direction otherwise
-        if (detectPlayer.IsPlayerVisible()) {
-            alignDirection = detectPlayer.DirectionToPlayer();
+        if (wanderer.detectPlayer.IsPlayerVisible()) {
+            alignDirection = wanderer.detectPlayer.DirectionToPlayer();
             randomLookingAtDirection = alignDirection;
         } else if (ShouldBacktrack()) {
-            alignDirection = backtrackPositions.Peek() - body.position;
+            alignDirection = backtrackPositions.Peek() - wanderer.body.position;
             alignDirection.Normalize();
             randomLookingAtDirection = alignDirection;
         } else if (randomLookingAtDirection != Vector2.zero) {
@@ -66,7 +65,7 @@ public class EnemyWandererAlertState : FiniteStateMachine.State
         }
 
         // Accumulate timers
-        if (detectPlayer.IsPlayerVisible()) {
+        if (wanderer.detectPlayer.IsPlayerVisible()) {
             timeDetectingPlayer += Time.deltaTime;
             timeNotDetectingPlayer = 0f;
             timeLookingAtDirection = 0f;
@@ -83,8 +82,8 @@ public class EnemyWandererAlertState : FiniteStateMachine.State
             if (Vector2.Distance(transform.position, backtrackPositions.Peek()) < 1f) {
                 backtrackPositions.Pop();
             } else {
-                if (body.velocity.magnitude < maxSpeed) {
-                    body.AddForce(alignDirection * acceleration);
+                if (wanderer.body.velocity.magnitude < maxSpeed) {
+                    wanderer.body.AddForce(alignDirection * acceleration);
                 }
             }
         }

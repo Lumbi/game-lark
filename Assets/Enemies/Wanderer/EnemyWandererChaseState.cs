@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class EnemyWandererChaseState : FiniteStateMachine.State
 {
-    private DetectPlayer detectPlayer;
-    private Rigidbody2D body;
+    public EnemyWanderer wanderer;
     public float acceleration = 12f;
     public float maxSpeed = 8f;
     private Vector2 angularVelocity;
@@ -14,23 +13,23 @@ public class EnemyWandererChaseState : FiniteStateMachine.State
     public float delayBeforeAlert = 1f;
     private float timeAddingBacktrack = 1f;
     private float delayBeforeAddToBacktrack = 1f;
-
-    void Start()
-    {
-        body = GetComponent<Rigidbody2D>();
-        detectPlayer = GetComponent<DetectPlayer>();
-    }
+    public Sprite sprite;
+    public Color color;
 
     public override void OnEnter()
     {
         timeNotDetectingPlayer = 0f;
         timeAddingBacktrack = delayBeforeAddToBacktrack;
+        wanderer.spriteRenderer.sprite = sprite;
+        wanderer.spriteRenderer.color = color;
+        wanderer.leftEyeLight.color = color;
+        wanderer.rightEyeLight.color = color;
     }
 
     void Update()
     {
-        if (detectPlayer.IsPlayerVisible()) {
-            transform.right = Vector2.SmoothDamp(transform.right, detectPlayer.DirectionToPlayer(), ref angularVelocity, alignSmoothTime);
+        if (wanderer.detectPlayer.IsPlayerVisible()) {
+            transform.right = Vector2.SmoothDamp(transform.right, wanderer.detectPlayer.DirectionToPlayer(), ref angularVelocity, alignSmoothTime);
             transform.right.Normalize();
         }
 
@@ -44,7 +43,7 @@ public class EnemyWandererChaseState : FiniteStateMachine.State
             GetComponent<EnemyWandererAlertState>().PushBacktrackPosition(transform.position);
         }
 
-        if (detectPlayer.IsPlayerVisible()) {
+        if (wanderer.detectPlayer.IsPlayerVisible()) {
             timeNotDetectingPlayer = 0f;
             timeAddingBacktrack += Time.deltaTime;
         } else {
@@ -54,9 +53,9 @@ public class EnemyWandererChaseState : FiniteStateMachine.State
 
     void FixedUpdate()
     {
-        if (detectPlayer.IsPlayerVisible()) {
-            if (body.velocity.magnitude < maxSpeed) {
-                body.AddForce(detectPlayer.DirectionToPlayer() * acceleration);
+        if (wanderer.detectPlayer.IsPlayerVisible()) {
+            if (wanderer.body.velocity.magnitude < maxSpeed) {
+                wanderer.body.AddForce(wanderer.detectPlayer.DirectionToPlayer() * acceleration);
             }
         }
     }
