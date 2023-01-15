@@ -253,6 +253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightOnDestroy: {fileID: 7481731311504058426, guid: 505669927e7d049a083f6fcca7525c63, type: 3}
   respawnDelay: 2
+  effectKillPlayer: {fileID: 3817460207205709671, guid: a9b5d749428474752892fa047f86ed85, type: 3}
 --- !u!114 &3381665116316612017
 MonoBehaviour:
   m_ObjectHideFlags: 0

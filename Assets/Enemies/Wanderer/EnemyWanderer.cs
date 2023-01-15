@@ -22,6 +22,5 @@ public class EnemyWanderer : MonoBehaviour
     {
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
         player.GetComponent<LanderDestroy>().DestroyAndRespawn();
-        // TODO: Show FX
     }
 }
