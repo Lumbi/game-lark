@@ -157,8 +157,8 @@ MonoBehaviour:
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 66.88937
-  m_PointLightOuterAngle: 66.88937
+  m_PointLightInnerAngle: 67
+  m_PointLightOuterAngle: 86
   m_PointLightInnerRadius: 0
   m_PointLightOuterRadius: 7
   m_ShapeLightParametricSides: 5
@@ -331,7 +331,7 @@ MonoBehaviour:
   - {x: 0.56181145, y: -0.5658951, z: 0}
   m_ShapePathHash: 496468261
   m_Mesh: {fileID: 0}
-  m_InstanceId: 52712
+  m_InstanceId: 72282
 --- !u!114 &6380137484995751299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,8 +528,8 @@ MonoBehaviour:
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 66.88937
-  m_PointLightOuterAngle: 66.88937
+  m_PointLightInnerAngle: 67
+  m_PointLightOuterAngle: 86
   m_PointLightInnerRadius: 0
   m_PointLightOuterRadius: 7
   m_ShapeLightParametricSides: 5
