@@ -298,7 +298,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 2
-  m_AngularDrag: 0.05
+  m_AngularDrag: 99999
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -379,7 +379,6 @@ MonoBehaviour:
   nearWaypointThreshold: 1
   acceleration: 10
   maxSpeed: 3
-  alignSmoothTime: 0.09
   sprite: {fileID: 21300000, guid: ba2c0ae52eabf4809be3401b8f8ef8dc, type: 3}
   color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &2550104223766148322

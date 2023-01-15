@@ -7,8 +7,6 @@ public class EnemyWandererChaseState : FiniteStateMachine.State
     public EnemyWanderer wanderer;
     public float acceleration = 12f;
     public float maxSpeed = 8f;
-    private Vector2 angularVelocity;
-    private float alignSmoothTime = 0.09f;
     private float timeNotDetectingPlayer = 0f;
     public float delayBeforeAlert = 1f;
     private float timeAddingBacktrack = 1f;
@@ -29,8 +27,9 @@ public class EnemyWandererChaseState : FiniteStateMachine.State
     void Update()
     {
         if (wanderer.detectPlayer.IsPlayerVisible()) {
-            transform.right = Vector2.SmoothDamp(transform.right, wanderer.detectPlayer.DirectionToPlayer(), ref angularVelocity, alignSmoothTime);
-            transform.right.Normalize();
+            wanderer.SmoothAlign(wanderer.detectPlayer.DirectionToPlayer());
+        } else {
+            wanderer.StopAlign();
         }
 
         if (timeNotDetectingPlayer > delayBeforeAlert) {

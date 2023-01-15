@@ -8,8 +8,6 @@ public class EnemyWandererAlertState : FiniteStateMachine.State
     public float acceleration = 10f;
     public float maxSpeed = 3f;
     private Vector2 alignDirection;
-    private Vector2 angularVelocity;
-    private float alignSmoothTime = 0.09f;
     private float timeDetectingPlayer = 0f;
     public float delayBeforeChase = 1f;
     private float timeNotDetectingPlayer = 0f;
@@ -48,8 +46,7 @@ public class EnemyWandererAlertState : FiniteStateMachine.State
         } else if (randomLookingAtDirection != Vector2.zero) {
             alignDirection = randomLookingAtDirection;
         }
-        transform.right = Vector2.SmoothDamp(transform.right, alignDirection, ref angularVelocity, alignSmoothTime);
-        transform.right.Normalize();
+        wanderer.SmoothAlign(alignDirection);
 
         // Check sub-state transitions
         if (ShouldChase()) {

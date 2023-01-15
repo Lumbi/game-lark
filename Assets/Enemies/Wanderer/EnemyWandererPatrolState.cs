@@ -10,8 +10,6 @@ public class EnemyWandererPatrolState : FiniteStateMachine.State
     public float acceleration = 10f;
     public float maxSpeed = 3f;
     private Vector2 direction;
-    private Vector2 angularVelocity;
-    public float alignSmoothTime = 0.09f;
     public Sprite sprite;
     public Color color;
 
@@ -39,8 +37,7 @@ public class EnemyWandererPatrolState : FiniteStateMachine.State
 
     void LateUpdate()
     {
-        transform.right = Vector2.SmoothDamp(transform.right, direction, ref angularVelocity, alignSmoothTime);
-        transform.right.Normalize();
+        wanderer.SmoothAlign(direction);
     }
 
     void FixedUpdate()
