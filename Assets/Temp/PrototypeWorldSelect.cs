@@ -14,4 +14,9 @@ public class PrototypeWorldSelect : MonoBehaviour
         SceneManager.LoadScene("Prototype_World2", LoadSceneMode.Single);
         Destroy(this);
     }
+
+    public void LoadWorld3() {
+        SceneManager.LoadScene("Prototype_World3", LoadSceneMode.Single);
+        Destroy(this);
+    }
 }
