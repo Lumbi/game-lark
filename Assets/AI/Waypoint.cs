@@ -21,7 +21,9 @@ public class Waypoint : MonoBehaviour
         Gizmos.color = gizmoColor;
         if (successors != null) {
             foreach (Waypoint successor in successors) {
-                Gizmos.DrawLine(transform.position, successor.transform.position);
+                if (successor != null) {
+                    Gizmos.DrawLine(transform.position, successor.transform.position);
+                }
             }
         }
 
