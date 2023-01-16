@@ -6,14 +6,14 @@ public class EnemyLurkerSpriteController : MonoBehaviour
 {
     public Sprite spriteIdle;
     public Sprite spriteChasing;
-    private SpriteRenderer renderer;
+    private SpriteRenderer spriteRenderer;
     private EnemyLurker lurker;
     private EnemyLurker.State lastState;
 
     void Start()
     {
         lurker = GetComponent<EnemyLurker>();
-        renderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         lastState = lurker.CurrentState();
     }
 
@@ -34,12 +34,12 @@ public class EnemyLurkerSpriteController : MonoBehaviour
     {
         switch (lurker.CurrentState()) {
             case EnemyLurker.State.Idle: case EnemyLurker.State.WaitingToChase: {
-                renderer.sprite = spriteIdle;
+                spriteRenderer.sprite = spriteIdle;
                 break;
             }
 
             case EnemyLurker.State.Chasing: {
-                renderer.sprite = spriteChasing;
+                spriteRenderer.sprite = spriteChasing;
                 break;
             }
         }
