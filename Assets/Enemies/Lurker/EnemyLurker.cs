@@ -22,6 +22,7 @@ public class EnemyLurker : MonoBehaviour
     private float waitingToChaseTime = 0f;
     public float waitingToChaseDuration = 1f;
     private Vector3 startPosition;
+    public Transform alternateStartPosition;
     private float forceKillTime = 0f;
     private float forceKillDelay = 3f;
 
@@ -129,7 +130,11 @@ public class EnemyLurker : MonoBehaviour
             time += Time.deltaTime;
             yield return null;
         }
-        transform.position = startPosition;
+        if (Random.value > 0.5f) {
+            transform.position = startPosition;
+        } else {
+            transform.position = alternateStartPosition.position;
+        }
     }
 
     // Updates
@@ -231,6 +236,14 @@ public class EnemyLurker : MonoBehaviour
             body.velocity = Vector2.ClampMagnitude(body.velocity, maxSpeed);
         } else {
             body.velocity = Vector2.zero;
+        }
+    }
+
+    void OnDrawGizmos()
+    {
+        if (alternateStartPosition != null) {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawLine(transform.position, alternateStartPosition.position);
         }
     }
 }
