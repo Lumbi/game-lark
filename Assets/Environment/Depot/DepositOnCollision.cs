@@ -13,6 +13,7 @@ public class DepositOnCollision : MonoBehaviour
     public TMP_Text counterText;
 
     private int count = 0;
+    private int transientCount = 0;
 
     public bool isFull { get { return count >= requiredCount; } }
 
@@ -21,10 +22,25 @@ public class DepositOnCollision : MonoBehaviour
         UpdateCounterText();
     }
 
-    public void AcceptOne()
+    public bool CanAcceptOne()
+    {
+        return (count + transientCount) < requiredCount;
+    }
+
+    public void BeginAcceptOne()
+    {
+        if (CanAcceptOne()) {
+            transientCount += 1;
+        }
+    }
+
+    public void CommitAcceptOne()
     {
         if (!isFull) {
             count += 1;
+            if (transientCount > 0) {
+                transientCount -= 1;
+            }
             UpdateCounterText();
         }
 

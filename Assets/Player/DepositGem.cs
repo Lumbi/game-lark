@@ -47,14 +47,20 @@ public class DepositGem : MonoBehaviour
 
     IEnumerator DepositInto(GameObject depot)
     {
-        if (GetComponent<Cargo>().isEmpty) { yield break; }
-        if (depot.GetComponent<DepositOnCollision>().isFull) { yield break; } // TODO: Fix bug where can deposit even if depot *will* be full
+        var cargo = GetComponent<Cargo>();
+        var deposit = depot.GetComponent<DepositOnCollision>();
+
+        if (cargo.isEmpty) { yield break; }
+        if (deposit.CanAcceptOne() == false) { yield break; }
 
         // Save checkpoint
         FindObjectOfType<Restart>().SaveCheckpointAt(depot);
 
         // Decrement the cargo
-        GetComponent<Cargo>().UnloadOne();
+        cargo.UnloadOne();
+
+        // Begin deposit
+        deposit.BeginAcceptOne();
 
         // Create a transient shard to animate
         var depositedShard = Instantiate(depositShardPrefab, transform.position, Quaternion.identity);
@@ -68,6 +74,6 @@ public class DepositGem : MonoBehaviour
         Destroy(depositedShard);
 
         // Transfer the count to the depot
-        depot.GetComponent<DepositOnCollision>().AcceptOne();
+        deposit.CommitAcceptOne();
     }
 }
