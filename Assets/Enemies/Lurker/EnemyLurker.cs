@@ -130,10 +130,15 @@ public class EnemyLurker : MonoBehaviour
             time += Time.deltaTime;
             yield return null;
         }
-        if (Random.value > 0.5f) {
-            transform.position = startPosition;
+
+        if (alternateStartPosition != null) {
+            if (Random.value > 0.5f) {
+                transform.position = startPosition;
+            } else {
+                transform.position = alternateStartPosition.position;
+            }
         } else {
-            transform.position = alternateStartPosition.position;
+            transform.position = startPosition;
         }
     }
 
