@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class DepositGem : MonoBehaviour
 {
-    public GameObject depositShardPrefab;
-
     public float delay = 1f;
 
     private bool collidingWithDepot = false;
@@ -38,42 +36,11 @@ public class DepositGem : MonoBehaviour
         {
             if (time > delay)
             {
-                StartCoroutine(DepositInto(depot));
+                var player = gameObject;
+                depot.GetComponent<DepositOnCollision>().DepositOne(gameObject);
                 time = 0f;
             }
             time += Time.deltaTime;
         }
-    }
-
-    IEnumerator DepositInto(GameObject depot)
-    {
-        var cargo = GetComponent<Cargo>();
-        var deposit = depot.GetComponent<DepositOnCollision>();
-
-        if (cargo.isEmpty) { yield break; }
-        if (deposit.CanAcceptOne() == false) { yield break; }
-
-        // Save checkpoint
-        FindObjectOfType<Restart>().SaveCheckpointAt(depot);
-
-        // Decrement the cargo
-        cargo.UnloadOne();
-
-        // Begin deposit
-        deposit.BeginAcceptOne();
-
-        // Create a transient shard to animate
-        var depositedShard = Instantiate(depositShardPrefab, transform.position, Quaternion.identity);
-
-        // Animate-move toward depot
-        var animateMove = depositedShard.AddComponent<AnimateMove>();
-        animateMove.target = depot.transform;
-
-        // Destroy after animation finishes
-        yield return new WaitForSeconds(animateMove.duration);
-        Destroy(depositedShard);
-
-        // Transfer the count to the depot
-        deposit.CommitAcceptOne();
     }
 }

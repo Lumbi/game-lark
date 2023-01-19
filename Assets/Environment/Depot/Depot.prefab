@@ -290,6 +290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   requiredCount: 1
+  depositShardPrefab: {fileID: 1485904417631859288, guid: 2735ee48d0eb342c792e9012c36edec0, type: 3}
   requiredCountReached:
     m_PersistentCalls:
       m_Calls: []
