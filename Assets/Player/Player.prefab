@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 1891399000953358290}
   body: {fileID: 3381665116316612021}
-  alignSmoothTime: 0.09
+  alignSmoothTime: 0.2
 --- !u!1 &3381665116316612009
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +278,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80c59a3be739f4768aacf9f66c839b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  depositShardPrefab: {fileID: 1485904417631859288, guid: 2735ee48d0eb342c792e9012c36edec0, type: 3}
   delay: 0.3
 --- !u!114 &3381665116316612016
 MonoBehaviour:
