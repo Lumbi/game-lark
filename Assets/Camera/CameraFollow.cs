@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public GameObject target;
-    private PlayerInput input;
+    private PlayerDirectionalLight playerDirectionalLight;
     public float targetPredictDistance = 3.0f;
     public float followSmoothTime = 0.5f;
     private Vector2 velocity = Vector2.zero;
@@ -16,10 +16,9 @@ public class CameraFollow : MonoBehaviour
         if (target != null) {
             Vector2 currentPosition = this.transform.position;
             Vector2 targetPosition = target.transform.position;
-            Rigidbody2D targetBody = target.GetComponent<Rigidbody2D>();
 
-            if (input != null) {
-                targetPosition += (input.Movement() * targetPredictDistance);
+            if (playerDirectionalLight != null) {
+                targetPosition += (playerDirectionalLight.TargetDirection() * targetPredictDistance);
             }
 
             nextPosition = Vector2.SmoothDamp(currentPosition, targetPosition, ref velocity, followSmoothTime);
@@ -31,7 +30,7 @@ public class CameraFollow : MonoBehaviour
     public void FocusOn(GameObject target)
     {
         this.target = target;
-        this.input = target.GetComponent<PlayerInput>();
+        this.playerDirectionalLight = target.GetComponentInChildren<PlayerDirectionalLight>();
         this.transform.position = target.transform.position;
     }
 }
