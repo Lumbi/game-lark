@@ -158,7 +158,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 10
+  m_Radius: 9
 --- !u!1 &7667929343219666412
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +283,7 @@ MonoBehaviour:
   - {x: -0.5256214, y: -0.21780396, z: 0}
   m_ShapePathHash: 1600553399
   m_Mesh: {fileID: 0}
-  m_InstanceId: 164382
+  m_InstanceId: 193440
 --- !u!58 &7667929343219666415
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -334,15 +334,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  speed: 10
-  maxSpeed: 2.5
+  speed: 3
+  maxSpeed: 3
   isPlayerInRange: 0
   isPlayerNear: 0
   isPlayerNearThreshold: 4
   isUnderPlayerLight: 0
   playerProximityLight: {fileID: 6538889587273528279}
   effectKillPlayer: {fileID: 1897091753248475834, guid: 9b12f857cc57642ad87231cc9766a004, type: 3}
-  waitingToChaseDuration: 2.5
+  waitingToChaseDuration: 2
   alternateStartPosition: {fileID: 0}
 --- !u!114 &1494541895
 MonoBehaviour:
