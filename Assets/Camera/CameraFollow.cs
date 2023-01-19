@@ -19,7 +19,7 @@ public class CameraFollow : MonoBehaviour
             Rigidbody2D targetBody = target.GetComponent<Rigidbody2D>();
 
             if (input != null) {
-                targetPosition += (input.MoveDirection() * targetPredictDistance);
+                targetPosition += (input.Movement() * targetPredictDistance);
             }
 
             nextPosition = Vector2.SmoothDamp(currentPosition, targetPosition, ref velocity, followSmoothTime);

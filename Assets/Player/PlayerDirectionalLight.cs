@@ -5,17 +5,16 @@ using UnityEngine;
 public class PlayerDirectionalLight : MonoBehaviour
 {
     public PlayerInput input;
-    public Rigidbody2D body;
     public float alignSmoothTime = 0.09f;
-    private Coroutine rotateAlignToCoroutine;
     private Vector2 velocity = Vector2.zero;
     private Vector2 targetDirection = Vector2.zero;
     private Vector2 currentDirection = Vector2.right;
 
     void LateUpdate()
     {
-        if (input.MoveDirection() != Vector2.zero) {
-            targetDirection = input.MoveDirection();
+        if (input.Movement() != Vector2.zero) {
+            targetDirection = input.Movement();
+            targetDirection.Normalize();
         }
 
         currentDirection = transform.right;

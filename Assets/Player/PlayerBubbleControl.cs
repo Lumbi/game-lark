@@ -23,7 +23,7 @@ public class PlayerBubbleControl : MonoBehaviour
     {
         if (input.Move())
         {
-            pushingDirection = input.MoveDirection();
+            pushingDirection = input.Movement();
             isPushing = true;
         } else {
             isPushing = false;

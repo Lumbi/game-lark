@@ -14,7 +14,7 @@ public class PlayerInput : MonoBehaviour
 
     public bool Move() { return ControllerAxisIsActive() || PointerIsDown(); }
 
-    public Vector2 MoveDirection() { return moveDirection; }
+    public Vector2 Movement() { return moveDirection; }
 
     public bool Dash() { return dash; }
 
@@ -58,7 +58,7 @@ public class PlayerInput : MonoBehaviour
         if (ControllerAxisIsActive()) {
             moveDirection.x = Input.GetAxis("Horizontal");
             moveDirection.y = Input.GetAxis("Vertical");
-            moveDirection.Normalize();
+            moveDirection = Vector2.ClampMagnitude(moveDirection, 1f);
 
             dashDirection = moveDirection;
             if (Input.GetButtonDown("Dash")) {
@@ -74,6 +74,7 @@ public class PlayerInput : MonoBehaviour
     private Vector2 pointerVelocity = Vector2.zero;
     private bool pointerWasDown = false;
     private float pointerDownDuration = 0f;
+    private float pointerDownMaximumDistance = 200f; // found by experimentation, doesn't seem to match joystick size
     private float pointerDashGestureMaxDuration = 0.3f;
     private float pointerDashGestureMinDistance = 1f;
     private float pointerDashGestureMinSpeed = 1f;
@@ -110,7 +111,8 @@ public class PlayerInput : MonoBehaviour
     {
         if (PointerIsDown() && pointerWasDown) {
             moveDirection = PointerPosition() - pointerStartPosition;
-            moveDirection.Normalize();
+            moveDirection = Vector2.ClampMagnitude(moveDirection, pointerDownMaximumDistance);
+            moveDirection /= pointerDownMaximumDistance;
         }
     }
 

@@ -17,7 +17,7 @@ public class PlayerSpriteController : MonoBehaviour
 
     void Update()
     {
-        newFacingDirection = Mathf.Sign(input.MoveDirection().x);
+        newFacingDirection = Mathf.Sign(input.Movement().x);
         if (input.Move() && newFacingDirection != facingDirection) {
             facingDirection = newFacingDirection;
             sprite.flipX = facingDirection < 0f;
