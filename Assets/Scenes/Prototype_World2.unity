@@ -12991,10 +12991,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1611915715}
     m_Modifications:
-    - target: {fileID: 7667929341949717928, guid: 184a8a01dd28e42b4a1eaf1ccb1d6e80, type: 3}
-      propertyPath: m_Radius
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 7667929343219666412, guid: 184a8a01dd28e42b4a1eaf1ccb1d6e80, type: 3}
       propertyPath: m_Name
       value: Lurker
