@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Player Light
   - Player Detector
+  - Player Safe Area
   layers:
   - Default
   - TransparentFX

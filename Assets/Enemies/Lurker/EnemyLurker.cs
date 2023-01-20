@@ -16,7 +16,7 @@ public class EnemyLurker : MonoBehaviour
     public bool isPlayerNear = false;
     public float isPlayerNearThreshold = 2f;
     private float distanceToPlayer = float.PositiveInfinity;
-    public bool isUnderPlayerLight = false;
+    public bool isPlayerInSafeArea = false;
     public GameObject playerProximityLight;
     public GameObject effectKillPlayer;
     private float waitingToChaseTime = 0f;
@@ -43,8 +43,6 @@ public class EnemyLurker : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player") {
             HandlePlayerRangeTrigger(true);
-        } else if (collider.gameObject.tag == "Player Light") {
-            HandlePlayerLightTrigger(true);
         }
     }
 
@@ -52,8 +50,6 @@ public class EnemyLurker : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player") {
             HandlePlayerRangeTrigger(false);
-        } else if (collider.gameObject.tag == "Player Light") {
-            HandlePlayerLightTrigger(false);
         }
     }
 
@@ -85,14 +81,9 @@ public class EnemyLurker : MonoBehaviour
         isPlayerInRange = inRange;
     }
 
-    private void HandlePlayerLightTrigger(bool underLight)
-    {
-        isUnderPlayerLight = underLight;
-    }
-
     private void HandlePlayerCollisionEnter(GameObject player)
     {
-        if (!isUnderPlayerLight && state == State.Chasing) {
+        if (!isPlayerInSafeArea && state == State.Chasing) {
             KillPlayer(player);
         }
     }
@@ -151,9 +142,15 @@ public class EnemyLurker : MonoBehaviour
             player = GameObject.FindWithTag("Player");
         }
 
+        if (player != null) {
+            isPlayerInSafeArea = player.GetComponent<PlayerSafeArea>().IsInSafeArea();
+        } else {
+            isPlayerInSafeArea = false;
+        }
+
         switch (state) {
             case State.Idle: {
-                if (isPlayerInRange && !isUnderPlayerLight) {
+                if (isPlayerInRange && !isPlayerInSafeArea) {
                     state = State.WaitingToChase;
                 }
                 break;
@@ -186,7 +183,7 @@ public class EnemyLurker : MonoBehaviour
 
                 // HACK: Check for player existence, if player is dead, stay in Chasing state
                 //       This is to show the "angry" sprite while player is dead.
-                if (player != null && (!isPlayerInRange || isUnderPlayerLight)) {
+                if (player != null && (!isPlayerInRange || isPlayerInSafeArea)) {
                     state = State.Idle;
                     playerProximityLight.SetActive(false);
                 }

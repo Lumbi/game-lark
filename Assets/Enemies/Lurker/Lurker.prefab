@@ -283,7 +283,7 @@ MonoBehaviour:
   - {x: -0.5256214, y: -0.21780396, z: 0}
   m_ShapePathHash: 1600553399
   m_Mesh: {fileID: 0}
-  m_InstanceId: 193440
+  m_InstanceId: 70282
 --- !u!58 &7667929343219666415
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -335,14 +335,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   speed: 3
-  maxSpeed: 3
+  maxSpeed: 4.5
   isPlayerInRange: 0
   isPlayerNear: 0
   isPlayerNearThreshold: 4
-  isUnderPlayerLight: 0
+  isPlayerInSafeArea: 0
   playerProximityLight: {fileID: 6538889587273528279}
   effectKillPlayer: {fileID: 1897091753248475834, guid: 9b12f857cc57642ad87231cc9766a004, type: 3}
-  waitingToChaseDuration: 2
+  waitingToChaseDuration: 1
   alternateStartPosition: {fileID: 0}
 --- !u!114 &1494541895
 MonoBehaviour:
