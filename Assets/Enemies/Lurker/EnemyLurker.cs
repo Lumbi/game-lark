@@ -25,11 +25,13 @@ public class EnemyLurker : MonoBehaviour
     public Transform alternateStartPosition;
     private float forceKillTime = 0f;
     private float forceKillDelay = 3f;
+    private DetectPlayer detectPlayer;
 
     void Start()
     {
         state = State.Idle;
         body = GetComponent<Rigidbody2D>();
+        detectPlayer = GetComponent<DetectPlayer>();
         startPosition = transform.position;
     }
 
@@ -229,6 +231,11 @@ public class EnemyLurker : MonoBehaviour
         if (player != null) {
             moveDirection = player.transform.position - transform.position;
             moveDirection.Normalize();
+
+            // Crude obstacle avoidance
+            if (detectPlayer.IsPlayerVisible() == false && Vector2.Distance(transform.position, player.transform.position) < 5f) {
+                moveDirection = Quaternion.Euler(0, 0, 55f) * moveDirection;
+            }
 
             Vector2 counterVelocity = -1 * (body.velocity - (Vector2.Dot(body.velocity, moveDirection) * moveDirection));
             adjustedDirection = moveDirection + counterVelocity;

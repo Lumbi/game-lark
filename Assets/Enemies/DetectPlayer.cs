@@ -37,7 +37,11 @@ public class DetectPlayer : MonoBehaviour
         if (player != null) {
             direction = player.transform.position - transform.position;
             direction.Normalize();
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 100f, LayerMask.GetMask("Player") | LayerMask.GetMask("Terrain"));
+            RaycastHit2D hit = Physics2D.Raycast(
+                transform.position,
+                direction, 100f,
+                LayerMask.GetMask("Player") | LayerMask.GetMask("Terrain") | LayerMask.GetMask("EnemyTrigger") // Wont work
+            );
             playerDetected = true;
             playerInLineOfSight = hit.collider != null && hit.collider.gameObject == player;
         } else {
