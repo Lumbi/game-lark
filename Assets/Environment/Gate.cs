@@ -6,6 +6,11 @@ public class Gate : MonoBehaviour
 {
     public void Open()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+    }
+
+    public void Close()
+    {
+        gameObject.SetActive(true);
     }
 }
