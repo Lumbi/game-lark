@@ -28,10 +28,24 @@ public class LightSwitch : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
+    // void OnTriggerEnter2D(Collider2D collider)
+    // {
+    //     if (collider.gameObject.tag == "Player Light") {
+    //         isUnderPlayerLight = true;
+    //     }
+    // }
+
+    void OnTriggerStay2D(Collider2D collider)
     {
         if (collider.gameObject.tag == "Player Light") {
-            isUnderPlayerLight = true;
+            RaycastHit2D hit = Physics2D.Raycast(
+                transform.position,
+                (collider.gameObject.transform.position - transform.position).normalized,
+                10f,
+                LayerMask.GetMask("Player") | LayerMask.GetMask("Terrain")
+            );
+            var playerInLineOfSight = hit.collider != null && hit.collider.gameObject.tag == "Player";
+            isUnderPlayerLight = playerInLineOfSight;
         }
     }
 
