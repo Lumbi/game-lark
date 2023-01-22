@@ -9,7 +9,8 @@ public class LightSwitch : MonoBehaviour
     public float brightness = 0f;
     public float maxBrightness = 1f;
     public float fillSpeed = 0.2f;
-    public float drainSpeed= 0.3f;
+    public float drainSpeed = 0.3f;
+    public bool stayOn = false;
 
     public UnityEvent activated = new UnityEvent();
     public UnityEvent deactivated = new UnityEvent();
@@ -62,6 +63,8 @@ public class LightSwitch : MonoBehaviour
             light.intensity = brightness;
         }
 
+        UpdateFullPresentation();
+
         // Trigger deactivated / activated
         if (!wasEmpty && isEmpty) {
             deactivated.Invoke();
@@ -70,12 +73,14 @@ public class LightSwitch : MonoBehaviour
         }
 
         // Update brightness value
-        if (isUnderPlayerLight) {
+        if (isUnderPlayerLight) { // Increase brightness
             if (brightness < maxBrightness) {
                 brightness += fillSpeed * Time.deltaTime;
             }
-        } else {
-            if (brightness > 0f) {
+        } else { // Decrease brightness
+            if (isFull && stayOn) {
+                // Do nothing
+            } else if (brightness > 0f) {
                 brightness -= drainSpeed * Time.deltaTime;
             }
         }
@@ -83,5 +88,34 @@ public class LightSwitch : MonoBehaviour
 
         wasEmpty = isEmpty;
         wasFull = isFull;
+    }
+
+    private void UpdateFullPresentation()
+    {
+        if (!wasFull && isFull) {
+            var updatedRotation = transform.localEulerAngles;
+            updatedRotation.z = 90f;
+            transform.localEulerAngles = updatedRotation;
+        } else if (wasFull && !isFull) {
+            var updatedRotation = transform.localEulerAngles;
+            updatedRotation.z = 0f;
+            transform.localEulerAngles = updatedRotation;
+        }
+    }
+
+    public void TurnOff()
+    {
+        brightness = 0f;
+    }
+
+    void OnDrawGizmos()
+    {
+        if (activated.GetPersistentEventCount() > 0) {
+            var activatedTarget = activated.GetPersistentTarget(0) as Component;
+            if (activatedTarget != null) {
+                Gizmos.color = Color.green;
+                Gizmos.DrawLine(transform.position, activatedTarget.transform.position);
+            }
+        }
     }
 }
