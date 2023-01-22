@@ -28,13 +28,6 @@ public class LightSwitch : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // void OnTriggerEnter2D(Collider2D collider)
-    // {
-    //     if (collider.gameObject.tag == "Player Light") {
-    //         isUnderPlayerLight = true;
-    //     }
-    // }
-
     void OnTriggerStay2D(Collider2D collider)
     {
         if (collider.gameObject.tag == "Player Light") {
