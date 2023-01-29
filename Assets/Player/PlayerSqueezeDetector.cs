@@ -6,7 +6,9 @@ public class PlayerSqueezeDetector : MonoBehaviour
 {
     public LanderDestroy playerDestroy;
 
-    void OnTriggerEnter2D() {
-        playerDestroy.DestroyAndRespawn();
+    void OnTriggerEnter2D(Collider2D collider) {
+        if (!collider.isTrigger) {
+            playerDestroy.DestroyAndRespawn();
+        }
     }
 }
