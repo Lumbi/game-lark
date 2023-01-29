@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33e2cc17394b546c8893b36c89d76c37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalSprite: {fileID: 21300000, guid: 8e2f418c8c8b04fada28dd87aaf4517a, type: 3}
   activatedSprite: {fileID: 21300000, guid: 092b4d26aec0b485cbe9578ee7178cdd, type: 3}
   activated:
     m_PersistentCalls:
