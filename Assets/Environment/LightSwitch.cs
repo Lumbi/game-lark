@@ -22,6 +22,9 @@ public class LightSwitch : MonoBehaviour
     private bool wasFull = false;
     private bool isEmpty = true;
     private bool wasEmpty = true;
+    private bool inDelayAfterSwitchingOff = false;
+    private float delayAfterSwitchingOff = 1f;
+    private float timeAfterSwitchingOff = 0f;
 
     void Start()
     {
@@ -56,12 +59,8 @@ public class LightSwitch : MonoBehaviour
         isEmpty = brightness == 0f;
         isFull = brightness == maxBrightness;
 
-        // Animate light
-        if (isUnderPlayerLight && brightness < maxBrightness) {
-            light.intensity = brightness + Mathf.Sin(Time.deltaTime);
-        } else {
-            light.intensity = brightness;
-        }
+        // Update light
+        light.intensity = brightness;
 
         UpdateFullPresentation();
 
@@ -73,7 +72,13 @@ public class LightSwitch : MonoBehaviour
         }
 
         // Update brightness value
-        if (isUnderPlayerLight) { // Increase brightness
+        if (inDelayAfterSwitchingOff) {
+            timeAfterSwitchingOff += Time.deltaTime;
+            if (timeAfterSwitchingOff > delayAfterSwitchingOff) {
+                inDelayAfterSwitchingOff = false;
+                timeAfterSwitchingOff = 0f;
+            }
+        } else if (isUnderPlayerLight) { // Increase brightness
             if (brightness < maxBrightness) {
                 brightness += fillSpeed * Time.deltaTime;
             }
@@ -106,6 +111,9 @@ public class LightSwitch : MonoBehaviour
     public void TurnOff()
     {
         brightness = 0f;
+        inDelayAfterSwitchingOff = true;
+        timeAfterSwitchingOff = 0f;
+        deactivated.Invoke();
     }
 
     void OnDrawGizmos()
