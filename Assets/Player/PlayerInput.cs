@@ -5,9 +5,6 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     private Vector2 moveDirection = Vector2.zero;
-    private bool lookAt = false;
-    private bool lookAtBackBuffer = false;
-    private Vector2 lookAtPosition = Vector2.zero;
     private bool dash = false;
     private bool dashBackBuffer = false; // Back buffer is needed to avoid relying on the component order
     private Vector2 dashDirection = Vector2.zero;
@@ -18,14 +15,6 @@ public class PlayerInput : MonoBehaviour
     public bool Move() { return ControllerAxisIsActive() || PointerIsDown(); }
 
     public Vector2 Movement() { return moveDirection; }
-
-    public bool LookAt(ref Vector2 position)
-    {
-        if (lookAt) {
-            position = lookAtPosition;
-        }
-        return lookAt;
-    }
 
     public bool Dash() { return dash; }
 
@@ -116,7 +105,6 @@ public class PlayerInput : MonoBehaviour
         UpdatePointerMoveDirection();
         UpdatePointerVelocity();
         UpdateDetectPointerDashGesture();
-        UpdatePointerLookAt();
     }
 
     private void UpdatePointerMoveDirection()
@@ -125,17 +113,6 @@ public class PlayerInput : MonoBehaviour
             moveDirection = PointerPosition() - pointerStartPosition;
             moveDirection = Vector2.ClampMagnitude(moveDirection, pointerDownMaximumDistance);
             moveDirection /= pointerDownMaximumDistance;
-        }
-    }
-
-    private void UpdatePointerLookAt()
-    {
-        if (pointerWasDown && !PointerIsDown()) {
-            Vector2 pointerDownDistance = pointerLastPosition - pointerStartPosition;
-            if (pointerDownDistance == Vector2.zero) {
-                lookAtPosition = Camera.main.ScreenToWorldPoint(pointerLastPosition);
-                lookAtBackBuffer = true;
-            }
         }
     }
 
@@ -176,8 +153,5 @@ public class PlayerInput : MonoBehaviour
         } else {
             pointerWasDown = false;
         }
-
-        lookAt = lookAtBackBuffer;
-        lookAtBackBuffer = false;
     }
 }

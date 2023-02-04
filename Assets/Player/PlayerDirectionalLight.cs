@@ -15,10 +15,7 @@ public class PlayerDirectionalLight : MonoBehaviour
 
     void LateUpdate()
     {
-        if (input.LookAt(ref jumpLookAt)) {
-            targetDirection = jumpLookAt - new Vector2(transform.position.x, transform.position.y);
-            targetDirection.Normalize();
-        } else if (input.Movement() != Vector2.zero) {
+        if (input.Movement() != Vector2.zero) {
             targetDirection = input.Movement();
             targetDirection.Normalize();
         }
