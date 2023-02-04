@@ -69,11 +69,12 @@ public class PlayerInput : MonoBehaviour
 
     private TouchState leftTouch = new TouchState();
     private TouchState rightTouch = new TouchState();
-    private float pointerDownMaximumDistance = 200f; // found by experimentation, doesn't seem to match joystick size
+    private float touchMoveMinimumDistance = 50f; // Deadzone
+    private float touchMoveMaximumDistance = 300f; // found by experimentation, doesn't seem to match joystick size
 
-    private bool LeftTouchIsActive() { return leftTouch.isDown; }
+    private bool LeftTouchIsActive() { return leftTouch.isDown && leftTouch.wasDown; }
 
-    private bool RightTouchIsActive() { return rightTouch.isDown; }
+    private bool RightTouchIsActive() { return rightTouch.isDown && rightTouch.wasDown; }
 
     private void UpdateTouchInput()
     {
@@ -116,19 +117,30 @@ public class PlayerInput : MonoBehaviour
     private void UpdateTouchMoveDirection()
     {
         if (leftTouch.isDown && leftTouch.wasDown) {
-            moveDirection = leftTouch.position - leftTouch.startPosition;
-            moveDirection = Vector2.ClampMagnitude(moveDirection, pointerDownMaximumDistance);
-            moveDirection /= pointerDownMaximumDistance;
-            // TODO: Deadzone
+            Vector2 touchDelta = leftTouch.position - leftTouch.startPosition;
+            if (touchDelta.magnitude < touchMoveMinimumDistance) {
+                // Deadzone
+                moveDirection = Vector2.zero;
+            } else {
+                moveDirection = touchDelta;
+                moveDirection = Vector2.ClampMagnitude(moveDirection, touchMoveMaximumDistance);
+                moveDirection /= touchMoveMaximumDistance;
+            }
         }
     }
 
     private void UpdateTouchLookDirection()
     {
         if (rightTouch.isDown && rightTouch.wasDown) {
-            lookDirection = rightTouch.position - rightTouch.startPosition;
-            lookDirection = Vector2.ClampMagnitude(lookDirection, pointerDownMaximumDistance);
-            lookDirection /= pointerDownMaximumDistance;
+            Vector2 touchDelta = rightTouch.position - rightTouch.startPosition;
+            if (touchDelta.magnitude < touchMoveMinimumDistance) {
+                // Deadzone
+                lookDirection = Vector2.zero;
+            } else {
+                lookDirection = touchDelta;
+                lookDirection = Vector2.ClampMagnitude(lookDirection, touchMoveMaximumDistance);
+                lookDirection /= touchMoveMaximumDistance;
+            }
         }
     }
 
