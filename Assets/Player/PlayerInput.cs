@@ -5,9 +5,6 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     private Vector2 moveDirection = Vector2.zero;
-    private bool dash = false;
-    private bool dashBackBuffer = false; // Back buffer is needed to avoid relying on the component order
-    private Vector2 dashDirection = Vector2.zero;
     private bool usingPointer = false;
 
     public bool UsingPointer() { return usingPointer; }
@@ -15,10 +12,6 @@ public class PlayerInput : MonoBehaviour
     public bool Move() { return ControllerAxisIsActive() || PointerIsDown(); }
 
     public Vector2 Movement() { return moveDirection; }
-
-    public bool Dash() { return dash; }
-
-    public Vector2 DashDirection() { return dashDirection; }
 
     void Update()
     {
@@ -40,10 +33,6 @@ public class PlayerInput : MonoBehaviour
         if (usingPointer) {
             LateUpdatePointerInput();
         }
-
-        // Swap dash flag back buffer
-        dash = dashBackBuffer;
-        dashBackBuffer = false;
     }
 
     // Controller-like input
@@ -59,11 +48,6 @@ public class PlayerInput : MonoBehaviour
             moveDirection.x = Input.GetAxis("Horizontal");
             moveDirection.y = Input.GetAxis("Vertical");
             moveDirection = Vector2.ClampMagnitude(moveDirection, 1f);
-
-            dashDirection = moveDirection;
-            if (Input.GetButtonDown("Dash")) {
-                dashBackBuffer = true;
-            }
         }
     }
 
@@ -73,11 +57,7 @@ public class PlayerInput : MonoBehaviour
     private Vector2 pointerLastPosition = Vector2.zero;
     private Vector2 pointerVelocity = Vector2.zero;
     private bool pointerWasDown = false;
-    private float pointerDownDuration = 0f;
     private float pointerDownMaximumDistance = 200f; // found by experimentation, doesn't seem to match joystick size
-    private float pointerDashGestureMaxDuration = 0.3f;
-    private float pointerDashGestureMinDistance = 1f;
-    private float pointerDashGestureMinSpeed = 1f;
 
     public bool PointerIsDown()
     {
@@ -104,7 +84,6 @@ public class PlayerInput : MonoBehaviour
     {
         UpdatePointerMoveDirection();
         UpdatePointerVelocity();
-        UpdateDetectPointerDashGesture();
     }
 
     private void UpdatePointerMoveDirection()
@@ -120,25 +99,6 @@ public class PlayerInput : MonoBehaviour
     {
         if (PointerIsDown() && pointerWasDown) {
             pointerVelocity = (PointerPosition() - pointerLastPosition) / Time.deltaTime;
-        }
-    }
-
-    // TODO: Re-implement considering new joystick-like controls
-    private void UpdateDetectPointerDashGesture()
-    {
-        if (PointerIsDown() && pointerWasDown) {
-            if (pointerDownDuration < pointerDashGestureMaxDuration) {
-                Vector2 pointerDownDistance = PointerPosition() - pointerStartPosition;
-                // Trigger dash
-                if (pointerDownDistance.magnitude > pointerDashGestureMinDistance && pointerVelocity.magnitude > pointerDashGestureMinSpeed) {
-                    dashDirection = pointerVelocity.normalized;
-                    dashBackBuffer = true;
-                } else {
-                    pointerDownDuration += Time.deltaTime;
-                }
-            }
-        } else {
-            pointerDownDuration = 0f;
         }
     }
 

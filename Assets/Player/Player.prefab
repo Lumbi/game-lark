@@ -62,7 +62,6 @@ GameObject:
   - component: {fileID: 3381665116316612021}
   - component: {fileID: 1891399000953358290}
   - component: {fileID: 7195790207213754245}
-  - component: {fileID: 2799588548373163868}
   - component: {fileID: 1731605214484893710}
   - component: {fileID: 3381665116316612018}
   - component: {fileID: 3381665116316612019}
@@ -212,22 +211,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pushingForce: 6
   maxSpeed: 3
---- !u!114 &2799588548373163868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3381665116316612009}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8ec993026f4d4f9d9f85d662fc80ecb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dashForce: 4
-  cooldownDuration: 0.8
-  controls: {fileID: 7195790207213754245}
-  dashDuration: 0.5
 --- !u!114 &1731605214484893710
 MonoBehaviour:
   m_ObjectHideFlags: 0
