@@ -5,24 +5,29 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     private Vector2 moveDirection = Vector2.zero;
-    private bool usingPointer = false;
+    private Vector2 lookDirection = Vector2.zero;
+    private bool usingTouch = false;
 
-    public bool UsingPointer() { return usingPointer; }
+    public bool UsingTouch() { return usingTouch; }
 
-    public bool Move() { return ControllerAxisIsActive() || PointerIsDown(); }
+    public bool Move() { return ControllerAxisIsActive() || LeftTouchIsActive(); }
 
     public Vector2 Movement() { return moveDirection; }
 
+    public bool Look() { return ControllerAxisIsActive() || RightTouchIsActive(); }
+
+    public Vector2 LookDirection() { return lookDirection; }
+
     void Update()
     {
-        if (PointerIsDown()) {
-            usingPointer = true;
+        if (Input.touchCount > 0) {
+            usingTouch = true;
         } else if (ControllerAxisIsActive()) {
-            usingPointer = false;
+            usingTouch = false;
         }
 
-        if (usingPointer) {
-            UpdatePointerInput();
+        if (usingTouch) {
+            UpdateTouchInput();
         } else {
             UpdateControllerInput();
         }
@@ -30,8 +35,8 @@ public class PlayerInput : MonoBehaviour
 
     void LateUpdate()
     {
-        if (usingPointer) {
-            LateUpdatePointerInput();
+        if (usingTouch) {
+            LateUpdateTouchInput();
         }
     }
 
@@ -48,70 +53,90 @@ public class PlayerInput : MonoBehaviour
             moveDirection.x = Input.GetAxis("Horizontal");
             moveDirection.y = Input.GetAxis("Vertical");
             moveDirection = Vector2.ClampMagnitude(moveDirection, 1f);
+            lookDirection = moveDirection;
         }
     }
 
-    // Pointer-like Input
+    // Touch input
 
-    private Vector2 pointerStartPosition = Vector2.zero;
-    private Vector2 pointerLastPosition = Vector2.zero;
-    private Vector2 pointerVelocity = Vector2.zero;
-    private bool pointerWasDown = false;
+    struct TouchState {
+        public bool isDown { get; set; }
+        public bool wasDown { get; set; }
+        public Vector2 startPosition { get; set; }
+        public Vector2 lastPosition { get; set; }
+        public Vector2 position { get; set; }
+    }
+
+    private TouchState leftTouch = new TouchState();
+    private TouchState rightTouch = new TouchState();
     private float pointerDownMaximumDistance = 200f; // found by experimentation, doesn't seem to match joystick size
 
-    public bool PointerIsDown()
+    private bool LeftTouchIsActive() { return leftTouch.isDown; }
+
+    private bool RightTouchIsActive() { return rightTouch.isDown; }
+
+    private void UpdateTouchInput()
     {
-        return Input.GetMouseButton(0) || Input.touchCount == 1;
+        UpdateTouchStates();
+        UpdateTouchMoveDirection();
+        UpdateTouchLookDirection();
     }
 
-    public Vector2 PointerStartPosition()
+    private void UpdateTouchStates()
     {
-        return pointerStartPosition;
-    }
+        UpdateTouchState(ref leftTouch);
+        UpdateTouchState(ref rightTouch);
 
-    public Vector2 PointerPosition()
-    {
-        if (Input.GetMouseButton(0)) {
-            return Input.mousePosition;
-        } else if (Input.touchCount > 0) {
-            return Input.GetTouch(0).position;
-        } else {
-            return Vector2.zero;
+        for (int i = 0; i < 2; i++) {
+            if (i < Input.touchCount) {
+                Touch touch = Input.GetTouch(0);
+                if (touch.position.x < Screen.width / 2f) {
+                    UpdateTouchState(touch, ref leftTouch);
+                } else {
+                    UpdateTouchState(touch, ref rightTouch);
+                }
+            }
         }
     }
 
-    private void UpdatePointerInput()
+    private void UpdateTouchState(ref TouchState state)
     {
-        UpdatePointerMoveDirection();
-        UpdatePointerVelocity();
+        state.isDown = false;
     }
 
-    private void UpdatePointerMoveDirection()
+    private void UpdateTouchState(Touch touch, ref TouchState state)
     {
-        if (PointerIsDown() && pointerWasDown) {
-            moveDirection = PointerPosition() - pointerStartPosition;
+        state.isDown = true;
+        if (!state.wasDown) {
+            state.startPosition = touch.position;
+        }
+        state.position = touch.position;
+    }
+
+    private void UpdateTouchMoveDirection()
+    {
+        if (leftTouch.isDown && leftTouch.wasDown) {
+            moveDirection = leftTouch.position - leftTouch.startPosition;
             moveDirection = Vector2.ClampMagnitude(moveDirection, pointerDownMaximumDistance);
             moveDirection /= pointerDownMaximumDistance;
+            // TODO: Deadzone
         }
     }
 
-    private void UpdatePointerVelocity()
+    private void UpdateTouchLookDirection()
     {
-        if (PointerIsDown() && pointerWasDown) {
-            pointerVelocity = (PointerPosition() - pointerLastPosition) / Time.deltaTime;
+        if (rightTouch.isDown && rightTouch.wasDown) {
+            lookDirection = rightTouch.position - rightTouch.startPosition;
+            lookDirection = Vector2.ClampMagnitude(lookDirection, pointerDownMaximumDistance);
+            lookDirection /= pointerDownMaximumDistance;
         }
     }
 
-    private void LateUpdatePointerInput()
+    private void LateUpdateTouchInput()
     {
-        if (PointerIsDown()) {
-            if (!pointerWasDown) {
-                pointerStartPosition = PointerPosition();
-            }
-            pointerLastPosition = PointerPosition();
-            pointerWasDown = true;
-        } else {
-            pointerWasDown = false;
-        }
+        leftTouch.wasDown = leftTouch.isDown;
+        leftTouch.lastPosition = leftTouch.position;
+        rightTouch.wasDown = rightTouch.isDown;
+        rightTouch.lastPosition = rightTouch.position;
     }
 }

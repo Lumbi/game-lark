@@ -8,6 +8,10 @@ public class PlayerInputTouchJoystickUI : MonoBehaviour
     public GameObject graphics;
     private bool enableAtNextFrame = false;
 
+    public enum Control { move, look }
+
+    public Control control;
+
     void Start()
     {
         graphics.SetActive(false);
@@ -20,9 +24,21 @@ public class PlayerInputTouchJoystickUI : MonoBehaviour
             enableAtNextFrame = false;
         }
 
-        if (input.PointerIsDown() && input.Movement() != Vector2.zero) {
-            // transform.position = input.PointerStartPosition();
-            transform.right = input.Movement();
+        Vector2 vector = Vector2.zero;
+        bool isTouching = false;
+        switch (control) {
+            case Control.move:
+                isTouching = input.Move();
+                vector = input.Movement();
+                break;
+            case Control.look:
+                isTouching = input.Look();
+                vector = input.LookDirection();
+                break;
+        }
+
+        if (input.UsingTouch() && isTouching && vector != Vector2.zero) {
+            transform.right = vector;
             transform.right.Normalize();
             enableAtNextFrame = true;
         } else {

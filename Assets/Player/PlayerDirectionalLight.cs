@@ -15,8 +15,8 @@ public class PlayerDirectionalLight : MonoBehaviour
 
     void LateUpdate()
     {
-        if (input.Movement() != Vector2.zero) {
-            targetDirection = input.Movement();
+        if (input.Look()) {
+            targetDirection = input.LookDirection();
             targetDirection.Normalize();
         }
 
