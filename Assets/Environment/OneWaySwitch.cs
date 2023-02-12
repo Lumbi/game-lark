@@ -9,10 +9,15 @@ public class OneWaySwitch : MonoBehaviour
     public Sprite normalSprite;
     public Sprite activatedSprite;
     public UnityEvent activated = new UnityEvent();
+    public UnityEvent deactivated = new UnityEvent();
     public bool isActivated = false;
+    private bool wasActivated = false;
+
+    private LogicConnector logicConnector;
 
     void Start()
     {
+        logicConnector = GetComponent<LogicConnector>();
         UpdateSprite();
     }
 
@@ -25,9 +30,29 @@ public class OneWaySwitch : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if (logicConnector == null) {
+            logicConnector = GetComponent<LogicConnector>();
+        }
+
+        if (isActivated != wasActivated) {
+            if (isActivated) {
+                Activate();
+            } else {
+                Reset();
+            }
+        }
+
+        wasActivated = isActivated;
+    }
+
     private void Activate()
     {
         isActivated = true;
+        if (logicConnector) {
+            logicConnector.state = true;
+        }
         UpdateSprite();
         activated.Invoke();
     }
@@ -35,7 +60,11 @@ public class OneWaySwitch : MonoBehaviour
     public void Reset()
     {
         isActivated = false;
+        if (logicConnector) {
+            logicConnector.state = false;
+        }
         UpdateSprite();
+        deactivated.Invoke();
     }
 
     private void UpdateSprite() {
@@ -43,12 +72,6 @@ public class OneWaySwitch : MonoBehaviour
             GetComponent<SpriteRenderer>().sprite = activatedSprite;
         } else {
             GetComponent<SpriteRenderer>().sprite = normalSprite;
-        }
-    }
-
-    void Update() {
-        if (!Application.IsPlaying(gameObject)) {
-            UpdateSprite();
         }
     }
 }
