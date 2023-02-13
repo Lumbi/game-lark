@@ -52,7 +52,7 @@ public class LogicConnector : MonoBehaviour
     {
         onTurnOn.Invoke();
         if (mainLight) {
-            mainLight.intensity = 1f;
+            mainLight.intensity = 2f;
         }
         OnTurnOn();
     }
