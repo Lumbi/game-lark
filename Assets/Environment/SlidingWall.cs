@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteAlways]
 public class SlidingWall : MonoBehaviour
 {
     private Vector2 originPosition;
@@ -48,9 +49,8 @@ public class SlidingWall : MonoBehaviour
     {
         if (deltaPosition != null) {
             Gizmos.color = Color.blue;
-            Vector3 targetPosition = deltaPosition;
-            targetPosition += transform.position;
-            Gizmos.DrawLine(transform.position, targetPosition);
+            Vector2 targetPosition = originPosition + deltaPosition;
+            Gizmos.DrawLine(originPosition, targetPosition);
 
             var sprite = GetComponentInChildren<SpriteRenderer>();
             if (sprite != null) {
