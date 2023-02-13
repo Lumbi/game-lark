@@ -26,10 +26,13 @@ public class LightSwitch : MonoBehaviour
     private float delayAfterSwitchingOff = 1f;
     private float timeAfterSwitchingOff = 0f;
 
+    private LogicConnector logicConnector;
+
     void Start()
     {
         light = GetComponent<Light2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        logicConnector = GetComponent<LogicConnector>();
     }
 
     void OnTriggerStay2D(Collider2D collider)
@@ -66,8 +69,10 @@ public class LightSwitch : MonoBehaviour
 
         // Trigger deactivated / activated
         if (!wasEmpty && isEmpty) {
+            if (logicConnector) { logicConnector.state = true; }
             deactivated.Invoke();
         } else if (!wasFull && isFull) {
+            if (logicConnector) { logicConnector.state = false; }
             activated.Invoke();
         }
 
@@ -114,6 +119,7 @@ public class LightSwitch : MonoBehaviour
         inDelayAfterSwitchingOff = true;
         timeAfterSwitchingOff = 0f;
         deactivated.Invoke();
+        if (logicConnector) { logicConnector.state = false; }
     }
 
     void OnDrawGizmos()

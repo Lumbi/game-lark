@@ -8,6 +8,7 @@ using UnityEngine.Rendering.Universal;
 public class LogicConnector : MonoBehaviour
 {
     public bool state;
+    private bool previousState;
 
     public List<LogicConnector> inputPins = new List<LogicConnector>();
 
@@ -23,6 +24,7 @@ public class LogicConnector : MonoBehaviour
     void Start()
     {
         mainLight = GetComponent<Light2D>();
+        previousState = state;
 
         if (state) {
             TurnOn();
@@ -34,7 +36,7 @@ public class LogicConnector : MonoBehaviour
     void Update()
     {
         var newState = Logic();
-        if (newState != state) {
+        if (newState != previousState) {
             state = newState;
             if (state) {
                 TurnOn();
@@ -42,6 +44,7 @@ public class LogicConnector : MonoBehaviour
                 TurnOff();
             }
         }
+        previousState = state;
     }
 
     protected virtual bool Logic() {
