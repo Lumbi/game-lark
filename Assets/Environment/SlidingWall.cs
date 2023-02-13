@@ -6,7 +6,6 @@ public class SlidingWall : MonoBehaviour
 {
     private Vector2 originPosition;
     public Vector2 deltaPosition;
-    private bool isSliding = false;
     public float slideDuration = 1f;
 
     void Start()
@@ -16,21 +15,19 @@ public class SlidingWall : MonoBehaviour
 
     public void Slide()
     {
-        if (!isSliding) {
-            StartCoroutine(_Translate(originPosition + deltaPosition));
-        }
+
+        StopAllCoroutines();
+        StartCoroutine(_Translate(originPosition + deltaPosition));
     }
 
     public void Return()
     {
-        if (!isSliding) {
-            StartCoroutine(_Translate(originPosition));
-        }
+        StopAllCoroutines();
+        StartCoroutine(_Translate(originPosition));
     }
 
     private IEnumerator _Translate(Vector2 endPosition)
     {
-        isSliding = true;
         float time = 0f;
         float interpolation = 0f;
         Vector2 startPosition = transform.position;
@@ -45,8 +42,6 @@ public class SlidingWall : MonoBehaviour
             yield return null;
         }
         transform.position = endPosition;
-
-        isSliding = false;
     }
 
     void OnDrawGizmos()
