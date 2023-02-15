@@ -72,4 +72,14 @@ public class LogicConnector : MonoBehaviour
     }
 
     protected virtual void OnTurnOff() {}
+
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        foreach (var inputPin in inputPins) {
+            if (inputPin == null) { continue; }
+            Gizmos.DrawLine(inputPin.transform.position, transform.position);
+        }
+    }
 }
