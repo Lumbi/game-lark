@@ -15,7 +15,6 @@ public class SlidingWall : MonoBehaviour
 
     public void Slide()
     {
-
         StopAllCoroutines();
         StartCoroutine(_Translate(originPosition + deltaPosition));
     }

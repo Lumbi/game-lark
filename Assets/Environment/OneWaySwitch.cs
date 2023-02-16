@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[ExecuteAlways]
 public class OneWaySwitch : MonoBehaviour
 {
     public Sprite normalSprite;
@@ -47,7 +46,7 @@ public class OneWaySwitch : MonoBehaviour
         wasActivated = isActivated;
     }
 
-    private void Activate()
+    public void Activate()
     {
         isActivated = true;
         if (logicConnector) {

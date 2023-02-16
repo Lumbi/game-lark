@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Restart : MonoBehaviour
 {
     public GameObject landerPrefab;
     private GameObject lastCheckpoint;
+
+    public UnityEvent onSpawn = new UnityEvent();
 
     void Start()
     {
@@ -27,6 +30,8 @@ public class Restart : MonoBehaviour
         var lander = Instantiate(landerPrefab, spawnPosition, Quaternion.identity);
         var cameraFollow = FindObjectOfType<CameraFollow>();
         cameraFollow.FocusOn(lander);
+
+        onSpawn.Invoke();
     }
 
     public void SpawnLater(float delay)

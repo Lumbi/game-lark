@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering.Universal;
 
-[ExecuteAlways]
 public class LogicConnector : MonoBehaviour
 {
     public bool state;
@@ -55,7 +54,7 @@ public class LogicConnector : MonoBehaviour
     {
         onTurnOn.Invoke();
         if (mainLight) {
-            mainLight.intensity = 2f;
+            mainLight.intensity = 3f;
         }
         OnTurnOn();
     }
