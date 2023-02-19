@@ -5,23 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PrototypeWorldSelect : MonoBehaviour
 {
-    public void LoadWorld1() {
-        SceneManager.LoadScene("Prototype_World1", LoadSceneMode.Single);
-        Destroy(this);
-    }
-
-    public void LoadWorld2() {
-        SceneManager.LoadScene("Prototype_World2", LoadSceneMode.Single);
-        Destroy(this);
-    }
-
-    public void LoadWorld3() {
-        SceneManager.LoadScene("Prototype_World3", LoadSceneMode.Single);
-        Destroy(this);
-    }
-
-    public void LoadWorld4() {
-        SceneManager.LoadScene("Prototype_World4", LoadSceneMode.Single);
+    public void LoadWorld(string name) {
+        SceneManager.LoadScene(name, LoadSceneMode.Single);
         Destroy(this);
     }
 }
