@@ -74,7 +74,11 @@ public class PlayerInput : MonoBehaviour
 
     private bool LeftTouchIsActive() { return leftTouch.isDown && leftTouch.wasDown; }
 
+    public Vector2 LeftTouchPosition() { return leftTouch.position; }
+
     private bool RightTouchIsActive() { return rightTouch.isDown && rightTouch.wasDown; }
+
+    public Vector2 RightTouchPosition() { return rightTouch.position; }
 
     private void UpdateTouchInput()
     {

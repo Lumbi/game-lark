@@ -21,28 +21,36 @@ public class PlayerInputTouchJoystickUI : MonoBehaviour
     {
         if (enableAtNextFrame && !graphics.activeSelf) {
             graphics.SetActive(true);
-            enableAtNextFrame = false;
         }
 
         Vector2 vector = Vector2.zero;
         bool isTouching = false;
+        Vector2 position = Vector2.zero;
         switch (control) {
             case Control.move:
                 isTouching = input.Move();
                 vector = input.Movement();
+                position = input.LeftTouchPosition();
                 break;
             case Control.look:
                 isTouching = input.Look();
                 vector = input.LookDirection();
+                position = input.RightTouchPosition();
                 break;
         }
 
         if (input.UsingTouch() && isTouching && vector != Vector2.zero) {
             transform.right = vector;
             transform.right.Normalize();
-            enableAtNextFrame = true;
+            if (enableAtNextFrame == false) {
+                transform.position = position;
+                enableAtNextFrame = true;
+            }
         } else {
-            if (graphics.activeSelf) { graphics.SetActive(false); }
+            if (graphics.activeSelf) {
+                graphics.SetActive(false);
+                enableAtNextFrame = false;
+            }
         }
     }
 }
