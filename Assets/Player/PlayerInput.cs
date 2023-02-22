@@ -94,7 +94,7 @@ public class PlayerInput : MonoBehaviour
 
         for (int i = 0; i < 2; i++) {
             if (i < Input.touchCount) {
-                Touch touch = Input.GetTouch(0);
+                Touch touch = Input.GetTouch(i);
                 if (touch.position.x < Screen.width / 2f) {
                     UpdateTouchState(touch, ref leftTouch);
                 } else {
